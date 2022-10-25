@@ -21,7 +21,7 @@ DB:
 
 
 You2oob
-* Clone/download the repo https://github.com/ChzFlvrHrse/Klickr-Group.git
+* Clone/download the repo https://github.com/Kbafekr/Youtube-Clone
 
 * cd into You2oob folder and ``` run pipenv install ```
 
