@@ -1,109 +1,142 @@
 // constants
-const SET_USER = 'session/SET_USER';
-const REMOVE_USER = 'session/REMOVE_USER';
 
-const setUser = (user) => ({
-  type: SET_USER,
-  payload: user
-});
+const ALL_COMMENTS = 'comments/AllComments'
+const VIDEO_COMMENTS = 'comments/VideoComments'
+const NEW_COMMENT = 'comments/newComment'
+const UPDATE_COMMENT = 'comments/updateComment'
+const DELETE_COMMENT = 'comments/deleteComment'
 
-const removeUser = () => ({
-  type: REMOVE_USER,
-})
+// actions
 
-const initialState = { user: null };
-
-export const authenticate = () => async (dispatch) => {
-  const response = await fetch('/api/auth/', {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-  if (response.ok) {
-    const data = await response.json();
-    if (data.errors) {
-      return;
-    }
-  
-    dispatch(setUser(data));
+const getAllComments = (comments) => {
+  return {
+    type: ALL_COMMENTS,
+    comments
   }
 }
 
-export const login = (email, password) => async (dispatch) => {
-  const response = await fetch('/api/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email,
-      password
-    })
-  });
-  
-  
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data))
-    return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ['An error occurred. Please try again.']
-  }
-
-}
-
-export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/auth/logout', {
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  });
-
-  if (response.ok) {
-    dispatch(removeUser());
-  }
-};
-
-
-export const signUp = (username, email, password) => async (dispatch) => {
-  const response = await fetch('/api/auth/signup', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-    }),
-  });
-  
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data))
-    return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ['An error occurred. Please try again.']
+const getVideoComments = (videoId) => {
+  return {
+    type: VIDEO_COMMENTS,
+    videoId
   }
 }
 
-export default function reducer(state = initialState, action) {
+const newComment = (comment) => {
+  return {
+    type: NEW_COMMENT,
+    comment
+  }
+}
+
+const updateComment = (updated) => {
+  return {
+    type: UPDATE_COMMENT,
+    updated
+  }
+}
+
+const deleteComment = (commentId) => {
+  return {
+    type: DELETE_COMMENT,
+    commentId
+  }
+}
+
+// thunks
+
+export const getAllCommentsThunk = () => async dispatch => {
+  const response = await fetch('/api/comments/all');
+
+  if (response.ok) {
+    const AllComments = await response.json();
+    dispatch(getAllComments(AllComments))
+    return AllComments
+  }
+}
+
+export const getVideoCommentsThunk = (videoId) => async dispatch => {
+  const response = await fetch(`/api/videos/${videoId}/comments`)
+
+  if (response.ok) {
+    const videoComments = await response.json ();
+    dispatch(getVideoComments(videoComments))
+    return videoComments
+  }
+}
+
+export const newCommentThunk = (user_id, video_id, body, is_reply, commentReply_id) => async (dispatch) => {
+  const response = await fetch(`/api/videos/${video_id}/comment/new`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json",
+    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})}
+  })
+  if (response.ok) {
+    const createComment = await response.json()
+    dispatch(newComment(createComment))
+    return createComment
+  }
+}
+
+export const updateCommentThunk = (id, user_id, video_id, body, is_reply, commentReply_id) => async (dispatch) => {
+  const response = await fetch(`/api/videos/${video_id}/comment/${id}/edit`, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json",
+    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})}
+  })
+  if (response.ok) {
+    const editComment = await response.json()
+    dispatch(updateComment(editComment))
+    return editComment
+  }
+}
+
+export const deleteCommentThunk = (videoId, id) => async dispatch => {
+  const response = await fetch(`/api/videos/${videoId}/comment/${id}/delete`, {
+    method: "DELETE"
+  });
+  if (response.ok) {
+    const deleted = await response.json()
+    dispatch(deleteComment(deleted))
+    // dispatch(deleteComment(id))
+    return deleted
+  }
+}
+
+// reducer
+
+const initialState = {};
+
+export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case SET_USER:
-      return { user: action.payload }
-    case REMOVE_USER:
-      return { user: null }
+    case GET_VIDEO: {
+      const newState = {}
+      action.videos.videos.forEach((video) => {
+        newState[video.id] = video
+      })
+      return newState
+    }
+    case GET_ONE_VIDEO: {
+      const newState = {...action.videoId}
+      return newState
+    }
+    case NEW_VIDEO: {
+      const newState = {...state}
+      newState[action.video.id] = action.video
+      return newState
+    }
+    case UPDATE_VIDEO: {
+      const newState = {...state}
+      newState[action.updated.id] = action.updated
+      return newState
+    }
+    case DELETE_VIDEO: {
+      const newState = {...state}
+      delete newState[action.videoId]
+      return newState
+    }
     default:
-      return state;
+      return state
   }
 }
+

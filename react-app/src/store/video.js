@@ -85,9 +85,9 @@ export const updateVideoThunk = (channel_id, title, description, video_url, vide
     body: JSON.stringify({channel_id, title, description, video_url})}
   })
   if (response.ok) {
-    const updateVideo = await response.json()
-    dispatch(updateVideo(updateVideo))
-    return updateVideo
+    const editVideo = await response.json()
+    dispatch(updateVideo(editVideo))
+    return editVideo
   }
 }
 
@@ -104,8 +104,7 @@ export const deleteVideoThunk = (videoId) => async dispatch => {
 // reducer
 
 const initialState = {};
-
-const videoReducer = (state = initialState, action) => {
+export default function reducer (state = initialState, action) {
   switch (action.type) {
     case GET_VIDEO: {
       const newState = {}
@@ -138,4 +137,3 @@ const videoReducer = (state = initialState, action) => {
   }
 }
 
-export default videoReducer
