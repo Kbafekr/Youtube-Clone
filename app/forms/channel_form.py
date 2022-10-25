@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import DataRequired, IntegerField, SubmitField
+from wtforms import StringField, IntegerField, SubmitField
+from wtforms.validators import DataRequired
 from random import random
 
 profile_picture_list=['https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Monkey.png', 'https://static.esea.net/global/images/users/1080122.1543427602.jpg',

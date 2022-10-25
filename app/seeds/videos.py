@@ -1,4 +1,4 @@
-from app.models import C, db
+from app.models import db
 from app.models.video import Video
 
 
