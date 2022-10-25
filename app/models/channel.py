@@ -14,6 +14,9 @@ class Channel(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
+    # relationships backref
+    videos = db.relationship("Video", backref='channel', cascade="all, delete-orphan")
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -23,4 +26,5 @@ class Channel(db.Model):
             'banner_picture': self.banner_picture,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'videos': [video.to_dict() for video in self.videos]
         }
