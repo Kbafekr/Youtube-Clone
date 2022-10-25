@@ -19,7 +19,6 @@ class Channel(db.Model):
             'id': self.id,
             'channel_name': self.channel_name,
             'user_id': self.user_id,
-            'email': self.email,
             'profile_picture': self.profile_picture,
             'banner_picture': self.banner_picture,
             'created_at': self.created_at,

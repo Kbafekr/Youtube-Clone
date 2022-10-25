@@ -35,4 +35,12 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'email': self.email,
             'created_at': self.created_at,
+            # channels
+            'channels': [channel.to_dict() for channel in self.channels],
+            # videos
+            # comments
+            # likes
+            # tags
+            # subscribers
+            # playlists
         }

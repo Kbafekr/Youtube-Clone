@@ -10,11 +10,10 @@ def seed_users():
     bobbie = User(
         first_name='Bobbie', last_name='Bobbert', email='bobbie@aa.io', password='password')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-
-    db.session.commit()
+    users = [demo, marnie, bobbie]
+    for user in users:
+        db.session.add(user)
+        db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE the users table.
