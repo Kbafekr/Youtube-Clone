@@ -9,6 +9,12 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 
+import TestingVideos from "./components/TestingReduxState/videoTESTING";
+import TestingLikesFunctions from "./components/TestingReduxState/LikesTESTING";
+import TagsTestingFunction from "./components/TestingReduxState/TagsTESTING";
+import CommentsTestingFunction from "./components/TestingReduxState/CommentsTESTING";
+import ChannelTestingFunction from './components/TestingReduxState/ChannelTESTING';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -43,6 +49,23 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        {/* The following routes are for testing only */}
+        <Route path="/:videoId/videos" exact={true}>
+          <TestingVideos />
+        </Route>
+        <Route path="/:videoId/tags" exact={true}>
+          <TagsTestingFunction />
+        </Route>
+        <Route path="/:videoId/likes" exact={true}>
+          <TestingLikesFunctions />
+        </Route>
+        <Route path="/:videoId/comments" exact={true}>
+          <CommentsTestingFunction />
+        </Route>
+        <Route path="/channel/:channelId" exact={true}>
+          <ChannelTestingFunction />
+        </Route>
+        {/* End of testing section */}
       </Switch>
     </BrowserRouter>
   );
