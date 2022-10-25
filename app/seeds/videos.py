@@ -5,7 +5,7 @@ from app.models.video import Video
 
 # Adds a demo user, you can add other users here if you want
 def seed_videos():
-    video_1 = Video(channel_id=1, title='''Ant-Man and The Wasp Quantumania Trailer: Avengers 5 Kang Dynasty and Loki Marvel Easter Eggs", description="
+    video_1 = Video(channel_id=1, title="Ant-Man and The Wasp Quantumania Trailer: Avengers 5 Kang Dynasty and Loki Marvel Easter Eggs", description='''
 Covering new Ant-Man 3 Quantumania Trailer Breakdown and Marvel Easter Eggs. Avengers 5 Kang Dynasty Trailer Footage. Loki Season 2 Trailer Kang Easter Eggs and Connections. Scott Lang Ant-Man vs Kang the Conqueror Breakdown. New Kang variant vs He Who Remains Kang on Loki Episode 6 Finale. Ant-Man 3 MODOK and Bill Murray character explained. Fantastic Four Easter Eggs and Connection.
 
 Ant-Man 3 Quantumania is the beginning of Marvel Phase 5. How it helps set up Avengers 5 Kang Dynasty with new Avengers vs Kang. And Avengers 6 Secret Wars Teaser. With the Incursions and Time Runs Out teaser during the Doctor Strange 2 Multiverse of Madness Post Credit Scene. Avengers 5 and Avengers 6 will be more like the cliffhanger between Infinity War and Endgame. Marvel Phase  Movies, Marvel Phase 6 Movies Schedule.

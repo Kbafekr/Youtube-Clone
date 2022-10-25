@@ -45,7 +45,7 @@ const deleteVideo = (videoId) => {
 
 // thunks
 
-export const getVideoThunk = () => async dispatch => {
+export const getAllVideosThunk = () => async dispatch => {
   const response = await fetch('/api/videos/all');
 
   if (response.ok) {
@@ -114,8 +114,8 @@ export default function reducer (state = initialState, action) {
       return newState
     }
     case GET_ONE_VIDEO: {
-      const newState = {...action.videoId}
-      return newState
+      const newState = {}
+      return newState[action.videoId.id] = action.videoId
     }
     case NEW_VIDEO: {
       const newState = {...state}
@@ -136,4 +136,3 @@ export default function reducer (state = initialState, action) {
       return state
   }
 }
-

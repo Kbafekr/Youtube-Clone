@@ -14,7 +14,7 @@ video_routes = Blueprint('videos', __name__)
 # @login_required
 def AllVids():
     all_videos = Video.query.all()
-    videos = {"images": [video.to_dict() for video in all_videos]}
+    videos = {"videos": [video.to_dict() for video in all_videos]}
     return videos
 
 

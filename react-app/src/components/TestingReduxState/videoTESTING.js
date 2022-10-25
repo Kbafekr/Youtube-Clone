@@ -2,38 +2,31 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import EditImageForm from '../ImagesForms/EditImageForm'
-import DeleteImageForm from '../ImagesForms/DeleteImageForm'
-
 import { Modal } from "../../context/Modal";
 
-import { getImagesThunk, getOneImageThunk } from "../../store/image";
-import CreateImageForm from "../Images/createImage";
-import { getAllUsersThunk } from "../../store/AllUsers";
+import { getAllVideosThunk, getOneVideoThunk, newVideoThunk, updateVideoThunk, deleteVideoThunk } from "../../store/video";
 
 export default function TestingVideos() {
-  const { imageId } = useParams();
+  const { videoId } = useParams();
   const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
 
-  let allImagesArray;
-  const [imageState, setImageState] = useState({});
+  let allVideosArray;
+  const [videoState, setVideoState] = useState({});
 
 
   useEffect(() => {
-    dispatch(getImagesThunk());
-  }, [dispatch, imageState, showModal, showModalEdit, allImagesArray]);
+    dispatch(getAllVideosThunk());
+  }, [dispatch, videoState, showModal, showModalEdit, allVideosArray]);
 
-  useEffect(() => {
-    dispatch(getAllUsersThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getOneVideoThunk(videoId));
+  // }, [dispatch]);
 
-  const images = useSelector((state) => state.image);
-    allImagesArray = Object.values(images)
-  const allusers = useSelector((state) => state.allUsers);
-  const allUsersArray = Object.values(allusers);
+  const videos = useSelector((state) => state.video);
+  allVideosArray = Object.values(videos)
 
   var styles1 = {
     color: "Black",
@@ -61,46 +54,37 @@ export default function TestingVideos() {
 
   return (
     <>
-      <div className="ImageTESTINGCONTAINER" style={containerStyle}>
+      <div className="VideoTESTINGCONTAINER" style={containerStyle}>
         <div>
-          <button style={styles1} onClick={() => dispatch(getImagesThunk())}>
-            Get all Images
+          <button style={styles1} onClick={() => dispatch(getAllVideosThunk())}>
+            Get all Videos
           </button>
         </div>
         <div>
           <button
             style={styles3}
-            onClick={() => dispatch(getOneImageThunk(imageId))}
+            onClick={() => dispatch(getOneVideoThunk(videoId))}
           >
-            Get One Image
+            Get One Video
           </button>
         </div>
         <div>
-          <CreateImageForm />
+          {/* <CreateImageForm /> */}
         </div>
         <div className="CommentsArraymapped">
-        {allImagesArray &&
-          allImagesArray.map((image, index) => {
+        {allVideosArray &&
+          allVideosArray.map((video, index) => {
             return (
-              <div key={image.id} className="CommentContainer">
+              <div key={video.id} className="CommentContainer">
                 <br />
                 {/* map through users array and display username if id matches userId */}
                 <div>
-                  {allUsersArray &&
-                    allUsersArray.map((singleUser, index) => {
-                      return (
-                        <div>
-                          {singleUser.id === image.userId
-                            ? singleUser.username
-                            : ""}
-                        </div>
-                      );
-                    })}
                 </div>
-                <div>{image.title}</div>
-                <div>{image.description}</div>
-                <div>{image.previewImageUrl}</div>
-                <div>{image.updated_at}</div>
+                <div>{video.channel_id}</div>
+                <div>{video.title}</div>
+                <div>{video.description}</div>
+                <div>{video.video_url}</div>
+                <div>{video.updated_at}</div>
                 {/* edit image */}
                 <button
                   style={styles3}
@@ -112,13 +96,13 @@ export default function TestingVideos() {
                     className="DeleteAlbumButton"
                     id="DeleteCommentButton"
                     onClick={() => {
-                        setShowModalEdit(true);
-                      setImageState(image)
+                      setShowModalEdit(true);
+                      setVideoState(video)
                     }}
                   >
-                    Edit image
+                    Edit Video
                   </button>
-                  {showModalEdit && (
+                  {/* {showModalEdit && (
                   <Modal onClose={() => setShowModalEdit(false)}>
                     <EditImageForm
                       imageId={imageState.id}
@@ -126,7 +110,7 @@ export default function TestingVideos() {
                       oldImage={imageState}
                     />
                   </Modal>
-                  )}
+                  )} */}
                 </button>
                 {/* edit comment */}
 
@@ -142,19 +126,19 @@ export default function TestingVideos() {
                     id="DeleteCommentButton"
                     onClick={() => {
                       setShowModal(true);
-                      setImageState(image)
+                      setVideoState(video)
                     }}
                   >
-                    Delete Comment
+                    Delete Video
                   </button>
-                  {showModal && (
+                  {/* {showModal && (
                   <Modal onClose={() => setShowModal(false)}>
                     <DeleteImageForm
                       setShowModal={setShowModal}
                       image={imageState}
                     />
                   </Modal>
-                  )}
+                  )} */}
                 </button>
               </div>
             );
