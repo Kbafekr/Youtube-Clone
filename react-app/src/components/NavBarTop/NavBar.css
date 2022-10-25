@@ -1,8 +1,10 @@
 .TopNavBarContainer {
-    background-color: rgba(0, 0, 0, 0.735);
+
+    background-color: rgba(88, 88, 88, 0.201);
     height: 56px;
     padding: 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 12;
 }

@@ -1,0 +1,20 @@
+.SideNavBarContainer {
+    min-height: 100%;
+    position: absolute;
+    width: 240px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.InternalSideBarContainer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 56px;
+    min-height: 100%;
+    width: 100%;
+    background-color: rgba(89, 89, 89, 0.201);
+}

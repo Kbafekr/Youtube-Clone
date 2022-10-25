@@ -1,0 +1,8 @@
+.homeContainer {
+    flex: 1;
+    padding: 10px;
+    margin-left: 272px;
+    min-height: 100%;
+    display: flex;
+    color: white;
+}
