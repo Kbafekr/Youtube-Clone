@@ -109,34 +109,30 @@ const initialState = {};
 
 export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case GET_VIDEO: {
-      const newState = {}
-      action.videos.videos.forEach((video) => {
-        newState[video.id] = video
-      })
+    case ALL_COMMENTS: {
+      const newState = {...action.comments}
       return newState
     }
-    case GET_ONE_VIDEO: {
+    case VIDEO_COMMENTS: {
       const newState = {...action.videoId}
       return newState
     }
-    case NEW_VIDEO: {
+    case NEW_COMMENT: {
       const newState = {...state}
-      newState[action.video.id] = action.video
+      newState[action.comment.id] = action.comment
       return newState
     }
-    case UPDATE_VIDEO: {
+    case UPDATE_COMMENT: {
       const newState = {...state}
       newState[action.updated.id] = action.updated
       return newState
     }
-    case DELETE_VIDEO: {
+    case DELETE_COMMENT: {
       const newState = {...state}
-      delete newState[action.videoId]
+      delete newState[action.id]
       return newState
     }
     default:
       return state
   }
 }
-

@@ -1,103 +1,105 @@
 // constants
 
-const GET_VIDEO = 'video/getVideo'
-const GET_ONE_VIDEO = 'video/getOneVideo'
-const NEW_VIDEO = 'video/newVideo'
-const UPDATE_VIDEO = 'video/updateVideo'
-const DELETE_VIDEO = 'video/deleteVIdeo'
+const ALL_COMMENTS = 'comments/AllComments'
+const VIDEO_COMMENTS = 'comments/VideoComments'
+const NEW_COMMENT = 'comments/newComment'
+const UPDATE_COMMENT = 'comments/updateComment'
+const DELETE_COMMENT = 'comments/deleteComment'
 
 // actions
 
-const getAllVideos = (videos) => {
+const getAllComments = (comments) => {
   return {
-    type: GET_VIDEO,
-    videos
+    type: ALL_COMMENTS,
+    comments
   }
 }
 
-const getOneVideo = (videoId) => {
+const getVideoComments = (videoId) => {
   return {
-    type: GET_ONE_VIDEO,
+    type: VIDEO_COMMENTS,
     videoId
   }
 }
 
-const newVideo = (video) => {
+const newComment = (comment) => {
   return {
-    type: NEW_VIDEO,
-    video
+    type: NEW_COMMENT,
+    comment
   }
 }
 
-const updateVideo = (updated) => {
+const updateComment = (updated) => {
   return {
-    type: UPDATE_VIDEO,
+    type: UPDATE_COMMENT,
     updated
   }
 }
 
-const deleteVideo = (videoId) => {
+const deleteComment = (commentId) => {
   return {
-    type: DELETE_VIDEO,
-    videoId
+    type: DELETE_COMMENT,
+    commentId
   }
 }
 
 // thunks
 
-export const getVideoThunk = () => async dispatch => {
-  const response = await fetch('/api/videos/all');
+export const getAllCommentsThunk = () => async dispatch => {
+  const response = await fetch('/api/comments/all');
 
   if (response.ok) {
-    const videos = await response.json();
-    dispatch(getAllVideos(videos))
-    return videos
+    const AllComments = await response.json();
+    dispatch(getAllComments(AllComments))
+    return AllComments
   }
 }
 
-export const getOneVideoThunk = (videoId) => async dispatch => {
-  const response = await fetch(`/api/videos/${videoId}`)
+export const getVideoCommentsThunk = (videoId) => async dispatch => {
+  const response = await fetch(`/api/videos/${videoId}/comments`)
 
   if (response.ok) {
-    const video = await response.json ();
-    dispatch(getOneVideo(video))
-    return video
+    const videoComments = await response.json ();
+    dispatch(getVideoComments(videoComments))
+    return videoComments
   }
 }
 
-export const newVideoThunk = (channel_id, title, description, video_url) => async (dispatch) => {
-  const response = await fetch("/api/videos/upload", {
+export const newCommentThunk = (user_id, video_id, body, is_reply, commentReply_id) => async (dispatch) => {
+  const response = await fetch(`/api/videos/${video_id}/comment/new`, {
     method: "POST",
     headers: {"Content-Type": "application/json",
-    body: JSON.stringify({channel_id, title, description, video_url})}
+    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})}
   })
   if (response.ok) {
-    const createVideo = await response.json()
-    dispatch(newVideo(createVideo))
-    return createVideo
+    const createComment = await response.json()
+    dispatch(newComment(createComment))
+    return createComment
   }
 }
 
-export const updateVideoThunk = (channel_id, title, description, video_url, videoId) => async (dispatch) => {
-  const response = await fetch(`/api/videos/${videoId}/edit`, {
+export const updateCommentThunk = (id, user_id, video_id, body, is_reply, commentReply_id) => async (dispatch) => {
+  const response = await fetch(`/api/videos/${video_id}/comment/${id}/edit`, {
     method: "PUT",
     headers: {"Content-Type": "application/json",
-    body: JSON.stringify({channel_id, title, description, video_url})}
+    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})}
   })
   if (response.ok) {
-    const updateVideo = await response.json()
-    dispatch(updateVideo(updateVideo))
-    return updateVideo
+    const editComment = await response.json()
+    dispatch(updateComment(editComment))
+    return editComment
   }
 }
 
-export const deleteVideoThunk = (videoId) => async dispatch => {
-  const response = await fetch(`/api/videos/${videoId}/delete`, {
+export const deleteCommentThunk = (videoId, id) => async dispatch => {
+  const response = await fetch(`/api/videos/${videoId}/comment/${id}/delete`, {
     method: "DELETE"
   });
   if (response.ok) {
     const deleted = await response.json()
-    dispatch(deleteVideo(deleted))
+    dispatch(deleteComment(deleted))
+    // dispatch(deleteComment(id))
+    return deleted
   }
 }
 
@@ -105,37 +107,32 @@ export const deleteVideoThunk = (videoId) => async dispatch => {
 
 const initialState = {};
 
-const videoReducer = (state = initialState, action) => {
+export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case GET_VIDEO: {
-      const newState = {}
-      action.videos.videos.forEach((video) => {
-        newState[video.id] = video
-      })
+    case ALL_COMMENTS: {
+      const newState = {...action.comments}
       return newState
     }
-    case GET_ONE_VIDEO: {
+    case VIDEO_COMMENTS: {
       const newState = {...action.videoId}
       return newState
     }
-    case NEW_VIDEO: {
+    case NEW_COMMENT: {
       const newState = {...state}
-      newState[action.video.id] = action.video
+      newState[action.comment.id] = action.comment
       return newState
     }
-    case UPDATE_VIDEO: {
+    case UPDATE_COMMENT: {
       const newState = {...state}
       newState[action.updated.id] = action.updated
       return newState
     }
-    case DELETE_VIDEO: {
+    case DELETE_COMMENT: {
       const newState = {...state}
-      delete newState[action.videoId]
+      delete newState[action.id]
       return newState
     }
     default:
       return state
   }
 }
-
-export default videoReducer
