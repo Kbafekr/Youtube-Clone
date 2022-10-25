@@ -9,8 +9,8 @@ def is_replyBoolean(form, field):
 
 
 class CommentForm(FlaskForm):
-    user_id = IntegerField("userId", validators=[DataRequired()])
-    video_id = IntegerField("imageId", validators=[DataRequired()])
+    user_id = IntegerField("user_id", validators=[DataRequired()])
+    video_id = IntegerField("video_id", validators=[DataRequired()])
     body = StringField("body", validators=[DataRequired()])
     is_reply = BooleanField('is_reply',  validators=[is_replyBoolean])
     commentReply_id = IntegerField('commentReply_id')
