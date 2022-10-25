@@ -10,7 +10,7 @@ video_routes = Blueprint('videos', __name__)
 
 # form['csrf_token'].data = request.cookies['csrf_token']
 
-@video_routes.route('/')
+@video_routes.route('/all')
 # @login_required
 def AllVids():
     all_videos = Video.query.all()
