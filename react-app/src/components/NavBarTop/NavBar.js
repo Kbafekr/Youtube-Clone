@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import './NavBar.css'
 
+// import searchbar
+import { SearchBar } from "./SearchBar/SearchBar";
+
 const NavBar = () => {
   return (
     <nav className="TopNavBarContainer">
@@ -13,6 +16,8 @@ const NavBar = () => {
       <NavLink to="/login" exact={true} activeClassName="active">
         Login
       </NavLink>
+
+      <SearchBar />
 
       <NavLink to="/sign-up" exact={true} activeClassName="active">
         Sign Up
