@@ -12,6 +12,8 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   if (user) {
     return (
+      <div className="TopNavBarOuter">
+
       <div className="TopNavBarContainer">
         <NavLink to="/" className='CreateAccountRedirect' exact={true} activeClassName="active">
           Home
@@ -24,6 +26,7 @@ const NavBar = () => {
       </NavLink> */}
 
         <LogoutButton />
+      </div>
       </div>
     );
   }
