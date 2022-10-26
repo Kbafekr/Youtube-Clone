@@ -5,6 +5,8 @@ import { signUp } from "../../store/session";
 import { Link } from "react-router-dom";
 import "./SignUpForm.css";
 import logo from "../../icons/you2oobLogo.png";
+import { login } from "../../store/session";
+
 
 
 const SignUpForm = () => {
@@ -26,6 +28,14 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data);
       }
+    }
+  };
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
     }
   };
 
@@ -140,10 +150,7 @@ const SignUpForm = () => {
             <div className="DemoLoginButton">
               <button
                 className="SubmitLoginButton"
-                onClick={(e) => {
-                  setEmail("demo@aa.io");
-                  setPassword("password");
-                }}
+                onClick={() => {dispatch(login('demo@aa.io', 'password'))}}
               >
                 Demo Login
               </button>

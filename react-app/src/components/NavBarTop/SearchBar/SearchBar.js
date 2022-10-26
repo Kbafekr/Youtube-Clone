@@ -1,9 +1,11 @@
+import './SearchBar.css'
+
 export const SearchBar = () => {
   return (
     <>
       <div className="upper-middle">
         <input
-          className="notsignedin-SB"
+          className="SearchBarNav"
           type="search"
         //   value={searchTitle}
           placeholder={"Search"}

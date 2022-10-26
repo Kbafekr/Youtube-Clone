@@ -8,3 +8,10 @@
     align-items: center;
     z-index: 12;
 }
+
+.CreateAccountRedirect {
+    color: #1a73e8;
+
+    text-decoration: none;
+
+}
