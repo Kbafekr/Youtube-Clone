@@ -32,8 +32,8 @@ const NavBar = () => {
           </div>
 
           <div className="MiddleContainerTopNav">
-          <div className="MiddleContainerInternalTopNav">
-            <SearchBar />
+            <div className="MiddleContainerInternalTopNav">
+              <SearchBar />
             </div>
           </div>
 
@@ -42,7 +42,7 @@ const NavBar = () => {
       </NavLink> */}
           <div className="RightContainerTopNav">
             <div className="UploadCameraNavBar">
-              <i class="fa-sharp fa-solid fa-camera-movie"></i>
+            <i class="fa-sharp fa-solid fa-video"></i>
             </div>
             <div className="NotificationBellNavBar">
               <i class="fa-solid fa-bell"></i>

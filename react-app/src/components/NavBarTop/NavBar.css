@@ -1,5 +1,5 @@
 .TopNavBarOuter {
-    position: fixed;
+    position: sticky;
     width: 100%;
     z-index: 12;
     top: 0
@@ -57,6 +57,7 @@ height: 30px;
     flex-direction: row;
     align-items: center;
     flex: 0 1 728px;
+    margin-left: 75px;
 
 }
 
@@ -65,27 +66,33 @@ height: 30px;
     margin: 0 0 0 40px;
     padding: 0 4px;
     flex: 1;
-    
 }
 
-.MagnifyingGlassNavBar{
-
-}
-
-.MicrophoneNavBar {
-
-}
 
 /* right section */
 
 .RightContainerTopNav {
-
+display: flex;
+min-width: 225px;
+align-items: center;
+justify-content: flex-end;
+column-gap: 30px;
 }
 
 .UploadCameraNavBar {
-
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .NotificationBellNavBar {
-
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 24px;
+cursor: pointer;
 }
