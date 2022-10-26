@@ -23,9 +23,9 @@ const NavBar = () => {
         Sign Up
       </NavLink>
 
-      <NavLink to="/users" exact={true} activeClassName="active">
+      {/* <NavLink to="/users" exact={true} activeClassName="active">
         Users
-      </NavLink>
+      </NavLink> */}
 
       <LogoutButton />
     </nav>

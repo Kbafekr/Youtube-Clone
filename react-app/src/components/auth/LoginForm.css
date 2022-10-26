@@ -1,0 +1,105 @@
+.loginFormContainer {
+    flex: 1;
+    padding: 10px;
+    margin-left: 272px;
+    min-height: 100%;
+    display: flex;
+    color: white;
+}
+
+
+.outerLoginForm {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 40px 36px;
+}
+
+.innerLoginForm {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    height: 450px;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 40px 36px;
+    border: 1px solid gray;
+    border-radius: 50px;
+}
+
+.LoginFormDiv {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+}
+/* logo */
+.loginLogo {
+    width: 125px;
+    height: 75px;
+}
+
+.ErrorLoginSection {
+    height: 25px;
+    text-align: center;
+    width: 100%;
+    color: red;
+    font-size: 1rem;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.SignupInputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+#loginInput {
+    font-size: 16px;
+    width: 100%;
+    padding: 13px 15px;
+    height: 20px;
+    border-radius: 5px;
+    color: #202124;
+}
+
+/* submit */
+.SubmitLoginFormDiv {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CreateAccountRedirect {
+    color: #1a73e8;
+
+    text-decoration: none;
+
+}
+
+.SubmitLoginButton {
+    background-color: #1a73e8;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 10%;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.DemoLoginButton {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
