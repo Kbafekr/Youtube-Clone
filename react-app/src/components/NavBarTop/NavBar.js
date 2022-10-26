@@ -4,6 +4,7 @@ import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import logo from "../../icons/you2oobLogo.png";
 
 // import searchbar
 import { SearchBar } from "./SearchBar/SearchBar";
@@ -13,36 +14,71 @@ const NavBar = () => {
   if (user) {
     return (
       <div className="TopNavBarOuter">
+        <div className="TopNavBarContainer">
+          <div className="LeftmostContainerTopNav">
+            <div className="NavOptionBarsContainer">
+              <div className="NavOptionBars">
+                <i class="fa-solid fa-bars"></i>
+              </div>
+            </div>
+            <NavLink
+              to="/"
+              className="NavBarLogoLink"
+              exact={true}
+              activeClassName="active"
+            >
+              <img src={logo} alt="logo" className="LogoImageNavBar" />
+            </NavLink>
+          </div>
 
-      <div className="TopNavBarContainer">
-        <NavLink to="/" className='CreateAccountRedirect' exact={true} activeClassName="active">
-          Home
-        </NavLink>
+          <div className="MiddleContainerTopNav">
+            <SearchBar />
+            <div className="MagnifyingGlassNavBar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div className="MicrophoneNavBar">
+              <i class="fa-solid fa-microphone"></i>
+            </div>
+          </div>
 
-        <SearchBar />
-
-        {/* <NavLink to="/users" exact={true} activeClassName="active">
+          {/* <NavLink to="/users" exact={true} activeClassName="active">
         Users
       </NavLink> */}
-
-        <LogoutButton />
-      </div>
+          <div className="RightContainerTopNav">
+            <div className="UploadCameraNavBar">
+              <i class="fa-sharp fa-solid fa-camera-movie"></i>
+            </div>
+            <div className="NotificationBellNavBar">
+              <i class="fa-solid fa-bell"></i>
+            </div>
+            <LogoutButton />
+          </div>
+        </div>
       </div>
     );
   }
   if (!user) {
     return (
       <div className="TopNavBarContainer">
-        <NavLink to="/" className='CreateAccountRedirect' exact={true} activeClassName="active">
+        <NavLink
+          to="/"
+          className="CreateAccountRedirect"
+          exact={true}
+          activeClassName="active"
+        >
           Home
         </NavLink>
 
         <SearchBar />
 
-        <NavLink to="/login" className='CreateAccountRedirect' exact={true} activeClassName="active">
+        <NavLink
+          to="/login"
+          className="CreateAccountRedirect"
+          exact={true}
+          activeClassName="active"
+        >
           Login
         </NavLink>
-
       </div>
     );
   }

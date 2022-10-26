@@ -8,16 +8,72 @@
     background-color: rgba(88, 88, 88, 0.201);
     height: 56px;
     padding: 0 16px;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 12;
 }
 
-.CreateAccountRedirect {
-    color: #1a73e8;
+/* left section */
+.LeftmostContainerTopNav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 30px;
+    justify-content: center;
+}
 
-    text-decoration: none;
+.NavOptionBarsContainer {
+ width: fit-content;
+ height: fit-content;
+ padding: 8px 10px;
+ border-radius: 100px;
+}
+
+.NavOptionBarsContainer:hover {
+    cursor: pointer;
+}
+
+.NavOptionBarsContainer: {
+    background-color: rgba(255, 255, 255, 0.504);
+}
+
+.NavOptionBars {
+    color: white;
+}
+
+.NavBarLogoLink {
+}
+
+.LogoImageNavBar {
+width: 70px;
+height: 30px;
+
+}
+
+/* middle section */
+.MiddleContainerTopNav{
+
+}
+
+.MagnifyingGlassNavBar{
+
+}
+
+.MicrophoneNavBar {
+
+}
+
+/* right section */
+
+.RightContainerTopNav {
+
+}
+
+.UploadCameraNavBar {
+
+}
+
+.NotificationBellNavBar {
 
 }
