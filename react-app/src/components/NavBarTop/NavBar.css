@@ -1,5 +1,5 @@
 .TopNavBarContainer {
-
+    position: sticky;
     background-color: rgba(88, 88, 88, 0.201);
     height: 56px;
     padding: 0 16px;

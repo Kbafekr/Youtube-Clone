@@ -12,7 +12,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   if (user) {
     return (
-      <nav className="TopNavBarContainer">
+      <div className="TopNavBarContainer">
         <NavLink to="/" className='CreateAccountRedirect' exact={true} activeClassName="active">
           Home
         </NavLink>
@@ -24,12 +24,12 @@ const NavBar = () => {
       </NavLink> */}
 
         <LogoutButton />
-      </nav>
+      </div>
     );
   }
   if (!user) {
     return (
-      <nav className="TopNavBarContainer">
+      <div className="TopNavBarContainer">
         <NavLink to="/" className='CreateAccountRedirect' exact={true} activeClassName="active">
           Home
         </NavLink>
@@ -40,7 +40,7 @@ const NavBar = () => {
           Login
         </NavLink>
 
-      </nav>
+      </div>
     );
   }
 };
