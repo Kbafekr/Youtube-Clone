@@ -32,12 +32,8 @@ const NavBar = () => {
           </div>
 
           <div className="MiddleContainerTopNav">
+          <div className="MiddleContainerInternalTopNav">
             <SearchBar />
-            <div className="MagnifyingGlassNavBar">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <div className="MicrophoneNavBar">
-              <i class="fa-solid fa-microphone"></i>
             </div>
           </div>
 

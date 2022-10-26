@@ -1,6 +1,7 @@
 .TopNavBarOuter {
     position: fixed;
     width: 100%;
+    z-index: 12;
     top: 0
 }
 
@@ -11,7 +12,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 12;
 }
 
 /* left section */
@@ -34,7 +34,7 @@
     cursor: pointer;
 }
 
-.NavOptionBarsContainer: {
+.NavOptionBarsContainer:active {
     background-color: rgba(255, 255, 255, 0.504);
 }
 
@@ -53,7 +53,19 @@ height: 30px;
 
 /* middle section */
 .MiddleContainerTopNav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 0 1 728px;
 
+}
+
+.MiddleContainerInternalTopNav {
+    display: flex;
+    margin: 0 0 0 40px;
+    padding: 0 4px;
+    flex: 1;
+    
 }
 
 .MagnifyingGlassNavBar{
