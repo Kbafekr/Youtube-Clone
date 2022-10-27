@@ -1,4 +1,5 @@
 .SideNavBarContainer {
+    top: 56px;
     position: fixed;
     min-height: 100%;
     width: 240px;
@@ -8,14 +9,57 @@
     justify-content: space-between;
     align-items: center;
     color: white;
+    overflow-y: scroll;
 }
 
 .InternalSideBarContainer {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 56px;
     min-height: 100%;
     width: 100%;
     background-color: rgba(89, 89, 89, 0.201);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: flex-start;
+}
+
+.InternalSideBarSectionTop {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    height: fit-content;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+}
+
+.InternalSideBarSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    height: fit-content;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.SideNavRowContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+
+}
+.SideNavBorderDivContainer {
+    display: flex;
+    justify-content: center;
+width: 100%;
+}
+.SideNavBorderDiv {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid gray ;
+width: 90%;
 }

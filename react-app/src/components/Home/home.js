@@ -4,10 +4,12 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAllVideosThunk } from "../../store/video";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import logo from "../../icons/you2oobLogo.png";
 
 export function HomePage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
 
@@ -24,7 +26,7 @@ export function HomePage() {
       <div className="homeContainer">
         <div className="homeContainerInner">
           <div className="homeTagsBar">
-          <h1>Welcome to You2ube</h1>
+            <h1>Welcome to You2ube</h1>
           </div>
           <div>
             {videosArray &&
@@ -32,59 +34,14 @@ export function HomePage() {
                 return (
                   <>
                     <div>
-                    <ReactPlayer url={video.video_url} light={true} playIcon={true}/>
                       <div>{video.title}</div>
-
-                      <br />
-                      {video.description}
-                    </div>
-                  </>
-                );
-              })}
-          </div>
-          <div>
-            {videosArray &&
-              videosArray.map((video) => {
-                return (
-                  <>
-                    <div>
-                    <ReactPlayer url={video.video_url} light={true} playIcon={true}/>
-                      <div>{video.title}</div>
-
-                      <br />
-                      {video.description}
-                    </div>
-                  </>
-                );
-              })}
-          </div>
-          <div>
-            {videosArray &&
-              videosArray.map((video) => {
-                return (
-                  <>
-                    <div>
-                    <ReactPlayer url={video.video_url} light={true} playIcon={true}/>
-                      <div>{video.title}</div>
-
-                      <br />
-                      {video.description}
-                    </div>
-                  </>
-                );
-              })}
-          </div>
-          <div>
-            {videosArray &&
-              videosArray.map((video) => {
-                return (
-                  <>
-                    <div>
-                    <ReactPlayer url={video.video_url} light={true} playIcon={true}/>
-                      <div>{video.title}</div>
-
-                      <br />
-                      {video.description}
+                      <div onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
                     </div>
                   </>
                 );
