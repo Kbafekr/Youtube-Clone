@@ -40,6 +40,7 @@ export function HomePage() {
                     </div>
                   </>
                 );
+              })}
           </div>
           <div>
             {videosArray &&
