@@ -1,7 +1,15 @@
 .homeContainer {
     flex: 1;
     padding: 30px;
-    margin-left: 272px;
+    margin-left: 302px;
+    min-height: 100%;
+    display: flex;
+    color: white;
+}
+.homeContainerClosed {
+    flex: 1;
+    padding: 30px;
+    margin-left: 152px;
     min-height: 100%;
     display: flex;
     color: white;

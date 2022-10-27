@@ -20,6 +20,8 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
+  const [sidePanel, setSidePanel] = useState(true)
+
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
@@ -33,17 +35,28 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <SideBarNav />
+      <NavBar sidePanel={sidePanel} setSidePanel={setSidePanel}/>
+      <SideBarNav sidePanel={sidePanel} setSidePanel={setSidePanel}/>
       <Switch>
-        <Route path='/' exact={true} >
-          <HomePage />
+        <Route path='/' exact={true}>
+          <HomePage sidePanel={sidePanel}/>
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/videos/:videoId' exact={true} >
+          <HomePage />
+        </Route>
+        {/* user settings, create new channel, delete channel */}
+        <Route path='/users/:userId/channel/' exact={true} >
+          <HomePage />
+        </Route>
+        {/* edit channel, switch channel */}
+        <Route path='/users/:userId/channel/:channelId' exact={true} >
+          <HomePage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

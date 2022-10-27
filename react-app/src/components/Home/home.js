@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import logo from "../../icons/you2oobLogo.png";
 
-export function HomePage() {
+export function HomePage({sidePanel}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
@@ -23,7 +23,7 @@ export function HomePage() {
 
   return (
     <>
-      <div className="homeContainer">
+      <div className={sidePanel == true ? "homeContainer" : "homeContainerClosed"}>
         <div className="homeContainerInner">
           <div className="homeTagsBar">
             <h1>Welcome to You2ube</h1>

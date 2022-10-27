@@ -11,6 +11,20 @@
     color: white;
     overflow-y: scroll;
 }
+/* closed state */
+.SideNavBarContainerClosed {
+    top: 56px;
+    position: fixed;
+    min-height: 100%;
+    width: 100px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    overflow-y: hidden;
+}
 
 .InternalSideBarContainer {
     display: flex;
@@ -19,7 +33,7 @@
     min-height: 100%;
     width: 100%;
     background-color: rgba(89, 89, 89, 0.201);
-    padding-top: 20px;
+    padding-top: 30px;
     padding-bottom: 20px;
     justify-content: flex-start;
 }
@@ -31,7 +45,14 @@
     height: fit-content;
     padding-left: 20px;
     padding-bottom: 20px;
-
+}
+.InternalSideBarSectionTopClosed {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    height: fit-content;
+    /* padding-left: 20px; */
+    padding-bottom: 20px;
 }
 
 .InternalSideBarSection {
@@ -42,6 +63,7 @@
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
+
 }
 
 .SideNavRowContainer {
@@ -50,6 +72,14 @@
     justify-content: flex-start;
     align-items: center;
     gap: 30px;
+
+}
+.SideNavRowContainerClosed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 
 }
 .SideNavBorderDivContainer {
@@ -62,4 +92,13 @@ width: 100%;
     justify-content: center;
     border-bottom: 1px solid gray ;
 width: 90%;
+}
+
+.SideBarIcon {
+    text-decoration: none;
+    color: white;
+}
+.SideBarText {
+    text-decoration: none;
+    color: white;
 }

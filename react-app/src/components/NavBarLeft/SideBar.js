@@ -1,17 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
+import { Link } from "react-router-dom";
 import "./SideBar.css";
-const SideBarNav = () => {
+const SideBarNav = ({sidePanel, setSidePanel}) => {
+  if (sidePanel == true)
   return (
     <nav className="SideNavBarContainer">
       <div className="InternalSideBarContainer">
         <div className="InternalSideBarSectionTop">
           <div className="SideNavRowContainer">
-            <div>
+            <Link to="/" className="SideBarIcon">
               <i class="fa-sharp fa-solid fa-house"></i>
-            </div>
-            <div>Home</div>
+            </Link>
+            <Link to="/"className="SideBarText">
+              Home
+            </Link>
           </div>
           <div className="SideNavRowContainer">
             <div>
@@ -148,6 +152,65 @@ const SideBarNav = () => {
               <i class="fa-sharp fa-solid fa-house"></i>
             </div>
             <div>Podcasts</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+  if (sidePanel == false)
+  return (
+    <nav className="SideNavBarContainerClosed">
+      <div className="InternalSideBarContainer">
+        <div className="InternalSideBarSectionTopClosed">
+          <div className="SideNavRowContainerClosed">
+            <Link to="/" className="SideBarIcon">
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </Link>
+            <Link to="/"className="SideBarText">
+              Home
+            </Link>
+          </div>
+          <div className="SideNavRowContainerClosed">
+            <div>
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </div>
+            <div>Shorts</div>
+          </div>
+          <div className="SideNavRowContainerClosed">
+            <div>
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </div>
+            <div>Subscriptions</div>
+          </div>
+          <div className="SideNavRowContainerClosed">
+            <div>
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </div>
+            <div>Originals</div>
+          </div>
+          <div className="SideNavRowContainerClosed">
+            <div>
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </div>
+            <div>You2oob Music</div>
+          </div>
+          <div className="SideNavRowContainerClosed">
+            <div>
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </div>
+            <div>Library</div>
+          </div>
+          <div className="SideNavRowContainerClosed">
+            <div>
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </div>
+            <div>History</div>
+          </div>
+          <div className="SideNavRowContainerClosed">
+            <div>
+              <i class="fa-sharp fa-solid fa-house"></i>
+            </div>
+            <div>Your Videos</div>
           </div>
         </div>
       </div>

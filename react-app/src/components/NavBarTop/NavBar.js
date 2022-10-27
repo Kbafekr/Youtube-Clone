@@ -9,7 +9,7 @@ import logo from "../../icons/you2oobLogo.png";
 // import searchbar
 import { SearchBar } from "./SearchBar/SearchBar";
 
-const NavBar = () => {
+const NavBar = ({sidePanel, setSidePanel}) => {
   const user = useSelector((state) => state.session.user);
   if (user) {
     return (
@@ -17,7 +17,7 @@ const NavBar = () => {
         <div className="TopNavBarContainer">
           <div className="LeftmostContainerTopNav">
             <div className="NavOptionBarsContainer">
-              <div className="NavOptionBars">
+              <div className="NavOptionBars" onClick={() => setSidePanel(!sidePanel)}>
                 <i class="fa-solid fa-bars"></i>
               </div>
             </div>
