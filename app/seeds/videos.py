@@ -38,7 +38,7 @@ I'll do more Ant-Man 3 Quantumania videos as we get more footage! My House Of Th
 #     image_25 = Image(userId=13, albumId=13, title="Catwalk am Bahnhof Zürich Oerlikon", description="Where are the cats???", previewImageUrl="https://combo.staticflickr.com/ap/build/images/sohp/2020-top-25/Catwalk_am_Bahnhof_Zurich_Oerlikon_Peter_Arn.jpg")
 #     image_26 = Image(userId=14, albumId=1, title="Dawn of Another Day", description="Cool", previewImageUrl="https://combo.staticflickr.com/ap/build/images/sohp/2020-top-25/Dawn_of_Another_Day_Sky_Matthews.jpg")
 
-#     images = [image_1, image_2, image_3, image_4, image_5, image_6, image_7,image_8,image_9,image_10,image_11,image_12,image_13,image_14,image_15, image_16, image_17, image_18, image_19, image_20, image_21, image_22, image_23, image_24, image_25, image_26]
+#     videos = [video_1, video_2, video_3, video_4, video_5, video_6, image_7,image_8,image_9,image_10,image_11,image_12,image_13,image_14,image_15, image_16, image_17, image_18, image_19, image_20, image_21, image_22, image_23, image_24, image_25, image_26]
     videos = [video_1]
     for video in videos:
         db.session.add(video)

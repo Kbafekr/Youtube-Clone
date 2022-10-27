@@ -28,20 +28,189 @@ export function HomePage() {
           <div className="homeTagsBar">
             <h1>Welcome to You2ube</h1>
           </div>
-          <div>
+          <div className="VideosMapped">
             {videosArray &&
               videosArray.map((video) => {
                 return (
                   <>
-                    <div>
-                      <div>{video.title}</div>
-                      <div onClick={() => history.push(`/video/${video.id}`)}>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
                         <ReactPlayer
+                        width="100%"
+                        height="100%"
                           url={video.video_url}
                           light={true}
                           playIcon={true}
                         />
                       </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+
+
+
+
+                    {/* first card rest are duplicates */}
+
+
+
+
+
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
+                    </div>
+                    <div className="VideoCardHome">
+
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                        <ReactPlayer
+                        width="100%"
+                        height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      </div>
+                      <div className="VideoTitleCard">{video.title}</div>
                     </div>
                   </>
                 );
