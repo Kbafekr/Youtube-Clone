@@ -1,7 +1,6 @@
 .SideNavBarContainer {
-    position: sticky;
+    position: fixed;
     min-height: 100%;
-    position: absolute;
     width: 240px;
     padding: 0 16px;
     display: flex;

@@ -40,6 +40,53 @@ export function HomePage() {
                     </div>
                   </>
                 );
+          </div>
+          <div>
+            {videosArray &&
+              videosArray.map((video) => {
+                return (
+                  <>
+                    <div>
+                    <ReactPlayer url={video.video_url} light={true} playIcon={true}/>
+                      <div>{video.title}</div>
+
+                      <br />
+                      {video.description}
+                    </div>
+                  </>
+                );
+              })}
+          </div>
+          <div>
+            {videosArray &&
+              videosArray.map((video) => {
+                return (
+                  <>
+                    <div>
+                    <ReactPlayer url={video.video_url} light={true} playIcon={true}/>
+                      <div>{video.title}</div>
+
+                      <br />
+                      {video.description}
+                    </div>
+                  </>
+                );
+              })}
+          </div>
+          <div>
+            {videosArray &&
+              videosArray.map((video) => {
+                return (
+                  <>
+                    <div>
+                    <ReactPlayer url={video.video_url} light={true} playIcon={true}/>
+                      <div>{video.title}</div>
+
+                      <br />
+                      {video.description}
+                    </div>
+                  </>
+                );
               })}
           </div>
         </div>
