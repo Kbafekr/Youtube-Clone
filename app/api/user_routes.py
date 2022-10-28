@@ -29,17 +29,17 @@ def edit_user(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         old_user = User.query.get(id)
-        email = old_user.email
-        password = old_user.password
+        oldEmail = old_user.email
+        oldPassword = old_user.password
         data = form.data
         old_user.first_name = data["first_name"]
         old_user.last_name = data["last_name"]
-        old_user.email = data["last_name"]
+        old_user.email = oldEmail
         old_user.active_channel = data["active_channel"]
-        old_user.password = password
-        # db.session.commit()
-        return form.data
-        # return old_user.to_dict()
-    return form.data
+        old_user.password = oldPassword
+        db.session.commit()
+        # return form.data
+        return old_user.to_dict()
+    # return form.data
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401

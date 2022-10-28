@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateUserThunk } from "../../store/session";
+import { authenticate } from "../../store/session";
 import "./EditUserForm.css";
 
 // pass in userId and imageId into createComment form so we aren't relying
@@ -8,7 +9,9 @@ import "./EditUserForm.css";
 function EditUserForm({ user, setShowModal }) {
   const dispatch = useDispatch();
   const userId = user.id;
-  const active_channel = user.active_channel
+  const active_channel = user.active_channel;
+  const email = "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
+  const password = "password";
 
   const [firstName, setFirstName] = useState(user.first_name);
   const [lastName, setLastName] = useState(user.last_name);
@@ -17,8 +20,14 @@ function EditUserForm({ user, setShowModal }) {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (!firstName || firstName.length < 1) formValidationErrors.push("First Name must exist and be longer than 1 character");
-    if (!lastName || lastName.length < 1) formValidationErrors.push("Last Name must exist and be longer than 1 character");
+    if (!firstName || firstName.length < 1)
+      formValidationErrors.push(
+        "First Name must exist and be longer than 1 character"
+      );
+    if (!lastName || lastName.length < 1)
+      formValidationErrors.push(
+        "Last Name must exist and be longer than 1 character"
+      );
 
     setErrors(formValidationErrors);
   }, [firstName, lastName]);
@@ -27,7 +36,14 @@ function EditUserForm({ user, setShowModal }) {
     e.preventDefault();
     if (errors.length <= 0) {
       return dispatch(
-        updateUserThunk(userId, firstName, lastName, active_channel)
+        updateUserThunk(
+          userId,
+          firstName,
+          lastName,
+          email,
+          active_channel,
+          password,
+        )
       )
         .then(() => setShowModal(false))
         .catch(async (res) => {

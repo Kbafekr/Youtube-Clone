@@ -14,13 +14,15 @@ function User({ sidePanel }) {
 
   const [category, setCategory] = useState(1);
   const [showModal, setShowModal] = useState(false);
-
+  let createdAtDate
+if (currentUser.created_at) {
   const createdAtObject = currentUser.created_at;
   const createdAtString = JSON.stringify(createdAtObject);
   const date = createdAtString.slice(5, 8);
   const month = createdAtString.slice(9, 12);
   const year = createdAtString.slice(13, 17);
-  const createdAtDate = `${month} ${date}, ${year}`;
+  createdAtDate = `${month} ${date}, ${year}`;
+}
 
 
   useEffect(() => {

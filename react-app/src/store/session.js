@@ -106,18 +106,19 @@ export const signUp = (first_name, last_name, email, password) => async (dispatc
   }
 }
 
-export const updateUserThunk = (userId, first_name, last_name, active_channel) => async (dispatch) => {
+export const updateUserThunk = (userId, first_name, last_name, email, active_channel, password) => async (dispatch) => {
   const response = await fetch(`/api/users/${userId}/edit`, {
     method: "PUT",
-    headers: {"Content-Type": "application/json",
-    body: JSON.stringify({first_name, last_name, active_channel})}
-  })
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({first_name, last_name, email, active_channel, password}),
+  });
   if (response.ok) {
     const updateUser = await response.json()
     dispatch(editUser(updateUser))
     return updateUser
   }
 }
+
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -126,7 +127,7 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null }
     case EDIT_USER:
-      return {user: action.payload}
+      return { user: action.payload }
     default:
       return state;
   }
