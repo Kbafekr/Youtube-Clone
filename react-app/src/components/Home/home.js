@@ -35,7 +35,7 @@ export function HomePage({sidePanel}) {
                   <>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -58,7 +58,7 @@ export function HomePage({sidePanel}) {
 
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -71,7 +71,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -84,7 +84,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -97,7 +97,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -110,7 +110,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -123,7 +123,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -136,7 +136,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -149,7 +149,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -162,7 +162,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -175,7 +175,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -188,7 +188,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"
@@ -201,7 +201,7 @@ export function HomePage({sidePanel}) {
                     </div>
                     <div className="VideoCardHome">
 
-                      <div className="VideoPreviewHome" onClick={() => history.push(`/video/${video.id}`)}>
+                      <div className="VideoPreviewHome" onClick={() => history.push(`/videos/${video.id}`)}>
                         <ReactPlayer
                         width="100%"
                         height="100%"

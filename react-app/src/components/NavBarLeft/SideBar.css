@@ -1,6 +1,6 @@
 .SideNavBarContainer {
     top: 56px;
-    position: fixed;
+    position: absolute;
     min-height: 100%;
     width: 240px;
     padding: 0 16px;
@@ -14,7 +14,7 @@
 /* closed state */
 .SideNavBarContainerClosed {
     top: 56px;
-    position: fixed;
+    position: absolute;
     min-height: 100%;
     width: 100px;
     padding: 0 16px;

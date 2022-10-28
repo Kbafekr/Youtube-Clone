@@ -16,8 +16,8 @@ const NavBar = ({sidePanel, setSidePanel}) => {
       <div className="TopNavBarOuter">
         <div className="TopNavBarContainer">
           <div className="LeftmostContainerTopNav">
-            <div className="NavOptionBarsContainer">
-              <div className="NavOptionBars" onClick={() => setSidePanel(!sidePanel)}>
+            <div className="NavOptionBarsContainer" onClick={() => setSidePanel(!sidePanel)}>
+              <div className="NavOptionBars">
                 <i class="fa-solid fa-bars"></i>
               </div>
             </div>

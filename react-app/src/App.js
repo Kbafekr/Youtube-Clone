@@ -10,6 +10,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import { HomePage } from './components/Home/home';
+import { VideoPage } from './components/PlayVideo/PlayVideo';
 import TestingVideos from "./components/TestingReduxState/videoTESTING";
 import TestingLikesFunctions from "./components/TestingReduxState/LikesTESTING";
 import TagsTestingFunction from "./components/TestingReduxState/TagsTESTING";
@@ -48,7 +49,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/videos/:videoId' exact={true} >
-          <HomePage />
+          <VideoPage sidePanel={sidePanel}/>
         </Route>
         {/* user settings, create new channel, delete channel */}
         <Route path='/users/:userId/channel/' exact={true} >

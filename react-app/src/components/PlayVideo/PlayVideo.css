@@ -1,0 +1,130 @@
+.VideoSingleOuterContainer {
+ /* height: 100%; */
+ width: 100%;
+ display: flex;
+ flex-direction: row;
+ gap: 40px;
+ justify-content: center;
+ margin: 0 auto;
+}
+
+.SingleVideoContainer {
+
+display: flex;
+gap: 10px;
+flex-direction: column;
+width: 850px;
+justify-content: flex-start;
+align-items: flex-start;
+}
+
+.VideoPreviewDetails {
+    position: relative;
+    width: 850px;
+    height: 500px;
+    min-height: auto;
+    min-width: auto;
+}
+
+/* video description, title, and subscription information */
+
+.VideoTitleCard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.VideoDetailsTitle {
+
+}
+
+.VideoDetailsChannelSection{
+
+}
+
+.VideoDetailsDescriptionSection{
+    margin-right: -12px;
+    background-color: rgba(86, 86, 86, 0.426);
+    border-radius: 12px;
+    width: 95%;
+    padding: 15px;
+
+}
+
+
+/* Comments section */
+
+
+.VideoDetailsCommentsSection{
+    margin-top: 20px;
+}
+
+/* playlist and suggestions section (right side of page) */
+.RightSideVideoDetailsSection {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 40px;
+}
+
+.RecommendedArraySection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.VideoCardRecommended {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+.RecommendedVideoPreview {
+    height: 120px;
+    width: 190px;
+    border-radius: 15px;
+}
+
+.RecommendedVideoDetailsSection {
+height: 100px;
+width: 180px;
+}
+
+.RecommendedVideoTitle{
+    padding-top: 5px;
+height: 40px;
+width: 100%;
+font-size: 17px;
+display: flex;
+flex-wrap: wrap;
+overflow: hidden;
+}
+
+.RecommendedVideoChannelDetails {
+    padding-top: 20px;
+
+}
+/* .VideosMapped {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    gap: 50px;
+}
+.VideoCardHome {
+    height: 300px;
+}
+
+.VideoPreviewHome {
+    height: 190px;
+    width: 290px;
+    border-radius: 50px;
+}
+
+.VideoTitleCard {
+    width: 300px;
+    flex-wrap: wrap;
+} */
