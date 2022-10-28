@@ -43,28 +43,31 @@ function App() {
           <HomePage sidePanel={sidePanel}/>
         </Route>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <LoginForm sidePanel={sidePanel}/>
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+          <SignUpForm sidePanel={sidePanel}/>
         </Route>
+        {/* single Video */}
         <Route path='/videos/:videoId' exact={true} >
           <VideoPage sidePanel={sidePanel}/>
         </Route>
-        {/* user settings, create new channel, delete channel */}
-        <Route path='/users/:userId/channel/' exact={true} >
-          <HomePage />
+
+        {/* upload page */}
+        <Route path='/upload' exact={true} >
+          <VideoPage sidePanel={sidePanel}/>
         </Route>
-        {/* edit channel, switch channel */}
-        <Route path='/users/:userId/channel/:channelId' exact={true} >
-          <HomePage />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
+
+        {/* user settings, create new channel, delete channel, switch channel */}
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+          <User  sidePanel={sidePanel} />
         </ProtectedRoute>
+        {/* edit channel, delete channel */}
+        <Route path='/channels/:channelId' exact={true} >
+          <HomePage sidePanel={sidePanel} />
+        </Route>
+
+
         {/* The following routes are for testing only */}
         <Route path="/:videoId/videos" exact={true}>
           <TestingVideos />

@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.VARCHAR(25), nullable=False)
     last_name = db.Column(db.VARCHAR(25), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    active_channel = db.Column(db.Integer, nullable=True)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     hashed_password = db.Column(db.String(255), nullable=False)
 
@@ -34,6 +35,7 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
+            'active_channel': self.active_channel,
             'created_at': self.created_at,
             # channels
             'channels': [channel.to_dict() for channel in self.channels],

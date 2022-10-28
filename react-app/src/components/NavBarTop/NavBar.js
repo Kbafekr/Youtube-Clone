@@ -9,14 +9,17 @@ import logo from "../../icons/you2oobLogo.png";
 // import searchbar
 import { SearchBar } from "./SearchBar/SearchBar";
 
-const NavBar = ({sidePanel, setSidePanel}) => {
+const NavBar = ({ sidePanel, setSidePanel }) => {
   const user = useSelector((state) => state.session.user);
   if (user) {
     return (
       <div className="TopNavBarOuter">
         <div className="TopNavBarContainer">
           <div className="LeftmostContainerTopNav">
-            <div className="NavOptionBarsContainer" onClick={() => setSidePanel(!sidePanel)}>
+            <div
+              className="NavOptionBarsContainer"
+              onClick={() => setSidePanel(!sidePanel)}
+            >
               <div className="NavOptionBars">
                 <i class="fa-solid fa-bars"></i>
               </div>
@@ -42,7 +45,7 @@ const NavBar = ({sidePanel, setSidePanel}) => {
       </NavLink> */}
           <div className="RightContainerTopNav">
             <div className="UploadCameraNavBar">
-            <i class="fa-sharp fa-solid fa-video"></i>
+              <i class="fa-sharp fa-solid fa-video"></i>
             </div>
             <div className="NotificationBellNavBar">
               <i class="fa-solid fa-bell"></i>
@@ -55,19 +58,38 @@ const NavBar = ({sidePanel, setSidePanel}) => {
   }
   if (!user) {
     return (
-      <div className="TopNavBarContainer">
-        <NavLink
-          to="/"
-          className="CreateAccountRedirect"
-          exact={true}
-          activeClassName="active"
-        >
-          Home
-        </NavLink>
+      <div className="TopNavBarOuter">
+        <div className="TopNavBarContainer">
+          <div className="LeftmostContainerTopNav">
+            <div
+              className="NavOptionBarsContainer"
+              onClick={() => setSidePanel(!sidePanel)}
+            >
+              <div className="NavOptionBars">
+                <i class="fa-solid fa-bars"></i>
+              </div>
+            </div>
+            <NavLink
+              to="/"
+              className="NavBarLogoLink"
+              exact={true}
+              activeClassName="active"
+            >
+              <img src={logo} alt="logo" className="LogoImageNavBar" />
+            </NavLink>
+          </div>
 
-        <SearchBar />
+          <div className="MiddleContainerTopNav">
+            <div className="MiddleContainerInternalTopNav">
+              <SearchBar />
+            </div>
+          </div>
 
-        <NavLink
+          {/* <NavLink to="/users" exact={true} activeClassName="active">
+        Users
+      </NavLink> */}
+          <div className="RightContainerTopNav">
+          <NavLink
           to="/login"
           className="CreateAccountRedirect"
           exact={true}
@@ -75,6 +97,8 @@ const NavBar = ({sidePanel, setSidePanel}) => {
         >
           Login
         </NavLink>
+          </div>
+        </div>
       </div>
     );
   }

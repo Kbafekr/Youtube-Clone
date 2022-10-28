@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './User.css'
 
-function User() {
+function User({sidePanel}) {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
 
@@ -21,6 +22,9 @@ function User() {
   }
 
   return (
+    <>
+     <div className={sidePanel == true ? "homeContainer" : "homeContainerClosed"}>
+
     <ul>
       <li>
         <strong>User Id</strong> {userId}
@@ -35,6 +39,8 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
     </ul>
+     </div>
+     </>
   );
 }
 export default User;

@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.api.auth_routes import validation_errors_to_error_messages
+from app.models import User, db
+from app.forms import SignUpForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +19,21 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+# edit user
+@user_routes.route('/<int:id>/edit')
+@login_required
+def edit_user(id):
+    form = SignUpForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        old_user = User.query.get(id)
+        data = form.data
+        old_user.first_name = data["first_name"]
+        old_user.last_name = data["last_name"]
+        old_user.active_channel = data["active_channel"]
+        db.session.commit()
+        return old_user.to_dict()
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401

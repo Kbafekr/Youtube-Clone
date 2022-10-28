@@ -1,5 +1,6 @@
 // constants
 const SET_USER = 'session/SET_USER';
+const EDIT_USER = 'session/EDIT_USER'
 const REMOVE_USER = 'session/REMOVE_USER';
 
 const setUser = (user) => ({
@@ -7,9 +8,15 @@ const setUser = (user) => ({
   payload: user
 });
 
+const editUser = (user) => ({
+  type: SET_USER,
+  payload: user
+});
+
 const removeUser = () => ({
   type: REMOVE_USER,
 })
+
 
 const initialState = { user: null };
 
@@ -40,6 +47,7 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
+
 
 
   if (response.ok) {
@@ -95,6 +103,19 @@ export const signUp = (first_name, last_name, email, password) => async (dispatc
     }
   } else {
     return ['An error occurred. Please try again.']
+  }
+}
+
+export const updateUserThunk = (userId, first_name, last_name, active_channel) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userId}/edit`, {
+    method: "PUT",
+    headers: {"Content-Type": "application/json",
+    body: JSON.stringify({first_name, last_name, active_channel})}
+  })
+  if (response.ok) {
+    const updateUser = await response.json()
+    dispatch(editUser(updateUser))
+    return updateUser
   }
 }
 
