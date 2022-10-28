@@ -125,6 +125,8 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case EDIT_USER:
+      return {user: action.payload}
     default:
       return state;
   }
