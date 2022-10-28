@@ -8,28 +8,86 @@ import { Modal } from "../../context/Modal";
 import EditUserForm from "./EditUserForm";
 
 function User({ sidePanel }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { userId } = useParams();
   const currentUser = useSelector((state) => state.session.user);
 
   const [category, setCategory] = useState(1);
   const [showModal, setShowModal] = useState(false);
-  let createdAtDate
-if (currentUser.created_at) {
-  const createdAtObject = currentUser.created_at;
-  const createdAtString = JSON.stringify(createdAtObject);
-  const date = createdAtString.slice(5, 8);
-  const month = createdAtString.slice(9, 12);
-  const year = createdAtString.slice(13, 17);
-  createdAtDate = `${month} ${date}, ${year}`;
-}
+  let createdAtDate;
+  if (currentUser.created_at) {
+    const createdAtObject = currentUser.created_at;
+    const createdAtString = JSON.stringify(createdAtObject);
+    const date = createdAtString.slice(5, 8);
+    const month = createdAtString.slice(9, 12);
+    const year = createdAtString.slice(13, 17);
+    createdAtDate = `${month} ${date}, ${year}`;
+  }
 
-
+  let activeChannel;
+  // define active channel
+  if (currentUser.channels) {
+    activeChannel = currentUser.channels.filter(
+      (channel) => channel.id == currentUser.active_channel
+    );
+  }
+  console.log(activeChannel);
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
     })();
   }, [dispatch, showModal]);
+
+  const ButtonChange = () => {
+    if (category == 1)
+      return (
+        <>
+          <div>Welcome Home</div>
+        </>
+      );
+    if (category == 2)
+      return (
+        <>
+          {/* button that changes depending on the category selected in bottom nav*/}
+          <div className="UserSectionButton">Manage Videos</div>
+        </>
+      );
+    if (category == 3)
+      return (
+        <>
+           {/* button that changes depending on the category selected in bottom nav*/}
+           <div className="UserSectionButton">Manage Playlists</div>
+        </>
+      );
+    if (category == 4)
+      return (
+        <>
+          <div className="UserSectionButton">
+            {/* dropdown that on selecting of channel dispaches edit user changing active channel id. */}
+            Create Channel
+          </div>
+        </>
+      );
+    if (category == 5)
+      return (
+        <>
+          <div
+                  className="UserSectionButton"
+                  onClick={() => setShowModal(true)}
+                >
+                  Edit User Information
+                  {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                      <EditUserForm
+                        user={currentUser}
+                        setShowModal={setShowModal}
+                      />
+                    </Modal>
+                  )}
+                </div>
+        </>
+      );
+  };
 
   const UserInformation = () => {
     if (category == 1)
@@ -68,17 +126,6 @@ if (currentUser.created_at) {
               </div>
 
               <div className="UserAboutStatsInnerSection">
-                <button className="EditUserInfoButtonAbout" onClick={() => setShowModal(true)}>
-                  Edit User Information
-                  {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                      <EditUserForm
-                            user={currentUser}
-                            setShowModal={setShowModal}
-                      />
-                    </Modal>
-                  )}
-                </button>
                 <div className="AboutStatsUserInnerText">
                   <div>Stats</div>
                   <div className="AboutUserDetailsTextRight">{`Joined:    ${createdAtDate}`}</div>
@@ -102,7 +149,7 @@ if (currentUser.created_at) {
             <div className="UserPageChannelBannerSection">
               <img
                 className="UserPageChannelBanner"
-                src={currentUser.channels[0].banner_picture}
+                src={activeChannel[0].banner_picture}
                 alt="banner"
               />
               <div className="WelcomeUserPage">
@@ -116,25 +163,18 @@ if (currentUser.created_at) {
                 <div className="ChannelDetailsNavBar">
                   <img
                     className="ChannelProfilePicNav"
-                    src={currentUser.channels[0].profile_picture}
+                    src={activeChannel[0].profile_picture}
                   />
                   <div className="ChannelNameAndSubscriberSection">
                     <div className="ChannelNameNavBar">
-                      {currentUser.channels[0].channel_name}
+                      {activeChannel[0].channel_name}
                     </div>
                     <div className="ChannelSubscriberCountNavBar">
                       0 subscribers
                     </div>
                   </div>
                 </div>
-                <div className="UserSectionButtonsNav">
-                  <div className="UserSectionButton">
-                    {/* dropdown that on selecting of channel dispaches edit user changing active channel id. */}
-                    Set Channel
-                  </div>
-                  {/* button that changes depending on the category selected in bottom nav*/}
-                  <div className="UserSectionButton">Manage Videos</div>
-                </div>
+                <div className="UserSectionButtonsNav">{ButtonChange()}</div>
               </div>
               {/* bottom section of the navbar */}
               <div className="UserPageNavBarLower">

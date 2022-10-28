@@ -1,6 +1,6 @@
 .UserPageOuterContainer {
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -25,46 +25,45 @@ height: 100%;
 }
 /* welcome text */
 .WelcomeUserPage {
-position: relative;
-height: 100px;
-bottom: 140px;
-width: 95%;
-text-align: center;
-font-size: 72px;
-font-weight: 600;
-text-shadow: 1px 1px 5px black;
+  position: relative;
+  height: 100px;
+  bottom: 140px;
+  width: 95%;
+  text-align: center;
+  font-size: 72px;
+  font-weight: 600;
+  text-shadow: 1px 1px 5px black;
 }
 
 /* navbar section */
 .UserPageNavBarSection {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-   align-items: center;
-    width: 100%;
-    gap: 30px;
-    border-bottom: 1px solid gray;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+  border-bottom: 1px solid gray;
 }
 .UserPageNavBarUpper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 1300px;
-    width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1300px;
+  width: 90%;
 }
 
 /* left side profile */
 .ChannelDetailsNavBar {
-display: flex;
-flex-direction: row;
-column-gap: 20px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
 }
 
-
-.ChannelProfilePicNav{
-height: 100px;
-width: 100px;
-border-radius: 50px;
+.ChannelProfilePicNav {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
 }
 
 .ChannelNameAndSubscriberSection {
@@ -73,17 +72,14 @@ border-radius: 50px;
   align-items: flex-start;
   gap: 20px;
   justify-content: center;
-
-
 }
 
 .ChannelNameNavBar {
-font-weight: bold;
-font-size: 24px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
-.ChannelSubscriberCountNavBar{
-
+.ChannelSubscriberCountNavBar {
 }
 
 /* right side buttons nav*/
@@ -92,18 +88,18 @@ font-size: 24px;
   display: flex;
   align-items: center;
   gap: 20px;
-
 }
 
-.UserSectionButton{
+.UserSectionButton {
   display: flex;
-
-font-size: 16px;
-border-radius: 50px;
-padding: 20px;
-background-color: blue;
-text-align: center;
-cursor: pointer;
+  position: relative;
+  top: 50px;
+  font-size: 20px;
+  border-radius: 50px;
+  padding: 25px;
+  background-color: blue;
+  text-align: center;
+  cursor: pointer;
 }
 
 /* bottom nav userpage */
@@ -118,12 +114,11 @@ cursor: pointer;
   gap: 40px;
 }
 
-
 .ActiveCategoryUserNav {
   font-size: 20px;
   color: white;
   padding: 10px;
-border-bottom: 5px solid white;
+  border-bottom: 5px solid white;
 }
 
 .InactiveCategoryUserNav {
@@ -131,19 +126,13 @@ border-bottom: 5px solid white;
   font-size: 20px;
   color: rgb(177, 175, 175);
   padding: 10px;
-
 }
-
-
-
 
 /* info section (bottom row) */
 .UserPageInfoContainer {
   width: 100%;
   height: 100%;
 }
-
-
 
 /* about section users */
 
@@ -175,12 +164,12 @@ border-bottom: 5px solid white;
 /* edit button */
 .EditUserInfoButtonAbout {
   position: relative;
- padding: 10px;
- border-radius: 50px;
- font-size: 20px;
- background-color: rgb(254, 81, 81);
- cursor: pointer;
- bottom: 30px;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 20px;
+  background-color: rgb(254, 81, 81);
+  cursor: pointer;
+  bottom: 30px;
 }
 .AboutUserDetailsText {
   font-size: 16px;
