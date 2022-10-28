@@ -15,20 +15,27 @@ function User({ sidePanel }) {
             sidePanel == true ? "homeContainer" : "homeContainerClosed"
           }
         >
-          <ul>
-            <li>
-              <strong>User Id</strong> {userId}
-            </li>
-            <li>
-              <strong>First Name</strong> {currentUser.first_name}
-            </li>
-            <li>
-              <strong>Last Name</strong> {currentUser.last_name}
-            </li>
-            <li>
-              <strong>Email</strong> {currentUser.email}
-            </li>
-          </ul>
+          <div className="UserPageOuterContainer">
+            {/* channel banner */}
+            <div className="UserPageChannelBannerSection">
+              <img
+                className="UserPageChannelBanner"
+                src={currentUser.channels[0].banner_picture}
+                alt="banner"
+              />
+              <div className="WelcomeUserPage">
+                Hey {currentUser.first_name}
+              </div>
+            </div>
+            {/* navbar section */}
+            <div className="UserPageNavBar">
+              <h1>fsadfawsd</h1>
+              <h1>fasd</h1>
+              <h1>fsadfawsd</h1>
+            </div>
+            {/* info container  */}
+            <div className="UserPageInfoContainer"></div>
+          </div>
         </div>
       </>
     );
