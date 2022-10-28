@@ -36,16 +36,103 @@ text-shadow: 1px 1px 5px black;
 }
 
 /* navbar section */
-.UserPageNavBar {
+.UserPageNavBarSection {
+    display: flex;
+    flex-direction: column;
+
+   align-items: center;
+    width: 100%;
+    gap: 30px;
+    border-bottom: 1px solid gray;
+}
+.UserPageNavBarUpper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    background-color: red;
-    border-bottom: 1px solid gray;
+    max-width: 1300px;
+    width: 90%;
+}
+
+/* left side profile */
+.ChannelDetailsNavBar {
+display: flex;
+flex-direction: row;
+column-gap: 20px;
 }
 
 
-/* info section */
+.ChannelProfilePicNav{
+height: 100px;
+width: 100px;
+border-radius: 50px;
+}
+
+.ChannelNameAndSubscriberSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  justify-content: center;
+
+
+}
+
+.ChannelNameNavBar {
+font-weight: bold;
+font-size: 24px;
+}
+
+.ChannelSubscriberCountNavBar{
+
+}
+
+/* right side buttons nav*/
+
+.UserSectionButtonsNav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+}
+
+.UserSectionButton{
+  display: flex;
+
+font-size: 16px;
+border-radius: 50px;
+padding: 20px;
+background-color: blue;
+text-align: center;
+cursor: pointer;
+}
+
+/* bottom nav userpage */
+
+.UserPageNavBarLower {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 1250px;
+  width: 80%;
+  gap: 40px;
+}
+
+
+.ActiveCategoryUserNav {
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+border-bottom: 5px solid white;
+}
+
+.InactiveCategoryUserNav {
+  cursor: pointer;
+  font-size: 20px;
+  color: rgb(177, 175, 175);
+  padding: 10px;
+
+}
+/* info section (bottom row) */
 .UserPageInfoContainer {
 }
