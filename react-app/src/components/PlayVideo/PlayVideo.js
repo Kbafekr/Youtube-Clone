@@ -61,7 +61,7 @@ export function VideoPage({ sidePanel }) {
                   controls={true}
                 />
               </div>
-              <div className="VideoTitleCard">
+              <div className="VideoDetailsTitleCard">
                 <div className="VideoDetailsTitle">
                   {filteredVideo[0].title}
                 </div>

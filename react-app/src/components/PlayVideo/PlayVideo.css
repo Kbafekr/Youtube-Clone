@@ -28,7 +28,7 @@ align-items: flex-start;
 
 /* video description, title, and subscription information */
 
-.VideoTitleCard {
+.VideoDetailsTitleCard {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -106,25 +106,3 @@ overflow: hidden;
     padding-top: 20px;
 
 }
-/* .VideosMapped {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
-    gap: 50px;
-}
-.VideoCardHome {
-    height: 300px;
-}
-
-.VideoPreviewHome {
-    height: 190px;
-    width: 290px;
-    border-radius: 50px;
-}
-
-.VideoTitleCard {
-    width: 300px;
-    flex-wrap: wrap;
-} */
