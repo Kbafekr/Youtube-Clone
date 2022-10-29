@@ -240,6 +240,11 @@
   font-size: 36px;
   cursor: pointer;
 }
+
+#NoDeleteChannelsArray {
+  color: red;
+  cursor:default;
+}
 /* sort */
 .SortByFavicon {
 }

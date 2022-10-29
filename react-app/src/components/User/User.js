@@ -202,7 +202,7 @@ function User({ sidePanel }) {
                             class="fa-solid fa-pen-to-square"
                           ></i>
                         </div>
-                        <div className="EditChannelFavicon">
+                        <div className="EditChannelFavicon" id={currentUser.channels.length <= 1 ? "NoDeleteChannelsArray" : ""}>
                           {showModalDelete && currentUser.channels.length > 1 && (
                             <Modal onClose={() => setShowModalDelete(false)}>
                               <DeleteChannelForm
