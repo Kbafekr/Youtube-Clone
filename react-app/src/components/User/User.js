@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import "./User.css";
 import { Modal } from "../../context/Modal";
 import EditUserForm from "./EditUserForm";
+import { updateUserThunk } from "../../store/session";
 
 function User({ sidePanel }) {
   const dispatch = useDispatch();
@@ -24,6 +25,12 @@ function User({ sidePanel }) {
     createdAtDate = `${month} ${date}, ${year}`;
   }
 
+  const firstName = currentUser.first_name;
+  const lastName = currentUser.last_name;
+  const email =
+    "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
+  const password = "password";
+
   let activeChannel;
   // define active channel
   if (currentUser.channels) {
@@ -31,7 +38,6 @@ function User({ sidePanel }) {
       (channel) => channel.id == currentUser.active_channel
     );
   }
-  console.log(activeChannel);
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -55,8 +61,8 @@ function User({ sidePanel }) {
     if (category == 3)
       return (
         <>
-           {/* button that changes depending on the category selected in bottom nav*/}
-           <div className="UserSectionButton">Manage Playlists</div>
+          {/* button that changes depending on the category selected in bottom nav*/}
+          <div className="UserSectionButton">Manage Playlists</div>
         </>
       );
     if (category == 4)
@@ -71,20 +77,14 @@ function User({ sidePanel }) {
     if (category == 5)
       return (
         <>
-          <div
-                  className="UserSectionButton"
-                  onClick={() => setShowModal(true)}
-                >
-                  Edit User Information
-                  {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                      <EditUserForm
-                        user={currentUser}
-                        setShowModal={setShowModal}
-                      />
-                    </Modal>
-                  )}
-                </div>
+          <div className="UserSectionButton" onClick={() => setShowModal(true)}>
+            Edit User Information
+            {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <EditUserForm user={currentUser} setShowModal={setShowModal} />
+              </Modal>
+            )}
+          </div>
         </>
       );
   };
@@ -111,7 +111,72 @@ function User({ sidePanel }) {
     if (category == 4)
       return (
         <>
-          <div>All Your Channels</div>
+          <div className="UserChannelsDetailsSectionOuter">
+            <div className="UserChannelsDetailsSection">
+              <div>
+                {currentUser.channels.map((channel) => {
+                  return (
+                    <div className="ChannelArrayMappedSection">
+                      <div
+                        className="ChannelBannerChannelsSection"
+                        key={channel.id}
+                      >
+                        <img
+                          className="ChannelArrayProfilePic"
+                          src={channel.profile_picture}
+                        />
+                        <img
+                          className="ChannelArrayBanner"
+                          src={channel.banner_picture}
+                        />
+                        <div className="ChannelArrayUsername">
+                          {channel.channel_name}
+                        </div>
+                        {channel.id === currentUser.active_channel ? (
+                          <div
+                            id="activeChannelBanner"
+                            className="UpdateActiveChannelBanner"
+                          >
+                            active
+                            <div className="ActiveCircle" />
+                          </div>
+                        ) : (
+                          <div
+                            id="inactiveChannelBanner"
+                            className="UpdateActiveChannelBanner"
+                            onClick={() =>
+                              dispatch(
+                                updateUserThunk(
+                                  userId,
+                                  firstName,
+                                  lastName,
+                                  email,
+                                  channel.id,
+                                  password
+                                )
+                              )
+                            }
+                          >
+                            Inactive
+                            <div className="InActiveCircle" />
+                          </div>
+                        )}
+                        {/* set inactive active toggle that dispatches edit user to set current active channel */}
+                      </div>
+                      <div className="EditDeleteChannelSection">
+                        <div className="EditChannelFavicon"><i class="fa-solid fa-pen-to-square"></i></div>
+                        <div className="EditChannelFavicon"><i class="fa-sharp fa-solid fa-trash"></i></div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="SortByFavicon">
+                {/* sort by method with favicon */}
+                Sort By
+              </div>
+            </div>
+          </div>
         </>
       );
     if (category == 5)
