@@ -14,7 +14,7 @@ display: flex;
 gap: 10px;
 flex-direction: column;
 /* width: 850px; */
-width: 60%;
+width: 70%;
 justify-content: flex-start;
 align-items: flex-start;
 }
@@ -88,7 +88,7 @@ align-items: flex-start;
 .RightSideVideoDetailsSection {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 30%;
     gap: 40px;
 }
 
