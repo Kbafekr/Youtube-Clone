@@ -68,8 +68,8 @@ export const getOneChannelThunk = (channelId) => async dispatch => {
 export const newChannelThunk = (channel_name, user_id, profile_picture, banner_picture) => async (dispatch) => {
   const response = await fetch(`/api/channels/new`, {
     method: "POST",
-    headers: {"Content-Type": "application/json",
-    body: JSON.stringify({channel_name, user_id, profile_picture, banner_picture})}
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({channel_name, user_id, profile_picture, banner_picture})
   })
   if (response.ok) {
     const createChannel = await response.json()
@@ -81,8 +81,8 @@ export const newChannelThunk = (channel_name, user_id, profile_picture, banner_p
 export const updateChannelThunk = (id, channel_name, user_id, profile_picture, banner_picture) => async (dispatch) => {
   const response = await fetch(`/api/channels/${id}/edit`, {
     method: "PUT",
-    headers: {"Content-Type": "application/json",
-    body: JSON.stringify({channel_name, user_id, profile_picture, banner_picture})}
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({id, channel_name, user_id, profile_picture, banner_picture})
   })
   if (response.ok) {
     const editChannel = await response.json()
@@ -110,7 +110,9 @@ const initialState = {};
 export default function reducer (state = initialState, action) {
   switch (action.type) {
     case ALL_CHANNELS: {
-      const newState = {...action.channels}
+      const newState = {}
+      action.channels.channels.forEach((channel)=>
+      {newState[channel.id] = channel})
       return newState
     }
     case GET_CHANNEL: {

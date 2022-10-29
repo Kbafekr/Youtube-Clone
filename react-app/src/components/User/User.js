@@ -6,7 +6,11 @@ import { useSelector } from "react-redux";
 import "./User.css";
 import { Modal } from "../../context/Modal";
 import EditUserForm from "./EditUserForm";
+import CreateChannelForm from "./CreateChannelForm";
+import EditChannelForm from "./EditChannelForm";
+import DeleteChannelForm from "./DeleteChannelForm";
 import { updateUserThunk } from "../../store/session";
+import { getAllChannelsThunk } from "../../store/channel";
 
 function User({ sidePanel }) {
   const dispatch = useDispatch();
@@ -14,7 +18,12 @@ function User({ sidePanel }) {
   const currentUser = useSelector((state) => state.session.user);
 
   const [category, setCategory] = useState(1);
+  const [currentChannel, setCurrentChannel] = useState(false)
   const [showModal, setShowModal] = useState(false);
+  const [showModalCreate, setShowModalCreate] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
+
   let createdAtDate;
   if (currentUser.created_at) {
     const createdAtObject = currentUser.created_at;
@@ -42,7 +51,11 @@ function User({ sidePanel }) {
     (async () => {
       await dispatch(authenticate());
     })();
-  }, [dispatch, showModal]);
+  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete]);
+
+  useEffect(() => {
+    dispatch(getAllChannelsThunk())
+  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete ])
 
   const ButtonChange = () => {
     if (category == 1)
@@ -68,9 +81,16 @@ function User({ sidePanel }) {
     if (category == 4)
       return (
         <>
-          <div className="UserSectionButton">
-            {/* dropdown that on selecting of channel dispaches edit user changing active channel id. */}
+          <div
+            className="UserSectionButton"
+            onClick={() => setShowModalCreate(true)}
+          >
             Create Channel
+            {showModalCreate && (
+              <Modal onClose={() => setShowModalCreate(false)}>
+                <CreateChannelForm setShowModal={setShowModalCreate} />
+              </Modal>
+            )}
           </div>
         </>
       );
@@ -164,8 +184,31 @@ function User({ sidePanel }) {
                         {/* set inactive active toggle that dispatches edit user to set current active channel */}
                       </div>
                       <div className="EditDeleteChannelSection">
-                        <div className="EditChannelFavicon"><i class="fa-solid fa-pen-to-square"></i></div>
-                        <div className="EditChannelFavicon"><i class="fa-sharp fa-solid fa-trash"></i></div>
+                        <div className="EditChannelFavicon">
+
+                            {showModalEdit && (
+                              <Modal onClose={() => setShowModalEdit(false)}>
+                                <EditChannelForm
+                                  channel={currentChannel}
+                                  setShowModal={setShowModalEdit}
+                                />
+                              </Modal>
+                            )}
+
+
+                          <i onClick={() => {setShowModalEdit(true); setCurrentChannel(channel)}} class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div className="EditChannelFavicon">
+                        {showModalDelete && (
+                              <Modal onClose={() => setShowModalDelete(false)}>
+                                <DeleteChannelForm
+                                  channel={currentChannel}
+                                  setShowModal={setShowModalDelete}
+                                />
+                              </Modal>
+                            )}
+                          <i onClick={() => {setShowModalDelete(true); setCurrentChannel(channel)}}class="fa-sharp fa-solid fa-trash"></i>
+                        </div>
                       </div>
                     </div>
                   );

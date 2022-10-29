@@ -1,129 +1,73 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { getAllChannelsThunk } from "../../store/channel";
+import { deleteChannelThunk } from "../../store/channel";
 import { updateUserThunk } from "../../store/session";
-import { authenticate } from "../../store/session";
-import "./EditUserForm.css";
+import "./DeleteChannelForm.css";
 
-// pass in userId and imageId into createComment form so we aren't relying
-// on useParams for imageId (will help when building a comment section for each photo in explore page)
-function EditUserForm({ user, setShowModal }) {
+//  Be sure to import the modal contents
+function DeleteChannelForm({ setShowModal, channel }) {
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const userId = user.id;
-  const active_channel = user.active_channel;
-  const email = "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
+  const firstName = user.first_name;
+  const lastName = user.last_name;
+  const email =
+    "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
   const password = "password";
-
-  const [firstName, setFirstName] = useState(user.first_name);
-  const [lastName, setLastName] = useState(user.last_name);
-  const [errors, setErrors] = useState([]);
-
-  useEffect(() => {
-    const formValidationErrors = [];
-
-    if (!firstName || firstName.length < 1)
-      formValidationErrors.push(
-        "First Name must exist and be longer than 1 character"
-      );
-    if (!lastName || lastName.length < 1)
-      formValidationErrors.push(
-        "Last Name must exist and be longer than 1 character"
-      );
-
-    setErrors(formValidationErrors);
-  }, [firstName, lastName]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (errors.length <= 0) {
-      return dispatch(
+  const handleSubmit = async (e) => {
+    if (user.active_channel == channel.id) {
+      dispatch(
         updateUserThunk(
           userId,
           firstName,
           lastName,
           email,
-          active_channel,
-          password,
+          user.channels[0].id,
+          password
         )
-      )
-        .then(() => setShowModal(false))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+      );
     }
-    return errors;
+    e.preventDefault();
+    await dispatch(deleteChannelThunk(channel.id));
+    setShowModal(false);
   };
-
   const handleSubmit2 = async (e) => {
     e.preventDefault();
     setShowModal(false);
   };
 
   return (
-    <div className="Edit-image-container">
-      <div className="edit-image-container">
-        <form
-          className="Edit-image-inner"
-          onSubmit={handleSubmit2}
-          autoComplete="off"
-        >
-          <h2 className="EditImageHeader">Edit User Information</h2>
-          <div className="errorHandlingContainer">
-            {errors.length > 0 && (
-              <div className="HeaderErrorStyling">
-                <ul className="ImageUlBulletErrorStyling">
-                  {errors.map((error, idx) => (
-                    <li className="ImageErrorPoints" key={idx}>
-                      {error}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-          <div className="EditImageHeader">First Name:</div>
-          <input
-            className="preview-image-input"
-            id="edit-image-input"
-            type="text"
-            name="preview-image"
-            placeholder="first name..."
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-          <div className="edit-comment-title">Last Name</div>
-
-          <input
-            className="preview-image-input"
-            id="edit-image-input"
-            type="text"
-            placeholder="Description"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-          <div className="done-edit-container">
-            <button
-              className="done-edit-bttn"
-              onClick={handleSubmit}
-              type="submit"
-            >
-              Submit Edit
-            </button>
-            <button
-              id="done-edit-cancel-bttn"
-              className="done-edit-bttn"
-              onClick={() => setShowModal(false)}
-              type="submit"
-            >
-              Cancel Edit
-            </button>
-          </div>
-        </form>
-      </div>
+    <div className="DeleteImage-outer">
+      <form
+        className="DeleteComment-inner"
+        onSubmit={handleSubmit2}
+        autoComplete="off"
+      >
+        <h4 id="statement">
+          Warning! This will permanently remove the Channel.
+        </h4>
+        <div></div>
+        <h5 id="assurance">Are you sure you want to delete this Channel?</h5>
+        <div className="deleteImageButtons">
+          <button
+            className="submitDeleteImage"
+            onClick={handleSubmit}
+            type="submit"
+          >
+            Delete
+          </button>
+          <button
+            className="cancelDeleteImage"
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
 
-export default EditUserForm;
+export default DeleteChannelForm;

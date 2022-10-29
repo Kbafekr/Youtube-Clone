@@ -1,51 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateUserThunk } from "../../store/session";
-import { authenticate } from "../../store/session";
+import { useSelector } from "react-redux";
+import { getAllChannelsThunk } from "../../store/channel";
+import { updateChannelThunk } from "../../store/channel";
 import "./EditUserForm.css";
 
 // pass in userId and imageId into createComment form so we aren't relying
 // on useParams for imageId (will help when building a comment section for each photo in explore page)
-function EditUserForm({ user, setShowModal }) {
+function EditChannelForm({ channel, setShowModal }) {
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const userId = user.id;
-  const active_channel = user.active_channel;
-  const email = "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
-  const password = "password";
+  const id = channel.id
+  console.log(id)
 
-  const [firstName, setFirstName] = useState(user.first_name);
-  const [lastName, setLastName] = useState(user.last_name);
+  const [channelName, setChannelName] = useState(channel.channel_name);
+  const [profilePicture, setProfilePicture] = useState(channel.profile_picture);
+  const [bannerPicture, setBannerPicture] = useState(channel.banner_picture);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (!firstName || firstName.length < 1)
+    if (!channelName || channelName.length < 1 || channelName.length > 30)
       formValidationErrors.push(
-        "First Name must exist and be longer than 1 character"
-      );
-    if (!lastName || lastName.length < 1)
-      formValidationErrors.push(
-        "Last Name must exist and be longer than 1 character"
+        "Channel Name must exist and be between 1 and 30 characters"
       );
 
     setErrors(formValidationErrors);
-  }, [firstName, lastName]);
+  }, [channelName]);
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length <= 0) {
       return dispatch(
-        updateUserThunk(
+        updateChannelThunk(
+          id,
+          channelName,
           userId,
-          firstName,
-          lastName,
-          email,
-          active_channel,
-          password,
+          profilePicture,
+          bannerPicture,
         )
       )
-        .then(() => setShowModal(false))
+        .then(() => setShowModal(false)).then(() => dispatch(getAllChannelsThunk()))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -67,7 +66,7 @@ function EditUserForm({ user, setShowModal }) {
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
-          <h2 className="EditImageHeader">Edit User Information</h2>
+          <h2 className="EditImageHeader">Edit Channel</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -81,26 +80,37 @@ function EditUserForm({ user, setShowModal }) {
               </div>
             )}
           </div>
-          <div className="EditImageHeader">First Name:</div>
+          <div className="EditImageHeader">Channel Name:</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
             type="text"
             name="preview-image"
-            placeholder="first name..."
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="channel name..."
+            value={channelName}
+            onChange={(e) => setChannelName(e.target.value)}
             required
           />
-          <div className="edit-comment-title">Last Name</div>
-
+          <div className="EditImageHeader">Profile Picture(optional):</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
-            type="text"
-            placeholder="Description"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            type="url"
+            name="preview-image"
+            placeholder="Profile Picture(optional)"
+            value={profilePicture}
+            onChange={(e) => setProfilePicture(e.target.value)}
+            required
+          />
+          <div className="EditImageHeader">Banner Picture(optional):</div>
+          <input
+            className="preview-image-input"
+            id="edit-image-input"
+            type="url"
+            name="preview-image"
+            placeholder="Banner Picture(optional)"
+            value={bannerPicture}
+            onChange={(e) => setBannerPicture(e.target.value)}
             required
           />
           <div className="done-edit-container">
@@ -126,4 +136,4 @@ function EditUserForm({ user, setShowModal }) {
   );
 }
 
-export default EditUserForm;
+export default EditChannelForm;

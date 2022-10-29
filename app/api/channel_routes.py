@@ -9,12 +9,12 @@ channel_routes = Blueprint('channels', __name__)
 
 # Get All Channels
 @channel_routes.route('/all')
-# @login_required
+@login_required
 def all_Channels():
     all_channels = Channel.query.all()
     if all_channels == None:
         return "there are no channels"
-    channels = {"likes": [channels.to_dict() for channels in all_channels]}
+    channels = {"channels": [channels.to_dict() for channels in all_channels]}
     return channels
 
 
@@ -30,19 +30,18 @@ def get_channel(id):
 
 # create new channel
 @channel_routes.route("/new", methods=["POST"])
-@login_required
+# @login_required
 def create_channel():
     form = ChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
         new_channel = Channel(
-            channel_name=['channel_name'],
+            channel_name=data['channel_name'],
             user_id=data["user_id"],
             profile_picture=data["profile_picture"],
-            banner_picture=data["banner_picture"],
+            banner_picture=data["banner_picture"]
         )
-
         db.session.add(new_channel)
         db.session.commit()
         return new_channel.to_dict()
