@@ -14,8 +14,7 @@ banner_picture_list=['https://i.pinimg.com/736x/f2/40/67/f24067d46bbcf1669bf5490
 'https://img.freepik.com/premium-vector/dark-navy-blue-banner-background-vector-abstract-graphic-design-banner-pattern-background-template_181182-18817.jpg',
 'https://wallpaperaccess.com/full/1615368.jpg',
 'https://i.pinimg.com/originals/e6/2a/f8/e62af892f9bfca7b5f272755344d7200.jpg', 'https://i.pinimg.com/originals/92/65/f5/9265f589431af2690cf412e525b7cae4.jpg',
-'https://ak6.picdn.net/shutterstock/videos/4477016/thumb/1.jpg' ]
-
+ ]
 def valid_profile_picture(form, field):
     profile_picture = field.data
     if not profile_picture.startswith("http"):
