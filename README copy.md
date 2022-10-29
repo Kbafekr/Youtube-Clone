@@ -85,4 +85,5 @@ each of the following variables:
 | `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
 
 
+
 heroku restart && heroku pg:reset DATABASE --confirm "app name" && heroku run npm run flask db migrate && heroku run npm run flask db upgrade
