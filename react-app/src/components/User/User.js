@@ -18,7 +18,7 @@ function User({ sidePanel }) {
   const currentUser = useSelector((state) => state.session.user);
 
   const [category, setCategory] = useState(1);
-  const [currentChannel, setCurrentChannel] = useState(false)
+  const [currentChannel, setCurrentChannel] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
@@ -54,8 +54,8 @@ function User({ sidePanel }) {
   }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete]);
 
   useEffect(() => {
-    dispatch(getAllChannelsThunk())
-  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete ])
+    dispatch(getAllChannelsThunk());
+  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete]);
 
   const ButtonChange = () => {
     if (category == 1)
@@ -185,29 +185,39 @@ function User({ sidePanel }) {
                       </div>
                       <div className="EditDeleteChannelSection">
                         <div className="EditChannelFavicon">
+                          {showModalEdit && (
+                            <Modal onClose={() => setShowModalEdit(false)}>
+                              <EditChannelForm
+                                channel={currentChannel}
+                                setShowModal={setShowModalEdit}
+                              />
+                            </Modal>
+                          )}
 
-                            {showModalEdit && (
-                              <Modal onClose={() => setShowModalEdit(false)}>
-                                <EditChannelForm
-                                  channel={currentChannel}
-                                  setShowModal={setShowModalEdit}
-                                />
-                              </Modal>
-                            )}
-
-
-                          <i onClick={() => {setShowModalEdit(true); setCurrentChannel(channel)}} class="fa-solid fa-pen-to-square"></i>
+                          <i
+                            onClick={() => {
+                              setShowModalEdit(true);
+                              setCurrentChannel(channel);
+                            }}
+                            class="fa-solid fa-pen-to-square"
+                          ></i>
                         </div>
                         <div className="EditChannelFavicon">
-                        {showModalDelete && (
-                              <Modal onClose={() => setShowModalDelete(false)}>
-                                <DeleteChannelForm
-                                  channel={currentChannel}
-                                  setShowModal={setShowModalDelete}
-                                />
-                              </Modal>
-                            )}
-                          <i onClick={() => {setShowModalDelete(true); setCurrentChannel(channel)}}class="fa-sharp fa-solid fa-trash"></i>
+                          {showModalDelete && currentUser.channels.length > 1 && (
+                            <Modal onClose={() => setShowModalDelete(false)}>
+                              <DeleteChannelForm
+                                channel={currentChannel}
+                                setShowModal={setShowModalDelete}
+                              />
+                            </Modal>
+                          )}
+                          <i
+                            onClick={() => {
+                              setShowModalDelete(true);
+                              setCurrentChannel(channel);
+                            }}
+                            class="fa-sharp fa-solid fa-trash"
+                          ></i>
                         </div>
                       </div>
                     </div>
