@@ -88,7 +88,7 @@ export default function ProfileButton() {
               <Link
                 to={{
                   pathname: `/users/${user.id}`,
-                  state: { directedCategory: 4, uploadModalState: false },
+                  state: { directedCategory: 2, uploadModalState: false },
                 }}
                 className="ProfileDDRow"
               >

@@ -45,6 +45,7 @@ align-items: center;
     height: 190px;
     width: 290px;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 .VideoTitleCard {
