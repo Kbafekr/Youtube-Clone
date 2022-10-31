@@ -12,17 +12,37 @@ import DeleteChannelForm from "./DeleteChannelForm";
 import { updateUserThunk } from "../../store/session";
 import { getAllChannelsThunk } from "../../store/channel";
 
-function User({ sidePanel }) {
+function User({ sidePanel, directedCategory, uploadModalState }) {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const currentUser = useSelector((state) => state.session.user);
 
   const [category, setCategory] = useState(1);
+
+  if (directedCategory != null) {
+    setCategory(directedCategory)
+  }
+// channels
   const [currentChannel, setCurrentChannel] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
+// channels
+
+
+// videos
+const [currentVideo, setCurrentVideo] = useState(false);
+const [showModalVideo,, setShowModalVideo] = useState(false);
+const [showModalCreateVideo, setShowModalCreateVideo] = useState(false);
+const [showModalEditVideo, setShowModalEditVideo] = useState(false);
+const [showModalDeleteVideo, setShowModalDeleteVideo] = useState(false);
+
+if (uploadModalState == true){
+  setShowModalCreateVideo(true)
+}
+// videos
+
 
   let createdAtDate;
   if (currentUser.created_at) {

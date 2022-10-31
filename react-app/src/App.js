@@ -55,7 +55,7 @@ function App() {
 
         {/* upload page */}
         <Route path='/upload' exact={true} >
-          <User sidePanel={sidePanel}/>
+          <User sidePanel={sidePanel} directedCategory={2} uploadModalState={true}/>
         </Route>
 
         {/* user settings, create new channel, delete channel, switch channel */}
