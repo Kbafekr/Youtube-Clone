@@ -39,13 +39,9 @@ function EditVideoForm({ video, setShowModal }) {
         "Video description must be less than 1000 characters"
       );
     // blob data type for files use .size method, returns bytes, million bytes in a megabyte
-    if (video_url?.size > 5000000)
-      formValidationErrors.push("Video must be smaller than 5MB");
-    if (!allowedFileTypes.includes(video_url?.type))
-      formValidationErrors.push("Only MP4 and MOV video files allowed");
 
     setErrors(formValidationErrors);
-  }, [title, description, video_url]);
+  }, [title, description]);
 
 
   const handleSubmit = (e) => {
