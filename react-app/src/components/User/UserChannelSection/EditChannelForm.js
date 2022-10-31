@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getAllChannelsThunk } from "../../store/channel";
+import { getAllChannelsThunk } from "../../../store/channel";
 
-import { updateChannelThunk } from "../../store/channel";
-import "./EditUserForm.css";
+import { updateChannelThunk } from "../../../store/channel";
 
 // pass in userId and imageId into createComment form so we aren't relying
 // on useParams for imageId (will help when building a comment section for each photo in explore page)
