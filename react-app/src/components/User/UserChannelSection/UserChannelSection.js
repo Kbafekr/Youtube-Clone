@@ -14,23 +14,10 @@ import { getAllChannelsThunk } from "../../../store/channel";
 import { useLocation } from "react-router-dom";
 
 function UserChannelSection() {
-    const location = useLocation()
-    // use location hook to open create video modal only once
-    let uploadDataState;
-    let directedCategory;
-    let uploadModalState;
-    if (location.state != null) {
-      uploadDataState = location.state.uploadDataState
-      directedCategory = uploadDataState.directedCategory
-      uploadModalState = uploadDataState.uploadModalState
-    }
-    const [forceCategory, setForceCategory] = useState(true)
 
     const dispatch = useDispatch();
     const { userId } = useParams();
     const currentUser = useSelector((state) => state.session.user);
-
-    const [category, setCategory] = useState(1);
 
   // channels
     const [currentChannel, setCurrentChannel] = useState(false);
@@ -40,28 +27,6 @@ function UserChannelSection() {
     const [showModalDelete, setShowModalDelete] = useState(false);
   // channels
 
-
-  // videos
-  const [currentVideo, setCurrentVideo] = useState(false);
-  const [showModalVideo,, setShowModalVideo] = useState(false);
-  const [showModalCreateVideo, setShowModalCreateVideo] = useState(false);
-  const [showModalEditVideo, setShowModalEditVideo] = useState(false);
-  const [showModalDeleteVideo, setShowModalDeleteVideo] = useState(false);
-
-  if (directedCategory != null && category != directedCategory && forceCategory == true) {
-    setCategory(directedCategory)
-    setShowModalCreateVideo(true)
-    setForceCategory(false)
-  }
-    let createdAtDate;
-    if (currentUser.created_at) {
-      const createdAtObject = currentUser.created_at;
-      const createdAtString = JSON.stringify(createdAtObject);
-      const date = createdAtString.slice(5, 8);
-      const month = createdAtString.slice(9, 12);
-      const year = createdAtString.slice(13, 17);
-      createdAtDate = `${month} ${date}, ${year}`;
-    }
 
     const firstName = currentUser.first_name;
     const lastName = currentUser.last_name;

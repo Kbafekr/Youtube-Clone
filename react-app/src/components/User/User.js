@@ -9,7 +9,7 @@ import EditUserForm from "./EditUserForm";
 // channels
 import CreateChannelForm from "./UserChannelSection/CreateChannelForm";
 // videos
-import CreateVideoForm from "../VideoForms/CreateVideoForm";
+import CreateVideoForm from "./UserVideoSection/VideoForms/CreateVideoForm";
 
 import { updateUserThunk } from "../../store/session";
 import { getAllChannelsThunk } from "../../store/channel";

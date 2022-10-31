@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getAllVideosThunk } from "../../store/video";
-import { getAllChannelsThunk } from "../../store/channel";
-import { updateVideoThunk } from "../../store/video";
+import { getAllVideosThunk } from "../../../../store/video";
+import { getAllChannelsThunk } from "../../../../store/channel";
+import { updateVideoThunk } from "../../../../store/video";
 import "./EditUserForm.css";
 
 // pass in userId and imageId into createComment form so we aren't relying

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getAllChannelsThunk } from "../../store/channel";
-import { deleteVideoThunk } from "../../store/video";
+import { getAllChannelsThunk } from "../../../../store/channel";
+import { deleteVideoThunk } from "../../../../store/video";
 import "./DeleteChannelForm.css";
 
 //  Be sure to import the modal contents

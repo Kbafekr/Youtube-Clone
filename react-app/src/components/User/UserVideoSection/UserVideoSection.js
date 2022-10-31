@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Modal } from "../../../context/Modal";
 
+import EditVideoForm from './VideoForms/EditVideoForm';
+import DeleteVideoForm from "./VideoForms/DeleteVideoForm";
 import EditChannelForm from "../UserChannelSection/EditChannelForm";
 import DeleteChannelForm from "../UserChannelSection/DeleteChannelForm";
 // videos
