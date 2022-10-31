@@ -3,5 +3,21 @@
 }
 
 .ProfileButtonPictureNav {
-    
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.ProfileDropDownNav {
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    position: absolute;
+    width: 290px;
+    height: 600px;
+    padding: 10px;
+    top: 70px;
+    right: 20px;
+    background-color: rgb(74, 74, 74);
+    border-radius: 15px;
 }

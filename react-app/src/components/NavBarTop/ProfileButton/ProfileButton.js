@@ -40,12 +40,16 @@ export default function ProfileButton() {
       <div>
         <div className="ProfileButtonOuter" onClick={openMenu}>
           <img
-            src={activeChannel.profile_picture}
+            src={activeChannel[0].profile_picture}
             className="ProfileButtonPictureNav"
           />
         </div>
 
-        {showMenu && <LogoutButton />}
+        {showMenu && (
+          <div className="ProfileDropDownNav">
+            <LogoutButton />
+          </div>
+        )}
       </div>
     </>
   );
