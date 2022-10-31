@@ -53,8 +53,14 @@ function CreateVideoForm({ setShowModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length <= 0) {
+      const formData = new FormData()
+      formData.append("channel_id", channel_id);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("video_url", video_url);
+
       return dispatch(
-        newVideoThunk(channel_id, title, description, video_url)
+        newVideoThunk(formData)
       )
         .then(() => setShowModal(false))
         .then(() => dispatch(getAllVideosThunk())).then(() => dispatch(getAllChannelsThunk()))

@@ -66,11 +66,11 @@ export const getOneVideoThunk = (videoId) => async (dispatch) => {
 };
 
 export const newVideoThunk =
-  (channel_id, title, description, video_url) => async (dispatch) => {
+  (video) => async (dispatch) => {
     const response = await fetch("/api/videos/upload", {
       method: "POST",
       // do not set content type, allow browser to do this automatically to prevent missing information
-      body: JSON.stringify({ channel_id, title, description, video_url }),
+      body: video,
     });
     if (response.ok) {
       const createVideo = await response.json();
