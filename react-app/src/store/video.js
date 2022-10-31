@@ -81,8 +81,9 @@ export const newVideoThunk = (channel_id, title, description, video_url) => asyn
 export const updateVideoThunk = (channel_id, title, description, video_url, videoId) => async (dispatch) => {
   const response = await fetch(`/api/videos/${videoId}/edit`, {
     method: "PUT",
-    headers: {"Content-Type": "application/json",
-    body: JSON.stringify({channel_id, title, description, video_url})}
+    // headers: {"Content-Type": "application/json",
+    body: JSON.stringify({channel_id, title, description, video_url})
+  // }
   })
   if (response.ok) {
     const editVideo = await response.json()
