@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 import { useState, useEffect } from "react";
@@ -10,6 +10,12 @@ import logo from "../../icons/you2oobLogo.png";
 import { SearchBar } from "./SearchBar/SearchBar";
 
 const NavBar = ({ sidePanel, setSidePanel }) => {
+
+
+  const uploadDataState = {
+    directedCategory: 2,
+    uploadModalState: true
+  }
   const user = useSelector((state) => state.session.user);
   if (user) {
     return (
@@ -44,9 +50,9 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
         Users
       </NavLink> */}
           <div className="RightContainerTopNav">
-            <div className="UploadCameraNavBar">
+            <Link  to={{ pathname: `/users/${user.id}`, state: {uploadDataState} }} className="UploadCameraNavBar">
               <i class="fa-sharp fa-solid fa-video"></i>
-            </div>
+            </Link>
             <div className="NotificationBellNavBar">
               <i class="fa-solid fa-bell"></i>
             </div>

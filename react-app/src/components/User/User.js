@@ -11,16 +11,29 @@ import EditChannelForm from "./EditChannelForm";
 import DeleteChannelForm from "./DeleteChannelForm";
 import { updateUserThunk } from "../../store/session";
 import { getAllChannelsThunk } from "../../store/channel";
+import { useLocation } from "react-router-dom";
+function User({ sidePanel}) {
+  const location = useLocation()
+  // use location hook to open create video modal only once
+  let uploadDataState;
+  let directedCategory;
+  let uploadModalState;
+  if (location.state != null) {
+    uploadDataState = location.state.uploadDataState
+    directedCategory = uploadDataState.directedCategory
+    uploadModalState = uploadDataState.uploadModalState
+  }
+  const [forceCategory, setForceCategory] = useState(true)
 
-function User({ sidePanel, directedCategory, uploadModalState }) {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const currentUser = useSelector((state) => state.session.user);
 
   const [category, setCategory] = useState(1);
 
-  if (directedCategory != null) {
+  if (directedCategory != null && category != directedCategory && forceCategory == true) {
     setCategory(directedCategory)
+    setForceCategory(false)
   }
 // channels
   const [currentChannel, setCurrentChannel] = useState(false);
@@ -38,9 +51,9 @@ const [showModalCreateVideo, setShowModalCreateVideo] = useState(false);
 const [showModalEditVideo, setShowModalEditVideo] = useState(false);
 const [showModalDeleteVideo, setShowModalDeleteVideo] = useState(false);
 
-if (uploadModalState == true){
-  setShowModalCreateVideo(true)
-}
+// if (uploadModalState == true){
+//   setShowModalCreateVideo(true)
+// }
 // videos
 
 

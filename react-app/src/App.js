@@ -53,11 +53,6 @@ function App() {
           <VideoPage sidePanel={sidePanel}/>
         </Route>
 
-        {/* upload page */}
-        <Route path='/upload' exact={true} >
-          <User sidePanel={sidePanel} directedCategory={2} uploadModalState={true}/>
-        </Route>
-
         {/* user settings, create new channel, delete channel, switch channel */}
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User  sidePanel={sidePanel} />
