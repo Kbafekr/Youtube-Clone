@@ -24,9 +24,8 @@ function User({ sidePanel }) {
   let directedCategory;
   let uploadModalState;
   if (location.state != null) {
-    uploadDataState = location.state.uploadDataState;
-    directedCategory = uploadDataState.directedCategory;
-    uploadModalState = uploadDataState.uploadModalState;
+    directedCategory = location.state.directedCategory;
+    uploadModalState = location.state.uploadModalState;
   }
   const [forceCategory, setForceCategory] = useState(true);
 
@@ -52,13 +51,37 @@ function User({ sidePanel }) {
   const [showModalDeleteVideo, setShowModalDeleteVideo] = useState(false);
 
   if (
-    directedCategory != null &&
+    directedCategory == 2 &&
     category != directedCategory &&
     forceCategory == true
   ) {
     setCategory(directedCategory);
-    setShowModalCreateVideo(true);
     setForceCategory(false);
+    if (uploadModalState == true) {
+      setShowModalCreateVideo(true);
+    }
+  }
+  if (
+    directedCategory == 4 &&
+    category != directedCategory &&
+    forceCategory == true
+  ) {
+    setCategory(directedCategory);
+    setForceCategory(false);
+    if (uploadModalState == true) {
+    setShowModalCreate(true);
+    }
+  }
+  if (
+    directedCategory == 5 &&
+    category != directedCategory &&
+    forceCategory == true
+  ) {
+    setCategory(directedCategory);
+    setForceCategory(false);
+    if (uploadModalState == true) {
+    setShowModal(true);
+    }
   }
   let createdAtDate;
   if (currentUser.created_at) {

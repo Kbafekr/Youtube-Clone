@@ -11,12 +11,6 @@ import logo from "../../icons/you2oobLogo.png";
 import { SearchBar } from "./SearchBar/SearchBar";
 
 const NavBar = ({ sidePanel, setSidePanel }) => {
-
-
-  const uploadDataState = {
-    directedCategory: 2,
-    uploadModalState: true
-  }
   const user = useSelector((state) => state.session.user);
   if (user) {
     return (
@@ -51,7 +45,13 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
         Users
       </NavLink> */}
           <div className="RightContainerTopNav">
-            <Link  to={{ pathname: `/users/${user.id}`, state: {uploadDataState} }} className="UploadCameraNavBar">
+            <Link
+              to={{
+                pathname: `/users/${user.id}`,
+                state: { directedCategory: 5, uploadModalState: true },
+              }}
+              className="UploadCameraNavBar"
+            >
               <i class="fa-sharp fa-solid fa-video"></i>
             </Link>
             <div className="NotificationBellNavBar">
@@ -96,14 +96,14 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
         Users
       </NavLink> */}
           <div className="RightContainerTopNav">
-          <NavLink
-          to="/login"
-          className="CreateAccountRedirect"
-          exact={true}
-          activeClassName="active"
-        >
-          Login
-        </NavLink>
+            <NavLink
+              to="/login"
+              className="CreateAccountRedirect"
+              exact={true}
+              activeClassName="active"
+            >
+              Login
+            </NavLink>
           </div>
         </div>
       </div>

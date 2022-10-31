@@ -88,16 +88,6 @@
 
 }
 
-.SubmitLoginButton {
-    background-color: #1a73e8;
-    padding: 10px 15px;
-    color: white;
-    border-radius: 10%;
-    font-weight: bold;
-    cursor: pointer;
-
-}
-
 .DemoLoginButton {
     height: 100%;
     display: flex;
