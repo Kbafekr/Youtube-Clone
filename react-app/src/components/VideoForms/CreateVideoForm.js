@@ -2,44 +2,61 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getAllChannelsThunk } from "../../store/channel";
-import { newChannelThunk } from "../../store/channel";
+import { newVideoThunk } from "../../store/video";
 import "./EditUserForm.css";
 
 // pass in userId and imageId into createComment form so we aren't relying
 // on useParams for imageId (will help when building a comment section for each photo in explore page)
-function CreateVideoForm({setShowModal}) {
+function CreateVideoForm({ setShowModal }) {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const userId = user.id;
+  const channel_id = user.active_channel;
 
-  const [channelName, setChannelName] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
-  const [bannerPicture, setBannerPicture] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [video_url, setVideo_Url] = useState(null);
   const [errors, setErrors] = useState([]);
+
+  const allowedFileTypes = ["video/mp4", "video/mov"];
 
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (!channelName || channelName.length < 1 || channelName.length > 30)
+    if (!title || title.length < 1)
       formValidationErrors.push(
-        "Channel Name must exist and be between 1 and 30 characters"
+        "Video title must exist and must be more than 1 character"
       );
+    if (title.length > 200)
+      formValidationErrors.push("Video title must less than 200 characters");
+    if (!description || title.description < 1)
+      formValidationErrors.push(
+        "Video description must exist and must be more than 1 character"
+      );
+    if (!description || description.length < 1)
+      formValidationErrors.push(
+        "Video description must be less than 1000 characters"
+      );
+    // blob data type for files use .size method, returns bytes, million bytes in a megabyte
+    if (video_url?.size > 5000000)
+      formValidationErrors.push("Video must be smaller than 5MB");
+    if (!allowedFileTypes.includes(video_url?.type))
+      formValidationErrors.push("Only MP4 and MOV video files allowed");
 
     setErrors(formValidationErrors);
-  }, [channelName]);
+  }, [title, description, video_url]);
 
+  const videoSet = (e) => {
+    const file = e.target.files[0]
+    setVideo_Url(file)
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length <= 0) {
       return dispatch(
-        newChannelThunk(
-          channelName,
-          userId,
-          profilePicture,
-          bannerPicture,
-        )
+        newVideoThunk(channel_id, title, description, video_url)
       )
-        .then(() => setShowModal(false)).then(() => dispatch(getAllChannelsThunk()))
+        .then(() => setShowModal(false))
+        .then(() => dispatch(getAllChannelsThunk()))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -61,7 +78,7 @@ function CreateVideoForm({setShowModal}) {
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
-          <h2 className="EditImageHeader">Create New Channel</h2>
+          <h2 className="EditImageHeader">Create New Video</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -75,46 +92,47 @@ function CreateVideoForm({setShowModal}) {
               </div>
             )}
           </div>
-          <div className="EditImageHeader">Channel Name:</div>
+          <div className="EditImageHeader">Video Title:</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
             type="text"
             name="preview-image"
-            placeholder="channel name..."
-            value={channelName}
-            onChange={(e) => setChannelName(e.target.value)}
-            required
+            placeholder="Video Title..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
-          <div className="EditImageHeader">Profile Picture(optional):</div>
+          <div className="EditImageHeader">Description:</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
-            type="url"
+            type="text"
             name="preview-image"
-            placeholder="Profile Picture(optional)"
-            value={profilePicture}
-            onChange={(e) => setProfilePicture(e.target.value)}
-            required
+            placeholder="Description..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
-          <div className="EditImageHeader">Banner Picture(optional):</div>
+
+
+
+          <div className="EditImageHeader">Video File (MP4 and MOV only):</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
-            type="url"
+            type="file"
             name="preview-image"
-            placeholder="Banner Picture(optional)"
-            value={bannerPicture}
-            onChange={(e) => setBannerPicture(e.target.value)}
-            required
+            accept=".mp4, .mov"
+            onChange={videoSet}
           />
+
+
           <div className="done-edit-container">
             <button
               className="done-edit-bttn"
               onClick={handleSubmit}
               type="submit"
             >
-              Submit Channel
+              Submit Video
             </button>
             <button
               id="done-edit-cancel-bttn"

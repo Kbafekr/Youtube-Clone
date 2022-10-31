@@ -136,4 +136,4 @@ function EditVideoForm({ channel, setShowModal }) {
   );
 }
 
-export default EditChannelForm;
+export default EditVideoForm;

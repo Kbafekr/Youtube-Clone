@@ -6,9 +6,15 @@ import { useSelector } from "react-redux";
 import "./User.css";
 import { Modal } from "../../context/Modal";
 import EditUserForm from "./EditUserForm";
+// channels
 import CreateChannelForm from "./CreateChannelForm";
 import EditChannelForm from "./EditChannelForm";
 import DeleteChannelForm from "./DeleteChannelForm";
+// videos
+import CreateVideoForm from "../VideoForms/CreateVideoForm";
+import EditVideoForm from "../VideoForms/EditVideoForm";
+import DeleteVideoForm from '../VideoForms/DeleteVideoForm'
+
 import { updateUserThunk } from "../../store/session";
 import { getAllChannelsThunk } from "../../store/channel";
 import { useLocation } from "react-router-dom";
@@ -103,7 +109,7 @@ if (directedCategory != null && category != directedCategory && forceCategory ==
             Create Video
             {showModalCreateVideo && (
               <Modal onClose={() => setShowModalCreateVideo(false)}>
-                <CreateChannelForm setShowModal={setShowModalCreateVideo} />
+                <CreateVideoForm setShowModal={setShowModalCreateVideo} />
               </Modal>
             )}
           </div>
