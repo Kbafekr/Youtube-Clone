@@ -31,10 +31,6 @@ function User({ sidePanel}) {
 
   const [category, setCategory] = useState(1);
 
-  if (directedCategory != null && category != directedCategory && forceCategory == true) {
-    setCategory(directedCategory)
-    setForceCategory(false)
-  }
 // channels
   const [currentChannel, setCurrentChannel] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -51,12 +47,11 @@ const [showModalCreateVideo, setShowModalCreateVideo] = useState(false);
 const [showModalEditVideo, setShowModalEditVideo] = useState(false);
 const [showModalDeleteVideo, setShowModalDeleteVideo] = useState(false);
 
-// if (uploadModalState == true){
-//   setShowModalCreateVideo(true)
-// }
-// videos
-
-
+if (directedCategory != null && category != directedCategory && forceCategory == true) {
+  setCategory(directedCategory)
+  setShowModalCreateVideo(true)
+  setForceCategory(false)
+}
   let createdAtDate;
   if (currentUser.created_at) {
     const createdAtObject = currentUser.created_at;
