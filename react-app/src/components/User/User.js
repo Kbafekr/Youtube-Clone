@@ -87,11 +87,11 @@ function User({ sidePanel }) {
     (async () => {
       await dispatch(authenticate());
     })();
-  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete]);
+  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete, showModalCreateVideo]);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete]);
+  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete, showModalCreateVideo]);
 
   const ButtonChange = () => {
     if (category == 1)
