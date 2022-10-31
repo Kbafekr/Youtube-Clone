@@ -84,7 +84,7 @@ function CreateChannelForm({setShowModal}) {
             placeholder="channel name..."
             value={channelName}
             onChange={(e) => setChannelName(e.target.value)}
-            required
+            // required
           />
           <div className="EditImageHeader">Profile Picture(optional):</div>
           <input
@@ -95,7 +95,6 @@ function CreateChannelForm({setShowModal}) {
             placeholder="Profile Picture(optional)"
             value={profilePicture}
             onChange={(e) => setProfilePicture(e.target.value)}
-            required
           />
           <div className="EditImageHeader">Banner Picture(optional):</div>
           <input
@@ -106,7 +105,6 @@ function CreateChannelForm({setShowModal}) {
             placeholder="Banner Picture(optional)"
             value={bannerPicture}
             onChange={(e) => setBannerPicture(e.target.value)}
-            required
           />
           <div className="done-edit-container">
             <button

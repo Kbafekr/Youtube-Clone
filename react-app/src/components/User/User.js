@@ -96,7 +96,17 @@ if (directedCategory != null && category != directedCategory && forceCategory ==
       return (
         <>
           {/* button that changes depending on the category selected in bottom nav*/}
-          <div className="UserSectionButton">Create Video</div>
+          <div
+            className="UserSectionButton"
+            onClick={() => setShowModalCreateVideo(true)}
+          >
+            Create Video
+            {showModalCreateVideo && (
+              <Modal onClose={() => setShowModalCreateVideo(false)}>
+                <CreateChannelForm setShowModal={setShowModalCreateVideo} />
+              </Modal>
+            )}
+          </div>
         </>
       );
     if (category == 3)
@@ -115,6 +125,7 @@ if (directedCategory != null && category != directedCategory && forceCategory ==
           >
             Create Channel
             {showModalCreate && (
+              // <Modal onClose={() => setShowModalCreate(false)}>
               <Modal onClose={() => setShowModalCreate(false)}>
                 <CreateChannelForm setShowModal={setShowModalCreate} />
               </Modal>
