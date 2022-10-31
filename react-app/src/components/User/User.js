@@ -69,7 +69,7 @@ function User({ sidePanel }) {
     setCategory(directedCategory);
     setForceCategory(false);
     if (uploadModalState == true) {
-    setShowModalCreate(true);
+      setShowModalCreate(true);
     }
   }
   if (
@@ -80,7 +80,7 @@ function User({ sidePanel }) {
     setCategory(directedCategory);
     setForceCategory(false);
     if (uploadModalState == true) {
-    setShowModal(true);
+      setShowModal(true);
     }
   }
   let createdAtDate;
@@ -110,11 +110,25 @@ function User({ sidePanel }) {
     (async () => {
       await dispatch(authenticate());
     })();
-  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete, showModalCreateVideo]);
+  }, [
+    dispatch,
+    showModal,
+    showModalCreate,
+    showModalEdit,
+    showModalDelete,
+    showModalCreateVideo,
+  ]);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, showModal, showModalCreate, showModalEdit, showModalDelete, showModalCreateVideo]);
+  }, [
+    dispatch,
+    showModal,
+    showModalCreate,
+    showModalEdit,
+    showModalDelete,
+    showModalCreateVideo,
+  ]);
 
   const ButtonChange = () => {
     if (category == 1)
@@ -127,16 +141,16 @@ function User({ sidePanel }) {
       return (
         <>
           {/* button that changes depending on the category selected in bottom nav*/}
+          {showModalCreateVideo && (
+            <Modal onClose={() => setShowModalCreateVideo(false)}>
+              <CreateVideoForm setShowModal={setShowModalCreateVideo} />
+            </Modal>
+          )}
           <div
             className="UserSectionButton"
             onClick={() => setShowModalCreateVideo(true)}
           >
             Create Video
-            {showModalCreateVideo && (
-              <Modal onClose={() => setShowModalCreateVideo(false)}>
-                <CreateVideoForm setShowModal={setShowModalCreateVideo} />
-              </Modal>
-            )}
           </div>
         </>
       );
@@ -150,30 +164,30 @@ function User({ sidePanel }) {
     if (category == 4)
       return (
         <>
+          {showModalCreate && (
+            // <Modal onClose={() => setShowModalCreate(false)}>
+            <Modal onClose={() => setShowModalCreate(false)}>
+              <CreateChannelForm setShowModal={setShowModalCreate} />
+            </Modal>
+          )}
           <div
             className="UserSectionButton"
             onClick={() => setShowModalCreate(true)}
           >
             Create Channel
-            {showModalCreate && (
-              // <Modal onClose={() => setShowModalCreate(false)}>
-              <Modal onClose={() => setShowModalCreate(false)}>
-                <CreateChannelForm setShowModal={setShowModalCreate} />
-              </Modal>
-            )}
           </div>
         </>
       );
     if (category == 5)
       return (
         <>
-          <div className="UserSectionButton" onClick={() => setShowModal(true)}>
-            Edit User Information
             {showModal && (
               <Modal onClose={() => setShowModal(false)}>
                 <EditUserForm user={currentUser} setShowModal={setShowModal} />
               </Modal>
             )}
+          <div className="UserSectionButton" onClick={() => setShowModal(true)}>
+            Edit User Information
           </div>
         </>
       );
