@@ -19,7 +19,7 @@ def AllVids():
 
 
 @video_routes.route('/<int:id>')
-@login_required
+# @login_required
 def get_video(id):
      video = Video.query.get(id)
      if video == None:
@@ -80,9 +80,9 @@ def delete_video(id):
 # comments
 
 
-# all Comments by imageId
+# all Comments by videoId
 @video_routes.route('/<int:videoId>/comments', methods=["GET"])
-@login_required
+# @login_required
 def get_comment_by_video(videoId):
     comments = Comment.query.filter_by(videoId=videoId).all()
     if comments == None:

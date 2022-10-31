@@ -9,7 +9,6 @@ channel_routes = Blueprint('channels', __name__)
 
 # Get All Channels
 @channel_routes.route('/all')
-@login_required
 def all_Channels():
     all_channels = Channel.query.all()
     if all_channels == None:
@@ -20,7 +19,7 @@ def all_Channels():
 
 # get channel by id
 @channel_routes.route('/<int:id>')
-@login_required
+# @login_required
 def get_channel(id):
      channel = Channel.query.get(id)
      if channel == None:
@@ -30,7 +29,7 @@ def get_channel(id):
 
 # create new channel
 @channel_routes.route("/new", methods=["POST"])
-# @login_required
+@login_required
 def create_channel():
     form = ChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']

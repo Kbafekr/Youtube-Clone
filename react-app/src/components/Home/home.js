@@ -3,9 +3,12 @@ import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAllVideosThunk } from "../../store/video";
+import { getAllChannelsThunk } from "../../store/channel";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { updateUserThunk } from "../../store/session";
 import { newChannelThunk } from "../../store/channel";
+import { authenticate } from "../../store/session";
 import logo from "../../icons/you2oobLogo.png";
 
 export function HomePage({ sidePanel }) {
@@ -13,22 +16,59 @@ export function HomePage({ sidePanel }) {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
+  const channels = useSelector((state) => state.channel);
+  const [newChannelMade, setNewChannelMade] = useState(false)
+
+  const email =
+    "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
+  const password = "password";
 
   let videosArray;
+  let channelsArray;
 
   videosArray = Object.values(videos);
+  channelsArray = Object.values(channels);
+
+  useEffect(() => {
+    dispatch(getAllChannelsThunk());
+  }, [dispatch, newChannelMade, user]);
 
   useEffect(() => {
     dispatch(getAllVideosThunk());
-    if (user) {
-      if (user.channels[0] == undefined || user.channels[0] == null) {
-        let channelName = `${user.first_name} ${user.last_name}`
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    if (user && channelsArray) {
+      const userChannels = channelsArray.filter(
+        (channel) => channel.user_id == user.id
+      );
+      console.log(userChannels.length);
+      if (
+        (user.active_channel == null) &&
+        (user.channels[0] != null) &&
+        channelsArray != null
+      ) {
         dispatch(
-          newChannelThunk(channelName, user.id, "", "")
+          updateUserThunk(
+            user.id,
+            user.first_name,
+            user.last_name,
+            email,
+            user.channels[0].id,
+            password
+          )
         );
       }
+      if (
+        user.channels.length < 1 &&
+        userChannels.length < 1 &&
+        channelsArray != null && newChannelMade == false
+      ) {
+        let channelName = `${user.first_name} ${user.last_name}`;
+        dispatch(newChannelThunk(channelName, user.id, "", "")).then(() => setNewChannelMade(true)).then(() => dispatch(getAllChannelsThunk())).then(() => dispatch(authenticate()))
+      }
     }
-  }, [dispatch, user]);
+  }, [dispatch, channelsArray, user]);
 
   return (
     <>

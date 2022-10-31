@@ -8,7 +8,7 @@ from app.api.auth_routes import validation_errors_to_error_messages
 comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/all')
-@login_required
+# @login_required
 def commentsRoute():
     all_comments = Comment.query.all()
     comments = {comment.id: comment.to_dict() for comment in all_comments}
@@ -18,7 +18,7 @@ def commentsRoute():
 
 # specific comment by id
 @comment_routes.route('/<int:id>')
-@login_required
+# @login_required
 def get_comment(id):
     comments = Comment.query.get(id)
     if comments == None:
