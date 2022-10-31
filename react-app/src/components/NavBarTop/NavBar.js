@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
+import ProfileButton from "./ProfileButton/ProfileButton";
 import "./NavBar.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -56,7 +57,7 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
             <div className="NotificationBellNavBar">
               <i class="fa-solid fa-bell"></i>
             </div>
-            <LogoutButton />
+            <ProfileButton />
           </div>
         </div>
       </div>
