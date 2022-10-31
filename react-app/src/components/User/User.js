@@ -68,14 +68,14 @@ function User({ sidePanel }) {
       return (
         <>
           {/* button that changes depending on the category selected in bottom nav*/}
-          <div className="UserSectionButton">Manage Videos</div>
+          <div className="UserSectionButton">Create Video</div>
         </>
       );
     if (category == 3)
       return (
         <>
           {/* button that changes depending on the category selected in bottom nav*/}
-          <div className="UserSectionButton">Manage Playlists</div>
+          <div className="UserSectionButton">Create Playlist</div>
         </>
       );
     if (category == 4)

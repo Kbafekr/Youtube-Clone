@@ -55,7 +55,7 @@ function App() {
 
         {/* upload page */}
         <Route path='/upload' exact={true} >
-          <VideoPage sidePanel={sidePanel}/>
+          <User sidePanel={sidePanel}/>
         </Route>
 
         {/* user settings, create new channel, delete channel, switch channel */}

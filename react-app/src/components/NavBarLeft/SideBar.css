@@ -95,6 +95,9 @@ width: 90%;
 }
 
 .SideBarIcon {
+    width: 20px;
+    /* font-size: 16px; */
+    text-align: left;
     text-decoration: none;
     color: white;
 }
