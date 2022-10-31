@@ -1,0 +1,53 @@
+.DeleteImage-outer {
+    display: flex;
+    justify-content: center;
+    height: 12rem;
+    width: 24rem;
+}
+
+#statement, #assurance {
+    font-weight: 300;
+}
+
+.deleteImageButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+.deleteImageButtons button.submitDeleteImage {
+    color: white;
+    background-color: #348fdc;
+    padding: .5rem 1rem;
+    margin-top: .5rem;
+    border-radius: .3rem;
+    border: none;
+    font-size: 1rem;
+    width: 8rem
+}
+
+.deleteImageButtons button.cancelDeleteImage {
+    color: white;
+    background-color: #979ea2;
+    padding: .5rem 1rem;
+    margin-top: .5rem;
+    border-radius: .3rem;
+    border: none;
+    font-size: 1rem;
+    width: 8rem
+}
+
+.deleteImageButtons button:hover {
+    opacity: .8;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.deleteImageButtons button:active {
+    opacity: .8;
+    cursor: pointer;
+    transform: scale(.98);
+}

@@ -1,0 +1,601 @@
+#details-image {
+    display: grid;
+    justify-content: center;
+    margin-top: -5rem;
+    background-color: #212124;
+    padding: 6rem 0;
+    width: 100%;
+    margin-bottom: -5rem;
+}
+
+#back-explore {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    width: 100%
+}
+
+.LinktoHomeImageDetails:hover {
+    text-decoration-line: underline;
+}
+
+.editArrowComment:hover {
+    cursor: pointer;
+}
+
+#back-explore i,
+a {
+    color: white;
+    font-size: 1rem;
+}
+
+#back-explore a {
+    padding-left: .5rem;
+}
+
+.i {
+    margin-right: -2rem;
+}
+
+#star-like i {
+    color: white;
+}
+
+.img-scoll-like-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+#star-like i {
+    font-size: 1.5rem;
+    /* margin: 0 .8rem; */
+}
+
+#star-like i:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+#image-info {
+    display: flex;
+    justify-content: center;
+    background-color: #f3f5f6;
+    height: 100%;
+    padding-top: 2.5rem;
+    width: 100%;
+}
+
+.owner-info-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: -3.5rem;
+}
+
+.owner-profile-img-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.owner-image-info-container {
+    margin-top: 60px;
+}
+
+.user-profile-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+.user {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-right: 15rem;
+}
+
+.user:hover {
+    color: #266dac;
+    text-decoration: underline;
+}
+
+#title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+#description {
+    font-size: .9rem;
+    font-weight: 400;
+}
+
+#faves {
+    margin-right: 2rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+#comment-talley {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.tag {
+    font-size: .8rem;
+    color: gray;
+    opacity: .8;
+}
+
+#date {
+    margin-left: 3rem;
+    font-weight: 400;
+}
+
+.bottom-border {
+    border-bottom: solid gray thin;
+    margin: 1rem 0;
+    opacity: .3;
+}
+
+.comment-box {
+    font-size: .8rem;
+    font-weight: 400;
+    padding: .5rem 1rem;
+    padding-left: 0rem;
+    flex-wrap: wrap;
+    width: 30rem;
+}
+
+.comment-box:hover {
+    background-color: white;
+}
+
+.comment-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin-right: 20px;
+}
+
+.user-name {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    padding: .02rem;
+}
+
+.user-name-commentDate-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.user-name a {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+    color: #266dac;
+}
+
+.user-name a:hover {
+    text-decoration: underline;
+}
+
+.comment-date {
+    /* margin-left: .5rem; */
+    color: gray;
+}
+
+.edit-delete {
+    display: flex;
+}
+
+.edit-delete i {
+    padding: 0 .5rem;
+    font-size: 1rem;
+    opacity: .3;
+    z-index: -1;
+}
+
+.edit-delete i:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.comment-box:hover .edit-delete i {
+    z-index: 1;
+}
+
+.body {
+    font-size: .8rem;
+    margin-top: -20px;
+    margin-left: 60px;
+}
+
+#user-image-details-container {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    height: 40rem;
+}
+
+#create-comment {
+    display: flex;
+    padding-top: 2rem;
+    width: 100%;
+}
+
+#create-comment form {
+    width: 100%
+}
+
+textarea {
+    height: 5.5rem;
+    width: 99%;
+    border: solid gray thin;
+    border-radius: .3rem;
+    resize: none;
+}
+
+#comment-here:active,
+#comment-here:focus {
+    border: solid #348fdc thin;
+}
+
+.submit-containerParent {
+    display: flex;
+    justify-content: flex-end;
+}
+#submit-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+#submit-comment {
+    color: white;
+    background-color: #348fdc;
+    padding: .5rem 1rem;
+    margin-top: .5rem;
+    border-radius: .3rem;
+    border: none;
+    font-size: 1rem;
+    width: 7rem;
+}
+
+#submit-comment:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+#submit-container:hover {
+    transform: scale(1.1);
+}
+
+#submit-container:active {
+    transform: scale(.98);
+}
+
+/* .bottome-border-2 {
+    display: grid;
+    border-bottom: solid black;
+} */
+
+
+.imageContainerImageDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    width: 100%;
+}
+
+/* Previous Photo */
+.previousImageClick {
+    opacity: 0;
+    transition: 1000ms opacity ease-in-out;
+    display: flex;
+    position: absolute;
+    font-size: 5vmin;
+    left: 60px;
+    z-index: 3;
+    color: white;
+}
+
+#details-image:hover .previousImageClick {
+    opacity: 1;
+    transition: 1000ms opacity ease-in-out;
+    display: flex;
+    position: absolute;
+    font-size: 5vmin;
+    left: 60px;
+    z-index: 3;
+    color: white;
+}
+
+/* Next Photo */
+.nextImageClick {
+    display: flex;
+    opacity: 0;
+    transition: 1000ms opacity ease-in-out;
+    position: absolute;
+    font-size: 5vmin;
+    right: 40px;
+    z-index: 3;
+    color: white;
+}
+
+#details-image:hover .nextImageClick {
+    opacity: 1;
+    transition: 1000ms opacity ease-in-out;
+    display: flex;
+    position: absolute;
+    font-size: 5vmin;
+    right: 40px;
+    z-index: 3;
+    color: white;
+}
+
+/* photo array */
+.leftMostDivImageArrayDetails {
+    width: 10%;
+}
+
+.rightMostDivImageArrayDetails {
+    display: flex;
+    justify-content: flex-end;
+    width: fit-content;
+    height: fit-content;
+}
+
+#star {
+    animation-name: floating;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    /* background-color: none;
+    box-shadow: 2px 4px 4px 4px rgb(213, 215, 190);
+    border-radius: 4rem; */
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 15px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}
+
+/* #star:hover {
+    transform: scale(1.3);
+}
+
+#star:active {
+    transform: scale(.98);
+} */
+
+.HiddenResult {
+    visibility: hidden;
+}
+
+.Filteredsong-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40%;
+    height: 3em;
+    text-align: left;
+    overflow-y: hidden;
+}
+
+.PhotoArrayImageDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    column-gap: 8px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    border-bottom: 0.1em solid #dbdada;
+    scroll-behavior: smooth;
+}
+
+.PhotoArrayImageDetails:hover {
+    overflow-x: auto;
+}
+
+.TrendingsongCard {
+    width: 3em;
+    height: 3em;
+    margin-bottom: 1px;
+    position: relative;
+}
+
+.TrendingsongImage {
+    width: 3em;
+    height: 3em;
+}
+
+
+/* on hover  */
+
+.Filteredsong-container:hover {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+    height: 6em;
+    text-align: left;
+    overflow-y: hidden;
+    transition: all .5s ease-in-out;
+}
+
+.Filteredsong-container:hover .TrendingsongCard {
+    width: 5em;
+    height: 5em;
+    position: relative;
+}
+
+.Filteredsong-container:hover .TrendingsongImage {
+    width: 5em;
+    height: 5em;
+}
+
+
+.LeftSideContainerDetails {
+    display: flex;
+    flex-direction: column;
+    margin-right: 70px;
+}
+
+/* starting tags */
+
+.RightSideContainerDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.topRightSideContainerDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.bottomRightSideContainerDetails {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 10px;
+    align-items: center;
+    /* border-left: solid rgba(128, 128, 128, 0.308) thin; */
+    color: black;
+    /* margin: 1rem 0; */
+    /* margin-left: 10px; */
+    /* margin-top: 30px; */
+    margin-bottom: 30px;
+    height: fit-content;
+}
+
+.TagsHeader {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.bottom-border2 {
+    display: flex;
+    flex-direction: center;
+    border-bottom: solid gray thin;
+    margin: 1rem 0;
+    margin-left: 50px;
+    width: 80%;
+    opacity: .3;
+}
+
+
+/* single tag */
+
+.tagSingleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(202, 202, 202, 0.548);
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem;
+}
+
+.DeleteTagButton {
+    cursor: pointer;
+}
+/* .tagSingleContainer:hover {
+    color: white;
+    background-color: gray;
+    transform: scale(1.2);
+    transition: all .1s ease-in-out;
+} */
+
+.TagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px;
+    width: 20rem
+}
+
+.TagSectionCreateSection {
+    margin-top: 10px;
+}
+
+.tag-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+/* #delete-tag {
+    display: none;
+}
+
+.tagSingleContainer:hover #delete-tag {
+    display: flex;
+    color: white;
+    background-color: gray;
+    cursor: pointer;
+} */
+
+#delete-tag {
+    opacity: .3;
+}
+
+/* top bar edit and delete album */
+
+
+.LinktoHomeImageDetails {
+    display: flex;
+    width: fit-content;
+    column-gap: 10px;
+}
+
+.EditDeleteImageSection {
+    display: flex;
+    width: fit-content;
+    column-gap: 50px;
+    color: white;
+}
+.ImageIndividualContainerAlbums {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 100%;
+    width: 100%;
+}
+.imageDetailsforAlbum {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.imageTitleAlbums {
+    font-weight: bold;
+    color: black;
+}
