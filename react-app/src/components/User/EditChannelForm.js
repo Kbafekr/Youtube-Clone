@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getAllChannelsThunk } from "../../store/channel";
+
 import { updateChannelThunk } from "../../store/channel";
 import "./EditUserForm.css";
 
@@ -89,7 +90,6 @@ function EditChannelForm({ channel, setShowModal }) {
             placeholder="channel name..."
             value={channelName}
             onChange={(e) => setChannelName(e.target.value)}
-            required
           />
           <div className="EditImageHeader">Profile Picture(optional):</div>
           <input
@@ -100,7 +100,6 @@ function EditChannelForm({ channel, setShowModal }) {
             placeholder="Profile Picture(optional)"
             value={profilePicture}
             onChange={(e) => setProfilePicture(e.target.value)}
-            required
           />
           <div className="EditImageHeader">Banner Picture(optional):</div>
           <input
@@ -111,7 +110,6 @@ function EditChannelForm({ channel, setShowModal }) {
             placeholder="Banner Picture(optional)"
             value={bannerPicture}
             onChange={(e) => setBannerPicture(e.target.value)}
-            required
           />
           <div className="done-edit-container">
             <button

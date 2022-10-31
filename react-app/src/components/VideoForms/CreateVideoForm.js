@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { getAllVideosThunk } from "../../store/video";
 import { getAllChannelsThunk } from "../../store/channel";
 import { newVideoThunk } from "../../store/video";
 import "./EditUserForm.css";
@@ -56,7 +57,7 @@ function CreateVideoForm({ setShowModal }) {
         newVideoThunk(channel_id, title, description, video_url)
       )
         .then(() => setShowModal(false))
-        .then(() => dispatch(getAllChannelsThunk()))
+        .then(() => dispatch(getAllVideosThunk())).then(() => dispatch(getAllChannelsThunk()))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
