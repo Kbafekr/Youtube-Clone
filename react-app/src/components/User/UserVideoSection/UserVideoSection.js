@@ -67,7 +67,6 @@ function UserVideoSection() {
     showModalDeleteVideo,
   ]);
 
-  console.log(activeChannel)
   return (
     <>
       <div className="UserChannelsDetailsSectionOuter">

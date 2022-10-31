@@ -14,6 +14,7 @@ video_routes = Blueprint('videos', __name__)
 
 # form['csrf_token'].data = request.cookies['csrf_token']
 
+
 @video_routes.route('/all')
 # @login_required
 def AllVids():
@@ -25,11 +26,10 @@ def AllVids():
 @video_routes.route('/<int:id>')
 # @login_required
 def get_video(id):
-     video = Video.query.get(id)
-     if video == None:
+    video = Video.query.get(id)
+    if video == None:
         return "Video is not available"
-     return video.to_dict()
-
+    return video.to_dict()
 
 
 # using aws
@@ -75,9 +75,6 @@ def create_data():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-
-
-
 @video_routes.route("/<int:id>/edit", methods=["PUT"])
 @login_required
 def edit_Video(id):
@@ -97,6 +94,7 @@ def edit_Video(id):
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
 @video_routes.route("/<int:id>/delete", methods=["DELETE"])
 @login_required
 def delete_video(id):
@@ -104,8 +102,8 @@ def delete_video(id):
     db.session.delete(video)
     db.session.commit()
     return {
-    "Message": "Video successfully deleted",
-    "statusCode": "200"
+        "Message": "Video successfully deleted",
+        "statusCode": "200"
     }
 
 
@@ -121,7 +119,9 @@ def get_comment_by_video(videoId):
         return "Video has no comments"
     return {comment.id: comment.to_dict() for comment in comments}
 
-#Post a comment
+# Post a comment
+
+
 @video_routes.route('/<int:videoId>/comment/new', methods=['POST'])
 @login_required
 def new_Comment(videoId):
@@ -144,9 +144,8 @@ def new_Comment(videoId):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-
-#Edit a comment
-@video_routes.route('/<int:videoId>/comment/<int:id>/edit', methods=['GET','PUT'])
+# Edit a comment
+@video_routes.route('/<int:videoId>/comment/<int:id>/edit', methods=['GET', 'PUT'])
 @login_required
 def edit_Comment(videoId, id):
     form = CommentForm()
@@ -157,14 +156,16 @@ def edit_Comment(videoId, id):
         editedComment.user_id = data['user_id']
         editedComment.video_id = data['video_id']
         editedComment.body = data['body']
-        editedComment.is_reply=data['is_reply'],
-        editedComment.commentReply_id=data['commentReply_id'],
+        editedComment.is_reply = data['is_reply'],
+        editedComment.commentReply_id = data['commentReply_id'],
         db.session.commit()
         return editedComment.to_dict()
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-#Delete a comment
+# Delete a comment
+
+
 @video_routes.route('/<int:videoId>/comment/<int:id>/delete', methods=['GET', 'DELETE'])
 @login_required
 def delete_comment(videoId, id):
@@ -172,6 +173,6 @@ def delete_comment(videoId, id):
     db.session.delete(comment)
     db.session.commit()
     return {
-    "Message": "like successfully deleted",
-    "statusCode": "200"
+        "Message": "like successfully deleted",
+        "statusCode": "200"
     }
