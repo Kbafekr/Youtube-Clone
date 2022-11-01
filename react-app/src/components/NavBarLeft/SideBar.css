@@ -121,3 +121,8 @@ width: 90%;
     overflow-y: scroll;
     overflow-x: hidden;
   }
+
+.showIconSideNavBar {
+    color: white;
+    font-size: 14px;
+}

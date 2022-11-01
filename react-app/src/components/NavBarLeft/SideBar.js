@@ -10,10 +10,9 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
   // const channel = useSelector((state) => state.active.channel);
   let channel_id;
   let user_id;
-if (user != null)
-{
-  user_id = user.id;
-}
+  if (user != null) {
+    user_id = user.id;
+  }
   // useselector channelid, if none take to signup
 
   if (sidePanel == true)
@@ -31,27 +30,35 @@ if (user != null)
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+                <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+                <i class="fa-solid fa-users"></i>
               </div>
               <div>Subscriptions</div>
             </div>
             <div className="SideNavRowContainer">
-              <Link to={user != null ? `/users/${user_id}` : `/login`} className="SideBarIcon" onClick={reloadPage}>
+              <Link
+                to={user != null ? `/users/${user_id}` : `/login`}
+                className="SideBarIcon"
+                onClick={reloadPage}
+              >
                 <i class="fa-solid fa-user"></i>
               </Link>
-              <Link to={user != null ? `/users/${user_id}` : `/login`} className="SideBarText" onClick={reloadPage} >
+              <Link
+                to={user != null ? `/users/${user_id}` : `/login`}
+                className="SideBarText"
+                onClick={reloadPage}
+              >
                 Profile Page
               </Link>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
             </div>
@@ -63,32 +70,41 @@ if (user != null)
           <div className="InternalSideBarSection">
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-book"></i>
               </div>
               <div>Library</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
               </div>
               <div>History</div>
             </div>
             <div className="SideNavRowContainer">
-              <Link onClick={reloadPage}
-                to={channel_id ? {
-                  pathname: `/users/${user.id}`,
-                  state: { directedCategory: 2, uploadModalState: false },
-                } : `/login`}
+              <Link
+                onClick={reloadPage}
+                to={
+                  channel_id
+                    ? {
+                        pathname: `/users/${user.id}`,
+                        state: { directedCategory: 2, uploadModalState: false },
+                      }
+                    : `/login`
+                }
                 className="SideBarIcon"
               >
                 <i class="fa-solid fa-play"></i>
               </Link>
               <Link
                 onClick={reloadPage}
-                to={channel_id ? {
-                  pathname: `/users/${user.id}`,
-                  state: { directedCategory: 2, uploadModalState: false },
-                } : `/login`}
+                to={
+                  channel_id
+                    ? {
+                        pathname: `/users/${user.id}`,
+                        state: { directedCategory: 2, uploadModalState: false },
+                      }
+                    : `/login`
+                }
                 className="SideBarText"
               >
                 Your Videos
@@ -96,13 +112,13 @@ if (user != null)
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-clock"></i>
               </div>
               <div>Watch Later</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-list"></i>
               </div>
               <div>Playlists</div>
             </div>
@@ -116,7 +132,7 @@ if (user != null)
             <div className="SideNavRowContainer">Subscriptions</div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-id-card-clip"></i>
               </div>
               <div>Subscription 1</div>
             </div>
@@ -130,55 +146,55 @@ if (user != null)
             <div className="SideNavRowContainer">Explore</div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-fire"></i>
               </div>
               <div>Trending</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-music"></i>
               </div>
               <div>Music</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-file-video"></i>
               </div>
               <div>Movies & Shows</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-headset"></i>
               </div>
               <div>Gaming</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-newspaper"></i>
               </div>
               <div>News</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-medal"></i>
               </div>
               <div>Sports</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-graduation-cap"></i>
               </div>
               <div>Learning</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-shirt"></i>
               </div>
               <div>Fashion & Beauty</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-podcast"></i>
               </div>
               <div>Podcasts</div>
             </div>
@@ -201,58 +217,75 @@ if (user != null)
             </div>
             <div className="SideNavRowContainerClosed">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+                <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
             </div>
             <div className="SideNavRowContainerClosed">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+                <i class="fa-solid fa-users"></i>
               </div>
               <div>Subscriptions</div>
             </div>
             <div className="SideNavRowContainerClosed">
-              <Link to={`/users/${user_id}`} className="SideBarIcon" onClick={reloadPage}>
+              <Link
+                to={`/users/${user_id}`}
+                className="SideBarIcon"
+                onClick={reloadPage}
+              >
                 <i class="fa-solid fa-user"></i>
               </Link>
-              <Link to={`/users/${user_id}`} className="SideBarText" onClick={reloadPage}>
+              <Link
+                to={`/users/${user_id}`}
+                className="SideBarText"
+                onClick={reloadPage}
+              >
                 Profile Page
               </Link>
             </div>
             <div className="SideNavRowContainerClosed">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
             </div>
             <div className="SideNavRowContainerClosed">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-solid fa-book"></i>
               </div>
               <div>Library</div>
             </div>
             <div className="SideNavRowContainerClosed">
               <div>
-                <i class="fa-sharp fa-solid fa-house"></i>
+              <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
               </div>
               <div>History</div>
             </div>
             <div className="SideNavRowContainerClosed">
-              <Link onClick={reloadPage}
-                to={channel_id ? {
-                  pathname: `/users/${user.id}`,
-                  state: { directedCategory: 2, uploadModalState: false },
-                } : `/login`}
+              <Link
+                onClick={reloadPage}
+                to={
+                  channel_id
+                    ? {
+                        pathname: `/users/${user.id}`,
+                        state: { directedCategory: 2, uploadModalState: false },
+                      }
+                    : `/login`
+                }
                 className="SideBarIcon"
               >
                 <i class="fa-solid fa-play"></i>
               </Link>
               <Link
-               onClick={reloadPage}
-               to={channel_id ? {
-                 pathname: `/users/${user.id}`,
-                 state: { directedCategory: 2, uploadModalState: false },
-               } : `/login`}
+                onClick={reloadPage}
+                to={
+                  channel_id
+                    ? {
+                        pathname: `/users/${user.id}`,
+                        state: { directedCategory: 2, uploadModalState: false },
+                      }
+                    : `/login`
+                }
                 className="SideBarText"
               >
                 Your Videos
