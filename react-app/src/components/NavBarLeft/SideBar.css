@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     color: white;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 /* closed state */
 .SideNavBarContainerClosed {
@@ -32,7 +32,7 @@
     position: absolute;
     min-height: 100%;
     width: 100%;
-    background-color: rgba(89, 89, 89, 0.201);
+    background-color: #181818;
     padding-top: 30px;
     padding-bottom: 20px;
     justify-content: flex-start;
@@ -105,3 +105,19 @@ width: 90%;
     text-decoration: none;
     color: white;
 }
+
+
+
+
+/* side bar scroll */
+
+/* .SideNavBarContainer::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none
+  } */
+
+
+  .SideNavBarContainer:hover {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
