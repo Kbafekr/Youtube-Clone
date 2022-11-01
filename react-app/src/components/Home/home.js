@@ -17,7 +17,7 @@ export function HomePage({ sidePanel }) {
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);
-  const [newChannelMade, setNewChannelMade] = useState(false)
+  const [newChannelMade, setNewChannelMade] = useState(false);
 
   const email =
     "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
@@ -44,8 +44,8 @@ export function HomePage({ sidePanel }) {
       );
       console.log(userChannels.length);
       if (
-        (user.active_channel == null) &&
-        (user.channels[0] != null) &&
+        user.active_channel == null &&
+        user.channels[0] != null &&
         channelsArray != null
       ) {
         dispatch(
@@ -62,10 +62,14 @@ export function HomePage({ sidePanel }) {
       if (
         user.channels.length < 1 &&
         userChannels.length < 1 &&
-        channelsArray != null && newChannelMade == false
+        channelsArray != null &&
+        newChannelMade == false
       ) {
         let channelName = `${user.first_name} ${user.last_name}`;
-        dispatch(newChannelThunk(channelName, user.id, "", "")).then(() => setNewChannelMade(true)).then(() => dispatch(getAllChannelsThunk())).then(() => dispatch(authenticate()))
+        dispatch(newChannelThunk(channelName, user.id, "", ""))
+          .then(() => setNewChannelMade(true))
+          .then(() => dispatch(getAllChannelsThunk()))
+          .then(() => dispatch(authenticate()));
       }
     }
   }, [dispatch, channelsArray, user]);
@@ -76,8 +80,39 @@ export function HomePage({ sidePanel }) {
         className={sidePanel == true ? "homeContainer" : "homeContainerClosed"}
       >
         <div className="homeContainerInner">
-          <div className="homeTagsBar">
-            <h1>Welcome to You2ube</h1>
+          <div className="homeTagsBarContainer">
+            <div className="homeTagsBar">
+              <div className="tagHomePageActive">
+                All
+              </div>
+              <div className="tagHomePage">
+                Mixes
+              </div>
+              <div className="tagHomePage">
+                Gaming
+              </div>
+              <div className="tagHomePage">
+                Music
+              </div>
+              <div className="tagHomePage">
+                Sports
+              </div>
+              <div className="tagHomePage">
+                House of Dragon
+              </div>
+              <div className="tagHomePage">
+                Marvel
+              </div>
+              <div className="tagHomePage">
+                Anime
+              </div>
+              <div className="tagHomePage">
+                Pokemon
+              </div>
+              <div className="tagHomePage">
+                News
+              </div>
+            </div>
           </div>
           <div className="VideosMapped">
             {videosArray &&
