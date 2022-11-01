@@ -43,7 +43,6 @@ export function HomePage({ sidePanel }) {
       const userChannels = channelsArray.filter(
         (channel) => channel.user_id == user.id
       );
-      console.log(userChannels.length);
       if (
         user.active_channel == null &&
         user.channels[0] != null &&
