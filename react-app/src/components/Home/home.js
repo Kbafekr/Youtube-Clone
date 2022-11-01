@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { updateUserThunk } from "../../store/session";
 import { newChannelThunk } from "../../store/channel";
 import { authenticate } from "../../store/session";
+import { amountViews } from "../../Utils/Utils";
 import logo from "../../icons/you2oobLogo.png";
 
 export function HomePage({ sidePanel }) {
@@ -82,36 +83,16 @@ export function HomePage({ sidePanel }) {
         <div className="homeContainerInner">
           <div className="homeTagsBarContainer">
             <div className="homeTagsBar">
-              <div className="tagHomePageActive">
-                All
-              </div>
-              <div className="tagHomePage">
-                Mixes
-              </div>
-              <div className="tagHomePage">
-                Gaming
-              </div>
-              <div className="tagHomePage">
-                Music
-              </div>
-              <div className="tagHomePage">
-                Sports
-              </div>
-              <div className="tagHomePage">
-                House of Dragon
-              </div>
-              <div className="tagHomePage">
-                Marvel
-              </div>
-              <div className="tagHomePage">
-                Anime
-              </div>
-              <div className="tagHomePage">
-                Pokemon
-              </div>
-              <div className="tagHomePage">
-                News
-              </div>
+              <div className="tagHomePageActive">All</div>
+              <div className="tagHomePage">Mixes</div>
+              <div className="tagHomePage">Gaming</div>
+              <div className="tagHomePage">Music</div>
+              <div className="tagHomePage">Sports</div>
+              <div className="tagHomePage">House of Dragon</div>
+              <div className="tagHomePage">Marvel</div>
+              <div className="tagHomePage">Anime</div>
+              <div className="tagHomePage">Pokemon</div>
+              <div className="tagHomePage">News</div>
             </div>
           </div>
           <div className="VideosMapped">
@@ -124,15 +105,70 @@ export function HomePage({ sidePanel }) {
                         className="VideoPreviewHome"
                         onClick={() => history.push(`/videos/${video.id}`)}
                       >
+                        {video.video_url.includes('s3') ?
+                        ( <ReactPlayer
+                          width="100%"
+                          height="100%"
+                          url={video.video_url}
+                          playIcon={true}
+
+                        />) :
                         <ReactPlayer
                           width="100%"
                           height="100%"
                           url={video.video_url}
                           light={true}
                           playIcon={true}
-                        />
+                        /> }
+                        +
                       </div>
-                      <div className="VideoTitleCard">{video.title}</div>
+                      {channelsArray &&
+                        channelsArray.map((channel) => {
+                          return (
+                            <>
+                              {channel.id == video.channel_id ? (
+                                <div className="HomeVideoCardBottomSection">
+                                  <div className="profileImageHomeVideoArray">
+                                    <img
+                                      className="channelPictureHomeArray"
+                                      alt="channel"
+                                      src={channel.profile_picture}
+                                    />
+                                  </div>
+                                  <div className="HomeVideoArrayChannelDetails">
+                                    <div className="VideoTitleCard" onClick={() => history.push(`/videos/${video.id}`)}>
+                                      {video.title}
+                                    </div>
+                                    <div
+                                      className="flexColumn"
+                                      id="homeArrayChannelDetails"
+                                    >
+                                      <div
+                                        className="flexRow"
+                                        id="ChannelNameHomeArray"
+                                      >
+                                        <div>{channel.channel_name}</div>
+                                        <div id="verifiedCheckMark">
+                                          <i class="fa-solid fa-check"></i>
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="flexRow"
+                                        id="homeArrayChannelViews"
+                                      >
+                                        <div>{amountViews()}</div>
+                                        <div className="CircleDiv" />
+                                        <div>{video.created_at.slice(0,16)}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </>
+                          );
+                        })}
                     </div>
                   </>
                 );

@@ -7,16 +7,24 @@ import { getAllVideosThunk, getOneVideoThunk } from "../../store/video";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { amountViews } from "../../Utils/Utils";
 import logo from "../../icons/you2oobLogo.png";
+import { getAllChannelsThunk } from "../../store/channel";
 
 export function VideoPage({ sidePanel }) {
   const { videoId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
+  const channels = useSelector((state) => state.channel);
+
   const videos = useSelector((state) => state.video);
 
   const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    dispatch(getAllChannelsThunk());
+  }, [dispatch, user]);
 
   useEffect(() => {
     (async () => {
@@ -29,8 +37,9 @@ export function VideoPage({ sidePanel }) {
     return null;
   }
   let videosArray;
-
+  let channelsArray;
   videosArray = Object.values(videos);
+  channelsArray = Object.values(channels);
 
   let filteredVideo;
   let notVideoArray;
@@ -65,9 +74,50 @@ export function VideoPage({ sidePanel }) {
                 <div className="VideoDetailsTitle">
                   {filteredVideo[0].title}
                 </div>
-                <div className="VideoDetailsChannelSection">
-                  {filteredVideo[0].channel_id}
-                </div>
+                {channelsArray &&
+                  channelsArray.map((channel) => {
+                    return (
+                      <>
+                        {channel.id == filteredVideo[0].channel_id ? (
+                          <div className="VideoDetailsContainerSection">
+                            <div className="profileImageHomeVideoArray">
+                              <img
+                                className="channelPictureHomeArray"
+                                alt="channel"
+                                src={channel.profile_picture}
+                              />
+                            </div>
+                            <div className="HomeVideoArrayChannelDetails">
+                              <div
+                                className="flexColumn"
+                                id="homeArrayChannelDetails"
+                              >
+                                <div
+                                  className="flexRow"
+                                  id="ChannelNameHomeArray"
+                                >
+                                  <div>{channel.channel_name}</div>
+                                  <div id="verifiedCheckMark">
+                                    <i class="fa-solid fa-check"></i>
+                                  </div>
+                                </div>
+                                <div
+                                  className="flexRow"
+                                  id="homeArrayChannelViews"
+                                >
+                                  <div>{amountViews()}</div>
+                                  <div className="CircleDiv" />
+                                  <div>{channel.created_at.slice(0, 16)}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </>
+                    );
+                  })}
                 <div className="VideoDetailsDescriptionSection">
                   {filteredVideo[0].description}
                 </div>
@@ -80,26 +130,79 @@ export function VideoPage({ sidePanel }) {
             <div className="RightSideVideoDetailsSection">
               <div>Recommended Videos Section</div>
               <div className="RecommendedArraySection">
-                    {notVideoArray &&
-                        notVideoArray.map((video) => {
+                {notVideoArray &&
+                  notVideoArray.map((video) => {
                     return (
                       <>
-                        <div className="VideoCardRecommended">
+                        <div
+                          className="VideoCardRecommended"
+                          onClick={() => history.push(`/videos/${video.id}`)}
+                        >
                           <div
                             className="RecommendedVideoPreview"
                             onClick={() => history.push(`/videos/${video.id}`)}
                           >
-                            <ReactPlayer
-                              width="100%"
-                              height="100%"
-                              url={video.video_url}
-                              light={true}
-                              playIcon={true}
-                            />
+                            {video.video_url.includes("s3") ? (
+                              <ReactPlayer
+                                width="100%"
+                                height="100%"
+                                url={video.video_url}
+                                playIcon={true}
+                              />
+                            ) : (
+                              <ReactPlayer
+                                width="100%"
+                                height="100%"
+                                url={video.video_url}
+                                light={true}
+                                playIcon={true}
+                              />
+                            )}
                           </div>
                           <div className="RecommendedVideoDetailsSection">
-                            <div className="RecommendedVideoTitle">{video.title}</div>
-                            <div className="RecommendedVideoChannelDetails">{video.channel_id}</div>
+                      
+
+                            {channelsArray &&
+                        channelsArray.map((channel) => {
+                          return (
+                            <>
+                              {channel.id == video.channel_id ? (
+                                <div className="HomeVideoCardBottomSection">
+
+                                  <div className="HomeVideoArrayChannelDetails">
+                                    <div className="VideoTitleCard" onClick={() => history.push(`/videos/${video.id}`)}>
+                                      {video.title}
+                                    </div>
+                                    <div
+                                      className="flexColumn"
+                                      id="homeArrayChannelDetails"
+                                    >
+                                      <div
+                                        className="flexRow"
+                                        id="ChannelNameHomeArray"
+                                      >
+                                        <div>{channel.channel_name}</div>
+                                        <div id="verifiedCheckMark">
+                                          <i class="fa-solid fa-check"></i>
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="flexRow"
+                                        id="homeArrayChannelViews"
+                                      >
+                                        <div>{amountViews()}</div>
+                                        <div className="CircleDiv" />
+                                        <div>{video.created_at.slice(0,16)}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </>
+                          );
+                        })}
                           </div>
                         </div>
                       </>
@@ -114,11 +217,9 @@ export function VideoPage({ sidePanel }) {
   }
   if (!filteredVideo[0] && loaded) {
     return (
-        <>
-        <div>
-            {history.push('/')}
-        </div>
-        </>
-    )
+      <>
+        <div>{history.push("/")}</div>
+      </>
+    );
   }
 }

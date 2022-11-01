@@ -31,7 +31,8 @@ align-items: center;
     flex-wrap: wrap;
     height: 100%;
     width: 100%;
-    gap: 50px;
+    row-gap: 30px;
+    column-gap: 50px;
 }
 .VideoCardHome {
     height: 300px;
@@ -39,15 +40,97 @@ align-items: center;
 
 .VideoPreviewHome {
     height: 190px;
-    width: 290px;
+    width: 300px;
     border-radius: 50px;
     cursor: pointer;
 }
 
-.VideoTitleCard {
+.HomeVideoCardBottomSection {
     width: 300px;
-    flex-wrap: wrap;
+    height: 100px;
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
 }
+
+.profileImageHomeVideoArray {
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.channelPictureHomeArray {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+
+/* right side channel section */
+.HomeVideoArrayChannelDetails {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.VideoTitleCard {
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    flex-wrap: wrap;
+    height: 38px;
+    overflow: hidden;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.ChannelDetailsContainerHomeVideoArray {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#ChannelNameHomeArray {
+ gap: 10px;
+}
+
+#verifiedCheckMark {
+    color: green;
+    background-color: white;
+    font-size: 12px;
+    margin-top: 2px;
+    height: fit-content;
+    padding: 0px 1px;
+    border-radius: 50px;
+
+}
+
+#homeArrayChannelDetails {
+    display: flex;
+    gap: 5px;
+    color: rgb(214, 213, 213);
+
+}
+
+#homeArrayChannelViews {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+}
+
+.CircleDiv {
+    height: 3px;
+    width: 3px;
+    border-radius: 50px;
+    background-color: rgb(214, 213, 213);
+}
+
 
 /* top tags bar */
 .homeTagsBarContainer {
