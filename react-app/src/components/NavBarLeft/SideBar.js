@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { Link } from "react-router-dom";
+import reloadPage from "../../Utils/Utils";
 import "./SideBar.css";
 const SideBarNav = ({ sidePanel, setSidePanel }) => {
   const user = useSelector((state) => state.session.user);
@@ -41,10 +42,10 @@ if (user != null)
               <div>Subscriptions</div>
             </div>
             <div className="SideNavRowContainer">
-              <Link to={user != null ? `/users/${user_id}` : `/login`} className="SideBarIcon">
+              <Link to={user != null ? `/users/${user_id}` : `/login`} className="SideBarIcon" onClick={reloadPage}>
                 <i class="fa-solid fa-user"></i>
               </Link>
-              <Link to={user != null ? `/users/${user_id}` : `/login`} className="SideBarText">
+              <Link to={user != null ? `/users/${user_id}` : `/login`} className="SideBarText" onClick={reloadPage} >
                 Profile Page
               </Link>
             </div>
@@ -73,14 +74,21 @@ if (user != null)
               <div>History</div>
             </div>
             <div className="SideNavRowContainer">
-              <Link
-                to={channel_id ? `/channels/${channel_id}` : `/sign-up`}
+              <Link onClick={reloadPage}
+                to={channel_id ? {
+                  pathname: `/users/${user.id}`,
+                  state: { directedCategory: 2, uploadModalState: false },
+                } : `/login`}
                 className="SideBarIcon"
               >
                 <i class="fa-solid fa-play"></i>
               </Link>
               <Link
-                to={channel_id ? `/channels/${channel_id}` : `/sign-up`}
+                onClick={reloadPage}
+                to={channel_id ? {
+                  pathname: `/users/${user.id}`,
+                  state: { directedCategory: 2, uploadModalState: false },
+                } : `/login`}
                 className="SideBarText"
               >
                 Your Videos
@@ -204,10 +212,10 @@ if (user != null)
               <div>Subscriptions</div>
             </div>
             <div className="SideNavRowContainerClosed">
-              <Link to={`/users/${user_id}`} className="SideBarIcon">
+              <Link to={`/users/${user_id}`} className="SideBarIcon" onClick={reloadPage}>
                 <i class="fa-solid fa-user"></i>
               </Link>
-              <Link to={`/users/${user_id}`} className="SideBarText">
+              <Link to={`/users/${user_id}`} className="SideBarText" onClick={reloadPage}>
                 Profile Page
               </Link>
             </div>
@@ -230,14 +238,21 @@ if (user != null)
               <div>History</div>
             </div>
             <div className="SideNavRowContainerClosed">
-              <Link
-                to={channel_id ? `/channels/${channel_id}` : `/sign-up`}
+              <Link onClick={reloadPage}
+                to={channel_id ? {
+                  pathname: `/users/${user.id}`,
+                  state: { directedCategory: 2, uploadModalState: false },
+                } : `/login`}
                 className="SideBarIcon"
               >
                 <i class="fa-solid fa-play"></i>
               </Link>
               <Link
-                to={channel_id ? `/channels/${channel_id}` : `/sign-up`}
+               onClick={reloadPage}
+               to={channel_id ? {
+                 pathname: `/users/${user.id}`,
+                 state: { directedCategory: 2, uploadModalState: false },
+               } : `/login`}
                 className="SideBarText"
               >
                 Your Videos

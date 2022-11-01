@@ -6,7 +6,7 @@ import "./NavBar.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import logo from "../../icons/you2oobLogo.png";
-
+import reloadPage from '../../Utils/Utils'
 // import searchbar
 import { SearchBar } from "./SearchBar/SearchBar";
 
@@ -45,14 +45,15 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
         Users
       </NavLink> */}
           <div className="RightContainerTopNav">
-            <Link
+          <Link
               to={{
                 pathname: `/users/${user.id}`,
-                state: { directedCategory: 5, uploadModalState: true },
-              }}
+                state: { directedCategory: 2, uploadModalState: true },
+             }}
               className="UploadCameraNavBar"
-            >
+              onClick={reloadPage}>
               <i class="fa-sharp fa-solid fa-video"></i>
+
             </Link>
             <div className="NotificationBellNavBar">
               <i class="fa-solid fa-bell"></i>

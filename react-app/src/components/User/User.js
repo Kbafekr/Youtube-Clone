@@ -11,6 +11,9 @@ import CreateChannelForm from "./UserChannelSection/CreateChannelForm";
 // videos
 import CreateVideoForm from "./UserVideoSection/VideoForms/CreateVideoForm";
 
+// import uuid from 'react-uuid'
+
+
 import { updateUserThunk } from "../../store/session";
 import { getAllChannelsThunk } from "../../store/channel";
 import { useLocation } from "react-router-dom";
@@ -129,6 +132,13 @@ function User({ sidePanel }) {
     showModalDelete,
     showModalCreateVideo,
   ]);
+
+
+  const array = ['a', 'b', 'c']
+
+  const LineItem = item => <li key={parseInt(Math.random() * 100 * Math.random())}>{item}</li>
+  const List = () => array.map(item => <LineItem item={item} />)
+
 
   const ButtonChange = () => {
     if (category == 1)

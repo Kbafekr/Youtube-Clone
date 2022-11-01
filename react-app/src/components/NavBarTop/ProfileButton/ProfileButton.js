@@ -5,6 +5,7 @@ import LogoutButton from "../../auth/LogoutButton";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../store/session";
 import "./ProfileButton.css";
+import reloadPage from "../../../Utils/Utils";
 
 export default function ProfileButton() {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ export default function ProfileButton() {
                 <div className="ProfileDDChannelName">
                   {activeChannel[0].channel_name}
                 </div>
-                <Link
+                <Link onClick={reloadPage}
                   to={{
                     pathname: `/users/${user.id}`,
                     state: { directedCategory: 5, uploadModalState: true },
@@ -75,7 +76,7 @@ export default function ProfileButton() {
               </div>
             </div>
             <div className="ProfileDDUserSection">
-              <Link
+              <Link onClick={reloadPage}
                 to={{
                   pathname: `/users/${user.id}`,
                   state: { directedCategory: 4, uploadModalState: false },
@@ -85,7 +86,7 @@ export default function ProfileButton() {
                 <i class="fa-solid fa-user"></i>
                 <div>Your Channel</div>
               </Link>
-              <Link
+              <Link onClick={reloadPage}
                 to={{
                   pathname: `/users/${user.id}`,
                   state: { directedCategory: 2, uploadModalState: false },
