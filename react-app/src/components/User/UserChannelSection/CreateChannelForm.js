@@ -53,14 +53,14 @@ function CreateChannelForm({setShowModal}) {
   };
 
   return (
-    <div className="Edit-image-container">
-      <div className="edit-image-container">
+    <div className="EditUser-outer">
+      <div className="edit-user-containerinner">
         <form
-          className="Edit-image-inner"
+          className="Edit-User-inner"
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
-          <h2 className="EditImageHeader">Create New Channel</h2>
+          <h2 className="EditUserHeaderTop">Create New Channel</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -74,7 +74,7 @@ function CreateChannelForm({setShowModal}) {
               </div>
             )}
           </div>
-          <div className="EditImageHeader">Channel Name:</div>
+          <div className="EditUserHeader">Channel Name:</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
@@ -85,7 +85,7 @@ function CreateChannelForm({setShowModal}) {
             onChange={(e) => setChannelName(e.target.value)}
             // required
           />
-          <div className="EditImageHeader">Profile Picture(optional):</div>
+          <div className="EditUserHeader">Profile Picture(optional):</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
@@ -95,27 +95,26 @@ function CreateChannelForm({setShowModal}) {
             value={profilePicture}
             onChange={(e) => setProfilePicture(e.target.value)}
           />
-          <div className="EditImageHeader">Banner Picture(optional):</div>
+          <div className="EditUserHeader">Banner Picture(optional):</div>
           <input
             className="preview-image-input"
-            id="edit-image-input"
+            id="edit-channel-input"
             type="url"
             name="preview-image"
             placeholder="Banner Picture(optional)"
             value={bannerPicture}
             onChange={(e) => setBannerPicture(e.target.value)}
           />
-          <div className="done-edit-container">
+          <div className="deleteImageButtons">
             <button
-              className="done-edit-bttn"
+              className="submitDeleteImage"
               onClick={handleSubmit}
               type="submit"
             >
               Submit Channel
             </button>
             <button
-              id="done-edit-cancel-bttn"
-              className="done-edit-bttn"
+              className="cancelDeleteImage"
               onClick={() => setShowModal(false)}
               type="submit"
             >

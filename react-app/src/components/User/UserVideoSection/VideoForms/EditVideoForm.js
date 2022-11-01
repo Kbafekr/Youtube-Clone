@@ -71,14 +71,14 @@ function EditVideoForm({ video, setShowModal }) {
   };
 
   return (
-    <div className="Edit-image-container">
-      <div className="edit-image-container">
+    <div className="EditUser-outer">
+      <div className="edit-user-containerinner">
         <form
-          className="Edit-image-inner"
+          className="Edit-User-inner"
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
-          <h2 className="EditImageHeader">Edit Video</h2>
+          <h2 className="EditUserHeaderTop">Edit Video</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -92,37 +92,36 @@ function EditVideoForm({ video, setShowModal }) {
               </div>
             )}
           </div>
-          <div className="EditImageHeader">Title:</div>
+          <div className="EditUserHeader">Title:</div>
           <input
             className="preview-image-input"
-            id="edit-image-input"
+            id="edit-channel-input"
             type="text"
             name="preview-image"
             placeholder="title..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div className="EditImageHeader">Description:</div>
+          <div className="EditUserHeader">Description:</div>
           <input
             className="preview-image-input"
-            id="edit-image-input"
+            id="edit-channel-input"
             type="text"
             name="preview-image"
             placeholder="Profile Picture(optional)"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <div className="done-edit-container">
+          <div className="deleteImageButtons">
             <button
-              className="done-edit-bttn"
+              className="submitDeleteImage"
               onClick={handleSubmit}
               type="submit"
             >
               Submit Edit
             </button>
             <button
-              id="done-edit-cancel-bttn"
-              className="done-edit-bttn"
+              className="cancelDeleteImage"
               onClick={() => setShowModal(false)}
               type="submit"
             >

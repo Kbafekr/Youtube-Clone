@@ -60,14 +60,14 @@ function EditUserForm({ user, setShowModal }) {
   };
 
   return (
-    <div className="Edit-image-container">
-      <div className="edit-image-container">
+    <div className="EditUser-outer">
+      <div className="edit-user-containerinner">
         <form
-          className="Edit-image-inner"
+          className="Edit-User-inner"
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
-          <h2 className="EditImageHeader">Edit User Information</h2>
+          <h2 className="EditUserHeaderTop">Edit User Information</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -81,7 +81,7 @@ function EditUserForm({ user, setShowModal }) {
               </div>
             )}
           </div>
-          <div className="EditImageHeader">First Name:</div>
+          <div className="EditUserHeader">First Name:</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
@@ -92,7 +92,7 @@ function EditUserForm({ user, setShowModal }) {
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-          <div className="edit-comment-title">Last Name</div>
+          <div className="EditUserHeader">Last Name</div>
 
           <input
             className="preview-image-input"
@@ -103,17 +103,17 @@ function EditUserForm({ user, setShowModal }) {
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-          <div className="done-edit-container">
+          <div className="deleteImageButtons">
             <button
-              className="done-edit-bttn"
+              className="submitDeleteImage"
               onClick={handleSubmit}
               type="submit"
             >
               Submit Edit
             </button>
             <button
-              id="done-edit-cancel-bttn"
-              className="done-edit-bttn"
+
+              className="cancelDeleteImage"
               onClick={() => setShowModal(false)}
               type="submit"
             >

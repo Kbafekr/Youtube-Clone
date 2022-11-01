@@ -1,12 +1,14 @@
 .DeleteImage-outer {
     display: flex;
     justify-content: center;
-    height: 12rem;
-    width: 24rem;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
 }
 
 #statement, #assurance {
     font-weight: 300;
+    font-size: 18px;
 }
 
 .deleteImageButtons{

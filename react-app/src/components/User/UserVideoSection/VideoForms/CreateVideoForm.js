@@ -78,14 +78,14 @@ function CreateVideoForm({ setShowModal }) {
   };
 
   return (
-    <div className="Edit-image-container">
-      <div className="edit-image-container">
+    <div className="EditUser-outer">
+      <div className="edit-user-containerinner">
         <form
-          className="Edit-image-inner"
+          className="Edit-User-inner"
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
-          <h2 className="EditImageHeader">Create New Video</h2>
+          <h2 className="EditUserHeaderTop">Create New Video</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -99,20 +99,20 @@ function CreateVideoForm({ setShowModal }) {
               </div>
             )}
           </div>
-          <div className="EditImageHeader">Video Title:</div>
+          <div className="EditUserHeader">Video Title:</div>
           <input
             className="preview-image-input"
-            id="edit-image-input"
+            id="edit-channel-input"
             type="text"
             name="preview-image"
             placeholder="Video Title..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div className="EditImageHeader">Description:</div>
+          <div className="EditUserHeader">Description:</div>
           <input
             className="preview-image-input"
-            id="edit-image-input"
+            id="edit-channel-input"
             type="text"
             name="preview-image"
             placeholder="Description..."
@@ -122,7 +122,7 @@ function CreateVideoForm({ setShowModal }) {
 
 
 
-          <div className="EditImageHeader">Video File (MP4 and MOV only):</div>
+          <div className="EditUserHeader">Video File (MP4 and MOV only):</div>
           <input
             className="preview-image-input"
             id="edit-image-input"
@@ -133,17 +133,16 @@ function CreateVideoForm({ setShowModal }) {
           />
 
 
-          <div className="done-edit-container">
+          <div className="deleteImageButtons">
             <button
-              className="done-edit-bttn"
+              className="submitDeleteImage"
               onClick={handleSubmit}
               type="submit"
             >
               Submit Video
             </button>
             <button
-              id="done-edit-cancel-bttn"
-              className="done-edit-bttn"
+              className="cancelDeleteImage"
               onClick={() => setShowModal(false)}
               type="submit"
             >
