@@ -112,18 +112,18 @@ function CreateReplyForm({comment}) {
 
             <div className="deleteImageButtons">
             <button
-              className="cancelDeleteImage"
-              onClick={() => setBody("")}
-              type="submit"
-              >
-              Cancel
-            </button>
-            <button
               className="submitDeleteImage"
               onClick={handleSubmit}
               type="submit"
             >
               Comment
+            </button>
+            <button
+              className="cancelDeleteImage"
+              onClick={() => setBody("")}
+              type="submit"
+              >
+              Cancel
             </button>
           </div>
               )}
