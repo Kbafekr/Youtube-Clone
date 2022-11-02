@@ -166,7 +166,7 @@ export function RepliesSection({ comment }) {
                                                 )}
                                               </div>
                                               {sessionUser.id ===
-                                              comment.user_id ? (
+                                              replies.user_id ? (
                                                 <div className="EditCommentFavicon">
                                                   {showModalDelete && (
                                                     <Modal

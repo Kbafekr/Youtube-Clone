@@ -121,7 +121,7 @@ export function VideoPage({ sidePanel }) {
                               </div>
 
                               <div className="notificationBellVideoPlay">
-                                <i class="fa-solid fa-bell"></i>
+                                {/* <i class="fa-solid fa-bell"></i> */}
                               </div>
                             </div>
 
