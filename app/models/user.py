@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     # relationships backref
     channels = db.relationship("Channel", backref='user', cascade="all, delete-orphan")
     likes = db.relationship("Like", backref='user', cascade="all, delete-orphan")
+    dislikes = db.relationship("Dislike", backref='user', cascade="all, delete-orphan")
 
     @property
     def password(self):

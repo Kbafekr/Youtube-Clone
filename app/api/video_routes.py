@@ -5,7 +5,8 @@ from .auth_routes import validation_errors_to_error_messages
 
 from app.forms.video_form import VideoForm
 from app.forms.comment_form import CommentForm
-from app.models import Comment, Video, db
+from app.forms.tag_form import TagForm
+from app.models import Comment, Video, db, Tag, Like, Dislike
 
 from app.api.aws_routes import (
     upload_file_to_s3, allowed_file, get_unique_filename)
@@ -175,4 +176,175 @@ def delete_comment(videoId, id):
     return {
         "Message": "like successfully deleted",
         "statusCode": "200"
+    }
+
+
+
+
+
+# likes
+
+
+
+# Get All Likes by video id (move to images routes)
+# video/comments/videoId
+@video_routes.route('/<int:videoId>/likes')
+@login_required
+def videoLikes(videoId):
+    all_likes = Like.query.filter_by(video_id=videoId).all()
+    if all_likes == None:
+        return {
+        "Message": "Video has no likes",
+        "statusCode": "200"
+    }
+    likes = {like.id: like.to_dict() for like in all_likes}
+    return likes
+
+# Make a new Like
+@video_routes.route('/<int:videoId>/likes/new', methods=["POST"])
+@login_required
+def postLike(videoId):
+
+        like = Like.query.filter_by(video_id=videoId, user_id=current_user.id).first()
+        if like:
+            db.session.delete(like)
+            db.session.commit()
+            return like.to_dict()
+        else:
+            new_like = Like(
+            user_id=current_user.id,
+            video_id=videoId
+        )
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict()
+
+#Delete a comment
+@video_routes.route('/<int:videoId>/likes/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_likes(id):
+    likes = Like.query.get(id).all()
+
+    # likes = Like.query.get(id)
+    db.session.delete(likes)
+    db.session.commit()
+    return "Successfully Deleted Comment"
+
+
+
+
+
+
+
+
+# dislikes
+
+
+
+# Get All dislikes by video id (move to images routes)
+# video/comments/videoId
+@video_routes.route('/<int:videoId>/dislikes')
+@login_required
+def videoDislikes(videoId):
+    all_dislikes = Dislike.query.filter_by(video_id=videoId).all()
+    if all_dislikes == None:
+        return {
+        "Message": "Video has no dislikes",
+        "statusCode": "200"
+    }
+    dislikes = {dislike.id: dislike.to_dict() for dislike in all_dislikes}
+    return dislikes
+
+# Make a new Like
+@video_routes.route('/<int:videoId>/likes/new', methods=["POST"])
+@login_required
+def postDislike(videoId):
+
+        dislike = Dislike.query.filter_by(video_id=videoId, user_id=current_user.id).first()
+        if dislike:
+            db.session.delete(dislike)
+            db.session.commit()
+            return dislike.to_dict()
+        else:
+            new_dislike = Dislike(
+            user_id=current_user.id,
+            video_id=videoId
+        )
+        db.session.add(new_dislike)
+        db.session.commit()
+        return new_dislike.to_dict()
+
+#Delete a comment
+@video_routes.route('/<int:videoId>/likes/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_dislikes(id):
+    dislikes = Dislike.query.get(id).all()
+
+    # likes = Like.query.get(id)
+    db.session.delete(dislikes)
+    db.session.commit()
+    return "Successfully Removed dislike"
+
+
+
+# tags
+
+
+# all tags by videoId
+@video_routes.route('/<int:videoId>/tag', methods=["GET"])
+@login_required
+def get_tagsbyVideo(videoId):
+    tags = Tag.query.filter_by(video_id=videoId).all()
+    if tags == None:
+        return {
+        "Message": "Video has no tags",
+        "statusCode": "200"
+    }
+    return {tag.id: tag.to_dict() for tag in tags}
+
+#Post a tag
+@video_routes.route('/<int:videoId>/tag/new', methods=['POST'])
+@login_required
+def new_Tag(videoId):
+    form = TagForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        new_tag = Tag(
+            channel_id=data['channel_id'],
+            video_id=data['video_id'],
+            body=data['body'],
+        )
+        db.session.add(new_tag)
+        db.session.commit()
+        return new_tag.to_dict()
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+#Edit a tag
+@video_routes.route('/<int:videoId>/tag/<int:id>/edit', methods=['GET','PUT'])
+@login_required
+def edit_Tag(videoId, id):
+    form = TagForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        editedTag = Tag.query.get(id)
+        data = form.data
+        editedTag.body = data['body']
+        db.session.commit()
+        return editedTag.to_dict()
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return render_template("test.html", form=form)
+
+#Delete a tag
+@video_routes.route('/<int:videoId>/tag/<int:id>/delete', methods=['GET', 'DELETE'])
+@login_required
+def delete_Tag(videoId, id):
+    tag = Tag.query.get(id)
+    db.session.delete(tag)
+    db.session.commit()
+    return {
+    "Message": "Tag successfully deleted",
+    "statusCode": "200"
     }

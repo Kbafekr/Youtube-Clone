@@ -12,7 +12,10 @@ class Video(db.Model):
     video_url = db.Column(db.String, nullable=False)
 
     comments = db.relationship("Comment", backref='video', cascade="all, delete-orphan")
+    tags = db.relationship("Tag", backref='video', cascade="all, delete-orphan")
     likes = db.relationship("Like", backref='video', cascade="all, delete-orphan")
+    dislikes = db.relationship("Dislike", backref='video', cascade="all, delete-orphan")
+
     # timestamps
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -29,6 +32,7 @@ class Video(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'comments': [comment.to_dict() for comment in self.comments],
+            'tags': [tag.to_dict() for tag in self.tags],
             'likes': [like.to_dict() for like in self.likes],
-
+            'dislikes': [dislike.to_dict() for dislike in self.dislikes]
         }

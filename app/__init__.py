@@ -12,6 +12,7 @@ from .api.channel_routes import channel_routes
 from .api.video_routes import video_routes
 from .api.comment_routes import comment_routes
 from .api.tags_routes import Tags_routes
+from .api.likes_routes import Likes_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -38,6 +39,7 @@ app.register_blueprint(channel_routes, url_prefix='/api/channels')
 app.register_blueprint(video_routes, url_prefix='/api/videos')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
 app.register_blueprint(Tags_routes, url_prefix='/api/tags')
+app.register_blueprint(Likes_routes, url_prefix='/api/likes')
 db.init_app(app)
 Migrate(app, db)
 

@@ -55,9 +55,9 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
               <i class="fa-sharp fa-solid fa-video"></i>
 
             </Link>
-            <div className="NotificationBellNavBar">
+            {/* <div className="NotificationBellNavBar">
               <i class="fa-solid fa-bell"></i>
-            </div>
+            </div> */}
             <ProfileButton />
           </div>
         </div>

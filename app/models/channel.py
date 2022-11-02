@@ -16,6 +16,8 @@ class Channel(db.Model):
 
     # relationships backref
     videos = db.relationship("Video", backref='channel', cascade="all, delete-orphan")
+    tags = db.relationship("Tag", backref='channel', cascade="all, delete-orphan")
+
 
     def to_dict(self):
         return {
@@ -26,5 +28,6 @@ class Channel(db.Model):
             'banner_picture': self.banner_picture,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'videos': [video.to_dict() for video in self.videos]
+            'videos': [video.to_dict() for video in self.videos],
+            'tags': [tag.to_dict() for tag in self.tags]
         }
