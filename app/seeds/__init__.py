@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .channels import seed_channels, undo_channels
 from .videos import seed_videos, undo_videos
 from .comments import seed_comments, undo_comments
+from .tags import seed_tags, undo_tags
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -16,6 +17,7 @@ def seed():
     seed_channels()
     seed_videos()
     seed_comments()
+    seed_tags()
     # Add other seed functions here
 
 
@@ -26,4 +28,5 @@ def undo():
     undo_channels()
     undo_videos()
     undo_comments()
+    undo_tags()
     # Add other undo functions here
