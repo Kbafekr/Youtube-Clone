@@ -77,7 +77,7 @@ export default function reducer(state = initialState, action) {
             return newState;
         }
         case GETVIDEODISLIKES: {
-            const newState = { ...action.videoId }
+            const newState = { ...action.video_id }
             return newState
         }
         case CREATE_DISLIKES: {

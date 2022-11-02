@@ -102,7 +102,7 @@ export default function reducer(state = initialState, action) {
       }
       case VIDEO_TAGS: {
         // const newState = {}
-        const newState = {...action.videoId}
+        const newState = {...action.video_id}
         // action.image.likes.forEach((like) => {
         //     newState[like.id] = like
         // })

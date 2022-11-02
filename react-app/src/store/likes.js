@@ -76,7 +76,7 @@ export default function reducer(state = initialState, action) {
             return newState;
         }
         case GETVIDEOLIKES: {
-            const newState = { ...action.imageId }
+            const newState = { ...action.video_id }
             return newState
         }
         case CREATE_LIKES: {

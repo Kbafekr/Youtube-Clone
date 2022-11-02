@@ -252,7 +252,7 @@ def allDislikes():
         "Message": "No dislikes",
         "statusCode": "200"
     }
-    dislikes = {dislike.id: dislike.to_dict() for dislike in all_dislikes}
+    dislikes = {"dislikes": [dislike.to_dict() for dislike in all_dislikes]}
     return dislikes
 
 # Get All dislikes by video id (move to images routes)

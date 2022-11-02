@@ -13,7 +13,9 @@ import { amountViews } from "../../Utils/Utils";
 import logo from "../../icons/you2oobLogo.png";
 
 import { getAllTagsThunk } from "../../store/tags";
-import getAll
+import {getAllLikesThunk} from '../../store/likes'
+import {getAllDisLikesThunk} from '../../store/dislikes'
+
 export function HomePage({ sidePanel }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,6 +40,15 @@ export function HomePage({ sidePanel }) {
 
   useEffect(() => {
     dispatch(getAllVideosThunk());
+  }, [dispatch, user]);
+  useEffect(() => {
+    dispatch(getAllLikesThunk());
+  }, [dispatch, user]);
+  useEffect(() => {
+    dispatch(getAllDisLikesThunk());
+  }, [dispatch, user]);
+  useEffect(() => {
+    dispatch(getAllTagsThunk());
   }, [dispatch, user]);
 
   useEffect(() => {
