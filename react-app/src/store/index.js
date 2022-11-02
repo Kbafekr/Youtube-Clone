@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import session from './session'
 import video from './video'
 import channel from './channel'
+import allusers from './allusers'
 import comment from './comment'
 
 const rootReducer = combineReducers({
   session,
+  allusers,
   video,
   channel,
   comment
