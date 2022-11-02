@@ -22,6 +22,9 @@ export function CommentsSection() {
   const comments = useSelector((state) => state.comment);
   const allUsers = useSelector((state) => state.allusers);
 
+  const [currentComment, setCurrentComment] = useState("");
+  const [commentReplies, setCommentReplies] = useState(false);
+
   useEffect(() => {
     dispatch(getVideoCommentsThunk(videoId));
   }, [dispatch, videoId]);
@@ -61,6 +64,13 @@ export function CommentsSection() {
           </div>
           Sort by
         </div>
+        <div onClick={() => setCommentReplies(!commentReplies)}>
+          {commentReplies === true ? (
+            <div className="ShowReplies">Hide Replies</div>
+          ) : (
+            <div className="ShowReplies">Show Replies</div>
+          )}
+        </div>
       </div>
       <div className="CreateCommentSection">
         <CreateCommentForm />
@@ -74,36 +84,114 @@ export function CommentsSection() {
           filteredCommentsArray.map((comment) => {
             return (
               <>
-                <div className="IndividualComments">
-                  {/* match all users to respective commment user_id */}
-                  {allUsersArray &&
-                    allUsersArray.map((user) => {
+                <div className="CommentsandRepliesSection">
+                  <div className="IndividualComments">
+                    {/* match all users to respective commment user_id */}
+                    {allUsersArray &&
+                      allUsersArray.map((user) => {
+                        return (
+                          <>
+                            {user.id == comment.user_id ? (
+                              <>
+                                {/* match all users to active channel profile pictures */}
+                                {channelsArray &&
+                                  channelsArray.map((channel) => {
+                                    return (
+                                      <>
+                                        {channel.id == user.active_channel ? (
+                                          <>
+                                            <div className="ChannelPictureIndividualComment">
+                                              <img
+                                                src={channel.profile_picture}
+                                                className="channelPictureHomeArray"
+                                              />
+                                            </div>
+                                            <div className="CommentIndividualRightComponent">
+                                              <div className="CommentIndividualUserTop">
+                                                <div className="CommentIndividualFirstName">
+                                                  {user.first_name}
+                                                </div>
+                                                <div className="CommentIndividualCreatedAt">
+                                                  {comment.created_at.slice(
+                                                    0,
+                                                    16
+                                                  )}
+                                                </div>
+                                                {/* edit and delete modal/favicons here */}
+                                              </div>
+                                              <div className="CommentIndividualBody">
+                                                {comment.body}
+                                              </div>
+                                            </div>
+                                          </>
+                                        ) : (
+                                          ""
+                                        )}
+                                      </>
+                                    );
+                                  })}
+                              </>
+                            ) : (
+                              ""
+                            )}
+                          </>
+                        );
+                      })}
+                  </div>
+
+                  {filteredRepliesArray &&
+                    commentReplies &&
+                    filteredRepliesArray.map((replies) => {
                       return (
                         <>
-                          {user.id == comment.user_id ? (
-                            <>
-                              {/* match all users to active channel profile pictures */}
-                              {channelsArray &&
-                                channelsArray.map((channel) => {
+                          {replies.commentReply_id == comment.id ? (
+                            <div className="repliesSection">
+                              {allUsersArray &&
+                                allUsersArray.map((user) => {
                                   return (
                                     <>
-                                      {channel.id == user.active_channel ? (
+                                      {user.id == replies.user_id ? (
                                         <>
-                                          <div className="ChannelPictureIndividualComment">
-                                            <img
-                                              src={channel.profile_picture}
-                                              className="channelPictureHomeArray"
-                                            />
-                                          </div>
-                                          <div className="CommentIndividualRightComponent">
-                                            <div className="CommentIndividualUserTop">
-                                              <div className="CommentIndividualFirstName">{user.first_name}</div>
-                                              <div className="CommentIndividualCreatedAt">{comment.created_at.slice(0,16)}</div>
-                                              {/* edit and delete modal/favicons here */}
-                                            </div>
-                                            <div className="CommentIndividualBody">
-                                                    {comment.body}</div>
-                                          </div>
+                                          {/* match all users to active channel profile pictures */}
+                                          {channelsArray &&
+                                            channelsArray.map((channel) => {
+                                              return (
+                                                <>
+                                                  {channel.id ==
+                                                  user.active_channel ? (
+                                                    <>
+                                                      <div className="ChannelPictureIndividualComment">
+                                                        <img
+                                                          src={
+                                                            channel.profile_picture
+                                                          }
+                                                          className="channelPictureHomeArray"
+                                                        />
+                                                      </div>
+                                                      <div className="CommentIndividualRightComponent">
+                                                        <div className="CommentIndividualUserTop">
+                                                          <div className="CommentIndividualFirstName">
+                                                            {user.first_name}
+                                                          </div>
+                                                          <div className="CommentIndividualCreatedAt">
+                                                            {replies.created_at.slice(
+                                                              0,
+                                                              16
+                                                            )}
+                                                          </div>
+                                                          {/* edit and delete modal/favicons here */}
+                                                        </div>
+                                                        <div className="CommentIndividualBody">
+                                                          {replies.body}
+                                                        </div>
+                                                      </div>
+                                                    </>
+                                                  ) : (
+                                                    ""
+                                                  )}
+                                                </>
+                                              );
+                                            })}
                                         </>
                                       ) : (
                                         ""
@@ -111,7 +199,7 @@ export function CommentsSection() {
                                     </>
                                   );
                                 })}
-                            </>
+                            </div>
                           ) : (
                             ""
                           )}

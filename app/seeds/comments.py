@@ -4,7 +4,14 @@ from app.models import db, Comment
 def seed_comments():
 
     comment_1 = Comment(user_id=1, video_id=1, body="Wow so cool",)
-    comment_2 = Comment(user_id=1, video_id=1, body="no its really not", is_reply=True, commentReply_id=1)
+    comment_2 = Comment(user_id=2, video_id=1, body="no its really not", is_reply=True, commentReply_id=1)
+    comment_3 = Comment(user_id=2, video_id=1, body="Can't wait",)
+    comment_4 = Comment(user_id=3, video_id=1, body="looks like trash", is_reply=True, commentReply_id=3)
+    comment_5 = Comment(user_id=3, video_id=1, body="Kang > Thanos",)
+    comment_6 = Comment(user_id=3, video_id=1, body="^^^this", is_reply=True, commentReply_id=5)
+    comment_7 = Comment(user_id=3, video_id=1, body='''Problem: the paragraph has no topic sentence
+Imagine each paragraph as a sandwich. The real content of the sandwich—the …
+Problem: the paragraph has more than one controlling idea''',)
     # comment_2 = Comment(userId=2, imageId=1, body="I am the master of my universe")
     # comment_3 = Comment(userId=1, imageId=1, body="Making this my wallpaper now")
     # comment_4 = Comment(userId=3, imageId=1, body="Amazing Photo")
@@ -35,7 +42,7 @@ def seed_comments():
     # comment_29 = Comment(userId=14, imageId=4, body="impressive")
     # comment_30 = Comment(userId=13, imageId=8, body="I'm a bot")
 
-    comments = [comment_1, comment_2]
+    comments = [comment_1, comment_2, comment_3, comment_4, comment_5, comment_6, comment_7]
     # comments = [comment_1, comment_2, comment_3, comment_4,comment_5,comment_6,comment_7,comment_8,comment_9,comment_10,comment_11,comment_12,comment_13,comment_14,comment_15,comment_16,comment_17,comment_18,comment_19,comment_20, comment_21, comment_22, comment_23, comment_24,comment_25,comment_26,comment_27,comment_28,comment_29,comment_30]
 
     for comment in comments:

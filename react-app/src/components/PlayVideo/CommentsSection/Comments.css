@@ -25,6 +25,11 @@ gap: 10px;
 
 /* create comments section */
 
+.CommentsandRepliesSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 .CreateCommentContainer {
     padding-top: 5px;
     display: flex;
@@ -106,4 +111,20 @@ font-weight: bold;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+/* replies section  */
+
+.repliesSection {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    left: 60px;
+    width: 90%;
+
+}
+.ShowReplies {
+    color: rgb(0, 166, 255);
+    font-weight: normal;
+    font-size: 16px;
 }
