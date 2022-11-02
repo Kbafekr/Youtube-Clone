@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { getAllCommentsThunk } from "../../../../store/comment";
-import { updateCommentThunk } from "../../../../store/comment";
 import { useParams } from "react-router-dom";
-// pass in userId and imageId into createComment form so we aren't relying
-// on useParams for imageId (will help when building a comment section for each photo in explore page)
-function EditCommentForm({ comment, setShowModal }) {
+import { useSelector } from "react-redux";
+import { getVideoCommentsThunk } from "../../../../store/comment";
+import { newCommentThunk } from "../../../../store/comment";
+import '../Comments.css'
+
+function CreateReplyForm({comment}) {
   const user = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
+
   let channelsArray = Object.values(channels);
 
   const dispatch = useDispatch();
   const { videoId } = useParams();
   const userId = user.id;
+  const is_reply = true;
+  const commentReply_id = comment.id
 
-
-  const [body, setBody] = useState(comment.body);
-  const [is_reply, setis_reply] = useState(comment.is_reply);
-  const [commentReply_id, setcommentReply_id] = useState(comment.commentReply_id);
-  const [commentStatus, setCommentStatus] = useState();
+  const [body, setBody] = useState("");
+  const [commentStatus, setCommentStatus] = useState()
   const [errors, setErrors] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
+
 
   useEffect(() => {
     const formValidationErrors = [];
 
     if (body.length > 500) {
+
       formValidationErrors.push(
         "Channel Name must exist and be between 1 and 500 characters"
-      );
-      setCommentStatus(false);
-    } else if (!body.length) {
-      setCommentStatus(false);
-    } else setCommentStatus(true);
+        );
+        setCommentStatus(false)
+      }
+    else if (!body.length) {
+      setCommentStatus(false)
+    }
+    else setCommentStatus(true)
 
     setErrors(formValidationErrors);
   }, [body]);
@@ -41,11 +44,11 @@ function EditCommentForm({ comment, setShowModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length <= 0) {
+  console.log(body)
       return dispatch(
-        updateCommentThunk(comment.id, userId, videoId, body)
+        newCommentThunk(userId, videoId, body, is_reply, commentReply_id)
       )
-        .then(() => setShowModal(false))
-        .then(() => dispatch(getAllCommentsThunk()))
+        .then(() => dispatch(getVideoCommentsThunk(videoId))).then(() => setBody(""))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -56,18 +59,33 @@ function EditCommentForm({ comment, setShowModal }) {
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
-    setShowModal(false);
+    setBody("");
   };
 
   return (
-    <div className="EditUser-outer">
-      <div className="edit-user-containerinner">
+    <>
+      <div className="CreateCommentContainer">
+        {channelsArray &&
+          channelsArray.map((channel) => {
+            return (
+              <>
+                {channel.id == user.active_channel ? (
+                      <img
+                        className="channelPictureHomeArray"
+                        alt="channel"
+                        src={channel.profile_picture}
+                      />
+                ) : (
+                  ""
+                )}
+              </>
+            );
+          })}
         <form
-          className="Edit-User-inner"
+          className="CreateCommentForm"
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
-          <h2 className="EditUserHeaderTop">Edit Comment</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -81,37 +99,38 @@ function EditCommentForm({ comment, setShowModal }) {
               </div>
             )}
           </div>
-          <div className="EditUserHeader">Comment Body:</div>
           <input
-             className="preview-image-input"
-             id="edit-image-input"
+            className="CreateCommentBody"
             type="text"
             name="body"
-            placeholder={body}
+            placeholder="Add a comment..."
             value={body}
             onChange={(e) => setBody(e.target.value)}
             // required
           />
-          <div className="deleteImageButtons">
+          {commentStatus && (
+
+            <div className="deleteImageButtons">
+            <button
+              className="cancelDeleteImage"
+              onClick={() => setBody("")}
+              type="submit"
+              >
+              Cancel
+            </button>
             <button
               className="submitDeleteImage"
               onClick={handleSubmit}
               type="submit"
             >
-              Submit Edit
-            </button>
-            <button
-              className="cancelDeleteImage"
-              onClick={() => setShowModal(false)}
-              type="submit"
-            >
-              Cancel Edit
+              Comment
             </button>
           </div>
+              )}
         </form>
       </div>
-    </div>
+    </>
   );
 }
 
-export default EditCommentForm;
+export default CreateReplyForm;

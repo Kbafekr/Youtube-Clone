@@ -126,7 +126,7 @@ def get_comment_by_video(videoId):
 
 
 @video_routes.route('/<int:videoId>/comment/new', methods=['POST'])
-# @login_required
+@login_required
 def new_Comment(videoId):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -158,8 +158,6 @@ def edit_Comment(videoId, id):
         editedComment.user_id = data['user_id']
         editedComment.video_id = data['video_id']
         editedComment.body = data['body']
-        editedComment.is_reply = data['is_reply'],
-        editedComment.commentReply_id = data['commentReply_id'],
         db.session.commit()
         return editedComment.to_dict()
     if form.errors:

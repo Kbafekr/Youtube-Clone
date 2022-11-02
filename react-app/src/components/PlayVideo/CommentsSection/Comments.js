@@ -3,6 +3,8 @@ import CreateCommentForm from "./CommentForms/CreateCommentForm";
 import { Modal } from "../../../context/Modal";
 import EditCommentForm from "./CommentForms/EditCommentForm";
 import DeleteCommentForm from "./CommentForms/DeleteCommentForm";
+import CreateReplyForm from "./CommentForms/ReplyCommentForm";
+import { RepliesSection } from "./Replies";
 import { getAllUsersThunk } from "../../../store/allusers";
 import "./Comments.css";
 
@@ -17,17 +19,21 @@ export function CommentsSection() {
   const { videoId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
   const comments = useSelector((state) => state.comment);
   const allUsers = useSelector((state) => state.allusers);
 
   const [currentComment, setCurrentComment] = useState("");
-  const [commentReplies, setCommentReplies] = useState(false);
 
+  const [showModalEdit, setShowModalEdit] = useState(false);
+
+  const [showModalDelete, setShowModalDelete] = useState(false);
+
+  let CommentsArray;
   useEffect(() => {
     dispatch(getVideoCommentsThunk(videoId));
-  }, [dispatch, videoId]);
+  }, [dispatch, videoId, showModalDelete, showModalEdit]);
   useEffect(() => {
     dispatch(getAllUsersThunk());
   }, [dispatch, videoId]);
@@ -37,7 +43,7 @@ export function CommentsSection() {
   // all replies
   let filteredRepliesArray;
 
-  const CommentsArray = Object.values(comments);
+   CommentsArray = Object.values(comments);
   const channelsArray = Object.values(channels);
   const allUsersArray = Object.values(allUsers);
 
@@ -64,17 +70,9 @@ export function CommentsSection() {
           </div>
           Sort by
         </div>
-        <div onClick={() => setCommentReplies(!commentReplies)}>
-          {commentReplies === true ? (
-            <div className="ShowReplies">Hide Replies</div>
-          ) : (
-            <div className="ShowReplies">Show Replies</div>
-          )}
-        </div>
       </div>
-      <div className="CreateCommentSection">
-        <CreateCommentForm />
-      </div>
+
+      <CreateCommentForm />
 
       <div className="CommentsSectionAllComments">
         {/* filter out comments where is_reply == true, only map through original comments first
@@ -117,7 +115,83 @@ export function CommentsSection() {
                                                     16
                                                   )}
                                                 </div>
-                                                {/* edit and delete modal/favicons here */}
+                                                <div className="EditDeleteCommentsSection">
+                                                  {sessionUser.id ===
+                                                  comment.user_id ? (
+                                                    <div className="EditCommentFavicon">
+                                                      {showModalEdit && (
+                                                        <Modal
+                                                          onClose={() =>
+                                                            setShowModalEdit(
+                                                              false
+                                                            )
+                                                          }
+                                                        >
+                                                          <EditCommentForm
+                                                            comment={
+                                                              currentComment
+                                                            }
+                                                            setShowModal={
+                                                              setShowModalEdit
+                                                            }
+                                                          />
+                                                        </Modal>
+                                                      )}
+
+                                                      <i
+                                                        onClick={() => {
+                                                          setShowModalEdit(
+                                                            true
+                                                          );
+                                                          setCurrentComment(
+                                                            comment
+                                                          );
+                                                        }}
+                                                        class="fa-solid fa-pen-to-square"
+                                                      ></i>
+                                                    </div>
+                                                  ) : (
+                                                    ""
+                                                  )}
+                                                  {sessionUser.id ===
+                                                  comment.user_id ? (
+                                                    <div className="EditCommentFavicon">
+                                                      {showModalDelete && (
+                                                        <Modal
+                                                          onClose={() =>
+                                                            setShowModalDelete(
+                                                              false
+                                                            )
+                                                          }
+                                                        >
+                                                          <DeleteCommentForm
+                                                            comment={
+                                                              currentComment
+                                                            }
+                                                            setShowModal={
+                                                              setShowModalDelete
+                                                            }
+                                                          />
+                                                        </Modal>
+                                                      )}
+
+                                                      <i
+                                                        onClick={() => {
+                                                          setShowModalDelete(
+                                                            true
+                                                          );
+                                                          setCurrentComment(
+                                                            comment
+                                                          );
+                                                        }}
+                                                        class="fa-sharp fa-solid fa-trash"
+                                                      ></i>
+                                                    </div>
+                                                  ) : (
+                                                    ""
+                                                  )}
+                                                  {/* edit and delete modal/favicons here */}
+                                                </div>
                                               </div>
                                               <div className="CommentIndividualBody">
                                                 {comment.body}
@@ -138,74 +212,7 @@ export function CommentsSection() {
                         );
                       })}
                   </div>
-
-                  {filteredRepliesArray &&
-                    commentReplies &&
-                    filteredRepliesArray.map((replies) => {
-                      return (
-                        <>
-                          {replies.commentReply_id == comment.id ? (
-                            <div className="repliesSection">
-                              {allUsersArray &&
-                                allUsersArray.map((user) => {
-                                  return (
-                                    <>
-                                      {user.id == replies.user_id ? (
-                                        <>
-                                          {/* match all users to active channel profile pictures */}
-                                          {channelsArray &&
-                                            channelsArray.map((channel) => {
-                                              return (
-                                                <>
-                                                  {channel.id ==
-                                                  user.active_channel ? (
-                                                    <>
-                                                      <div className="ChannelPictureIndividualComment">
-                                                        <img
-                                                          src={
-                                                            channel.profile_picture
-                                                          }
-                                                          className="channelPictureHomeArray"
-                                                        />
-                                                      </div>
-                                                      <div className="CommentIndividualRightComponent">
-                                                        <div className="CommentIndividualUserTop">
-                                                          <div className="CommentIndividualFirstName">
-                                                            {user.first_name}
-                                                          </div>
-                                                          <div className="CommentIndividualCreatedAt">
-                                                            {replies.created_at.slice(
-                                                              0,
-                                                              16
-                                                            )}
-                                                          </div>
-                                                          {/* edit and delete modal/favicons here */}
-                                                        </div>
-                                                        <div className="CommentIndividualBody">
-                                                          {replies.body}
-                                                        </div>
-                                                      </div>
-                                                    </>
-                                                  ) : (
-                                                    ""
-                                                  )}
-                                                </>
-                                              );
-                                            })}
-                                        </>
-                                      ) : (
-                                        ""
-                                      )}
-                                    </>
-                                  );
-                                })}
-                            </div>
-                          ) : (
-                            ""
-                          )}
-                        </>
-                      );
-                    })}
+                  <RepliesSection comment={comment} />
                 </div>
               </>
             );

@@ -16,6 +16,7 @@ function CreateCommentForm() {
   const { videoId } = useParams();
   const userId = user.id;
   const is_reply = false;
+  const commentReply_id = undefined
 
   const [body, setBody] = useState("");
   const [commentStatus, setCommentStatus] = useState()
@@ -46,7 +47,7 @@ function CreateCommentForm() {
     if (errors.length <= 0) {
   console.log(body)
       return dispatch(
-        newCommentThunk(userId, videoId, body, is_reply)
+        newCommentThunk(userId, videoId, body, is_reply, commentReply_id)
       )
         .then(() => dispatch(getVideoCommentsThunk(videoId))).then(() => setBody(""))
         .catch(async (res) => {
