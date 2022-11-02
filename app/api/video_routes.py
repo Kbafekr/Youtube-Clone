@@ -114,25 +114,27 @@ def delete_video(id):
 @video_routes.route('/<int:videoId>/comments', methods=["GET"])
 # @login_required
 def get_comment_by_video(videoId):
-    comments = Comment.query.filter_by(videoId=videoId).all()
+    comments = Comment.query.filter_by(video_id=videoId).all()
     if comments == None:
-        return "Video has no comments"
+        return {
+        "Message": "Video has no comments",
+        "statusCode": "200"
+    }
     return {comment.id: comment.to_dict() for comment in comments}
 
 # Post a comment
 
 
 @video_routes.route('/<int:videoId>/comment/new', methods=['POST'])
-@login_required
+# @login_required
 def new_Comment(videoId):
     form = CommentForm()
-    # image = Image.query.get(imageId)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
         new_comment = Comment(
-            userId=data['userId'],
-            videoId=data['videoId'],
+            user_id=data['user_id'],
+            video_id=data['video_id'],
             body=data['body'],
             is_reply=data['is_reply'],
             commentReply_id=data['commentReply_id'],

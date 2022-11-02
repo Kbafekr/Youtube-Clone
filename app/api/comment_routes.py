@@ -22,5 +22,8 @@ def commentsRoute():
 def get_comment(id):
     comments = Comment.query.get(id)
     if comments == None:
-        return "No comments found"
+        return {
+        "Message": "No comment exists",
+        "statusCode": "200"
+    }
     return comments.to_dict()

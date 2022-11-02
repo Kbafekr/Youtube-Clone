@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from app.models import user
 from .db import db
 
 class Comment(db.Model):

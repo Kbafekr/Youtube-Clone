@@ -68,8 +68,8 @@ export const getVideoCommentsThunk = (videoId) => async dispatch => {
 export const newCommentThunk = (user_id, video_id, body, is_reply, commentReply_id) => async (dispatch) => {
   const response = await fetch(`/api/videos/${video_id}/comment/new`, {
     method: "POST",
-    headers: {"Content-Type": "application/json",
-    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})}
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})
   })
   if (response.ok) {
     const createComment = await response.json()
@@ -81,8 +81,8 @@ export const newCommentThunk = (user_id, video_id, body, is_reply, commentReply_
 export const updateCommentThunk = (id, user_id, video_id, body, is_reply, commentReply_id) => async (dispatch) => {
   const response = await fetch(`/api/videos/${video_id}/comment/${id}/edit`, {
     method: "PUT",
-    headers: {"Content-Type": "application/json",
-    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})}
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({user_id, video_id, body, is_reply, commentReply_id})
   })
   if (response.ok) {
     const editComment = await response.json()

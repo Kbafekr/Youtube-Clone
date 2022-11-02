@@ -74,6 +74,60 @@ font-weight: bold;
     margin-top: 10px;
 }
 
+/* subscription section to likes section */
+
+.SubscribeAndBellSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-left: 40px;
+}
+
+.subscribeButtonContainer {
+    display: flex;
+    align-items: center;
+}
+
+.SubscribeButton {
+    width: fit-content;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(82, 82, 82, 0.878);
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.notificationBellVideoPlay {
+    font-size: 24px;
+}
+
+.LikesSectionVideo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-left: 40px;
+    background-color: rgba(82, 82, 82, 0.878);
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+.LikeVideoSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    padding-right: 10px;
+    border-right: 1px solid rgb(32, 32, 32);
+}
+
+/* end of subcription to likes section */
 .profileImageHomeVideoArray {
     height: 100%;
     width: 50px;
@@ -99,7 +153,11 @@ font-weight: bold;
 
 
 .VideoDetailsCommentsSection{
-    margin-top: 20px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 /* playlist and suggestions section (right side of page) */

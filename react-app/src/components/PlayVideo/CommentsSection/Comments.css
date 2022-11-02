@@ -1,0 +1,62 @@
+.CommentsLengthAndSort {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+    font-weight: bold;
+    font-size: 18px
+}
+
+.CommentsLength {
+    font-size: 20px
+}
+
+
+.SortedCommentsSection {
+display: flex;
+gap: 10px;
+}
+
+.SortCommentsFavicon {
+    position: relative;
+    bottom: 5px;
+    font-size: 20px;
+}
+
+/* create comments section */
+
+.CreateCommentContainer {
+    padding-top: 5px;
+    display: flex;
+    height: 90px;
+    align-items: center;
+    gap: 20px;
+}
+
+.CreateCommentForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.CreateCommentBody {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+.CommentsSectionAllComments {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.IndividualComments {
+    display: flex;
+}

@@ -84,7 +84,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link
                 onClick={reloadPage}
                 to={
-                  channel_id
+                  user!= null
                     ? {
                         pathname: `/users/${user.id}`,
                         state: { directedCategory: 2, uploadModalState: false },
@@ -98,7 +98,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link
                 onClick={reloadPage}
                 to={
-                  channel_id
+                  user != null
                     ? {
                         pathname: `/users/${user.id}`,
                         state: { directedCategory: 2, uploadModalState: false },
@@ -265,7 +265,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link
                 onClick={reloadPage}
                 to={
-                  channel_id
+                  user != null
                     ? {
                         pathname: `/users/${user.id}`,
                         state: { directedCategory: 2, uploadModalState: false },
@@ -279,7 +279,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link
                 onClick={reloadPage}
                 to={
-                  channel_id
+                  user != null
                     ? {
                         pathname: `/users/${user.id}`,
                         state: { directedCategory: 2, uploadModalState: false },

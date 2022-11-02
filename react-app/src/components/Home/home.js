@@ -119,7 +119,6 @@ export function HomePage({ sidePanel }) {
                           light={true}
                           playIcon={true}
                         /> }
-                        +
                       </div>
                       {channelsArray &&
                         channelsArray.map((channel) => {

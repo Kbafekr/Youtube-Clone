@@ -11,6 +11,8 @@ import { amountViews } from "../../Utils/Utils";
 import logo from "../../icons/you2oobLogo.png";
 import { getAllChannelsThunk } from "../../store/channel";
 
+import { CommentsSection } from "./CommentsSection/Comments";
+
 export function VideoPage({ sidePanel }) {
   const { videoId } = useParams();
   const dispatch = useDispatch();
@@ -111,6 +113,29 @@ export function VideoPage({ sidePanel }) {
                                 </div>
                               </div>
                             </div>
+                            <div className="SubscribeAndBellSection">
+                              <div className="subscribeButtonContainer">
+                                <div className="SubscribeButton">
+                                  Subscribed
+                                </div>
+                              </div>
+
+                              <div className="notificationBellVideoPlay">
+                                <i class="fa-solid fa-bell"></i>
+                              </div>
+                            </div>
+
+                            <div className="LikesSectionVideo">
+                              <div className="LikeVideoSection">
+                                <div className="notificationBellVideoPlay">
+                                  <i class="fa-solid fa-thumbs-up"></i>
+                                </div>
+                                0 Likes
+                              </div>
+                              <div className="notificationBellVideoPlay">
+                                <i class="fa-solid fa-thumbs-down"></i>
+                              </div>
+                            </div>
                           </div>
                         ) : (
                           ""
@@ -123,12 +148,11 @@ export function VideoPage({ sidePanel }) {
                 </div>
               </div>
               <div className="VideoDetailsCommentsSection">
-                Comments Section
+                <CommentsSection />
               </div>
             </div>
 
             <div className="RightSideVideoDetailsSection">
-              <div>Recommended Videos Section</div>
               <div className="RecommendedArraySection">
                 {notVideoArray &&
                   notVideoArray.map((video) => {
@@ -160,49 +184,55 @@ export function VideoPage({ sidePanel }) {
                             )}
                           </div>
                           <div className="RecommendedVideoDetailsSection">
-                      
-
                             {channelsArray &&
-                        channelsArray.map((channel) => {
-                          return (
-                            <>
-                              {channel.id == video.channel_id ? (
-                                <div className="HomeVideoCardBottomSection">
-
-                                  <div className="HomeVideoArrayChannelDetails">
-                                    <div className="VideoTitleCard" onClick={() => history.push(`/videos/${video.id}`)}>
-                                      {video.title}
-                                    </div>
-                                    <div
-                                      className="flexColumn"
-                                      id="homeArrayChannelDetails"
-                                    >
-                                      <div
-                                        className="flexRow"
-                                        id="ChannelNameHomeArray"
-                                      >
-                                        <div>{channel.channel_name}</div>
-                                        <div id="verifiedCheckMark">
-                                          <i class="fa-solid fa-check"></i>
+                              channelsArray.map((channel) => {
+                                return (
+                                  <>
+                                    {channel.id == video.channel_id ? (
+                                      <div className="HomeVideoCardBottomSection">
+                                        <div className="HomeVideoArrayChannelDetails">
+                                          <div
+                                            className="VideoTitleCard"
+                                            onClick={() =>
+                                              history.push(
+                                                `/videos/${video.id}`
+                                              )
+                                            }
+                                          >
+                                            {video.title}
+                                          </div>
+                                          <div
+                                            className="flexColumn"
+                                            id="homeArrayChannelDetails"
+                                          >
+                                            <div
+                                              className="flexRow"
+                                              id="ChannelNameHomeArray"
+                                            >
+                                              <div>{channel.channel_name}</div>
+                                              <div id="verifiedCheckMark">
+                                                <i class="fa-solid fa-check"></i>
+                                              </div>
+                                            </div>
+                                            <div
+                                              className="flexRow"
+                                              id="homeArrayChannelViews"
+                                            >
+                                              <div>{amountViews()}</div>
+                                              <div className="CircleDiv" />
+                                              <div>
+                                                {video.created_at.slice(0, 16)}
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
                                       </div>
-                                      <div
-                                        className="flexRow"
-                                        id="homeArrayChannelViews"
-                                      >
-                                        <div>{amountViews()}</div>
-                                        <div className="CircleDiv" />
-                                        <div>{video.created_at.slice(0,16)}</div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : (
-                                ""
-                              )}
-                            </>
-                          );
-                        })}
+                                    ) : (
+                                      ""
+                                    )}
+                                  </>
+                                );
+                              })}
                           </div>
                         </div>
                       </>
