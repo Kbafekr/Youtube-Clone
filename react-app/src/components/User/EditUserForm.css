@@ -32,6 +32,8 @@
 .errorHandlingContainer {
 color: red;
 list-style: none;
+display: flex;
+gap: 10px;
 }
 
 .HeaderErrorStyling{
@@ -41,11 +43,16 @@ list-style: none;
 
 .ImageUlBulletErrorStyling{
     list-style: none;
+    display: flex;
+    flex-direction: column;
+gap: 10px;
 
 }
 
 .ImageErrorPoints {
     list-style: none;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .EditUserHeader {

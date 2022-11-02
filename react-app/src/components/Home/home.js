@@ -12,6 +12,8 @@ import { authenticate } from "../../store/session";
 import { amountViews } from "../../Utils/Utils";
 import logo from "../../icons/you2oobLogo.png";
 
+import { getAllTagsThunk } from "../../store/tags";
+import getAll
 export function HomePage({ sidePanel }) {
   const dispatch = useDispatch();
   const history = useHistory();

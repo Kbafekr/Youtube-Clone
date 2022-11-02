@@ -241,6 +241,20 @@ def delete_likes(id):
 
 
 
+# Get All dislikes
+# video/comments/videoId
+@video_routes.route('/dislikes/all')
+@login_required
+def allDislikes():
+    all_dislikes = Dislike.query.all()
+    if all_dislikes == None:
+        return {
+        "Message": "No dislikes",
+        "statusCode": "200"
+    }
+    dislikes = {dislike.id: dislike.to_dict() for dislike in all_dislikes}
+    return dislikes
+
 # Get All dislikes by video id (move to images routes)
 # video/comments/videoId
 @video_routes.route('/<int:videoId>/dislikes')
@@ -255,8 +269,8 @@ def videoDislikes(videoId):
     dislikes = {dislike.id: dislike.to_dict() for dislike in all_dislikes}
     return dislikes
 
-# Make a new Like
-@video_routes.route('/<int:videoId>/likes/new', methods=["POST"])
+# Make a new disLike
+@video_routes.route('/<int:videoId>/dislikes/new', methods=["POST"])
 @login_required
 def postDislike(videoId):
 
@@ -274,8 +288,8 @@ def postDislike(videoId):
         db.session.commit()
         return new_dislike.to_dict()
 
-#Delete a comment
-@video_routes.route('/<int:videoId>/likes/<int:id>/delete', methods=['DELETE'])
+#Delete a dislike
+@video_routes.route('/<int:videoId>/dislikes/<int:id>/delete', methods=['DELETE'])
 @login_required
 def delete_dislikes(id):
     dislikes = Dislike.query.get(id).all()

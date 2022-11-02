@@ -5,13 +5,19 @@ import video from './video'
 import channel from './channel'
 import allusers from './allusers'
 import comment from './comment'
+import likes from './likes'
+import dislikes from './dislikes'
+import tags from './tags'
 
 const rootReducer = combineReducers({
   session,
   allusers,
   video,
   channel,
-  comment
+  comment,
+  likes,
+  dislikes,
+  tags
 });
 
 
