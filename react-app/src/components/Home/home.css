@@ -156,6 +156,14 @@ align-items: center;
     width: fit-content;
     border-radius: 15px;
 }
+.NewtagHomePageActive {
+    color: white;
+    background: linear-gradient(45deg, rgba(2, 255, 183, 0.619) 15%, rgba(2, 78, 255, 0.603), rgba(229, 31, 255, 0.635) 45%,rgba(246, 60, 14, 0.561));
+    padding: 10px 10px;
+    width: fit-content;
+    font-weight: bold;
+    border-radius: 15px;
+}
 .tagHomePage {
     color: white;
     display: flex;
