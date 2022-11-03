@@ -80,7 +80,6 @@ export function CommentsSection() {
     commentsArrayForMapping = [...filteredCommentsArray]
   }
 
-  console.log(commentsArrayForMapping)
   return (
     <>
       <div className="CommentsLengthAndSort">
