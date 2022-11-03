@@ -125,11 +125,11 @@ export function VideoPage({ sidePanel }) {
                               </div>
                             </div>
                             <div className="SubscribeAndBellSection">
-                              <div className="subscribeButtonContainer">
+                              {/* <div className="subscribeButtonContainer">
                                 <div className="SubscribeButton">
                                   Subscribed
                                 </div>
-                              </div>
+                              </div> */}
 
                               <div className="notificationBellVideoPlay">
                                 {/* <i class="fa-solid fa-bell"></i> */}

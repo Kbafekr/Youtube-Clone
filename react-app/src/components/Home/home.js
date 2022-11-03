@@ -93,7 +93,7 @@ export function HomePage({ sidePanel }) {
         className={sidePanel == true ? "homeContainer" : "homeContainerClosed"}
       >
         <div className="homeContainerInner">
-          <div className="homeTagsBarContainer">
+          {/* <div className="homeTagsBarContainer">
             <div className="homeTagsBar">
               <div className="tagHomePageActive">All</div>
               <div className="tagHomePage">New</div>
@@ -110,7 +110,7 @@ export function HomePage({ sidePanel }) {
               <div className="tagHomePage">Scenes</div>
               <div className="tagHomePage">Fashion</div>
             </div>
-          </div>
+          </div> */}
           <div className="VideosMapped">
             {videosArray &&
               videosArray.map((video) => {

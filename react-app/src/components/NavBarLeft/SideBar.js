@@ -28,7 +28,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Home
               </Link>
             </div>
-            <div className="SideNavRowContainer">
+            {/* <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-film"></i>
               </div>
@@ -39,7 +39,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 <i class="fa-solid fa-users"></i>
               </div>
               <div>Subscriptions</div>
-            </div>
+            </div> */}
             <div className="SideNavRowContainer">
               <Link
                 to={user != null ? `/users/${user_id}` : `/login`}
@@ -56,19 +56,19 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Profile Page
               </Link>
             </div>
-            <div className="SideNavRowContainer">
+            {/* <div className="SideNavRowContainer">
               <div>
               <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
-            </div>
+            </div> */}
           </div>
           {/* middle row */}
           <div className="SideNavBorderDivContainer">
             <div className="SideNavBorderDiv"></div>
           </div>
           <div className="InternalSideBarSection">
-            <div className="SideNavRowContainer">
+            {/* <div className="SideNavRowContainer">
               <div>
               <i class="fa-solid fa-book"></i>
               </div>
@@ -79,12 +79,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
               </div>
               <div>History</div>
-            </div>
+            </div> */}
             <div className="SideNavRowContainer">
               <Link
                 onClick={reloadPage}
                 to={
-                  user!= null
+                  user != null
                     ? {
                         pathname: `/users/${user.id}`,
                         state: { directedCategory: 2, uploadModalState: false },
@@ -110,7 +110,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Your Videos
               </Link>
             </div>
-            <div className="SideNavRowContainer">
+            {/* <div className="SideNavRowContainer">
               <div>
               <i class="fa-solid fa-clock"></i>
               </div>
@@ -121,83 +121,83 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <i class="fa-solid fa-list"></i>
               </div>
               <div>Playlists</div>
-            </div>
+            </div> */}
           </div>
 
           {/* Subscriptions row */}
           <div className="SideNavBorderDivContainer">
             <div className="SideNavBorderDiv"></div>
           </div>
-          <div className="InternalSideBarSection">
+          {/* <div className="InternalSideBarSection">
             <div className="SideNavRowContainer">Subscriptions</div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-id-card-clip"></i>
+                <i class="fa-solid fa-id-card-clip"></i>
               </div>
               <div>Subscription 1</div>
             </div>
-          </div>
+          </div> */}
 
           {/* Last row */}
           <div className="SideNavBorderDivContainer">
             <div className="SideNavBorderDiv"></div>
           </div>
           <div className="InternalSideBarSection">
-            <div className="SideNavRowContainer">Explore</div>
+            {/* <div className="SideNavRowContainer">Explore</div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-fire"></i>
+                <i class="fa-solid fa-fire"></i>
               </div>
               <div>Trending</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-music"></i>
+                <i class="fa-solid fa-music"></i>
               </div>
               <div>Music</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-file-video"></i>
+                <i class="fa-solid fa-file-video"></i>
               </div>
               <div>Movies & Shows</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-headset"></i>
+                <i class="fa-solid fa-headset"></i>
               </div>
               <div>Gaming</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-newspaper"></i>
+                <i class="fa-solid fa-newspaper"></i>
               </div>
               <div>News</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-medal"></i>
+                <i class="fa-solid fa-medal"></i>
               </div>
               <div>Sports</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-graduation-cap"></i>
+                <i class="fa-solid fa-graduation-cap"></i>
               </div>
               <div>Learning</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-shirt"></i>
+                <i class="fa-solid fa-shirt"></i>
               </div>
               <div>Fashion & Beauty</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-podcast"></i>
+                <i class="fa-solid fa-podcast"></i>
               </div>
               <div>Podcasts</div>
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>
@@ -215,18 +215,18 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Home
               </Link>
             </div>
-            <div className="SideNavRowContainerClosed">
+            {/* <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
-            </div>
-            <div className="SideNavRowContainerClosed">
+            </div> */}
+            {/* <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-users"></i>
               </div>
               <div>Subscriptions</div>
-            </div>
+            </div> */}
             <div className="SideNavRowContainerClosed">
               <Link
                 to={`/users/${user_id}`}
@@ -243,24 +243,24 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Profile Page
               </Link>
             </div>
-            <div className="SideNavRowContainerClosed">
+            {/* <div className="SideNavRowContainerClosed">
               <div>
-              <i class="fa-solid fa-record-vinyl"></i>
+                <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
             </div>
             <div className="SideNavRowContainerClosed">
               <div>
-              <i class="fa-solid fa-book"></i>
+                <i class="fa-solid fa-book"></i>
               </div>
               <div>Library</div>
             </div>
             <div className="SideNavRowContainerClosed">
               <div>
-              <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
+                <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
               </div>
               <div>History</div>
-            </div>
+            </div> */}
             <div className="SideNavRowContainerClosed">
               <Link
                 onClick={reloadPage}
