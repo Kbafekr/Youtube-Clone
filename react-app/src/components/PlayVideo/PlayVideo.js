@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { amountViews } from "../../Utils/Utils";
+import { Redirect } from "react-router-dom";
 import logo from "../../icons/you2oobLogo.png";
 import { getAllChannelsThunk } from "../../store/channel";
 
@@ -153,6 +154,7 @@ export function VideoPage({ sidePanel }) {
                           className="VideoCardRecommended"
                           onClick={() => history.push(`/videos/${video.id}`)}
                         >
+                          <div className="OverlayVideoPreviewDetails" onClick={() => history.push(`/videos/${video.id}`)}></div>
                           <div
                             className="RecommendedVideoPreview"
                             onClick={() => history.push(`/videos/${video.id}`)}
@@ -171,6 +173,7 @@ export function VideoPage({ sidePanel }) {
                                 url={video.video_url}
                                 light={true}
                                 playIcon={true}
+                                onClickPreview={false}
                               />
                             )}
                           </div>
