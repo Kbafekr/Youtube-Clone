@@ -1,5 +1,5 @@
 import "./PlayVideo.css";
-
+import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -146,9 +146,23 @@ export function VideoPage({ sidePanel }) {
                   })}
                 <DescriptionSection filteredVideo={filteredVideo} />
               </div>
-              <div className="VideoDetailsCommentsSection">
-                <CommentsSection />
-              </div>
+              {user != null ? (
+                <div className="VideoDetailsCommentsSection">
+                  <CommentsSection />
+                </div>
+              ) : (
+                <div className="NotSignedInVideoDetailsComments">
+                  <div> Comments are turned off.</div>
+                  <Link
+                    to="/login"
+                    className="CreateAccountRedirectDetails"
+                    exact={true}
+                    activeClassName="active"
+                  >
+                    Login to comment.
+                  </Link>
+                </div>
+              )}
             </div>
 
             <div className="RightSideVideoDetailsSection">

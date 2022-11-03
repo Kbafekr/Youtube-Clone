@@ -83,14 +83,12 @@
 
 .CreateAccountRedirect {
     color: #1a73e8;
-
     text-decoration: none;
 
 }
 
 
 .DemoLoginButton {
-    height: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
 }

@@ -282,3 +282,28 @@ overflow: hidden;
     padding-top: 20px;
 
 }
+
+
+.NotSignedInVideoDetailsComments {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.CreateAccountRedirectDetails {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+
+}
+
+
+#NoCursor {
+    cursor: not-allowed;
+}

@@ -44,7 +44,7 @@ const LoginForm = () => {
               onSubmit={onLogin}
               autoComplete="off"
             >
-              <img src={logo} alt="logo" className="loginLogo" />
+              {/* <img src={logo} alt="logo" className="loginLogo" /> */}
               <div className="ErrorLoginSection">
                 {errors.map((error, ind) => (
                   <div key={ind}>{error}</div>

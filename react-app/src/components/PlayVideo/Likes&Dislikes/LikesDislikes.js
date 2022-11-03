@@ -54,12 +54,18 @@ export default function LikesDislikes() {
     })();
   }, [dispatch, user]);
 
+  let likedByUser;
+  let dislikedByUser;
   const likesArray = Object.values(likes);
   const dislikesArray = Object.values(dislikes);
-  const likedByUser = likesArray.filter((likes) => likes.user_id === user.id);
-  const dislikedByUser = dislikesArray.filter(
+  if (user != null) {
+    likedByUser = likesArray.filter((likes) => likes.user_id === user.id);
+  }
+  if (user != null) {
+  dislikedByUser = dislikesArray.filter(
     (dislikes) => dislikes.user_id === user.id
-  );
+  )
+  }
 
   const toggleLike = (e) => {
     e.preventDefault();
@@ -85,6 +91,7 @@ export default function LikesDislikes() {
       dispatch(createDislikeThunk(videoId)).then(() => setDisliked(!disliked));
     }
   };
+  if (user != null ) {
   return (
     loaded && (
       <>
@@ -103,6 +110,32 @@ export default function LikesDislikes() {
             className="notificationBellVideoPlay"
             id={dislikedByUser.length ? "redDislike" : ""}
             onClick={toggleDislike}
+          >
+            <i class="fa-solid fa-thumbs-down"></i>
+          </div>
+        </div>
+      </>
+    ))
+  }
+  else return (
+    loaded && (
+      <>
+        <div className="LikesSectionVideo">
+          <div className="LikeVideoSection">
+            <div
+              className="notificationBellVideoPlay"
+              id="NoCursor"
+              onClick={() => history.push('/login')}
+
+            >
+              <i class="fa-solid fa-thumbs-up"></i>
+            </div>
+            {`${likesArray.length} likes`}
+          </div>
+          <div
+            className="notificationBellVideoPlay"
+            id="NoCursor"
+            onClick={() => history.push('/login')}
           >
             <i class="fa-solid fa-thumbs-down"></i>
           </div>

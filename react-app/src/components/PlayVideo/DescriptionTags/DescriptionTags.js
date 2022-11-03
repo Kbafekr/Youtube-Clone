@@ -19,7 +19,7 @@ export default function DescriptionSection({ filteredVideo }) {
     returnString =
       viewString.slice(0, -6) + "." + viewString.slice(1, -5) + "M";
   }
-  const newString = returnString;
+  const [viewsVideo, setViewsVideo] = useState(returnString);
   return (
     <>
       {/* description, show tags on click for show more */}
@@ -34,7 +34,7 @@ export default function DescriptionSection({ filteredVideo }) {
         <div className="videoDetailsDescriptionTop">
           <div className="videoDetailsShowMoreContainer">
             <div className="videoDetailsDescriptionTop">
-              <div>{newString} views</div>
+              <div>{viewsVideo} views</div>
               <div>{filteredVideo[0].created_at.slice(0, 16)}</div>
             </div>
             {showMoreDescription == true ? (
