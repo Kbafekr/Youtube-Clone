@@ -5,7 +5,7 @@ Welcome to You2oob!
 
 You2oob Project is a Youtube clone that allows users to share videos and interact with other channels. Users can upload videos, follow other users, comment on, and like videos.
 
-Link to test out website: you200b heroku
+Link to test out website: https://you2oob.herokuapp.com
 
 ## Tech Stack
  Frontend:
