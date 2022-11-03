@@ -140,11 +140,10 @@ align-items: center;
     height: 100%;
 }
 .homeTagsBar {
-    position: sticky;
     display: flex;
     gap: 20px;
     flex-direction: row;
-    overflow-x: auto;
+    overflow-x: hidden;
     width: 100%;
     overflow-y: hidden;
     height: 100%
@@ -159,6 +158,9 @@ align-items: center;
 }
 .tagHomePage {
     color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     background-color: rgba(85, 85, 85, 0.596);
     padding: 10px 10px;
     width: fit-content;

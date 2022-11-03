@@ -96,15 +96,19 @@ export function HomePage({ sidePanel }) {
           <div className="homeTagsBarContainer">
             <div className="homeTagsBar">
               <div className="tagHomePageActive">All</div>
-              <div className="tagHomePage">Mixes</div>
+              <div className="tagHomePage">New</div>
               <div className="tagHomePage">Gaming</div>
               <div className="tagHomePage">Music</div>
               <div className="tagHomePage">Sports</div>
-              <div className="tagHomePage">House of Dragon</div>
-              <div className="tagHomePage">Marvel</div>
+              <div className="tagHomePage">Nature</div>
+              <div className="tagHomePage">Superheroes</div>
               <div className="tagHomePage">Anime</div>
-              <div className="tagHomePage">Pokemon</div>
+              <div className="tagHomePage">Programmming</div>
               <div className="tagHomePage">News</div>
+              <div className="tagHomePage">Podcasts</div>
+              <div className="tagHomePage">Food</div>
+              <div className="tagHomePage">Scenes</div>
+              <div className="tagHomePage">Fashion</div>
             </div>
           </div>
           <div className="VideosMapped">
