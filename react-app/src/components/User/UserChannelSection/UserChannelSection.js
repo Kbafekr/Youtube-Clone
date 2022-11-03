@@ -146,10 +146,7 @@ function UserChannelSection() {
                   );
                 })}
               </div>
-              <div className="SortByFavicon">
-                {/* sort by method with favicon */}
-                Sort By
-              </div>
+             
             </div>
           </div>
         </>

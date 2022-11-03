@@ -74,10 +74,9 @@ export function CommentsSection() {
   }
 
   if (sortByComments == true) {
-    commentsArrayForMapping = [...sortedCommentsByNewest]
-  }
-  else {
-    commentsArrayForMapping = [...filteredCommentsArray]
+    commentsArrayForMapping = [...sortedCommentsByNewest];
+  } else {
+    commentsArrayForMapping = [...filteredCommentsArray];
   }
 
   return (
@@ -98,7 +97,7 @@ export function CommentsSection() {
             </>
           ) : (
             <>
-            <div className="SortupCommentsFavicon">
+              <div className="SortupCommentsFavicon">
                 <i class="fa-solid fa-sort-up"></i>
               </div>
               <div>Sort by oldest </div>

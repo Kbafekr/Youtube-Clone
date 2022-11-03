@@ -28,8 +28,10 @@ export default function TagsVideos({ video }) {
     dispatch(getAllTagsThunk());
   }, [dispatch, showModalCreateTag, showModalEditTag, showModalDeleteTag]);
 
+  let filteredtags = tagsArray.filter((tags) => tags.video_id === video.id)
+
   return (
-    <>
+    <> {filteredtags.length > 0 ?
       <div className="TagsArrayManageVideosContainer">
         {tagsArray &&
           tagsArray.map((tag) => {
@@ -85,6 +87,8 @@ export default function TagsVideos({ video }) {
             );
           })}
       </div>
+    : ""}
+
       {showModalCreateTag && (
             <Modal onClose={() => setShowModalCreateTag(false)}>
               <CreateTagForm video={video} setShowModal={setShowModalCreateTag} />

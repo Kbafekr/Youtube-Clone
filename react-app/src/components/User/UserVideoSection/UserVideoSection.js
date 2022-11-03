@@ -125,9 +125,9 @@ function UserVideoSection() {
                         ></i>
                       </div>
                     </div>
-                    <div className="VideoCardHome" id="ManageVideosArrayProfile">
+                    <div className="VideoCardProfileManage" id="ManageVideosArrayProfile">
                       <div
-                        className="VideoPreviewHome"
+                        className="VideoCardProfileManagePreview"
                         onClick={() => history.push(`/videos/${video.id}`)}
                       >
                         {video.video_url.includes("s3") ? (
@@ -148,7 +148,7 @@ function UserVideoSection() {
                           />
                         )}
                       </div>
-                      <div className="VideoTitleCard" onClick={() => history.push(`/videos/${video.id}`)}>{video.title}</div>
+                      <div className="VideoTitleCardManageProfile" onClick={() => history.push(`/videos/${video.id}`)}>{video.title}</div>
                       <div className="VideoDescriptionCardManage">{video.description}</div>
                     </div>
                     <TagsVideos video={video}/>
@@ -156,10 +156,6 @@ function UserVideoSection() {
                 </>
               );
             })}
-          </div>
-          <div className="SortByFavicon">
-            {/* sort by method with favicon */}
-            Sort By
           </div>
         </div>
       </div>
