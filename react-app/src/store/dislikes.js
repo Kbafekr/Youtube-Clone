@@ -54,7 +54,7 @@ export const createDislikeThunk = (videoId, payload) => async (dispatch) => {
     }
 }
 
-export const deleteLikesThunk = (videoId, id) => async (dispatch) => {
+export const deleteDislikesThunk = (videoId, id) => async (dispatch) => {
     const response = await fetch(`/api/videos/${videoId}/dislikes/${id}/delete`, {
         method: "DELETE",
     });
@@ -77,7 +77,7 @@ export default function reducer(state = initialState, action) {
             return newState;
         }
         case GETVIDEODISLIKES: {
-            const newState = { ...action.video_id }
+            const newState = { ...action.videoId }
             return newState
         }
         case CREATE_DISLIKES: {

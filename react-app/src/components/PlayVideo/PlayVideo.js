@@ -12,6 +12,7 @@ import logo from "../../icons/you2oobLogo.png";
 import { getAllChannelsThunk } from "../../store/channel";
 
 import { CommentsSection } from "./CommentsSection/Comments";
+import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
 
 export function VideoPage({ sidePanel }) {
   const { videoId } = useParams();
@@ -125,17 +126,7 @@ export function VideoPage({ sidePanel }) {
                               </div>
                             </div>
 
-                            <div className="LikesSectionVideo">
-                              <div className="LikeVideoSection">
-                                <div className="notificationBellVideoPlay">
-                                  <i class="fa-solid fa-thumbs-up"></i>
-                                </div>
-                                0 Likes
-                              </div>
-                              <div className="notificationBellVideoPlay">
-                                <i class="fa-solid fa-thumbs-down"></i>
-                              </div>
-                            </div>
+                            <LikesDislikes />
                           </div>
                         ) : (
                           ""

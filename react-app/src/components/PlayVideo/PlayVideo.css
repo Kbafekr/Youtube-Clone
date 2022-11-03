@@ -127,6 +127,16 @@ font-weight: bold;
     border-right: 1px solid rgb(32, 32, 32);
 }
 
+
+
+#blueLike {
+    color: rgb(0, 166, 255);
+}
+#redDislike {
+    color: rgb(255, 42, 0);
+}
+
+
 /* end of subcription to likes section */
 .profileImageHomeVideoArray {
     height: 100%;

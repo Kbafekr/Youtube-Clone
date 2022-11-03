@@ -118,9 +118,9 @@ def get_comment_by_video(videoId):
     comments = Comment.query.filter_by(video_id=videoId).all()
     if comments == None:
         return {
-        "Message": "Video has no comments",
-        "statusCode": "200"
-    }
+            "Message": "Video has no comments",
+            "statusCode": "200"
+        }
     return {comment.id: comment.to_dict() for comment in comments}
 
 # Post a comment
@@ -174,16 +174,12 @@ def delete_comment(videoId, id):
     db.session.delete(comment)
     db.session.commit()
     return {
-        "Message": "like successfully deleted",
+        "Message": "comment successfully deleted",
         "statusCode": "200"
     }
 
 
-
-
-
 # likes
-
 
 
 # Get All Likes by video id (move to images routes)
@@ -194,51 +190,52 @@ def videoLikes(videoId):
     all_likes = Like.query.filter_by(video_id=videoId).all()
     if all_likes == None:
         return {
-        "Message": "Video has no likes",
-        "statusCode": "200"
-    }
+            "Message": "Video has no likes",
+            "statusCode": "200"
+        }
     likes = {like.id: like.to_dict() for like in all_likes}
     return likes
 
 # Make a new Like
+
+
 @video_routes.route('/<int:videoId>/likes/new', methods=["POST"])
 @login_required
 def postLike(videoId):
 
-        like = Like.query.filter_by(video_id=videoId, user_id=current_user.id).first()
-        if like:
-            db.session.delete(like)
-            db.session.commit()
-            return like.to_dict()
-        else:
-            new_like = Like(
+    like = Like.query.filter_by(
+        video_id=videoId, user_id=current_user.id).first()
+    if like:
+        db.session.delete(like)
+        db.session.commit()
+        return like.to_dict()
+    else:
+        new_like = Like(
             user_id=current_user.id,
             video_id=videoId
         )
-        db.session.add(new_like)
-        db.session.commit()
-        return new_like.to_dict()
+    db.session.add(new_like)
+    db.session.commit()
+    return new_like.to_dict()
 
-#Delete a comment
+# Delete a like
+
+
 @video_routes.route('/<int:videoId>/likes/<int:id>/delete', methods=['DELETE'])
 @login_required
-def delete_likes(id):
-    likes = Like.query.get(id).all()
+def delete_likes(videoId, id):
+    likes = Like.query.get(id)
 
     # likes = Like.query.get(id)
     db.session.delete(likes)
     db.session.commit()
-    return "Successfully Deleted Comment"
-
-
-
-
-
-
+    return {
+        "Message": "Successfully removed like",
+        "statusCode": "200"
+    }
 
 
 # dislikes
-
 
 
 # Get All dislikes
@@ -249,56 +246,65 @@ def allDislikes():
     all_dislikes = Dislike.query.all()
     if all_dislikes == None:
         return {
-        "Message": "No dislikes",
-        "statusCode": "200"
-    }
+            "Message": "No dislikes",
+            "statusCode": "200"
+        }
     dislikes = {"dislikes": [dislike.to_dict() for dislike in all_dislikes]}
     return dislikes
 
 # Get All dislikes by video id (move to images routes)
 # video/comments/videoId
+
+
 @video_routes.route('/<int:videoId>/dislikes')
 @login_required
 def videoDislikes(videoId):
     all_dislikes = Dislike.query.filter_by(video_id=videoId).all()
     if all_dislikes == None:
         return {
-        "Message": "Video has no dislikes",
-        "statusCode": "200"
-    }
+            "Message": "Video has no dislikes",
+            "statusCode": "200"
+        }
     dislikes = {dislike.id: dislike.to_dict() for dislike in all_dislikes}
     return dislikes
 
 # Make a new disLike
+
+
 @video_routes.route('/<int:videoId>/dislikes/new', methods=["POST"])
 @login_required
 def postDislike(videoId):
 
-        dislike = Dislike.query.filter_by(video_id=videoId, user_id=current_user.id).first()
-        if dislike:
-            db.session.delete(dislike)
-            db.session.commit()
-            return dislike.to_dict()
-        else:
-            new_dislike = Dislike(
+    dislike = Dislike.query.filter_by(
+        video_id=videoId, user_id=current_user.id).first()
+    if dislike:
+        db.session.delete(dislike)
+        db.session.commit()
+        return dislike.to_dict()
+    else:
+        new_dislike = Dislike(
             user_id=current_user.id,
             video_id=videoId
         )
-        db.session.add(new_dislike)
-        db.session.commit()
-        return new_dislike.to_dict()
+    db.session.add(new_dislike)
+    db.session.commit()
+    return new_dislike.to_dict()
 
-#Delete a dislike
+# Delete a dislike
+
+
 @video_routes.route('/<int:videoId>/dislikes/<int:id>/delete', methods=['DELETE'])
 @login_required
-def delete_dislikes(id):
-    dislikes = Dislike.query.get(id).all()
+def delete_dislikes(videoId, id):
+    dislikes = Dislike.query.get(id)
 
     # likes = Like.query.get(id)
     db.session.delete(dislikes)
     db.session.commit()
-    return "Successfully Removed dislike"
-
+    return {
+        "Message": "Successfully removed dislike",
+        "statusCode": "200"
+    }
 
 
 # tags
@@ -311,12 +317,14 @@ def get_tagsbyVideo(videoId):
     tags = Tag.query.filter_by(video_id=videoId).all()
     if tags == None:
         return {
-        "Message": "Video has no tags",
-        "statusCode": "200"
-    }
+            "Message": "Video has no tags",
+            "statusCode": "200"
+        }
     return {tag.id: tag.to_dict() for tag in tags}
 
-#Post a tag
+# Post a tag
+
+
 @video_routes.route('/<int:videoId>/tag/new', methods=['POST'])
 @login_required
 def new_Tag(videoId):
@@ -335,8 +343,10 @@ def new_Tag(videoId):
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-#Edit a tag
-@video_routes.route('/<int:videoId>/tag/<int:id>/edit', methods=['GET','PUT'])
+# Edit a tag
+
+
+@video_routes.route('/<int:videoId>/tag/<int:id>/edit', methods=['GET', 'PUT'])
 @login_required
 def edit_Tag(videoId, id):
     form = TagForm()
@@ -351,7 +361,9 @@ def edit_Tag(videoId, id):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
     return render_template("test.html", form=form)
 
-#Delete a tag
+# Delete a tag
+
+
 @video_routes.route('/<int:videoId>/tag/<int:id>/delete', methods=['GET', 'DELETE'])
 @login_required
 def delete_Tag(videoId, id):
@@ -359,6 +371,6 @@ def delete_Tag(videoId, id):
     db.session.delete(tag)
     db.session.commit()
     return {
-    "Message": "Tag successfully deleted",
-    "statusCode": "200"
+        "Message": "Tag successfully deleted",
+        "statusCode": "200"
     }
