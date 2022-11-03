@@ -8,6 +8,7 @@ import { getAllTagsThunk } from "../../../../store/tags";
 
 import EditTagForm from "./EditTagForm";
 import DeleteTagForm from "./DeleteTagForm";
+import CreateTagForm from "./CreateTagForm";
 export default function TagsVideos({ video }) {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -84,7 +85,17 @@ export default function TagsVideos({ video }) {
             );
           })}
       </div>
-      <div>Create new Tag</div>
+      {showModalCreateTag && (
+            <Modal onClose={() => setShowModalCreateTag(false)}>
+              <CreateTagForm video={video} setShowModal={setShowModalCreateTag} />
+            </Modal>
+          )}
+          <div
+            className="CreateTagButton"
+            onClick={() => setShowModalCreateTag(true)}
+          >
+            Create Tag
+          </div>
     </>
   );
 }

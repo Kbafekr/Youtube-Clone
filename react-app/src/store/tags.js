@@ -54,11 +54,11 @@ export const getVideoTagsThunk = (videoId) => async (dispatch) => {
     }
 }
 
-export const createATagThunk = (channelId, videoId, body) => async (dispatch) => {
-    const response = await fetch(`/api/videos/${videoId}/tag/new`, {
+export const createATagThunk = (channel_id, video_id, body) => async (dispatch) => {
+    const response = await fetch(`/api/videos/${video_id}/tag/new`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({channelId, videoId, body})
+        body: JSON.stringify({channel_id, video_id, body})
     })
     if (response.ok) {
         const newTag = await response.json()

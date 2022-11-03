@@ -2,24 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getVideoCommentsThunk } from "../../../../store/comment";
-import { newCommentThunk } from "../../../../store/comment";
-import '../Comments.css'
-
-function CreateTagForm() {
+import { getAllTagsThunk } from "../../../../store/tags";
+import { createATagThunk } from "../../../../store/tags";
+function CreateTagForm({video, setShowModal}) {
   const user = useSelector((state) => state.session.user);
-  const channels = useSelector((state) => state.channel);
-
-  let channelsArray = Object.values(channels);
-
+  const channel_id = user.active_channel
+  const video_id = video.id
   const dispatch = useDispatch();
-  const { videoId } = useParams();
-  const userId = user.id;
-  const is_reply = false;
-  const commentReply_id = undefined
+
+
 
   const [body, setBody] = useState("");
-  const [commentStatus, setCommentStatus] = useState()
   const [errors, setErrors] = useState([]);
 
   const [submitted, setSubmitted] = useState(false);
@@ -27,17 +20,12 @@ function CreateTagForm() {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (body.length > 500) {
+    if (!body || body.length > 100) {
 
       formValidationErrors.push(
-        "Channel Name must exist and be between 1 and 500 characters"
+        "Tag must exist and be between 1 and 100 characters"
         );
-        setCommentStatus(false)
       }
-    else if (!body.length) {
-      setCommentStatus(false)
-    }
-    else setCommentStatus(true)
 
     setErrors(formValidationErrors);
   }, [body]);
@@ -45,11 +33,10 @@ function CreateTagForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length <= 0) {
-  console.log(body)
       return dispatch(
-        newCommentThunk(userId, videoId, body, is_reply, commentReply_id)
+        createATagThunk(channel_id, video_id, body)
       )
-        .then(() => dispatch(getVideoCommentsThunk(videoId))).then(() => setBody(""))
+        .then(() => dispatch(getAllTagsThunk())).then(() => setShowModal(false))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -60,33 +47,19 @@ function CreateTagForm() {
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
-    setBody("");
+    setShowModal(false);
   };
 
   return (
     <>
-      <div className="CreateCommentContainer">
-        {channelsArray &&
-          channelsArray.map((channel) => {
-            return (
-              <>
-                {channel.id == user.active_channel ? (
-                      <img
-                        className="channelPictureHomeArray"
-                        alt="channel"
-                        src={channel.profile_picture}
-                      />
-                ) : (
-                  ""
-                )}
-              </>
-            );
-          })}
+      <div className="EditUser-outer">
+      <div className="edit-user-containerinner">
         <form
-          className="CreateCommentForm"
+          className="Edit-User-inner"
           onSubmit={handleSubmit2}
           autoComplete="off"
         >
+          <h2 className="EditUserHeaderTop">Create Tag</h2>
           <div className="errorHandlingContainer">
             {errors.length > 0 && (
               <div className="HeaderErrorStyling">
@@ -100,16 +73,18 @@ function CreateTagForm() {
               </div>
             )}
           </div>
+          <div className="EditUserHeader">Tag Body:</div>
           <input
-            className="CreateCommentBody"
+            className="preview-image-input"
+            id="edit-image-input"
             type="text"
             name="body"
-            placeholder="Add a comment..."
+            placeholder="Add a tag..."
             value={body}
             onChange={(e) => setBody(e.target.value)}
             // required
           />
-          {commentStatus && (
+
 
             <div className="deleteImageButtons">
             <button
@@ -117,7 +92,7 @@ function CreateTagForm() {
               onClick={handleSubmit}
               type="submit"
             >
-              Comment
+              Create Tag
             </button>
             <button
               className="cancelDeleteImage"
@@ -127,8 +102,8 @@ function CreateTagForm() {
               Cancel
             </button>
           </div>
-              )}
         </form>
+      </div>
       </div>
     </>
   );
