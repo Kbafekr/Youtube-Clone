@@ -1,9 +1,9 @@
 # Youtube Clone
  Youtube Clone
 
-Welcome to You2oob!
+Welcome to hootube!
 
-You2oob Project is a Youtube clone that allows users to share videos and interact with other channels. Users can upload videos, follow other users, comment on, and like videos.
+hootube is a Youtube clone that allows users to share videos and interact with other channels. Users can upload videos, follow other users, comment on, and like videos.
 
 Link to test out website: https://you2oob.herokuapp.com
 
@@ -20,13 +20,13 @@ DB:
 
 
 
-You2oob
+hootube
 * Clone/download the repo https://github.com/Kbafekr/Youtube-Clone
 
-* cd into You2oob folder and ``` run pipenv install ```
+* cd into hootube folder and ``` run pipenv install ```
 
-* Open two terminal paths for both You2oob and react-app.
-* Under You2oob ``` run pipenv shell  then flask run, for react-app run npm install```
+* Open two terminal paths for both hootube and react-app.
+* Under hootube ``` run pipenv shell  then flask run, for react-app run npm install```
 * Create a .env file under the root of the backend folder with the following contents:
 
   ``` REACT_APP_BASE_URL=http://localhost:5000 ```
