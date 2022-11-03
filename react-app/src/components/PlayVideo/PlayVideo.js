@@ -10,7 +10,9 @@ import { useParams } from "react-router-dom";
 import { amountViews } from "../../Utils/Utils";
 import { Redirect } from "react-router-dom";
 import logo from "../../icons/you2oobLogo.png";
+import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
+import DescriptionSection from "./DescriptionTags/DescriptionTags";
 
 import { CommentsSection } from "./CommentsSection/Comments";
 import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
@@ -26,9 +28,16 @@ export function VideoPage({ sidePanel }) {
 
   const [loaded, setLoaded] = useState(false);
 
+  // usestate to keep track of description height
+  const [showMoreDescription, setShowMoreDescription] = useState(false);
+
   useEffect(() => {
     dispatch(getAllChannelsThunk());
   }, [dispatch, user]);
+
+  useEffect(() => {
+    dispatch(getVideoTagsThunk(videoId));
+  }, [dispatch, user, videoId]);
 
   useEffect(() => {
     (async () => {
@@ -135,9 +144,7 @@ export function VideoPage({ sidePanel }) {
                       </>
                     );
                   })}
-                <div className="VideoDetailsDescriptionSection">
-                  {filteredVideo[0].description}
-                </div>
+                <DescriptionSection filteredVideo={filteredVideo} />
               </div>
               <div className="VideoDetailsCommentsSection">
                 <CommentsSection />
@@ -155,7 +162,10 @@ export function VideoPage({ sidePanel }) {
                           onClick={() => history.push(`/videos/${video.id}`)}
                         >
                           {/* used to cover video preview to prevent load */}
-                          <div className="OverlayVideoPreviewDetails" onClick={() => history.push(`/videos/${video.id}`)}></div>
+                          <div
+                            className="OverlayVideoPreviewDetails"
+                            onClick={() => history.push(`/videos/${video.id}`)}
+                          ></div>
                           {/* used to cover video preview to prevent load */}
                           <div
                             className="RecommendedVideoPreview"

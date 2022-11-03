@@ -7,10 +7,10 @@ def seed_tags():
     tag_2 = Tag(channel_id=1, video_id=1, body="SuperHero")
     tag_3 = Tag(channel_id=1, video_id=1, body="Ant-man")
     tag_4 = Tag(channel_id=1, video_id=1, body="Heist")
-    tag_5 = Tag(channel_id=1, video_id=1, body="Nirvana")
-    tag_6 = Tag(channel_id=1, video_id=1, body="Music")
-    tag_7 = Tag(channel_id=1, video_id=1, body="Grunge")
-    tag_8 = Tag(channel_id=1, video_id=1, body="Rock")
+    tag_5 = Tag(channel_id=1, video_id=4, body="Nirvana")
+    tag_6 = Tag(channel_id=1, video_id=4, body="Music")
+    tag_7 = Tag(channel_id=1, video_id=4, body="Grunge")
+    tag_8 = Tag(channel_id=1, video_id=4, body="Rock")
 
     tags = [tag_1, tag_2, tag_3, tag_4, tag_5, tag_6, tag_7, tag_8]
 

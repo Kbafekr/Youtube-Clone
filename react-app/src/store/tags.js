@@ -40,13 +40,13 @@ const deleteATag = (tagId) => ({
 // Thunks
 
 export const getAllTagsThunk = () => async (dispatch) => {
-    const response = await fetch(`/api/tags/all`)
+    const response = await fetch(`/api/videos/tags/all`)
     if (response.ok) {
         const AllTags = await response.json()
         dispatch(getAllTags(AllTags))
     }
 }
-export const getImageTagsThunk = (videoId) => async (dispatch) => {
+export const getVideoTagsThunk = (videoId) => async (dispatch) => {
     const response = await fetch(`/api/videos/${videoId}/tag`)
     if (response.ok) {
         const VideoTags = await response.json()
@@ -102,7 +102,7 @@ export default function reducer(state = initialState, action) {
       }
       case VIDEO_TAGS: {
         // const newState = {}
-        const newState = {...action.video_id}
+        const newState = {...action.videoId}
         // action.image.likes.forEach((like) => {
         //     newState[like.id] = like
         // })

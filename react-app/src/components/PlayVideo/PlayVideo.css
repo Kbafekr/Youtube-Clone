@@ -149,15 +149,74 @@ font-weight: bold;
 
 }
 
+
+/* description section */
 .VideoDetailsDescriptionSection{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-right: -12px;
     background-color: rgba(86, 86, 86, 0.426);
     border-radius: 12px;
     width: 95%;
     padding: 15px;
-
 }
 
+#showlessActiveDescription {
+    height: 54px;
+    overflow: hidden;
+}
+#showmoreActiveDescription {
+    height: fit-content;
+    overflow: hidden;
+}
+
+.videoDetailsDescriptionTop {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    gap: 30px;
+    font-size: 16px;
+}
+
+.videoDetailsShowMoreContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+/* tags */
+
+.TagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 5px;
+    width: 100%
+}
+
+.tagSingleContainer:hover {
+    color: white;
+    background-color: gray;
+    transform: scale(1.2);
+    transition: all .1s ease-in-out;
+}
+
+.tagSingleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(202, 202, 202, 0.548);
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem;
+}
+/* end of description section */
 
 /* Comments section */
 
