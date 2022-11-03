@@ -154,7 +154,9 @@ export function VideoPage({ sidePanel }) {
                           className="VideoCardRecommended"
                           onClick={() => history.push(`/videos/${video.id}`)}
                         >
+                          {/* used to cover video preview to prevent load */}
                           <div className="OverlayVideoPreviewDetails" onClick={() => history.push(`/videos/${video.id}`)}></div>
+                          {/* used to cover video preview to prevent load */}
                           <div
                             className="RecommendedVideoPreview"
                             onClick={() => history.push(`/videos/${video.id}`)}
