@@ -31,7 +31,8 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
               exact={true}
               activeClassName="active"
             >
-              <img src={logo} alt="logo" className="LogoImageNavBar" />
+              <img src={logo} alt="logo" className="LogoImageNavBar"
+              onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}/>
             </NavLink>
           </div>
 
@@ -83,7 +84,8 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
               exact={true}
               activeClassName="active"
             >
-              <img src={logo} alt="logo" className="LogoImageNavBar" />
+              <img src={logo} alt="logo" className="LogoImageNavBar"
+              onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }} />
             </NavLink>
           </div>
 

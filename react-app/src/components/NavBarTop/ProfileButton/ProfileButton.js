@@ -48,6 +48,7 @@ export default function ProfileButton() {
           <img
             src={activeChannel[0].profile_picture}
             className="ProfileButtonPictureNav"
+            onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
           />
         </div>
 

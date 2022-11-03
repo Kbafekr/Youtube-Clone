@@ -144,7 +144,7 @@ function User({ sidePanel }) {
     if (category == 1)
       return (
         <>
-  
+
         </>
       );
     if (category == 2)
@@ -252,6 +252,7 @@ function User({ sidePanel }) {
                 className="UserPageChannelBanner"
                 src={activeChannel[0].banner_picture}
                 alt="banner"
+                onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
               />
               <div className="WelcomeUserPage">
                 Hey {currentUser.first_name}
@@ -265,6 +266,7 @@ function User({ sidePanel }) {
                   <img
                     className="ChannelProfilePicNav"
                     src={activeChannel[0].profile_picture}
+                    onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
                   />
                   <div className="ChannelNameAndSubscriberSection">
                     <div className="ChannelNameNavBar">

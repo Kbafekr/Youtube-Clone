@@ -74,6 +74,7 @@ function CreateCommentForm() {
                         className="channelPictureHomeArray"
                         alt="channel"
                         src={channel.profile_picture}
+                        onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
                       />
                 ) : (
                   ""

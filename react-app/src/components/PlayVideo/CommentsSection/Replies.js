@@ -115,6 +115,7 @@ export function RepliesSection({ comment }) {
                                             <img
                                               src={channel.profile_picture}
                                               className="channelPictureHomeArray"
+                                              onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
                                             />
                                           </div>
                                           <div className="CommentIndividualRightComponent">

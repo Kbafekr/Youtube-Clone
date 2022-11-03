@@ -66,10 +66,12 @@ function UserChannelSection() {
                         <img
                           className="ChannelArrayProfilePic"
                           src={channel.profile_picture}
+                          onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
                         />
                         <img
                           className="ChannelArrayBanner"
                           src={channel.banner_picture}
+                          onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
                         />
                         <div className="ChannelArrayUsername">
                           {channel.channel_name}
@@ -146,7 +148,7 @@ function UserChannelSection() {
                   );
                 })}
               </div>
-             
+
             </div>
           </div>
         </>
