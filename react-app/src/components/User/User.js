@@ -144,7 +144,7 @@ function User({ sidePanel }) {
     if (category == 1)
       return (
         <>
-          <div>Welcome Home</div>
+  
         </>
       );
     if (category == 2)
@@ -299,7 +299,7 @@ function User({ sidePanel }) {
                 >
                   Videos
                 </div>
-        
+
                 <div
                   onClick={() => setCategory(4)}
                   className={
