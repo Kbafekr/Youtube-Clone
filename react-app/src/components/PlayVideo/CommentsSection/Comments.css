@@ -19,7 +19,12 @@ gap: 10px;
 
 .SortCommentsFavicon {
     position: relative;
-    bottom: 5px;
+    bottom: 2px;
+    font-size: 20px;
+}
+.SortupCommentsFavicon {
+    position: relative;
+    bottom: -3px;
     font-size: 20px;
 }
 
