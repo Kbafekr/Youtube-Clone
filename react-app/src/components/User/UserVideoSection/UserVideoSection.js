@@ -10,6 +10,8 @@ import "./UserVideoSection.css";
 import logo from "../../../icons/you2oobLogo.png";
 import EditVideoForm from "./VideoForms/EditVideoForm";
 import DeleteVideoForm from "./VideoForms/DeleteVideoForm";
+import TagsVideos from "./TagsSection/TagsVideos";
+
 // videos
 
 import { getAllChannelsThunk } from "../../../store/channel";
@@ -71,38 +73,11 @@ function UserVideoSection() {
     <>
       <div className="UserChannelsDetailsSectionOuter">
         <div className="UserChannelsDetailsSection">
-          <div>
+          <div id="ManageVideosArraySection">
             {activeChannel[0].videos.map((video) => {
               return (
                 <>
                   <div className="VideosArrayUserContainer">
-                    <div className="VideoCardHome">
-
-                      <div
-                        className="VideoPreviewHome"
-                        onClick={() => history.push(`/videos/${video.id}`)}
-                      >
-                        {video.video_url.includes('s3') ?
-                        ( <ReactPlayer
-                          width="100%"
-                          height="100%"
-                          url={video.video_url}
-                          playIcon={true}
-
-                        />) :
-                        (<ReactPlayer
-                          width="100%"
-                          height="100%"
-                          url={video.video_url}
-                          playIcon={true}
-                          light={true}
-                          showPreview
-                          />)
-                        }
-                      </div>
-                      <div className="VideoTitleCard">{video.title}</div>
-                    </div>
-
                     <div className="EditDeleteChannelSection">
                       <div className="EditChannelFavicon">
                         {showModalEditVideo && (
@@ -150,6 +125,33 @@ function UserVideoSection() {
                         ></i>
                       </div>
                     </div>
+                    <div className="VideoCardHome" id="ManageVideosArrayProfile">
+                      <div
+                        className="VideoPreviewHome"
+                        onClick={() => history.push(`/videos/${video.id}`)}
+                      >
+                        {video.video_url.includes("s3") ? (
+                          <ReactPlayer
+                            width="100%"
+                            height="100%"
+                            url={video.video_url}
+                            playIcon={true}
+                          />
+                        ) : (
+                          <ReactPlayer
+                            width="100%"
+                            height="100%"
+                            url={video.video_url}
+                            playIcon={true}
+                            light={true}
+                            showPreview
+                          />
+                        )}
+                      </div>
+                      <div className="VideoTitleCard" onClick={() => history.push(`/videos/${video.id}`)}>{video.title}</div>
+                      <div className="VideoDescriptionCardManage">{video.description}</div>
+                    </div>
+                    <TagsVideos video={video}/>
                   </div>
                 </>
               );

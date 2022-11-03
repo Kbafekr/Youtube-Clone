@@ -2,5 +2,74 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    gap: 30px;
+}
+
+.VideoDescriptionCardManage {
+    font: normal;
+    width: 100%;
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    flex-wrap: wrap;
+    height: 70px;
+    overflow-y: auto;
+}
+
+#ManageVideosArrayProfile {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
+#ManageVideosArraySection {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+/* tags Section CRUD */
+
+.TagsArrayManageVideosContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    height: 260px;
+    width: 280px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.TagIndividualManage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tagSingleContainerManage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    max-width: 200px;
+    overflow: hidden;
+    padding: 10px;
+    background-color: rgba(202, 202, 202, 0.548);
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem;
+}
+
+.EditDeleteTagSection {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .EditTagFavicon {
+    font-size: 24px;
+    cursor: pointer;
+  }

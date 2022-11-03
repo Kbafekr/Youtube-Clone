@@ -40,7 +40,7 @@ const deleteATag = (tagId) => ({
 // Thunks
 
 export const getAllTagsThunk = () => async (dispatch) => {
-    const response = await fetch(`/api/videos/tags/all`)
+    const response = await fetch(`/api/tags/all`)
     if (response.ok) {
         const AllTags = await response.json()
         dispatch(getAllTags(AllTags))
@@ -65,15 +65,16 @@ export const createATagThunk = (channelId, videoId, body) => async (dispatch) =>
         dispatch(createATag(newTag))
     }
 }
-export const updateATagThunk = (videoId, id, channelId, body) => async (dispatch) => {
-    const response = await fetch(`/api/videos/${videoId}/tag/${id}/edit`, {
+export const updateATagThunk = (video_id, id, channel_id, body) => async (dispatch) => {
+    const response = await fetch(`/api/videos/${video_id}/tag/${id}/edit`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({videoId, id, channelId, body})
+        body: JSON.stringify({channel_id, video_id, body})
     })
     if (response.ok) {
         const editTag = await response.json()
         dispatch(updateATag(editTag))
+        return editTag
     }
 }
 

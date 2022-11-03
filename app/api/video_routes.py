@@ -354,12 +354,13 @@ def edit_Tag(videoId, id):
     if form.validate_on_submit():
         editedTag = Tag.query.get(id)
         data = form.data
+        editedTag.channel_id = data['channel_id']
+        editedTag.video_id = data['video_id']
         editedTag.body = data['body']
         db.session.commit()
         return editedTag.to_dict()
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-    return render_template("test.html", form=form)
 
 # Delete a tag
 
