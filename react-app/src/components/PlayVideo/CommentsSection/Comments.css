@@ -117,6 +117,9 @@ font-weight: bold;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 /* replies section  */

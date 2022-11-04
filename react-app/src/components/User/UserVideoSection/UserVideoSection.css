@@ -90,6 +90,9 @@
     width: fit-content;
     height: fit-content;
     padding: .5rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .EditDeleteTagSection {

@@ -6,7 +6,7 @@ import { getVideoCommentsThunk } from "../../../../store/comment";
 import { newCommentThunk } from "../../../../store/comment";
 import '../Comments.css'
 
-function CreateReplyForm({comment}) {
+function CreateReplyForm({comment, setCommentReplies, setReply}) {
   const user = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
 
@@ -29,7 +29,7 @@ function CreateReplyForm({comment}) {
     if (body.length > 500) {
 
       formValidationErrors.push(
-        "Channel Name must exist and be between 1 and 500 characters"
+        "Comment Body must exist and be between 1 and 500 characters"
         );
         setCommentStatus(false)
       }
@@ -48,7 +48,7 @@ function CreateReplyForm({comment}) {
       return dispatch(
         newCommentThunk(userId, videoId, body, is_reply, commentReply_id)
       )
-        .then(() => dispatch(getVideoCommentsThunk(videoId))).then(() => setBody(""))
+        .then(() => dispatch(getVideoCommentsThunk(videoId))).then(() => setBody("")).then(() => setCommentReplies(true)).then(() => setReply(false))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);

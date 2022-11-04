@@ -30,7 +30,7 @@ function CreateCommentForm() {
     if (body.length > 500) {
 
       formValidationErrors.push(
-        "Channel Name must exist and be between 1 and 500 characters"
+        "Comment Body must exist and be between 1 and 500 characters"
         );
         setCommentStatus(false)
       }

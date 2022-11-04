@@ -86,7 +86,7 @@ export function RepliesSection({ comment }) {
       </div>
       {reply === true ? (
         <div className="replyToComments">
-          <CreateReplyForm comment={comment} />
+          <CreateReplyForm comment={comment} setCommentReplies={setCommentReplies} setReply={setReply} />
         </div>
       ) : (
         ""
