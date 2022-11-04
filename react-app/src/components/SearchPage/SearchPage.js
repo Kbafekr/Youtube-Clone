@@ -13,6 +13,8 @@ import { useLocation } from "react-router-dom";
 import { getAllTagsThunk } from "../../store/tags";
 import { getAllLikesThunk } from "../../store/likes";
 import { getAllDisLikesThunk } from "../../store/dislikes";
+import { SearchPageVideos } from "./SearchByVideos";
+import { SearchPageTags } from "./SearchByTags";
 
 export function SearchPage({ sidePanel }) {
   const dispatch = useDispatch();
@@ -22,21 +24,30 @@ export function SearchPage({ sidePanel }) {
   const { searchTerm } = useParams();
 
   let filterState;
+  let forceState;
   if (location.state != null) {
     filterState = location.state.filterState;
+    forceState = location.state.forceState;
   }
 
   // keeps track of filter typ
-  const [filterMethod, setFilterMethod] = useState("Video");
+  const [assignOnce, setAssignOnce] = useState(true);
+  const [filterMethod, setFilterMethod] = useState("Videos");
   // sort videos by date posted
   const [sortBy, setSortBy] = useState("oldest");
   // keep track of whether filterstate is open
-  const [openFilters, setOpenFilters] = useState("false");
+  const [openFilters, setOpenFilters] = useState(false);
   //   set active for filters
-  const [activeCategory, setActiveCategory] = useState("Videos");
   const [activeSort, setActiveSort] = useState("Oldest");
 
-  console.log(filterState);
+  if (
+    filterState.length > 3 &&
+    filterState != filterMethod &&
+    assignOnce == true
+  ) {
+    setFilterMethod(filterState);
+    setAssignOnce(false);
+  }
 
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
@@ -83,63 +94,62 @@ export function SearchPage({ sidePanel }) {
               Close Filters
             </div>
           )}
-            {openFilters == true ? (
-          <div className="FilterContainerSearchPage">
-                <div className="FilterCategorySearch">
-                  <div>Type</div>
-                  <div className="BorderGrayDiv"></div>
-                  <div
-                    onClick={() => setActiveCategory("Videos")}
-                    className={
-                      activeCategory == "Videos"
-                        ? "FilterCategoryTextActive"
-                        : "FilterCategoryText"
-                    }
-                  >
-                    Video
-                  </div>
-                  <div
-                    onClick={() => setActiveCategory("Tags")}
-                    className={
-                      activeCategory == "Tags"
-                        ? "FilterCategoryTextActive"
-                        : "FilterCategoryText"
-                    }
-                  >
-                    Tags
-                  </div>
+          {openFilters == true ? (
+            <div className="FilterContainerSearchPage">
+              <div className="FilterCategorySearch">
+                <div>Type</div>
+                <div className="BorderGrayDiv"></div>
+                <div
+                  onClick={() => setFilterMethod("Videos")}
+                  className={
+                    filterMethod == "Videos"
+                      ? "FilterCategoryTextActive"
+                      : "FilterCategoryText"
+                  }
+                >
+                  Video
                 </div>
-                <div className="FilterCategorySearch">
-                  <div>Sort By</div>
-                  <div className="BorderGrayDiv"></div>
-                  <div
-                    onClick={() => setActiveSort("Oldest")}
-                    className={
-                      activeSort == "Oldest"
-                        ? "FilterCategoryTextActive"
-                        : "FilterCategoryText"
-                    }
-                  >
-                    Oldest
-                  </div>
-                  <div
-                    onClick={() => setActiveSort("Newest")}
-                    className={
-                      activeSort == "Newest"
-                        ? "FilterCategoryTextActive"
-                        : "FilterCategoryText"
-                    }
-                  >
-                    Newest
-                  </div>
+                <div
+                  onClick={() => setFilterMethod("Tags")}
+                  className={
+                    filterMethod == "Tags"
+                      ? "FilterCategoryTextActive"
+                      : "FilterCategoryText"
+                  }
+                >
+                  Tags
                 </div>
-          </div>
-            ) : (
-              ""
-            )}
-
-          <div>videosArray</div>
-          <div>tagsArray</div>
+              </div>
+              <div className="FilterCategorySearch">
+                <div>Sort By</div>
+                <div className="BorderGrayDiv"></div>
+                <div
+                  onClick={() => setActiveSort("Oldest")}
+                  className={
+                    activeSort == "Oldest"
+                      ? "FilterCategoryTextActive"
+                      : "FilterCategoryText"
+                  }
+                >
+                  Oldest
+                </div>
+                <div
+                  onClick={() => setActiveSort("Newest")}
+                  className={
+                    activeSort == "Newest"
+                      ? "FilterCategoryTextActive"
+                      : "FilterCategoryText"
+                  }
+                >
+                  Newest
+                </div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {filterMethod == "Videos" ? <SearchPageVideos searchTerm={searchTerm} activeSort={activeSort}/> : ""}
+          {filterMethod == "Tags" ? <SearchPageTags searchTerm={searchTerm} activeSort={activeSort}/>: ""}
         </div>
       </div>
     </>

@@ -153,103 +153,109 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             </div> */}
             <div className="SideNavRowContainer">
               <Link
-                to={{
+                to={
+                   {
                   pathname: `/search/Music`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }}
               >
                 <i class="fa-solid fa-music"></i>
               </Link>
               <Link
-                to={{
+
+                to= {{
                   pathname: `/search/Music`,
-                  state: { filterState: "tags" },
-                }} className="SideBarText">Music</Link>
+                  state: { filterState: "Tags", forceState: true },
+                } } className="SideBarText">Music</Link>
             </div>
             <div className="SideNavRowContainer">
               <Link
+
+
                 to={{
                   pathname: `/search/Scene`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }}>
                 <i class="fa-solid fa-file-video"></i>
               </Link>
               <Link
+
+
                 to={{
                   pathname: `/search/Scene`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">Movies & Shows</Link>
             </div>
             <div className="SideNavRowContainer">
               <Link to={{
                   pathname: `/search/Gaming`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">
                 <i class="fa-solid fa-headset"></i>
               </Link>
               <Link to={{
                   pathname: `/search/Gaming`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">Gaming</Link>
             </div>
             <div className="SideNavRowContainer">
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/News`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">
                 <i class="fa-solid fa-newspaper"></i>
               </Link>
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/News`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">News</Link>
             </div>
             <div className="SideNavRowContainer">
               <Link to={{
                   pathname: `/search/Sports`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText" >
                 <i class="fa-solid fa-medal"></i>
               </Link>
-              <Link to={{
+              <Link   to={{
                   pathname: `/search/Sports`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">Sports</Link>
             </div>
             <div className="SideNavRowContainer">
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/Education`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">
                 <i class="fa-solid fa-graduation-cap"></i>
               </Link>
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/Education`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">Learning</Link>
             </div>
             <div className="SideNavRowContainer">
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/Fashion`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText" >
                 <i class="fa-solid fa-shirt"></i>
               </Link>
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/Fashion`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">Fashion</Link>
             </div>
             <div className="SideNavRowContainer">
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/Podcasts`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">
                 <i class="fa-solid fa-podcast"></i>
               </Link>
-              <Link to={{
+              <Link  to={{
                   pathname: `/search/Podcasts`,
-                  state: { filterState: "tags" },
+                  state: { filterState: "Tags", forceState: true },
                 }} className="SideBarText">Podcasts</Link>
             </div>
           </div>
