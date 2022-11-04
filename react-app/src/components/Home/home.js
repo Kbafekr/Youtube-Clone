@@ -107,8 +107,6 @@ export function HomePage({ sidePanel }) {
     filteredTags = tagsArray.filter((tag) =>
       tag.body.toLowerCase().includes(tagsFilter.toLowerCase())
     );
-    console.log(filteredTags);
-    console.log(tagsFilter);
   }
 
   // redefine starting array
@@ -476,7 +474,7 @@ export function HomePage({ sidePanel }) {
                                       );
                                     })}
                                 </div>
-                              
+
 
                     </>
                   );
