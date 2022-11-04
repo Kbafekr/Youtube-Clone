@@ -16,9 +16,12 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
+    if (password && email) {
+
+      const data = await dispatch(login(email, password));
+      if (data) {
+        setErrors(data);
+      }
     }
   };
 
@@ -33,7 +36,7 @@ const LoginForm = () => {
   useEffect(() => {
     let errors = [];
 
-    if (!password.length) errors.push("Password is required");
+    if (!password) errors.push("Password is required");
     if (!email) errors.push("Email is required");
 
     setErrors(errors)

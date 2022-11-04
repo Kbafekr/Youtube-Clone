@@ -1,91 +1,86 @@
 .loginFormContainer {
-    flex: 1;
-    padding: 10px;
-    margin-left: 272px;
-    min-height: 100%;
-    display: flex;
-    color: white;
+  flex: 1;
+  padding: 10px;
+  margin-left: 272px;
+  min-height: 100%;
+  display: flex;
+  color: white;
 }
 
-
 .outerLoginForm {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 48px 40px 36px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 40px 36px;
 }
 
 .innerSignupForm {
-    display: flex;
-    flex-direction: row;
-    width: 500px;
-    height: 600px;
-    overflow-y: auto;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 48px 40px 36px;
-    border: 1px solid gray;
-    border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  height: 680px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 40px 36px;
+  border: 1px solid gray;
+  border-radius: 50px;
 }
 
 .LoginFormDiv {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
 }
 /* logo */
 
 .ErrorLoginSection {
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-    width: 100%;
-    color: red;
-    font-size: 18px;
-    margin: 0;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    overflow: auto;
-    padding-bottom: 20px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+  width: 100%;
+  color: red;
+  font-size: 18px;
+  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .SignupInputs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
 }
 
 #signupInput {
-    font-size: 16px;
-    width: 100%;
-    padding: 5px 15px;
-    height: 20px;
-    border-radius: 5px;
-    color: #202124;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 15px;
+  height: 20px;
+  border-radius: 5px;
+  color: #202124;
 }
 
 /* submit */
 .SubmitSignupFormDiv {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 16px
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 16px;
 }
 
 .CreateAccountRedirect {
-    color: #1a73e8;
-    font-size: 18px;
-    text-decoration: none;
-
+  color: #1a73e8;
+  font-size: 18px;
+  text-decoration: none;
 }
