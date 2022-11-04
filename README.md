@@ -54,3 +54,21 @@ SECRET_KEY=«generate_strong_secret_here»
 Inside react-app create another .env and add     REACT_APP_BASE_URL=http://localhost:5000 
 
 ```
+## Home Page
+
+![HomePage](https://user-images.githubusercontent.com/98255418/199998141-378c6113-cf1b-4f40-8660-b3af831a9a0c.png)
+
+Filter and choose for videos!
+
+
+## Video Page
+
+![WatchVideo](https://user-images.githubusercontent.com/98255418/199998374-db3d38d8-a6a5-4061-98ab-6070ce11f475.png)
+
+Watch and comment on videos
+
+## User Page
+
+![channels](https://user-images.githubusercontent.com/98255418/199998412-f0a9ddfe-d03c-4d5f-8b67-ed8239023dfc.png)
+
+Create channels, upload videos, and more
