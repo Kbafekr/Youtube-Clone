@@ -13,13 +13,16 @@
     max-width: 400px;
     flex-wrap: wrap;
     height: 70px;
-    overflow-y: auto;
+    overflow: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 #ManageVideosArrayProfile {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 #ManageVideosArraySection {
     display: flex;
@@ -28,7 +31,7 @@
 }
 
 .VideoCardProfileManage {
-    height: 400px;
+    max-height: 500px;
 }
 
 .VideoCardProfileManagePreview {
@@ -43,10 +46,13 @@
     width: 100%;
     max-width: 400px;
     flex-wrap: wrap;
-    height: 38px;
-    overflow: hidden;
+    height: 50px;
     font-weight: bold;
     cursor: pointer;
+    overflow: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 

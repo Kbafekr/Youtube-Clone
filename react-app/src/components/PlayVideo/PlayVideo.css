@@ -62,7 +62,10 @@ align-items: flex-start;
 }
 
 .VideoDetailsTitle {
-overflow-x: hidden;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 font-size: 20px;
 font-weight: bold;
 }
@@ -186,7 +189,11 @@ font-weight: bold;
     width: 100%;
 }
 
-
+.VideoDetailsDescriptionText {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
 /* tags */
 
 .TagsContainer {

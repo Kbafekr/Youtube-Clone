@@ -84,6 +84,9 @@ align-items: flex-start;
     overflow: hidden;
     font-weight: bold;
     cursor: pointer;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 

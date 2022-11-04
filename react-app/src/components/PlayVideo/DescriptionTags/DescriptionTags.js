@@ -51,7 +51,7 @@ export default function DescriptionSection({ filteredVideo }) {
             )}
           </div>
         </div>
-        <div>{filteredVideo[0].description}</div>
+        <div className="VideoDetailsDescriptionText">{filteredVideo[0].description}</div>
         <div className="TagsContainer">
           {tagsArray.map((tag) => {
             return (
