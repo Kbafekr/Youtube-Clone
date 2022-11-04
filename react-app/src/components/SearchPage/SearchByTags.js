@@ -33,6 +33,8 @@ export function SearchPageTags({searchTerm, activeSort}) {
   let counterObject = {};
   let tagsFiltered = [];
 
+  let videoResults;
+
   videosArray = Object.values(videos);
   channelsArray = Object.values(channels);
   tagsArray = Object.values(tags);
@@ -56,17 +58,30 @@ export function SearchPageTags({searchTerm, activeSort}) {
   let tagResults;
   let tagArrayCopy;
   let sortTagsbyNewest;
+  let videoArrayCopy;
+  let sortedVideosByNewest;
 
   if (tagsFiltered != null) {
     tagArrayCopy = [...tagsFiltered];
   }
+  if (videosArray != null) {
+    videoArrayCopy = [...videosArray];
+  }
   if (tagArrayCopy && tagArrayCopy.length > 0 && tagsFiltered != null) {
     sortTagsbyNewest = tagArrayCopy.sort((a, b) => b.id - a.id);
   }
-  if (activeSort == "Newest" && sortTagsbyNewest != null) {
+  if (videoArrayCopy && videoArrayCopy.length > 0) {
+    sortedVideosByNewest = videoArrayCopy.sort((a, b) => b.id - a.id);
+  }
+
+  if (activeSort == "Newest") {
     tagResults = [...sortTagsbyNewest];
-  } else {
+    videoResults = [...sortedVideosByNewest]
+  }
+  if (activeSort != "Newest") {
     tagResults = [...tagsFiltered];
+    videoResults = [...videosArray]
+
   }
 
 
@@ -94,8 +109,8 @@ export function SearchPageTags({searchTerm, activeSort}) {
     {tagResults.length > 0 ?
         <div className="homeContainerInner">
             <div className="VideosMapped">
-              {videosArray &&
-                videosArray.map((video) => {
+              {videoResults &&
+                videoResults.map((video) => {
                   return (
                     <>
                       {tagResults &&
