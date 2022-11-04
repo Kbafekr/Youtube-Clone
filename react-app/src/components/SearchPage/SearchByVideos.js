@@ -62,10 +62,10 @@ export function SearchPageVideos({ searchTerm, activeSort }) {
   if (videosFiltered != null) {
     videoArrayCopy = [...videosFiltered];
   }
-  if (videoArrayCopy && videoArrayCopy.length > 0) {
+  if (videoArrayCopy && videoArrayCopy.length > 0 && videosFiltered != null) {
     sortedVideosByNewest = videoArrayCopy.sort((a, b) => b.id - a.id);
   }
-  if (activeSort == "Newest") {
+  if (activeSort == "Newest"  && sortedVideosByNewest != null) {
     arrayResult = [...sortedVideosByNewest];
   } else {
     arrayResult = [...videosFiltered];

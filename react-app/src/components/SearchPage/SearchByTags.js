@@ -60,10 +60,10 @@ export function SearchPageTags({searchTerm, activeSort}) {
   if (tagsFiltered != null) {
     tagArrayCopy = [...tagsFiltered];
   }
-  if (tagArrayCopy && tagArrayCopy.length > 0) {
+  if (tagArrayCopy && tagArrayCopy.length > 0 && tagsFiltered != null) {
     sortTagsbyNewest = tagArrayCopy.sort((a, b) => b.id - a.id);
   }
-  if (activeSort == "Newest") {
+  if (activeSort == "Newest" && sortTagsbyNewest != null) {
     tagResults = [...sortTagsbyNewest];
   } else {
     tagResults = [...tagsFiltered];
