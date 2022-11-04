@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -29,6 +29,16 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
+
+  useEffect(() => {
+    let errors = [];
+
+    if (!password.length) errors.push("Password is required");
+    if (!email) errors.push("Email is required");
+
+    setErrors(errors)
+
+  }, [ password,  email])
 
   if (user) {
     return <Redirect to="/" />;
