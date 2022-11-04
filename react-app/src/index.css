@@ -44,3 +44,44 @@ body {
     display: flex;
     flex-direction: row;
 }
+
+/* footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #1c1c1cd9;
+    margin-top: 200px;
+    border-top: 0.1em dotted rgba(23, 23, 23, 0.338);
+    text-align: left;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+    min-width: 1350px;
+    color: white;
+    }
+
+    footer > * {
+      font-size: 16px;
+    }
+    .footerContainer {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer {
+      display: flex;
+      flex-direction: row;
+      column-gap: 1em;
+      align-items: center;
+      height: 100%;
+    }
+
+    .githubIcon {
+        width: 30px
+        ;
+        height: 30px;
+        background-color: transparent;
+        }
