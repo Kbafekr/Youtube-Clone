@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { Link } from "react-router-dom";
 import reloadPage from "../../Utils/Utils";
+import { reloadSearchPage } from "../../Utils/Utils";
 import "./SideBar.css";
 const SideBarNav = ({ sidePanel, setSidePanel }) => {
   const user = useSelector((state) => state.session.user);
@@ -33,8 +34,8 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
-            </div>
-            <div className="SideNavRowContainer">
+            </div> */}
+            {/* <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-users"></i>
               </div>
@@ -62,12 +63,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               </div>
               <div>You2oob Music</div>
             </div> */}
-          </div>
-          {/* middle row */}
-          <div className="SideNavBorderDivContainer">
+            {/* </div> */}
+            {/* middle row */}
+            {/* <div className="SideNavBorderDivContainer">
             <div className="SideNavBorderDiv"></div>
-          </div>
-          <div className="InternalSideBarSection">
+          </div> */}
+            {/* <div className="InternalSideBarSection"> */}
             {/* <div className="SideNavRowContainer">
               <div>
               <i class="fa-solid fa-book"></i>
@@ -125,7 +126,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
           </div>
 
           {/* Subscriptions row */}
-          <div className="SideNavBorderDivContainer">
+          {/* <div className="SideNavBorderDivContainer">
             <div className="SideNavBorderDiv"></div>
           </div>
           {/* <div className="InternalSideBarSection">
@@ -143,61 +144,120 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             <div className="SideNavBorderDiv"></div>
           </div>
           <div className="InternalSideBarSection">
-            {/* <div className="SideNavRowContainer">Explore</div>
-            <div className="SideNavRowContainer">
+            <div className="SideNavRowContainer">Explore</div>
+            {/* <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-fire"></i>
               </div>
               <div>Trending</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-music"></i>
-              </div>
-              <div>Music</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-file-video"></i>
-              </div>
-              <div>Movies & Shows</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-headset"></i>
-              </div>
-              <div>Gaming</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-newspaper"></i>
-              </div>
-              <div>News</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-medal"></i>
-              </div>
-              <div>Sports</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-graduation-cap"></i>
-              </div>
-              <div>Learning</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-shirt"></i>
-              </div>
-              <div>Fashion & Beauty</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-podcast"></i>
-              </div>
-              <div>Podcasts</div>
             </div> */}
+            <div className="SideNavRowContainer">
+              <Link
+                to={
+                   {
+                  pathname: `/search/Music`,
+                  state: { filterState: "Tags", forceState: true },
+                }}
+              >
+                <i class="fa-solid fa-music"></i>
+              </Link>
+              <Link
+
+                to= {{
+                  pathname: `/search/Music`,
+                  state: { filterState: "Tags", forceState: true },
+                } } className="SideBarText">Music</Link>
+            </div>
+            <div className="SideNavRowContainer">
+              <Link
+
+
+                to={{
+                  pathname: `/search/Scene`,
+                  state: { filterState: "Tags", forceState: true },
+                }}>
+                <i class="fa-solid fa-file-video"></i>
+              </Link>
+              <Link
+
+
+                to={{
+                  pathname: `/search/Scene`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">Movies & Shows</Link>
+            </div>
+            <div className="SideNavRowContainer">
+              <Link to={{
+                  pathname: `/search/Gaming`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">
+                <i class="fa-solid fa-headset"></i>
+              </Link>
+              <Link to={{
+                  pathname: `/search/Gaming`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">Gaming</Link>
+            </div>
+            <div className="SideNavRowContainer">
+              <Link  to={{
+                  pathname: `/search/News`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">
+                <i class="fa-solid fa-newspaper"></i>
+              </Link>
+              <Link  to={{
+                  pathname: `/search/News`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">News</Link>
+            </div>
+            <div className="SideNavRowContainer">
+              <Link to={{
+                  pathname: `/search/Sports`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText" >
+                <i class="fa-solid fa-medal"></i>
+              </Link>
+              <Link   to={{
+                  pathname: `/search/Sports`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">Sports</Link>
+            </div>
+            <div className="SideNavRowContainer">
+              <Link  to={{
+                  pathname: `/search/Education`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </Link>
+              <Link  to={{
+                  pathname: `/search/Education`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">Learning</Link>
+            </div>
+            <div className="SideNavRowContainer">
+              <Link  to={{
+                  pathname: `/search/Fashion`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText" >
+                <i class="fa-solid fa-shirt"></i>
+              </Link>
+              <Link  to={{
+                  pathname: `/search/Fashion`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">Fashion</Link>
+            </div>
+            <div className="SideNavRowContainer">
+              <Link  to={{
+                  pathname: `/search/Podcasts`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">
+                <i class="fa-solid fa-podcast"></i>
+              </Link>
+              <Link  to={{
+                  pathname: `/search/Podcasts`,
+                  state: { filterState: "Tags", forceState: true },
+                }} className="SideBarText">Podcasts</Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -248,14 +308,14 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
-            </div>
-            <div className="SideNavRowContainerClosed">
+            </div> */}
+            {/* <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-book"></i>
               </div>
               <div>Library</div>
-            </div>
-            <div className="SideNavRowContainerClosed">
+            </div> */}
+            {/* <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
               </div>

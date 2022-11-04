@@ -21,7 +21,7 @@ width: 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
-align-items: center;
+align-items: flex-start;
 }
 
 
@@ -135,25 +135,62 @@ align-items: center;
 /* top tags bar */
 .homeTagsBarContainer {
     position: relative;
+    display: flex;
+    justify-content: flex-start;
     bottom: 15px;
-    width: 100%;
     height: 100%;
+}
+
+
+@media screen and (min-width: 2080px )  {
+    .homeTagsBarContainer {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1730px) and (max-width: 2080px){
+    .homeTagsBarContainer {
+        width: 1800px
+    }
+}
+@media screen and (min-width: 1380px) and (max-width: 1730px){
+    .homeTagsBarContainer {
+        width: 950px;
+    }
+}
+@media screen  and (max-width: 1380px){
+    .homeTagsBarContainer {
+        width: 650px;
+    }
 }
 .homeTagsBar {
     display: flex;
     gap: 20px;
     flex-direction: row;
-    overflow-x: hidden;
     width: 100%;
     overflow-y: hidden;
-    height: 100%
+    height: 35px
 }
+.homeTagsBar::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none
+  }
+
 
 .tagHomePageActive {
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     padding: 10px 10px;
     width: fit-content;
+    border-radius: 15px;
+}
+.NewtagHomePageActive {
+    color: white;
+    background: linear-gradient(45deg, rgba(2, 255, 183, 0.619) 15%, rgba(2, 78, 255, 0.603), rgba(229, 31, 255, 0.635) 45%,rgba(246, 60, 14, 0.561));
+    padding: 10px 10px;
+    width: fit-content;
+    min-width: 86px;
+    font-weight: bold;
     border-radius: 15px;
 }
 .tagHomePage {
@@ -164,5 +201,15 @@ align-items: center;
     background-color: rgba(85, 85, 85, 0.596);
     padding: 10px 10px;
     width: fit-content;
+    border-radius: 15px;
+}
+.newToYouTag {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: rgba(85, 85, 85, 0.596);
+    padding: 10px 10px;
+    min-width: 81px;
     border-radius: 15px;
 }

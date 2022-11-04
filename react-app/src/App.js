@@ -16,6 +16,8 @@ import TestingLikesFunctions from "./components/TestingReduxState/LikesTESTING";
 import TagsTestingFunction from "./components/TestingReduxState/TagsTESTING";
 import CommentsTestingFunction from "./components/TestingReduxState/CommentsTESTING";
 import ChannelTestingFunction from './components/TestingReduxState/ChannelTESTING';
+import { SearchBar } from './components/NavBarTop/SearchBar/SearchBar';
+import { SearchPage } from './components/SearchPage/SearchPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +44,9 @@ function App() {
         <Route path='/' exact={true}>
           <HomePage sidePanel={sidePanel}/>
         </Route>
+        <Route path='/search/:searchTerm' exact={true}>
+          <SearchPage sidePanel={sidePanel}/>
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm sidePanel={sidePanel}/>
         </Route>
@@ -57,29 +62,22 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User  sidePanel={sidePanel} />
         </ProtectedRoute>
+
+
+
+
+
+
+
+
+
         {/* edit channel, delete channel */}
         <Route path='/channels/:channelId' exact={true} >
           <HomePage sidePanel={sidePanel} />
         </Route>
 
 
-        {/* The following routes are for testing only */}
-        <Route path="/:videoId/videos" exact={true}>
-          <TestingVideos />
-        </Route>
-        <Route path="/:videoId/tags" exact={true}>
-          <TagsTestingFunction />
-        </Route>
-        <Route path="/:videoId/likes" exact={true}>
-          <TestingLikesFunctions />
-        </Route>
-        <Route path="/:videoId/comments" exact={true}>
-          <CommentsTestingFunction />
-        </Route>
-        <Route path="/channel/:channelId" exact={true}>
-          <ChannelTestingFunction />
-        </Route>
-        {/* End of testing section */}
+
       </Switch>
     </BrowserRouter>
   );

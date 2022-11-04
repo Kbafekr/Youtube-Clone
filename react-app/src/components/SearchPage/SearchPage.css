@@ -1,0 +1,54 @@
+.SearchPageContainerInner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    }
+
+
+.FilterSectionSearchPage {
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid red;
+}
+
+.FilterContainerSearchPage {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 30px;
+    border-bottom: 0.2px solid rgba(128, 128, 128, 0.496);
+
+}
+
+.FilterCategorySearch {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 20px;
+}
+.BorderGrayDiv {
+    width: 100%;
+    border-bottom: 0.2px solid rgba(128, 128, 128, 0.496);
+}
+
+.FilterCategoryText {
+    font-size: 16px;
+    color: rgb(183, 183, 183);
+    font-weight: normal;
+    cursor: pointer;
+}
+.FilterCategoryTextActive {
+    font-size: 16px;
+    color: rgb(230, 230, 230);
+    font-weight: 600;
+}
