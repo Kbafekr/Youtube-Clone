@@ -20,6 +20,7 @@ export const SearchBar = () => {
         pathname: `/search/${searchTerm}`,
         state: { filterState: "" },
       });
+      setSearchTerm("")
     }
   };
 

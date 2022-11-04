@@ -52,3 +52,22 @@
     color: rgb(230, 230, 230);
     font-weight: 600;
 }
+
+.SearchResultsText {
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.SearchTermResultsText  {
+    color: rgb(0, 166, 255);
+    text-shadow: 1px 1px 1px black;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.ErrorSearchResultsText {
+    font-size: 20px;
+    color: rgb(255, 118, 118);
+    text-shadow: 1px 1px 1px black;
+}

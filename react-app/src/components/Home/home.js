@@ -24,7 +24,7 @@ export function HomePage({ sidePanel }) {
   const tags = useSelector((state) => state.tags);
   const channels = useSelector((state) => state.channel);
   const [newChannelMade, setNewChannelMade] = useState(false);
-  const [tagClicked, setTagClicked] = useState("all");
+  const [tagClicked, setTagClicked] = useState("All");
   const [tagsFilter, setTagsFilter] = useState("");
 
   const email =

@@ -148,8 +148,22 @@ export function SearchPage({ sidePanel }) {
           ) : (
             ""
           )}
-          {filterMethod == "Videos" ? <SearchPageVideos searchTerm={searchTerm} activeSort={activeSort}/> : ""}
-          {filterMethod == "Tags" ? <SearchPageTags searchTerm={searchTerm} activeSort={activeSort}/>: ""}
+          <div className="SearchResultsText">
+            <div>Search Results for</div>
+            <div className="SearchTermResultsText">{searchTerm}</div>
+            <div>in</div>
+            <div className="SearchTermResultsText">{filterMethod}</div>
+          </div>
+          {filterMethod == "Videos" ? (
+            <SearchPageVideos searchTerm={searchTerm} activeSort={activeSort} />
+          ) : (
+            ""
+          )}
+          {filterMethod == "Tags" ? (
+            <SearchPageTags searchTerm={searchTerm} activeSort={activeSort} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

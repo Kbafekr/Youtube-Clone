@@ -68,7 +68,6 @@ export function SearchPageTags({searchTerm, activeSort}) {
   } else {
     tagResults = [...tagsFiltered];
   }
-  console.log(tagResults)
 
 
   useEffect(() => {
@@ -92,6 +91,7 @@ export function SearchPageTags({searchTerm, activeSort}) {
   // create new variable to filter through tags based on keyword
   return (
     <>
+    {tagResults.length > 0 ?
         <div className="homeContainerInner">
             <div className="VideosMapped">
               {videosArray &&
@@ -200,6 +200,9 @@ export function SearchPageTags({searchTerm, activeSort}) {
                 })}
             </div>
         </div>
+        : (
+        <div className="ErrorSearchResultsText"> No results found</div>
+      )}
     </>
   );
 }

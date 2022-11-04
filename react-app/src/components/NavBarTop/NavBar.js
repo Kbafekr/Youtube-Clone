@@ -41,7 +41,7 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
 
           <div className="MiddleContainerTopNav">
             <div className="MiddleContainerInternalTopNav">
-              {/* <SearchBar /> */}
+              <SearchBar />
             </div>
           </div>
 
@@ -94,7 +94,7 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
 
           <div className="MiddleContainerTopNav">
             <div className="MiddleContainerInternalTopNav">
-              {/* <SearchBar /> */}
+              <SearchBar />
             </div>
           </div>
 

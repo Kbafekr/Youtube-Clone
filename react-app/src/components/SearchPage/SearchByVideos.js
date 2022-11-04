@@ -11,7 +11,7 @@ import { getAllTagsThunk } from "../../store/tags";
 import { getAllLikesThunk } from "../../store/likes";
 import { getAllDisLikesThunk } from "../../store/dislikes";
 
-export function SearchPageVideos({searchTerm, activeSort}) {
+export function SearchPageVideos({ searchTerm, activeSort }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
@@ -34,7 +34,8 @@ export function SearchPageVideos({searchTerm, activeSort}) {
 
   if (videosArray) {
     videosFiltered = videosArray.filter((video) =>
-    video.title.toLowerCase().includes(searchTerm.toLowerCase()) )
+      video.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 
   useEffect(() => {
@@ -54,7 +55,6 @@ export function SearchPageVideos({searchTerm, activeSort}) {
     dispatch(getAllTagsThunk());
   }, [dispatch, user]);
 
-
   let arrayResult;
   let videoArrayCopy;
   let sortedVideosByNewest;
@@ -73,92 +73,94 @@ export function SearchPageVideos({searchTerm, activeSort}) {
 
   return (
     <>
-          <div className="VideosMapped">
-            {arrayResult &&
-              arrayResult.map((video) => {
-                return (
-                  <>
-                    <div className="VideoCardHome">
-                      <div
-                        className="VideoPreviewHome"
-                        onClick={() => history.push(`/videos/${video.id}`)}
-                      >
-                        {video.video_url.includes("s3") ? (
-                          <ReactPlayer
-                            width="100%"
-                            height="100%"
-                            url={video.video_url}
-                            playIcon={true}
-                          />
-                        ) : (
-                          <ReactPlayer
-                            width="100%"
-                            height="100%"
-                            url={video.video_url}
-                            light={true}
-                            playIcon={true}
-                          />
-                        )}
-                      </div>
-                      {channelsArray &&
-                        channelsArray.map((channel) => {
-                          return (
-                            <>
-                              {channel.id == video.channel_id ? (
-                                <div className="HomeVideoCardBottomSection">
-                                  <div className="profileImageHomeVideoArray">
-                                    <img
-                                      className="channelPictureHomeArray"
-                                      alt="channel"
-                                      src={channel.profile_picture}
-                                    />
+      {arrayResult.length > 0 ? (
+        <div className="VideosMapped">
+          {arrayResult &&
+            arrayResult.map((video) => {
+              return (
+                <>
+                  <div className="VideoCardHome">
+                    <div
+                      className="VideoPreviewHome"
+                      onClick={() => history.push(`/videos/${video.id}`)}
+                    >
+                      {video.video_url.includes("s3") ? (
+                        <ReactPlayer
+                          width="100%"
+                          height="100%"
+                          url={video.video_url}
+                          playIcon={true}
+                        />
+                      ) : (
+                        <ReactPlayer
+                          width="100%"
+                          height="100%"
+                          url={video.video_url}
+                          light={true}
+                          playIcon={true}
+                        />
+                      )}
+                    </div>
+                    {channelsArray &&
+                      channelsArray.map((channel) => {
+                        return (
+                          <>
+                            {channel.id == video.channel_id ? (
+                              <div className="HomeVideoCardBottomSection">
+                                <div className="profileImageHomeVideoArray">
+                                  <img
+                                    className="channelPictureHomeArray"
+                                    alt="channel"
+                                    src={channel.profile_picture}
+                                  />
+                                </div>
+                                <div className="HomeVideoArrayChannelDetails">
+                                  <div
+                                    className="VideoTitleCard"
+                                    onClick={() =>
+                                      history.push(`/videos/${video.id}`)
+                                    }
+                                  >
+                                    {video.title}
                                   </div>
-                                  <div className="HomeVideoArrayChannelDetails">
+                                  <div
+                                    className="flexColumn"
+                                    id="homeArrayChannelDetails"
+                                  >
                                     <div
-                                      className="VideoTitleCard"
-                                      onClick={() =>
-                                        history.push(`/videos/${video.id}`)
-                                      }
+                                      className="flexRow"
+                                      id="ChannelNameHomeArray"
                                     >
-                                      {video.title}
+                                      <div>{channel.channel_name}</div>
+                                      <div id="verifiedCheckMark">
+                                        <i class="fa-solid fa-check"></i>
+                                      </div>
                                     </div>
                                     <div
-                                      className="flexColumn"
-                                      id="homeArrayChannelDetails"
+                                      className="flexRow"
+                                      id="homeArrayChannelViews"
                                     >
-                                      <div
-                                        className="flexRow"
-                                        id="ChannelNameHomeArray"
-                                      >
-                                        <div>{channel.channel_name}</div>
-                                        <div id="verifiedCheckMark">
-                                          <i class="fa-solid fa-check"></i>
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="flexRow"
-                                        id="homeArrayChannelViews"
-                                      >
-                                        <div>{amountViews()}</div>
-                                        <div className="CircleDiv" />
-                                        <div>
-                                          {video.created_at.slice(0, 16)}
-                                        </div>
-                                      </div>
+                                      <div>{amountViews()}</div>
+                                      <div className="CircleDiv" />
+                                      <div>{video.created_at.slice(0, 16)}</div>
                                     </div>
                                   </div>
                                 </div>
-                              ) : (
-                                ""
-                              )}
-                            </>
-                          );
-                        })}
-                    </div>
-                  </>
-                );
-              })}
-          </div>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </>
+                        );
+                      })}
+                  </div>
+                </>
+              );
+            })}
+        </div>
+      ) : (
+        <div className="ErrorSearchResultsText"> No results found</div>
+      )}
     </>
   );
 }

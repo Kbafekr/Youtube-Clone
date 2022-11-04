@@ -144,7 +144,10 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             <div className="SideNavBorderDiv"></div>
           </div>
           <div className="InternalSideBarSection">
-            <div className="SideNavRowContainer">Explore</div>
+            <div className="SideNavRowContainer">
+              <div className="ExploreSideBarText">
+                Explore</div>
+                </div>
             {/* <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-fire"></i>
@@ -157,7 +160,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                    {
                   pathname: `/search/Music`,
                   state: { filterState: "Tags", forceState: true },
-                }}
+                }} className="SideBarIcon"
               >
                 <i class="fa-solid fa-music"></i>
               </Link>
@@ -175,8 +178,8 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 to={{
                   pathname: `/search/Scene`,
                   state: { filterState: "Tags", forceState: true },
-                }}>
-                <i class="fa-solid fa-file-video"></i>
+                }} className="SideBarIcon">
+                <i class="fa-solid fa-tv"></i>
               </Link>
               <Link
 
@@ -190,7 +193,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link to={{
                   pathname: `/search/Gaming`,
                   state: { filterState: "Tags", forceState: true },
-                }} className="SideBarText">
+                }} className="SideBarIcon" >
                 <i class="fa-solid fa-headset"></i>
               </Link>
               <Link to={{
@@ -202,7 +205,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link  to={{
                   pathname: `/search/News`,
                   state: { filterState: "Tags", forceState: true },
-                }} className="SideBarText">
+                }}  className="SideBarIcon">
                 <i class="fa-solid fa-newspaper"></i>
               </Link>
               <Link  to={{
@@ -214,7 +217,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link to={{
                   pathname: `/search/Sports`,
                   state: { filterState: "Tags", forceState: true },
-                }} className="SideBarText" >
+                }}  className="SideBarIcon">
                 <i class="fa-solid fa-medal"></i>
               </Link>
               <Link   to={{
@@ -226,7 +229,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link  to={{
                   pathname: `/search/Education`,
                   state: { filterState: "Tags", forceState: true },
-                }} className="SideBarText">
+                }} className="SideBarIcon">
                 <i class="fa-solid fa-graduation-cap"></i>
               </Link>
               <Link  to={{
@@ -238,7 +241,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link  to={{
                   pathname: `/search/Fashion`,
                   state: { filterState: "Tags", forceState: true },
-                }} className="SideBarText" >
+                }} className="SideBarIcon" >
                 <i class="fa-solid fa-shirt"></i>
               </Link>
               <Link  to={{
@@ -250,7 +253,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <Link  to={{
                   pathname: `/search/Podcasts`,
                   state: { filterState: "Tags", forceState: true },
-                }} className="SideBarText">
+                }} className="SideBarIcon">
                 <i class="fa-solid fa-podcast"></i>
               </Link>
               <Link  to={{
