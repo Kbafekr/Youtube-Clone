@@ -11,6 +11,7 @@ import logo from "../../../icons/you2oobLogo.png";
 import EditVideoForm from "./VideoForms/EditVideoForm";
 import DeleteVideoForm from "./VideoForms/DeleteVideoForm";
 import TagsVideos from "./TagsSection/TagsVideos";
+import { getAllVideosThunk } from "../../../store/video";
 
 // videos
 
@@ -61,6 +62,15 @@ function UserVideoSection() {
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
+  }, [
+    dispatch,
+    showModalVideo,
+    showModalCreateVideo,
+    showModalEditVideo,
+    showModalDeleteVideo,
+  ]);
+  useEffect(() => {
+    dispatch(getAllVideosThunk());
   }, [
     dispatch,
     showModalVideo,

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getAllChannelsThunk } from "../../../../store/channel";
+import { getAllVideosThunk } from "../../../../store/video";
 import { deleteVideoThunk } from "../../../../store/video";
 import "./DeleteChannelForm.css";
 
@@ -11,7 +12,7 @@ function DeleteVideoForm({ setShowModal, video }) {
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(deleteVideoThunk(video.id));
+    await dispatch(deleteVideoThunk(video.id)).then(() => dispatch(getAllVideosThunk()));
     setShowModal(false);
   };
   const handleSubmit2 = async (e) => {

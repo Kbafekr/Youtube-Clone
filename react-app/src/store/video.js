@@ -111,7 +111,7 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_VIDEO: {
-      const newState = { ...state };
+      const newState = {};
       action.videos.videos.forEach((video) => {
         newState[video.id] = video;
       });
