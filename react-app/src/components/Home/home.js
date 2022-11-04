@@ -84,6 +84,7 @@ export function HomePage({ sidePanel }) {
         newChannelMade == false
       ) {
         let channelName = `${user.first_name} ${user.last_name}`;
+        setNewChannelMade(true)
         dispatch(newChannelThunk(channelName, user.id, "", ""))
           .then(() => setNewChannelMade(true))
           .then(() => dispatch(getAllChannelsThunk()))

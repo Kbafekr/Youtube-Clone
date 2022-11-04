@@ -5,17 +5,25 @@ import ProfileButton from "./ProfileButton/ProfileButton";
 import "./NavBar.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import logo from "../../icons/you2oobLogo.png";
-import reloadPage from '../../Utils/Utils'
+import reloadPage from "../../Utils/Utils";
 // import searchbar
 import { SearchBar } from "./SearchBar/SearchBar";
 import { useLocation } from "react-router-dom";
+import { newChannelThunk } from "../../store/channel";
+import { getAllChannelsThunk } from "../../store/channel";
+import { updateUserThunk } from "../../store/session";
+import { authenticate } from "../../store/session";
 
 const NavBar = ({ sidePanel, setSidePanel }) => {
-  const location = useLocation()
+  const location = useLocation();
+  const dispatch = useDispatch()
   // console.log(location.state)
   const user = useSelector((state) => state.session.user);
-  if (user) {
+  const channels = useSelector((state) => state.channel);
+
+  if (user && user.active_channel != null) {
     return (
       <div className="TopNavBarOuter">
         <div className="TopNavBarContainer">
@@ -34,8 +42,15 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
               exact={true}
               activeClassName="active"
             >
-              <img src={logo} alt="logo" className="LogoImageNavBar"
-              onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}/>
+              <img
+                src={logo}
+                alt="logo"
+                className="LogoImageNavBar"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png";
+                }}
+              />
             </NavLink>
           </div>
 
@@ -49,15 +64,15 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
         Users
       </NavLink> */}
           <div className="RightContainerTopNav">
-          <Link
+            <Link
               to={{
                 pathname: `/users/${user.id}`,
                 state: { directedCategory: 2, uploadModalState: true },
-             }}
+              }}
               className="UploadCameraNavBar"
-              onClick={reloadPage}>
+              onClick={reloadPage}
+            >
               <i class="fa-sharp fa-solid fa-video"></i>
-
             </Link>
             {/* <div className="NotificationBellNavBar">
               <i class="fa-solid fa-bell"></i>
@@ -68,7 +83,7 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
       </div>
     );
   }
-  if (!user) {
+  else {
     return (
       <div className="TopNavBarOuter">
         <div className="TopNavBarContainer">
@@ -87,8 +102,15 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
               exact={true}
               activeClassName="active"
             >
-              <img src={logo} alt="logo" className="LogoImageNavBar"
-              onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }} />
+              <img
+                src={logo}
+                alt="logo"
+                className="LogoImageNavBar"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png";
+                }}
+              />
             </NavLink>
           </div>
 
