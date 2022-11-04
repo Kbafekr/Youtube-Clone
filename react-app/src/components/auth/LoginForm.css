@@ -9,6 +9,8 @@
 
 
 .outerLoginForm {
+    position: relative;
+    right: 80px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -46,26 +48,17 @@
     height: 75px;
 }
 
-.ErrorLoginSection {
-    height: 25px;
-    text-align: center;
-    width: 100%;
-    color: red;
-    font-size: 1rem;
-    margin: 0;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
 .SignupInputs {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 18px;
     row-gap: 10px;
 }
 
 #loginInput {
-    font-size: 16px;
+    font-size: 18px;
+
     width: 100%;
     padding: 13px 15px;
     height: 20px;
@@ -84,6 +77,7 @@
 .CreateAccountRedirect {
     color: #1a73e8;
     text-decoration: none;
+    font-size: 16px;
 
 }
 
@@ -91,4 +85,16 @@
 .DemoLoginButton {
     display: flex;
     align-items: flex-start;
+}
+
+.SubmitDemoLoginButton {
+    background: none;
+    width: fit-content;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    border: 1px solid rgba(233, 233, 233, 0.566);
+    padding: 5px 10px;
+
 }

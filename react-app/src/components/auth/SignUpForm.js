@@ -163,7 +163,7 @@ const SignUpForm = () => {
             </div>
             <div className="DemoLoginButton">
               <button
-                className="SubmitLoginButton"
+                className="SubmitDemoLoginButton"
                 onClick={() => {dispatch(login('demo@aa.io', 'password'))}}
               >
                 Demo Login

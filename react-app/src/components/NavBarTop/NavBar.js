@@ -130,7 +130,10 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
               exact={true}
               activeClassName="active"
             >
-              Login
+              <div className="SignInbuttonNav">
+              <i class="fa-regular fa-user"></i>
+                Sign in
+              </div>
             </NavLink>
           </div>
         </div>
