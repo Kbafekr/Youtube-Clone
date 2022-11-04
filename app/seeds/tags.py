@@ -4,13 +4,13 @@ from app.models import db, Tag
 def seed_tags():
 
     tag_1 = Tag(channel_id=15, video_id=1, body="Marvel")
-    tag_2 = Tag(channel_id=15, video_id=1, body="SuperHero")
+    tag_2 = Tag(channel_id=15, video_id=1, body="Superheroes")
     tag_3 = Tag(channel_id=15, video_id=1, body="Ant-man")
     tag_4 = Tag(channel_id=15, video_id=1, body="Heist")
     tag_5 = Tag(channel_id=15, video_id=1, body="Trailer")
 
     tag_6 = Tag(channel_id=1, video_id=2, body="Show")
-    tag_7 = Tag(channel_id=1, video_id=2, body="Dragon")
+    tag_7 = Tag(channel_id=1, video_id=2, body="TV")
     tag_8 = Tag(channel_id=1, video_id=2, body="Drama")
     tag_9 = Tag(channel_id=1, video_id=2, body="Scene")
     tag_10 = Tag(channel_id=1, video_id=2, body="HBO")
@@ -42,7 +42,7 @@ def seed_tags():
     tag_31 = Tag(channel_id=15, video_id=7, body="Action")
     tag_32 = Tag(channel_id=15, video_id=7, body="Movies")
     tag_33 = Tag(channel_id=15, video_id=7, body="Trailer")
-    tag_34 = Tag(channel_id=15, video_id=7, body="Superhero")
+    tag_34 = Tag(channel_id=15, video_id=7, body="Superheroes")
     tag_35 = Tag(channel_id=15, video_id=7, body="Marvel")
 
     tag_36 = Tag(channel_id=1, video_id=8, body="Succession")
@@ -116,7 +116,7 @@ def seed_tags():
     tag_92 = Tag(channel_id=4, video_id=19, body="HBO")
     tag_93 = Tag(channel_id=4, video_id=19, body="Drama")
     tag_94 = Tag(channel_id=4, video_id=19, body="Show")
-    tag_95 = Tag(channel_id=4, video_id=19, body="Acting")
+    tag_95 = Tag(channel_id=4, video_id=19, body="TV")
 
     tag_96 = Tag(channel_id=7, video_id=20, body="Gaming")
     tag_97 = Tag(channel_id=7, video_id=20, body="COD")
