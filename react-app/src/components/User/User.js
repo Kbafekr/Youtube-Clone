@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authenticate } from "../../store/session";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./User.css";
 import { Modal } from "../../context/Modal";
@@ -21,6 +22,7 @@ import { useLocation } from "react-router-dom";
 import UserVideoSection from "./UserVideoSection/UserVideoSection";
 import UserChannelSection from "./UserChannelSection/UserChannelSection";
 function User({ sidePanel }) {
+  const history = useHistory()
   const location = useLocation();
   // use location hook to open create video modal only once
   let uploadDataState;
@@ -133,7 +135,9 @@ function User({ sidePanel }) {
     showModalCreateVideo,
   ]);
 
-
+if (userId != currentUser.id) {
+  history.push('/')
+}
   const array = ['a', 'b', 'c']
 
   const LineItem = item => <li key={parseInt(Math.random() * 100 * Math.random())}>{item}</li>
