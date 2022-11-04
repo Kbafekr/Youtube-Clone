@@ -16,7 +16,7 @@ def seed_users():
     Amy = User(
         first_name='Amy', last_name='Bennett', email='AmyBennett@aa.io', active_channel=11, password='password')
     kermit = User(
-        first_name='Carl', last_name='Wheezer', email='bobbie@aa.io', active_channel=13, password='password')
+        first_name='Carl', last_name='Wheezer', email='carlWheezer@aa.io', active_channel=13, password='password')
     bruce = User(
         first_name='Bruce', last_name='wayne', email='brucewayne@aa.io', active_channel=15, password='password')
     dog = User(
