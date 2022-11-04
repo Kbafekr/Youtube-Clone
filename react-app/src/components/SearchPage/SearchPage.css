@@ -65,6 +65,12 @@
     font-weight: bold;
     font-size: 24px;
 }
+.SearchTermResultsCategory  {
+    color: rgba(206, 206, 206, 0.646);
+    text-shadow: 1px 1px 1px black;
+    font-weight: bold;
+    font-size: 24px;
+}
 
 .ErrorSearchResultsText {
     font-size: 20px;

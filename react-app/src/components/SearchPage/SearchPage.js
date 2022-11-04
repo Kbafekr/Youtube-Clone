@@ -152,7 +152,7 @@ export function SearchPage({ sidePanel }) {
             <div>Search Results for</div>
             <div className="SearchTermResultsText">{searchTerm}</div>
             <div>in</div>
-            <div className="SearchTermResultsText">{filterMethod}</div>
+            <div className="SearchTermResultsCategory">{filterMethod}</div>
           </div>
           {filterMethod == "Videos" ? (
             <SearchPageVideos searchTerm={searchTerm} activeSort={activeSort} />
