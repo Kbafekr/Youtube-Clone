@@ -9,7 +9,7 @@ export const SearchBar = () => {
             className="SearchBarNav"
             type="search"
             //   value={searchTitle}
-            placeholder={"Search"}
+            placeholder={"Search..."}
             //   placeholder={"Search for Images or Users..." || searchTitle}
             //   onChange={handleSubmit}
           />

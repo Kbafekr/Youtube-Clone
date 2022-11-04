@@ -9,8 +9,11 @@ import logo from "../../icons/you2oobLogo.png";
 import reloadPage from '../../Utils/Utils'
 // import searchbar
 import { SearchBar } from "./SearchBar/SearchBar";
+import { useLocation } from "react-router-dom";
 
 const NavBar = ({ sidePanel, setSidePanel }) => {
+  const location = useLocation()
+  // console.log(location.state)
   const user = useSelector((state) => state.session.user);
   if (user) {
     return (
