@@ -30,8 +30,8 @@ def seed_tags():
     tag_21 = Tag(channel_id=10, video_id=5, body="Interview")
     tag_22 = Tag(channel_id=10, video_id=5, body="Acting")
     tag_23 = Tag(channel_id=10, video_id=5, body="Fashion")
-    tag_24 = Tag(channel_id=10, video_id=5, body="Actor")
-    tag_25 = Tag(channel_id=10, video_id=5, body="Movie")
+    tag_24 = Tag(channel_id=10, video_id=5, body="Actors")
+    tag_25 = Tag(channel_id=10, video_id=5, body="Movies")
 
     tag_26 = Tag(channel_id=12, video_id=6, body="Programming")
     tag_27 = Tag(channel_id=12, video_id=6, body="Learning")
@@ -40,7 +40,7 @@ def seed_tags():
     tag_30 = Tag(channel_id=12, video_id=6, body="Software")
 
     tag_31 = Tag(channel_id=15, video_id=7, body="Action")
-    tag_32 = Tag(channel_id=15, video_id=7, body="Movie")
+    tag_32 = Tag(channel_id=15, video_id=7, body="Movies")
     tag_33 = Tag(channel_id=15, video_id=7, body="Trailer")
     tag_34 = Tag(channel_id=15, video_id=7, body="Superhero")
     tag_35 = Tag(channel_id=15, video_id=7, body="Marvel")
@@ -60,7 +60,7 @@ def seed_tags():
     tag_46 = Tag(channel_id=2, video_id=10, body="Cartoon")
     tag_47 = Tag(channel_id=2, video_id=10, body="Show")
     tag_48 = Tag(channel_id=2, video_id=10, body="Analysis")
-    tag_49 = Tag(channel_id=2, video_id=10, body="Podcast")
+    tag_49 = Tag(channel_id=2, video_id=10, body="Podcasts")
     tag_50 = Tag(channel_id=2, video_id=10, body="Comedy")
 
 
@@ -82,7 +82,7 @@ def seed_tags():
     tag_64 = Tag(channel_id=3, video_id=13, body="Game")
     tag_65 = Tag(channel_id=3, video_id=13, body="UEFA")
 
-    tag_66 = Tag(channel_id=6, video_id=14, body="Podcast")
+    tag_66 = Tag(channel_id=6, video_id=14, body="Podcasts")
     tag_67 = Tag(channel_id=6, video_id=14, body="H3")
     tag_68 = Tag(channel_id=6, video_id=14, body="News")
     tag_69 = Tag(channel_id=6, video_id=14, body="Fashion")
@@ -102,7 +102,7 @@ def seed_tags():
 
     tag_81 = Tag(channel_id=16, video_id=17, body="Scene")
     tag_82 = Tag(channel_id=16, video_id=17, body="Sports")
-    tag_83 = Tag(channel_id=16, video_id=17, body="Movie")
+    tag_83 = Tag(channel_id=16, video_id=17, body="Movies")
     tag_84 = Tag(channel_id=16, video_id=17, body="Baseball")
     tag_85 = Tag(channel_id=16, video_id=17, body="Acting")
 
