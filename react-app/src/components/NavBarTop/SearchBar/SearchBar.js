@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./SearchBar.css";
@@ -14,14 +15,19 @@ export const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.length > 0) {
-      history.push(`/search/${searchTerm}`);
-      setSearchTerm("")
+      // history.push(`/search/${searchTerm}`);
+      history.push({
+        pathname: `/search/${searchTerm}`,
+        state: { filterState: "" },
+      });
+      setSearchTerm("");
     }
   };
+
   return (
     <>
       <div className="SearchBarContainerNav">
-        <form className="SearchBarInternalContainer"  onSubmit={handleSubmit}>
+        <form className="SearchBarInternalContainer" onSubmit={handleSubmit}>
           <input
             className="SearchBarNav"
             type="search"

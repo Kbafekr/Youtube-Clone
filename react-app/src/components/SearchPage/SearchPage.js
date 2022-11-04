@@ -6,12 +6,10 @@ import { getAllVideosThunk } from "../../store/video";
 import { getAllChannelsThunk } from "../../store/channel";
 import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-import { updateUserThunk } from "../../store/session";
-import { newChannelThunk } from "../../store/channel";
 import { authenticate } from "../../store/session";
 import { amountViews } from "../../Utils/Utils";
-import logo from "../../icons/you2oobLogo.png";
-
+import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getAllTagsThunk } from "../../store/tags";
 import { getAllLikesThunk } from "../../store/likes";
 import { getAllDisLikesThunk } from "../../store/dislikes";
@@ -19,29 +17,35 @@ import { getAllDisLikesThunk } from "../../store/dislikes";
 export function SearchPage({ sidePanel }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+
+  const { searchTerm } = useParams();
+
+  let filterState;
+  if (location.state != null) {
+    filterState = location.state.filterState;
+  }
+
+  // keeps track of filter typ
+  const [filterMethod, setFilterMethod] = useState("Video");
+  // sort videos by date posted
+  const [sortBy, setSortBy] = useState("oldest");
+  // keep track of whether filterstate is open
+  const [openFilters, setOpenFilters] = useState("false");
+  //   set active for filters
+  const [activeCategory, setActiveCategory] = useState("Videos");
+  const [activeSort, setActiveSort] = useState("Oldest");
+
+  console.log(filterState);
+
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
   const tags = useSelector((state) => state.tags);
   const channels = useSelector((state) => state.channel);
-  const [newChannelMade, setNewChannelMade] = useState(false);
-  const [tagClicked, setTagClicked] = useState("all");
-  const [tagsFilter, setTagsFilter] = useState("");
-
-  const email =
-    "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
-  const password = "password";
-
-  let videosArray;
-  let channelsArray;
-  let tagsArray;
-
-  videosArray = Object.values(videos);
-  channelsArray = Object.values(channels);
-  tagsArray = Object.values(tags);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, newChannelMade, user]);
+  }, [dispatch, user]);
 
   useEffect(() => {
     dispatch(getAllVideosThunk());
@@ -56,151 +60,86 @@ export function SearchPage({ sidePanel }) {
     dispatch(getAllTagsThunk());
   }, [dispatch, user]);
 
-  useEffect(() => {
-    if (user && channelsArray) {
-      const userChannels = channelsArray.filter(
-        (channel) => channel.user_id == user.id
-      );
-      if (
-        user.active_channel == null &&
-        user.channels[0] != null &&
-        channelsArray != null
-      ) {
-        dispatch(
-          updateUserThunk(
-            user.id,
-            user.first_name,
-            user.last_name,
-            email,
-            user.channels[0].id,
-            password
-          )
-        );
-      }
-      if (
-        user.channels.length < 1 &&
-        userChannels.length < 1 &&
-        channelsArray != null &&
-        newChannelMade == false
-      ) {
-        let channelName = `${user.first_name} ${user.last_name}`;
-        dispatch(newChannelThunk(channelName, user.id, "", ""))
-          .then(() => setNewChannelMade(true))
-          .then(() => dispatch(getAllChannelsThunk()))
-          .then(() => dispatch(authenticate()));
-      }
-    }
-  }, [dispatch, channelsArray, user]);
-
-  let arrayResult;
-  let videoArrayCopy;
-  let sortedVideosByNewest;
-  let filteredTags;
-
-  if (videosArray) {
-    videoArrayCopy = [...videosArray];
-  }
-  if (videoArrayCopy && videoArrayCopy.length > 0) {
-    sortedVideosByNewest = videoArrayCopy.sort((a, b) => b.id - a.id);
-  }
-  if (tagClicked == "New") {
-    arrayResult = [...sortedVideosByNewest];
-  } else {
-    arrayResult = [...videosArray];
-  }
-
   return (
     <>
       <div
         className={sidePanel == true ? "homeContainer" : "homeContainerClosed"}
       >
-        <div className="homeContainerInner">
-          <div className="VideosMapped">
-            {arrayResult &&
-              arrayResult.map((video) => {
-                return (
-                  <>
-                    <div className="VideoCardHome">
-                      <div
-                        className="VideoPreviewHome"
-                        onClick={() => history.push(`/videos/${video.id}`)}
-                      >
-                        {video.video_url.includes("s3") ? (
-                          <ReactPlayer
-                            width="100%"
-                            height="100%"
-                            url={video.video_url}
-                            playIcon={true}
-                          />
-                        ) : (
-                          <ReactPlayer
-                            width="100%"
-                            height="100%"
-                            url={video.video_url}
-                            light={true}
-                            playIcon={true}
-                          />
-                        )}
-                      </div>
-                      {channelsArray &&
-                        channelsArray.map((channel) => {
-                          return (
-                            <>
-                              {channel.id == video.channel_id ? (
-                                <div className="HomeVideoCardBottomSection">
-                                  <div className="profileImageHomeVideoArray">
-                                    <img
-                                      className="channelPictureHomeArray"
-                                      alt="channel"
-                                      src={channel.profile_picture}
-                                    />
-                                  </div>
-                                  <div className="HomeVideoArrayChannelDetails">
-                                    <div
-                                      className="VideoTitleCard"
-                                      onClick={() =>
-                                        history.push(`/videos/${video.id}`)
-                                      }
-                                    >
-                                      {video.title}
-                                    </div>
-                                    <div
-                                      className="flexColumn"
-                                      id="homeArrayChannelDetails"
-                                    >
-                                      <div
-                                        className="flexRow"
-                                        id="ChannelNameHomeArray"
-                                      >
-                                        <div>{channel.channel_name}</div>
-                                        <div id="verifiedCheckMark">
-                                          <i class="fa-solid fa-check"></i>
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="flexRow"
-                                        id="homeArrayChannelViews"
-                                      >
-                                        <div>{amountViews()}</div>
-                                        <div className="CircleDiv" />
-                                        <div>
-                                          {video.created_at.slice(0, 16)}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : (
-                                ""
-                              )}
-                            </>
-                          );
-                        })}
-                    </div>
-                  </>
-                );
-              })}
+        <div className="SearchPageContainerInner">
+          {openFilters == false ? (
+            <div
+              onClick={() => setOpenFilters(!openFilters)}
+              className="FilterSectionSearchPage"
+            >
+              <i class="fa-solid fa-arrow-down-wide-short"></i>
+              Open Filters
+            </div>
+          ) : (
+            <div
+              onClick={() => setOpenFilters(!openFilters)}
+              className="FilterSectionSearchPage"
+            >
+              <i class="fa-solid fa-arrow-up-short-wide"></i>
+              Close Filters
+            </div>
+          )}
+            {openFilters == true ? (
+          <div className="FilterContainerSearchPage">
+                <div className="FilterCategorySearch">
+                  <div>Type</div>
+                  <div className="BorderGrayDiv"></div>
+                  <div
+                    onClick={() => setActiveCategory("Videos")}
+                    className={
+                      activeCategory == "Videos"
+                        ? "FilterCategoryTextActive"
+                        : "FilterCategoryText"
+                    }
+                  >
+                    Video
+                  </div>
+                  <div
+                    onClick={() => setActiveCategory("Tags")}
+                    className={
+                      activeCategory == "Tags"
+                        ? "FilterCategoryTextActive"
+                        : "FilterCategoryText"
+                    }
+                  >
+                    Tags
+                  </div>
+                </div>
+                <div className="FilterCategorySearch">
+                  <div>Sort By</div>
+                  <div className="BorderGrayDiv"></div>
+                  <div
+                    onClick={() => setActiveSort("Oldest")}
+                    className={
+                      activeSort == "Oldest"
+                        ? "FilterCategoryTextActive"
+                        : "FilterCategoryText"
+                    }
+                  >
+                    Oldest
+                  </div>
+                  <div
+                    onClick={() => setActiveSort("Newest")}
+                    className={
+                      activeSort == "Newest"
+                        ? "FilterCategoryTextActive"
+                        : "FilterCategoryText"
+                    }
+                  >
+                    Newest
+                  </div>
+                </div>
           </div>
+            ) : (
+              ""
+            )}
+
+          <div>videosArray</div>
+          <div>tagsArray</div>
         </div>
       </div>
     </>

@@ -6,6 +6,14 @@ const reloadPage = () => {
     }
     else return
   }
+export const reloadSearchPage = () => {
+    const windowLoc = window.location.pathname
+
+    if (windowLoc.startsWith('/search')) {
+      window.location.reload()
+    }
+    else return
+  }
 
 export const amountViews = () => {
   const viewAmount = Math.floor(Math.random() * (100000 - 1) + 1)

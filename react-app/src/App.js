@@ -44,7 +44,7 @@ function App() {
         <Route path='/' exact={true}>
           <HomePage sidePanel={sidePanel}/>
         </Route>
-        <Route path='/search/:searchWords' exact={true}>
+        <Route path='/search/:searchTerm' exact={true}>
           <SearchPage sidePanel={sidePanel}/>
         </Route>
         <Route path='/login' exact={true}>

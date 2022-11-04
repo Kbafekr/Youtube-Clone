@@ -1,215 +1,54 @@
-.homeContainer {
-    flex: 1;
-    padding: 30px;
-    margin-left: 302px;
-    min-height: 100%;
-    display: flex;
-    color: white;
-}
-.homeContainerClosed {
-    flex: 1;
-    padding: 30px;
-    margin-left: 152px;
-    min-height: 100%;
-    display: flex;
-    color: white;
-}
-
-.homeContainerInner {
-height: 100%;
-width: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-}
-
-
-.VideosMapped {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.SearchPageContainerInner {
     height: 100%;
     width: 100%;
-    row-gap: 30px;
-    column-gap: 50px;
-}
-.VideoCardHome {
-    height: 300px;
-}
-
-.VideoPreviewHome {
-    height: 190px;
-    width: 300px;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-.HomeVideoCardBottomSection {
-    width: 300px;
-    height: 100px;
     display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.profileImageHomeVideoArray {
-    height: 100%;
-    width: 50px;
-    display: flex;
+    flex-direction: column;
+    gap: 30px;
     justify-content: center;
+    align-items: flex-start;
+    }
+
+
+.FilterSectionSearchPage {
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid red;
 }
 
-.channelPictureHomeArray {
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
+.FilterContainerSearchPage {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 30px;
+    border-bottom: 0.2px solid rgba(128, 128, 128, 0.496);
+
 }
 
-/* right side channel section */
-.HomeVideoArrayChannelDetails {
-    height: 100%;
-    overflow: hidden;
+.FilterCategorySearch {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-
+    width: 200px;
+    gap: 20px;
 }
-.VideoTitleCard {
-    display: flex;
+.BorderGrayDiv {
     width: 100%;
-    max-width: 300px;
-    flex-wrap: wrap;
-    height: 38px;
-    overflow: hidden;
-    font-weight: bold;
+    border-bottom: 0.2px solid rgba(128, 128, 128, 0.496);
+}
+
+.FilterCategoryText {
+    font-size: 16px;
+    color: rgb(183, 183, 183);
+    font-weight: normal;
     cursor: pointer;
 }
-
-
-.ChannelDetailsContainerHomeVideoArray {
-    display: flex;
-    flex-direction: column;
-}
-
-
-#ChannelNameHomeArray {
- gap: 10px;
-}
-
-#verifiedCheckMark {
-    color: green;
-    background-color: white;
-    font-size: 12px;
-    margin-top: 2px;
-    height: fit-content;
-    padding: 0px 1px;
-    border-radius: 50px;
-
-}
-
-#homeArrayChannelDetails {
-    display: flex;
-    gap: 5px;
-    color: rgb(214, 213, 213);
-
-}
-
-#homeArrayChannelViews {
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 14px;
-    display: flex;
-    gap: 10px;
-}
-
-.CircleDiv {
-    height: 3px;
-    width: 3px;
-    border-radius: 50px;
-    background-color: rgb(214, 213, 213);
-}
-
-
-/* top tags bar */
-.homeTagsBarContainer {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    bottom: 15px;
-    height: 100%;
-}
-
-
-@media screen and (min-width: 2080px )  {
-    .homeTagsBarContainer {
-        width: 100%;
-    }
-}
-
-@media screen and (min-width: 1730px) and (max-width: 2080px){
-    .homeTagsBarContainer {
-        width: 1800px
-    }
-}
-@media screen and (min-width: 1380px) and (max-width: 1730px){
-    .homeTagsBarContainer {
-        width: 950px;
-    }
-}
-@media screen  and (max-width: 1380px){
-    .homeTagsBarContainer {
-        width: 650px;
-    }
-}
-.homeTagsBar {
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
-    width: 100%;
-    overflow-y: hidden;
-    height: 35px
-}
-.homeTagsBar::-webkit-scrollbar {
-    display: none;
-    -ms-overflow-style: none
-  }
-
-
-.tagHomePageActive {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    padding: 10px 10px;
-    width: fit-content;
-    border-radius: 15px;
-}
-.NewtagHomePageActive {
-    color: white;
-    background: linear-gradient(45deg, rgba(2, 255, 183, 0.619) 15%, rgba(2, 78, 255, 0.603), rgba(229, 31, 255, 0.635) 45%,rgba(246, 60, 14, 0.561));
-    padding: 10px 10px;
-    width: fit-content;
-    min-width: 86px;
-    font-weight: bold;
-    border-radius: 15px;
-}
-.tagHomePage {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background-color: rgba(85, 85, 85, 0.596);
-    padding: 10px 10px;
-    width: fit-content;
-    border-radius: 15px;
-}
-.newToYouTag {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background-color: rgba(85, 85, 85, 0.596);
-    padding: 10px 10px;
-    min-width: 81px;
-    border-radius: 15px;
+.FilterCategoryTextActive {
+    font-size: 16px;
+    color: rgb(230, 230, 230);
+    font-weight: 600;
 }
