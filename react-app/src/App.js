@@ -16,6 +16,8 @@ import TestingLikesFunctions from "./components/TestingReduxState/LikesTESTING";
 import TagsTestingFunction from "./components/TestingReduxState/TagsTESTING";
 import CommentsTestingFunction from "./components/TestingReduxState/CommentsTESTING";
 import ChannelTestingFunction from './components/TestingReduxState/ChannelTESTING';
+import { SearchBar } from './components/NavBarTop/SearchBar/SearchBar';
+import { SearchPage } from './components/SearchPage/SearchPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,7 +45,7 @@ function App() {
           <HomePage sidePanel={sidePanel}/>
         </Route>
         <Route path='/search/:searchWords' exact={true}>
-          <HomePage sidePanel={sidePanel}/>
+          <SearchPage sidePanel={sidePanel}/>
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm sidePanel={sidePanel}/>
