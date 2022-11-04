@@ -149,9 +149,10 @@ export function HomePage({ sidePanel }) {
       >
         <div className="homeContainerInner">
           <div className="homeTagsBarContainer">
+      
             <div className="homeTagsBar">
               <div className={tagsFilter == "All" ? "tagHomePageActive" : "tagHomePage"} onClick={() => setTagsFilter("All")}>All</div>
-              <div className={tagsFilter == "New" ? "NewtagHomePageActive" : "tagHomePage"} onClick={() => setTagsFilter("New")}>New to you</div>
+              <div className={tagsFilter == "New" ? "NewtagHomePageActive" : "newToYouTag"} onClick={() => setTagsFilter("New")}>New to you</div>
               <div className={tagsFilter == "Gaming" ? "tagHomePageActive" : "tagHomePage"} onClick={() => setTagsFilter("Gaming")}>Gaming</div>
               <div className={tagsFilter == "Music" ? "tagHomePageActive" : "tagHomePage"} onClick={() => setTagsFilter("Music")}>Music</div>
               <div className={tagsFilter == "Sports" ? "tagHomePageActive" : "tagHomePage"} onClick={() => setTagsFilter("Sports")}>Sports</div>
@@ -164,6 +165,7 @@ export function HomePage({ sidePanel }) {
               <div className={tagsFilter == "Food" ? "tagHomePageActive" : "tagHomePage"} onClick={() => setTagsFilter("Food")}>Food</div>
               <div className={tagsFilter == "TV" ? "tagHomePageActive" : "tagHomePage"} onClick={() => setTagsFilter("TV")}>TV</div>
             </div>
+
           </div>
           <div className="VideosMapped">
             {arrayResult &&
