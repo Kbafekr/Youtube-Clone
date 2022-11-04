@@ -1,8 +1,10 @@
 import { amountViews } from "../../../Utils/Utils";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function DescriptionSection({ filteredVideo }) {
+  const history = useHistory()
   // usestate to keep track of description height
   const [showMoreDescription, setShowMoreDescription] = useState(false);
 
@@ -51,13 +53,25 @@ export default function DescriptionSection({ filteredVideo }) {
             )}
           </div>
         </div>
-        <div className="VideoDetailsDescriptionText">{filteredVideo[0].description}</div>
+        <div className="VideoDetailsDescriptionText">
+          {filteredVideo[0].description}
+        </div>
         <div className="TagsContainer">
           {tagsArray.map((tag) => {
             return (
               <>
                 <div key={tag.id}>
-                  <div className="tagSingleContainer">{tag.body}</div>
+                  <div
+                    onClick={() =>
+                      history.push({
+                        pathname: `/search/${tag.body}`,
+                        state: { filterState: "Tags" },
+                      })
+                    }
+                    className="tagSingleContainer"
+                  >
+                    {tag.body}
+                  </div>
                 </div>
               </>
             );
