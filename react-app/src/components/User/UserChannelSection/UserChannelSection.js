@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authenticate } from "../../../store/session";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Modal } from "../../../context/Modal";
 
@@ -73,9 +73,9 @@ function UserChannelSection() {
                           src={channel.banner_picture}
                           onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
                         />
-                        <div className="ChannelArrayUsername">
+                        <Link className="ChannelArrayUsername" to={`/channels/${channel.id}`} >
                           {channel.channel_name}
-                        </div>
+                        </Link>
                         {channel.id === currentUser.active_channel ? (
                           <div
                             id="activeChannelBanner"

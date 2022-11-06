@@ -188,6 +188,7 @@
   flex-wrap: nowrap;
   overflow-x: hidden;
   text-shadow: 1px 1px 5px black;
+  text-decoration: none;
 }
 
 .UpdateActiveChannelBanner {

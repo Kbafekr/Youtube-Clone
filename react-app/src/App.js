@@ -19,6 +19,7 @@ import ChannelTestingFunction from './components/TestingReduxState/ChannelTESTIN
 import { SearchBar } from './components/NavBarTop/SearchBar/SearchBar';
 import { SearchPage } from './components/SearchPage/SearchPage';
 import { PageNotFound } from "./components/UnknownPage/PageNotFound";
+import Channel from './components/Channel/Channel';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -57,6 +58,10 @@ function App() {
         {/* single Video */}
         <Route path='/videos/:videoId' exact={true} >
           <VideoPage sidePanel={sidePanel}/>
+        </Route>
+        {/* single Channel */}
+        <Route path='/channels/:channelId' exact={true} >
+          <Channel sidePanel={sidePanel}/>
         </Route>
         {/* user settings, create new channel, delete channel, switch channel */}
         <ProtectedRoute path='/users/:userId' exact={true} >

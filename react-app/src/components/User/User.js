@@ -138,11 +138,6 @@ function User({ sidePanel }) {
 if (userId != currentUser.id) {
   history.push('/')
 }
-  const array = ['a', 'b', 'c']
-
-  const LineItem = item => <li key={parseInt(Math.random() * 100 * Math.random())}>{item}</li>
-  const List = () => array.map(item => <LineItem item={item} />)
-
 
   const ButtonChange = () => {
     if (category == 1)

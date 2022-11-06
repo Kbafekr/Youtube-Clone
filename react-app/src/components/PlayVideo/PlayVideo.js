@@ -55,7 +55,7 @@ export function VideoPage({ sidePanel }) {
 
     // update video views on load and only once
     useEffect(() => {
-      if (filteredVideo != null) {
+      if (filteredVideo != null && filteredVideo[0] != null) {
           let viewsString = parseInt(filteredVideo[0].video_views)
           let viewUpdate = viewsString += 1
           let video_views = viewUpdate.toString()
