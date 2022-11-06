@@ -123,7 +123,7 @@ export default function HomePage({ sidePanel }) {
         <>
           <div
             className="UserSectionButton"
-            onClick={() => console.log("okay")}
+            onClick={() => history.push('/login')}
           >
             Sign in to subscribe
           </div>
