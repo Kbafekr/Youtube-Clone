@@ -10,7 +10,7 @@ import { amountViews } from "../../Utils/Utils";
 import { getAllTagsThunk } from "../../store/tags";
 import { getAllLikesThunk } from "../../store/likes";
 import { getAllDisLikesThunk } from "../../store/dislikes";
-
+import { Link } from "react-router-dom";
 export function SearchPageVideos({ searchTerm, activeSort }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -131,7 +131,12 @@ export function SearchPageVideos({ searchTerm, activeSort }) {
                                       className="flexRow"
                                       id="ChannelNameHomeArray"
                                     >
-                                      <div>{channel.channel_name}</div>
+                                      <Link
+                                                className="PlayVideoChannelName"
+                                                to={`/channels/${channel.id}`}
+                                              >
+                                                {channel.channel_name}
+                                              </Link>
                                       <div id="verifiedCheckMark">
                                         <i class="fa-solid fa-check"></i>
                                       </div>

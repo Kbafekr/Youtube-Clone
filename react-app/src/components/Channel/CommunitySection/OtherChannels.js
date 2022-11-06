@@ -19,9 +19,13 @@ export default function ChannelVideosSection({currentChannel}) {
 
     const User = allUsersArray.filter((user) => user.id == userId)
 
-    const otherChannels = User[0].channels.filter((channel) => channel.id != currentChannel.id)
+    let otherChannels;
+    if (User[0] != null) {
 
+      otherChannels = User[0].channels.filter((channel) => channel.id != currentChannel.id)
+    }
 
+if (otherChannels != null) {
       return (
         <>
           <div className="UserChannelsDetailsSectionOuter">
@@ -59,4 +63,9 @@ export default function ChannelVideosSection({currentChannel}) {
           </div>
         </>
       );
+}
+else return (
+  <>
+  null</>
+)
 }

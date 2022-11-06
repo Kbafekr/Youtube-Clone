@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import CommunityChannels from "./CommunitySection/OtherChannels";
 import ChannelVideosSection from "./VideoSection/ChannelVideos";
 import { getAllUsersThunk } from "../../store/allusers";
+import { createSubscriberThunk } from "../../store/subscribers";
 import "./Channel.css";
 
 export default function HomePage({ sidePanel }) {
@@ -20,6 +21,7 @@ export default function HomePage({ sidePanel }) {
   const { channelId } = useParams();
   const [category, setCategory] = useState(1);
   const [loaded, setLoaded] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   const channels = useSelector((state) => state.channel);
   const user = useSelector((state) => state.session.user);
@@ -29,7 +31,7 @@ export default function HomePage({ sidePanel }) {
       await dispatch(getAllChannelsThunk());
       setLoaded(true);
     })();
-  }, [dispatch, user]);
+  }, [dispatch, user, subscribed]);
 
   useEffect(() => {
     dispatch(getAllUsersThunk());
@@ -58,61 +60,88 @@ export default function HomePage({ sidePanel }) {
   }
 
   const SubscribeButton = () => {
-    if (currentChannel != null && currentChannelNested.length >= 0) {
+    if (
+      currentChannel != null &&
+      currentChannelNested.length >= 0 &&
+      user != null
+    ) {
       const subscribedState = currentChannel.subscribers.filter(
         (subscriber) => subscriber.user_id == user.id
       );
+      if (subscribedState.length > 0) {
+      }
       if (currentChannel.user_id != user.id) {
         return (
           <>
             {/* button that csubscribees and unsubscribes*/}
-            {subscribedState.length > 0 ? (
               <div
-                className="UserSectionButton"
-                onClick={() => console.log("okay")}
+                className={subscribedState.length > 0 ? "ChannelSubscribeSectionButton": "ChannelunSubscribeSectionButton"}
+                onClick={() =>
+                  dispatch(createSubscriberThunk(currentChannel.id)).then(() =>
+                    setSubscribed(!subscribed)
+                  )
+                }
               >
-                Subscribed
+                {subscribedState.length > 0 ? (
+                  <div className="SubscribedCSS">subscribed <div id="subscribedCheckMark">
+                  <i class="fa-solid fa-check"></i>
+                </div></div>
+                ) : (
+                  <div className="UnsubscribedCSS">subscribe</div>
+                )}
               </div>
-            ) : (
+            {/* ) : (
               <div
-                className="UserSectionButton"
-                onClick={() => console.log("okay")}
-              >
-                Subscribe
-              </div>
-            )}
-          </>
-        );
-      }
-      else return(
-        <>
-        <div
                 className="UserSectionButton"
                 onClick={() =>
-                    history.push({
-                      pathname: `/users/${user.id}`,
-                      state: { directedCategory: 4, uploadModalState: false },
-                    })
-                  }
+                  dispatch(createSubscriberThunk(currentChannel.id))
+                }
               >
-                Go to Channels
-              </div>
+                Subscribe
+              </div> */}
+            {/* )} */}
+          </>
+        );
+      } else
+        return (
+          <>
+            <div
+              className="UserSectionButton"
+              onClick={() =>
+                history.push({
+                  pathname: `/users/${user.id}`,
+                  state: { directedCategory: 4, uploadModalState: false },
+                })
+              }
+            >
+              Go to Channels
+            </div>
+          </>
+        );
+    } else
+      return (
+        <>
+          <div
+            className="UserSectionButton"
+            onClick={() => console.log("okay")}
+          >
+            Sign in to subscribe
+          </div>
         </>
-      )
-    }
+      );
   };
 
   const UserInformation = () => {
     if (category == 1)
       return (
         <>
-          <ChannelVideosSection currentChannel={currentChannel}/>
+          <ChannelVideosSection currentChannel={currentChannel} />
         </>
       );
     if (category == 2)
       return (
         <>
-          <CommunityChannels currentChannel={currentChannel}/>
+          <CommunityChannels currentChannel={currentChannel} />
         </>
       );
     if (category == 3)

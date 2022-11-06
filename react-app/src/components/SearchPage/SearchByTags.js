@@ -7,12 +7,13 @@ import { getAllChannelsThunk } from "../../store/channel";
 import { amountViews } from "../../Utils/Utils";
 
 import { useDispatch } from "react-redux";
-import {useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getAllTagsThunk } from "../../store/tags";
 import { getAllLikesThunk } from "../../store/likes";
+import { Link } from "react-router-dom";
 import { getAllDisLikesThunk } from "../../store/dislikes";
 
-export function SearchPageTags({searchTerm, activeSort}) {
+export function SearchPageTags({ searchTerm, activeSort }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
@@ -22,7 +23,6 @@ export function SearchPageTags({searchTerm, activeSort}) {
   const [newChannelMade, setNewChannelMade] = useState(false);
   const [tagClicked, setTagClicked] = useState("all");
   const [tagsFilter, setTagsFilter] = useState("");
-
 
   let videosArray;
   let channelsArray;
@@ -41,19 +41,20 @@ export function SearchPageTags({searchTerm, activeSort}) {
 
   if (tagsArray) {
     FilteredTags = tagsArray.filter((tag) =>
-    tag.body.toLowerCase().includes(searchTerm.toLowerCase()) )
+      tag.body.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 
-//   loop through filtered array and remove duplicates
-// access the videoId key in each filtered tag
- for (let i = 0; i < FilteredTags.length; i++) {
-    let tag = FilteredTags[i]
+  //   loop through filtered array and remove duplicates
+  // access the videoId key in each filtered tag
+  for (let i = 0; i < FilteredTags.length; i++) {
+    let tag = FilteredTags[i];
     // if none, set to true to prevent duplicates
     if (!counterObject[FilteredTags[i]["video_id"]]) {
-        counterObject[FilteredTags[i]["video_id"]] = true;
-        tagsFiltered.push(tag)
+      counterObject[FilteredTags[i]["video_id"]] = true;
+      tagsFiltered.push(tag);
     }
- }
+  }
 
   let tagResults;
   let tagArrayCopy;
@@ -76,14 +77,12 @@ export function SearchPageTags({searchTerm, activeSort}) {
 
   if (activeSort == "Newest") {
     tagResults = [...sortTagsbyNewest];
-    videoResults = [...sortedVideosByNewest]
+    videoResults = [...sortedVideosByNewest];
   }
   if (activeSort != "Newest") {
     tagResults = [...tagsFiltered];
-    videoResults = [...videosArray]
-
+    videoResults = [...videosArray];
   }
-
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
@@ -102,120 +101,127 @@ export function SearchPageTags({searchTerm, activeSort}) {
     dispatch(getAllTagsThunk());
   }, [dispatch, user]);
 
-
   // create new variable to filter through tags based on keyword
   return (
     <>
-    {tagResults.length > 0 ?
+      {tagResults.length > 0 ? (
         <div className="homeContainerInner">
-            <div className="VideosMapped">
-              {videoResults &&
-                videoResults.map((video) => {
-                  return (
-                    <>
-                      {tagResults &&
-                        tagResults.map((tags) => {
-                          return (
-                            <>
-                              {video.id == tags.video_id ? (
-                                <div className="VideoCardHome">
-                                  <div
-                                    className="VideoPreviewHome"
-                                    onClick={() =>
-                                      history.push(`/videos/${video.id}`)
-                                    }
-                                  >
-                                    {video.video_url.includes("s3") ? (
-                                      <ReactPlayer
-                                        width="100%"
-                                        height="100%"
-                                        url={video.video_url}
-                                        playIcon={true}
-                                      />
-                                    ) : (
-                                      <ReactPlayer
-                                        width="100%"
-                                        height="100%"
-                                        url={video.video_url}
-                                        light={true}
-                                        playIcon={true}
-                                      />
-                                    )}
-                                  </div>
-                                  {channelsArray &&
-                                    channelsArray.map((channel) => {
-                                      return (
-                                        <>
-                                          {channel.id == video.channel_id ? (
-                                            <div className="HomeVideoCardBottomSection">
-                                              <div className="profileImageHomeVideoArray">
-                                                <img
-                                                  className="channelPictureHomeArray"
-                                                  alt="channel"
-                                                  src={channel.profile_picture}
-                                                />
+          <div className="VideosMapped">
+            {videoResults &&
+              videoResults.map((video) => {
+                return (
+                  <>
+                    {tagResults &&
+                      tagResults.map((tags) => {
+                        return (
+                          <>
+                            {video.id == tags.video_id ? (
+                              <div className="VideoCardHome">
+                                <div
+                                  className="VideoPreviewHome"
+                                  onClick={() =>
+                                    history.push(`/videos/${video.id}`)
+                                  }
+                                >
+                                  {video.video_url.includes("s3") ? (
+                                    <ReactPlayer
+                                      width="100%"
+                                      height="100%"
+                                      url={video.video_url}
+                                      playIcon={true}
+                                    />
+                                  ) : (
+                                    <ReactPlayer
+                                      width="100%"
+                                      height="100%"
+                                      url={video.video_url}
+                                      light={true}
+                                      playIcon={true}
+                                    />
+                                  )}
+                                </div>
+                                {channelsArray &&
+                                  channelsArray.map((channel) => {
+                                    return (
+                                      <>
+                                        {channel.id == video.channel_id ? (
+                                          <div className="HomeVideoCardBottomSection">
+                                            <div className="profileImageHomeVideoArray">
+                                              <img
+                                                className="channelPictureHomeArray"
+                                                alt="channel"
+                                                src={channel.profile_picture}
+                                              />
+                                            </div>
+                                            <div className="HomeVideoArrayChannelDetails">
+                                              <div
+                                                className="VideoTitleCard"
+                                                onClick={() =>
+                                                  history.push(
+                                                    `/videos/${video.id}`
+                                                  )
+                                                }
+                                              >
+                                                {video.title}
                                               </div>
-                                              <div className="HomeVideoArrayChannelDetails">
+                                              <div
+                                                className="flexColumn"
+                                                id="homeArrayChannelDetails"
+                                              >
                                                 <div
-                                                  className="VideoTitleCard"
-                                                  onClick={() =>
-                                                    history.push(
-                                                      `/videos/${video.id}`
-                                                    )
-                                                  }
+                                                  className="flexRow"
+                                                  id="ChannelNameHomeArray"
                                                 >
-                                                  {video.title}
+                                                  <Link
+                                                    className="PlayVideoChannelName"
+                                                    to={`/channels/${channel.id}`}
+                                                  >
+                                                    {channel.channel_name}
+                                                  </Link>
+                                                  <div id="verifiedCheckMark">
+                                                    <i class="fa-solid fa-check"></i>
+                                                  </div>
                                                 </div>
                                                 <div
-                                                  className="flexColumn"
-                                                  id="homeArrayChannelDetails"
+                                                  className="flexRow"
+                                                  id="homeArrayChannelViews"
                                                 >
-                                                  <div
-                                                    className="flexRow"
-                                                    id="ChannelNameHomeArray"
-                                                  >
-                                                    <div>
-                                                      {channel.channel_name}
-                                                    </div>
-                                                    <div id="verifiedCheckMark">
-                                                      <i class="fa-solid fa-check"></i>
-                                                    </div>
+                                                  <div>
+                                                    {amountViews(
+                                                      video.video_views
+                                                    )}{" "}
+                                                    views
                                                   </div>
-                                                  <div
-                                                    className="flexRow"
-                                                    id="homeArrayChannelViews"
-                                                  >
-                                                    <div>{amountViews(video.video_views)} views</div>
-                                                    <div className="CircleDiv" />
-                                                    <div>
-                                                      {video.created_at.slice(
-                                                        0,
-                                                        16
-                                                      )}
-                                                    </div>
+                                                  <div className="CircleDiv" />
+                                                  <div>
+                                                    {video.created_at.slice(
+                                                      0,
+                                                      16
+                                                    )}
                                                   </div>
                                                 </div>
                                               </div>
                                             </div>
-                                          ) : (
-                                            ""
-                                          )}
-                                        </>
-                                      );
-                                    })}
-                                </div>
-                              ) : (
-                                ""
-                              )}
-                            </>
-                          );
-                        })}
-                    </>
-                  );
-                })}
-            </div>
+                                          </div>
+                                        ) : (
+                                          ""
+                                        )}
+                                      </>
+                                    );
+                                  })}
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </>
+                        );
+                      })}
+                  </>
+                );
+              })}
+          </div>
         </div>
-        : (
+      ) : (
         <div className="ErrorSearchResultsText"> No results found</div>
       )}
     </>

@@ -11,6 +11,7 @@ import { newChannelThunk } from "../../store/channel";
 import { authenticate } from "../../store/session";
 import { amountViews } from "../../Utils/Utils";
 import logo from "../../icons/you2oobLogo.png";
+import { Link } from "react-router-dom";
 
 import { getAllTagsThunk } from "../../store/tags";
 import { getAllLikesThunk } from "../../store/likes";
@@ -369,9 +370,12 @@ export function HomePage({ sidePanel }) {
                                                         className="flexRow"
                                                         id="ChannelNameHomeArray"
                                                       >
-                                                        <div>
-                                                          {channel.channel_name}
-                                                        </div>
+                                                        <Link
+                                                className="PlayVideoChannelName"
+                                                to={`/channels/${channel.id}`}
+                                              >
+                                                {channel.channel_name}
+                                              </Link>
                                                         <div id="verifiedCheckMark">
                                                           <i class="fa-solid fa-check"></i>
                                                         </div>
@@ -473,7 +477,12 @@ export function HomePage({ sidePanel }) {
                                               className="flexRow"
                                               id="ChannelNameHomeArray"
                                             >
-                                              <div>{channel.channel_name}</div>
+                                              <Link
+                                                className="PlayVideoChannelName"
+                                                to={`/channels/${channel.id}`}
+                                              >
+                                                {channel.channel_name}
+                                              </Link>
                                               <div id="verifiedCheckMark">
                                                 <i class="fa-solid fa-check"></i>
                                               </div>
