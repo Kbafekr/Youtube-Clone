@@ -8,6 +8,7 @@ import comment from './comment'
 import likes from './likes'
 import dislikes from './dislikes'
 import tags from './tags'
+import subscribers from './subscribers'
 
 const rootReducer = combineReducers({
   session,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   comment,
   likes,
   dislikes,
-  tags
+  tags,
+  subscribers
 });
 
 

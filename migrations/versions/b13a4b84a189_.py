@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: fb6f4f02b4bf
+Revision ID: b13a4b84a189
 Revises: 
-Create Date: 2022-11-04 14:17:23.219144
+Create Date: 2022-11-06 14:26:44.691764
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'fb6f4f02b4bf'
+revision = 'b13a4b84a189'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,12 +40,21 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('subscribers',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('channel_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['channel_id'], ['channels.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('videos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('channel_id', sa.Integer(), nullable=False),
     sa.Column('title', sa.VARCHAR(length=200), nullable=False),
     sa.Column('description', sa.VARCHAR(length=1000), nullable=True),
     sa.Column('video_url', sa.String(), nullable=False),
+    sa.Column('video_views', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['channel_id'], ['channels.id'], ),
@@ -101,6 +110,7 @@ def downgrade():
     op.drop_table('dislikes')
     op.drop_table('comments')
     op.drop_table('videos')
+    op.drop_table('subscribers')
     op.drop_table('channels')
     op.drop_table('users')
     # ### end Alembic commands ###

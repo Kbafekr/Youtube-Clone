@@ -35,7 +35,7 @@ export const getAllLikesThunk = () => async (dispatch) => {
 }
 
 export const getVideoLikesThunk = (videoId) => async (dispatch) => {
-  const response = await fetch(`/api/videos/${videoId}/likes`, {});
+  const response = await fetch(`/api/videos/${videoId}/likes`);
   if (response.ok) {
     const likes = await response.json();
     dispatch(getVideoLikes(likes));

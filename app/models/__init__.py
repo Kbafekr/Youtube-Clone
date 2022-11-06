@@ -6,3 +6,4 @@ from .comment import Comment
 from .tag import Tag
 from .like import Like
 from .dislike import Dislike
+from .subscriber import Subscriber

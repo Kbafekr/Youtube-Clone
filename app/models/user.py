@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     channels = db.relationship("Channel", backref='user', cascade="all, delete-orphan")
     likes = db.relationship("Like", backref='user', cascade="all, delete-orphan")
     dislikes = db.relationship("Dislike", backref='user', cascade="all, delete-orphan")
+    subscribers = db.relationship("Subscriber", backref='user', cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -41,6 +42,7 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at,
             # channels
             'channels': [channel.to_dict() for channel in self.channels],
+            'subscriptions': [subscription.to_dict() for subscription in self.subscribers],
             # videos
             # comments
             # likes
