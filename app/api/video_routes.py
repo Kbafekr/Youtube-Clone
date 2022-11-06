@@ -66,7 +66,8 @@ def create_data():
             channel_id=data["channel_id"],
             title=data["title"],
             description=data["description"],
-            video_url=aws_video_url
+            video_url=aws_video_url,
+            video_views=data["video_views"],
         )
         db.session.add(new_video)
         db.session.commit()
@@ -88,6 +89,7 @@ def edit_Video(id):
         old_video.title = data["title"]
         old_video.description = data["description"]
         old_video.video_url = data["video_url"]
+        old_video.video_views = data["video_views"]
 
         db.session.commit()
 

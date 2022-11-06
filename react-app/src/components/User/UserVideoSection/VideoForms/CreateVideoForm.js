@@ -17,6 +17,7 @@ function CreateVideoForm({ setShowModal }) {
   const [description, setDescription] = useState("");
   const [video_url, setVideo_Url] = useState(null);
   const [errors, setErrors] = useState([]);
+  const [video_Views, setVideo_Views] = useState("0")
 
   const allowedFileTypes = ["video/mp4", "video/mov"];
 
@@ -58,6 +59,7 @@ function CreateVideoForm({ setShowModal }) {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("video_url", video_url);
+      formData.append("video_views", video_Views);
 
       return dispatch(
         newVideoThunk(formData)

@@ -80,13 +80,13 @@ export const newVideoThunk =
   };
 
 export const updateVideoThunk =
-  (channel_id, title, description, video_url, videoId) => async (dispatch) => {
+  (channel_id, title, description, video_url, video_views, videoId) => async (dispatch) => {
     const response = await fetch(`/api/videos/${videoId}/edit`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ channel_id, title, description, video_url }),
+      body: JSON.stringify({ channel_id, title, description, video_url, video_views }),
     });
     if (response.ok) {
       const editVideo = await response.json();

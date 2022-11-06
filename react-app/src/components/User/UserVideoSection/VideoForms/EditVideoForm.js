@@ -18,6 +18,8 @@ function EditVideoForm({ video, setShowModal }) {
   const [description, setDescription] = useState(video.description);
   const [video_url, setVideo_Url] = useState(video.video_url);
   const [errors, setErrors] = useState([]);
+  const [video_Views, setVideo_Views] = useState(video.video_views)
+
 
   const allowedFileTypes = ["video/mp4", "video/mov"];
 
@@ -53,6 +55,7 @@ function EditVideoForm({ video, setShowModal }) {
           title,
           description,
           video_url,
+          video_Views,
           video.id,
         )
       )

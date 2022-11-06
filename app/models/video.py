@@ -10,6 +10,8 @@ class Video(db.Model):
     title = db.Column(db.VARCHAR(200), nullable=False)
     description = db.Column(db.VARCHAR(1000))
     video_url = db.Column(db.String, nullable=False)
+    # video views
+    video_views = db.Column(db.String, default="0")
 
     comments = db.relationship("Comment", backref='video', cascade="all, delete-orphan")
     tags = db.relationship("Tag", backref='video', cascade="all, delete-orphan")
@@ -28,6 +30,7 @@ class Video(db.Model):
             'title': self.title,
             'description': self.description,
             'video_url': self.video_url,
+            "video_views": self.video_views,
             # timestamps
             'created_at': self.created_at,
             'updated_at': self.updated_at,

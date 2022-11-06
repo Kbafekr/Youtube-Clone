@@ -8,4 +8,5 @@ class VideoForm(FlaskForm):
     title = StringField("title", validators=[DataRequired()])
     description=TextAreaField("description", validators=[DataRequired()])
     video_url = StringField("video_url", validators=[DataRequired()])
+    video_views = StringField("video_views", validators=[DataRequired()])
     submit = SubmitField("Submit")
