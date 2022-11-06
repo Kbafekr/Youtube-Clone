@@ -39,7 +39,7 @@ export function VideoPage({ sidePanel }) {
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, user, updateViews]);
+  }, [dispatch, user]);
 
   useEffect(() => {
     (async () => {
@@ -63,7 +63,7 @@ export function VideoPage({ sidePanel }) {
           .then(() => {dispatch(getAllVideosThunk())});
           setUpdateViews(videoId)
        }
-   }, [dispatch, videoId, filteredVideo]);
+   }, [dispatch, videoId, filteredVideo, loaded]);
   if (!loaded) {
     return null;
   }

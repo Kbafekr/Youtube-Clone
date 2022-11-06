@@ -185,7 +185,7 @@ export function SearchPageTags({searchTerm, activeSort}) {
                                                     className="flexRow"
                                                     id="homeArrayChannelViews"
                                                   >
-                                                    <div>{amountViews()}</div>
+                                                    <div>{amountViews(video.video_views)} views</div>
                                                     <div className="CircleDiv" />
                                                     <div>
                                                       {video.created_at.slice(
