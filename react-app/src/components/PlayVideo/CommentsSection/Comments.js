@@ -72,12 +72,13 @@ export function CommentsSection() {
   if (commentsCopyArray != undefined) {
     sortedCommentsByNewest = commentsCopyArray.sort((a, b) => b.id - a.id);
   }
-
+  if (CommentsArray && filteredCommentsArray.length) {
   if (sortByComments == true) {
     commentsArrayForMapping = [...sortedCommentsByNewest];
   } else {
     commentsArrayForMapping = [...filteredCommentsArray];
   }
+}
 
   return (
     <>

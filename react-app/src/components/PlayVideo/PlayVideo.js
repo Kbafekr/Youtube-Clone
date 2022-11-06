@@ -29,8 +29,7 @@ export function VideoPage({ sidePanel }) {
   const videos = useSelector((state) => state.video);
 
   const [loaded, setLoaded] = useState(false);
-  const [updateViews, setUpdateViews] = useState(videoId)
-
+  const [updateViews, setUpdateViews] = useState(videoId);
 
   // usestate to keep track of description height
   const [showMoreDescription, setShowMoreDescription] = useState(false);
@@ -51,19 +50,27 @@ export function VideoPage({ sidePanel }) {
     dispatch(getVideoTagsThunk(videoId));
   }, [dispatch, user, videoId, updateViews]);
 
-
-
-    // update video views on load and only once
-    useEffect(() => {
-      if (filteredVideo != null && filteredVideo[0] != null) {
-          let viewsString = parseInt(filteredVideo[0].video_views)
-          let viewUpdate = viewsString += 1
-          let video_views = viewUpdate.toString()
-          dispatch(updateVideoThunk(filteredVideo[0].channel_id, filteredVideo[0].title, filteredVideo[0].description, filteredVideo[0].video_url, video_views, videoId))
-          .then(() => {dispatch(getAllVideosThunk())});
-          setUpdateViews(videoId)
-       }
-   }, [dispatch, videoId, filteredVideo, loaded]);
+  // update video views on load and only once
+  useEffect(() => {
+    if (filteredVideo != null && filteredVideo[0] != null) {
+      let viewsString = parseInt(filteredVideo[0].video_views);
+      let viewUpdate = (viewsString += 1);
+      let video_views = viewUpdate.toString();
+      dispatch(
+        updateVideoThunk(
+          filteredVideo[0].channel_id,
+          filteredVideo[0].title,
+          filteredVideo[0].description,
+          filteredVideo[0].video_url,
+          video_views,
+          videoId
+        )
+      ).then(() => {
+        dispatch(getAllVideosThunk());
+      });
+      setUpdateViews(videoId);
+    }
+  }, [dispatch, videoId, filteredVideo, loaded]);
   if (!loaded) {
     return null;
   }
@@ -113,7 +120,10 @@ export function VideoPage({ sidePanel }) {
                                 className="channelPictureHomeArray"
                                 alt="channel"
                                 src={channel.profile_picture}
-                                onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
+                                onError={(e) => {
+                                  e.currentTarget.src =
+                                    "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png";
+                                }}
                               />
                             </div>
                             <div className="HomeVideoArrayChannelDetails">
@@ -125,7 +135,13 @@ export function VideoPage({ sidePanel }) {
                                   className="flexRow"
                                   id="ChannelNameHomeArray"
                                 >
-                                  <div>{channel.channel_name}</div>
+                                  <Link
+                                    className="PlayVideoChannelName"
+                                    to={`/channels/${channel.id}`}
+                                  >
+                                    {channel.channel_name}
+                                  </Link>
+
                                   <div id="verifiedCheckMark">
                                     <i class="fa-solid fa-check"></i>
                                   </div>
@@ -151,9 +167,7 @@ export function VideoPage({ sidePanel }) {
                                 {/* <i class="fa-solid fa-bell"></i> */}
                               </div>
                             </div>
-                            {updateViews == videoId ?
-                            <LikesDislikes />
-                            : ""}
+                            {updateViews == videoId ? <LikesDislikes /> : ""}
                           </div>
                         ) : (
                           ""
@@ -163,26 +177,29 @@ export function VideoPage({ sidePanel }) {
                   })}
                 <DescriptionSection filteredVideo={filteredVideo} />
               </div>
-              {updateViews == videoId ? <>
-              {user != null ? (
-                <div className="VideoDetailsCommentsSection">
-                  <CommentsSection />
-                </div>
+              {updateViews == videoId ? (
+                <>
+                  {user != null ? (
+                    <div className="VideoDetailsCommentsSection">
+                      <CommentsSection />
+                    </div>
+                  ) : (
+                    <div className="NotSignedInVideoDetailsComments">
+                      <div> Comments are turned off.</div>
+                      <Link
+                        to="/login"
+                        className="CreateAccountRedirectDetails"
+                        exact={true}
+                        activeClassName="active"
+                      >
+                        Login to comment.
+                      </Link>
+                    </div>
+                  )}
+                </>
               ) : (
-                <div className="NotSignedInVideoDetailsComments">
-                  <div> Comments are turned off.</div>
-                  <Link
-                    to="/login"
-                    className="CreateAccountRedirectDetails"
-                    exact={true}
-                    activeClassName="active"
-                  >
-                    Login to comment.
-                  </Link>
-                </div>
+                ""
               )}
-              </>
-              : "" }
             </div>
 
             <div className="RightSideVideoDetailsSection">
@@ -193,7 +210,7 @@ export function VideoPage({ sidePanel }) {
                       <>
                         <div
                           className="VideoCardRecommended"
-                          onClick={() => history.push(`/videos/${video.id}`)}
+                          // onClick={() => history.push(`/videos/${video.id}`)}
                         >
                           {/* used to cover video preview to prevent load */}
                           <div
@@ -249,7 +266,12 @@ export function VideoPage({ sidePanel }) {
                                               className="flexRow"
                                               id="ChannelNameHomeArray"
                                             >
-                                              <div>{channel.channel_name}</div>
+                                              <Link
+                                                className="PlayVideoChannelName"
+                                                to={`/channels/${channel.id}`}
+                                              >
+                                                {channel.channel_name}
+                                              </Link>
                                               <div id="verifiedCheckMark">
                                                 <i class="fa-solid fa-check"></i>
                                               </div>
@@ -258,7 +280,10 @@ export function VideoPage({ sidePanel }) {
                                               className="flexRow"
                                               id="homeArrayChannelViews"
                                             >
-                                              <div>{amountViews(video.video_views)} views</div>
+                                              <div>
+                                                {amountViews(video.video_views)}{" "}
+                                                views
+                                              </div>
                                               <div className="CircleDiv" />
                                               <div>
                                                 {video.created_at.slice(0, 16)}

@@ -326,3 +326,8 @@ overflow: hidden;
 .PointerCursor {
     cursor: pointer;
 }
+
+.PlayVideoChannelName{
+    text-decoration: none;
+    z-index: 12;
+}

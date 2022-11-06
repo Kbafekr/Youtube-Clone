@@ -64,6 +64,8 @@ align-items: flex-start;
     height: 40px;
     width: 40px;
     border-radius: 50px;
+  object-fit: cover;
+
 }
 
 /* right side channel section */

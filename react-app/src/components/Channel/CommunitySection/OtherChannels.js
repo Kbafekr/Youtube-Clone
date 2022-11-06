@@ -11,17 +11,16 @@ export default function ChannelVideosSection({currentChannel}) {
     const dispatch = useDispatch();
     const userId = currentChannel.user_id
     const allUsers = useSelector((state) => state.allusers);
+    useEffect(() => {
+        dispatch(getAllUsersThunk());
+      }, [dispatch]);
 
     const allUsersArray = Object.values(allUsers)
 
     const User = allUsersArray.filter((user) => user.id == userId)
 
     const otherChannels = User[0].channels.filter((channel) => channel.id != currentChannel.id)
-    console.log(otherChannels)
 
-    useEffect(() => {
-        dispatch(getAllUsersThunk());
-      }, [dispatch]);
 
       return (
         <>
@@ -48,7 +47,7 @@ export default function ChannelVideosSection({currentChannel}) {
                         <Link className="ChannelArrayUsername" to={`/channels/${channel.id}`} >
                           {channel.channel_name}
                         </Link>
-                        
+
                         {/* set inactive active toggle that dispatches edit user to set current active channel */}
                       </div>
                     </div>

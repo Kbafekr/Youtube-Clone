@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 
 import CommunityChannels from "./CommunitySection/OtherChannels";
 import ChannelVideosSection from "./VideoSection/ChannelVideos";
+import { getAllUsersThunk } from "../../store/allusers";
 import "./Channel.css";
 
 export default function HomePage({ sidePanel }) {
@@ -29,6 +30,10 @@ export default function HomePage({ sidePanel }) {
       setLoaded(true);
     })();
   }, [dispatch, user]);
+
+  useEffect(() => {
+    dispatch(getAllUsersThunk());
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -152,7 +157,7 @@ export default function HomePage({ sidePanel }) {
                 }}
               />
               <div className="WelcomeUserPage">
-                {currentChannel.channel_name}
+                {/* {currentChannel.channel_name} */}
               </div>
             </div>
             {/* navbar section */}
