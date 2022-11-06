@@ -16,10 +16,10 @@ def allImageLikes():
     return likes
 
 
-# Get All Likes by image id (move to images routes)
+# Get All Likes by  id (move to images routes)
 # image/comments/imageid
 @Likes_routes.route('/<int:id>/likes')
-@login_required
+# @login_required
 def imageLikes(id):
     all_likes = Like.query.filter_by(imageId=id).all()
     if all_likes == None:

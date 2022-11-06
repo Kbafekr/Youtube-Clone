@@ -41,13 +41,14 @@ export default function DescriptionSection({ filteredVideo }) {
             </div>
             {showMoreDescription == true ? (
               <div
+              className="PointerCursor"
                 id="blueLike"
                 onClick={() => setShowMoreDescription(!showMoreDescription)}
               >
                 Show less
               </div>
             ) : (
-              <div onClick={() => setShowMoreDescription(!showMoreDescription)}>
+              <div  className="PointerCursor" onClick={() => setShowMoreDescription(!showMoreDescription)}>
                 Show more
               </div>
             )}

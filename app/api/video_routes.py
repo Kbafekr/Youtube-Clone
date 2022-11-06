@@ -185,7 +185,7 @@ def delete_comment(videoId, id):
 # Get All Likes by video id (move to images routes)
 # video/comments/videoId
 @video_routes.route('/<int:videoId>/likes')
-@login_required
+# @login_required
 def videoLikes(videoId):
     all_likes = Like.query.filter_by(video_id=videoId).all()
     if all_likes == None:
@@ -241,7 +241,7 @@ def delete_likes(videoId, id):
 # Get All dislikes
 # video/comments/videoId
 @video_routes.route('/dislikes/all')
-@login_required
+# @login_required
 def allDislikes():
     all_dislikes = Dislike.query.all()
     if all_dislikes == None:
@@ -257,7 +257,7 @@ def allDislikes():
 
 
 @video_routes.route('/<int:videoId>/dislikes')
-@login_required
+# @login_required
 def videoDislikes(videoId):
     all_dislikes = Dislike.query.filter_by(video_id=videoId).all()
     if all_dislikes == None:
@@ -312,7 +312,7 @@ def delete_dislikes(videoId, id):
 
 # all tags by videoId
 @video_routes.route('/<int:videoId>/tag', methods=["GET"])
-@login_required
+# @login_required
 def get_tagsbyVideo(videoId):
     tags = Tag.query.filter_by(video_id=videoId).all()
     if tags == None:

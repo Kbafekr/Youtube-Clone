@@ -167,7 +167,7 @@ font-weight: bold;
 }
 
 #showlessActiveDescription {
-    height: 52px;
+    height: 66px;
     overflow: hidden;
 }
 #showmoreActiveDescription {
@@ -194,6 +194,8 @@ font-weight: bold;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
+    line-height:24px;
+    padding-bottom: 15px;
 }
 /* tags */
 
@@ -318,4 +320,9 @@ overflow: hidden;
 
 #NoCursor {
     cursor: not-allowed;
+}
+
+
+.PointerCursor {
+    cursor: pointer;
 }
