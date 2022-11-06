@@ -7,6 +7,8 @@ import { getAllChannelsThunk } from "../../store/channel";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
+import CommunityChannels from "./CommunitySection/OtherChannels";
+import ChannelVideosSection from "./VideoSection/ChannelVideos";
 import "./Channel.css";
 
 export default function HomePage({ sidePanel }) {
@@ -99,15 +101,13 @@ export default function HomePage({ sidePanel }) {
     if (category == 1)
       return (
         <>
-          <div>Video Section</div>
-          {/* <UserVideoSection /> */}
+          <ChannelVideosSection currentChannel={currentChannel}/>
         </>
       );
     if (category == 2)
       return (
         <>
-          <div>Community Section</div>
-          {/* <UserChannelSection /> */}
+          <CommunityChannels currentChannel={currentChannel}/>
         </>
       );
     if (category == 3)
