@@ -130,3 +130,52 @@ width: 90%;
 .ExploreSideBarText {
     font-size: 18px
 }
+
+
+/* subscriptions */
+
+.SubscriptionsSignedOutSideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.channelPictureSideBarSubscriptions {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+  object-fit: cover;
+}
+
+.ChannelNameSideBar {
+    overflow: hidden;
+    max-width: 180px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.imgsidebarLink {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.CloseSubscriptionsSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    height: 400px;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+}
+
+.OpenSubscriptionsButton {
+    color: rgb(0, 166, 255);
+    font-weight: normal;
+    font-size: 16px;
+    cursor: pointer;
+}

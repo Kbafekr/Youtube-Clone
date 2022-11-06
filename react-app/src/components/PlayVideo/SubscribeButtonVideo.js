@@ -25,6 +25,11 @@ export const SubscribeButton = ({currentChannel, subscribed, setSubscribed}) => 
         dispatch(getAllVideosThunk())
       }, [dispatch, user, subscribed]);
 
+      useEffect(() => {
+        (async() => {
+          await dispatch(authenticate());
+        })();
+      }, [dispatch, subscribed]);
 
     if (
       currentChannel != null &&
@@ -66,7 +71,7 @@ export const SubscribeButton = ({currentChannel, subscribed, setSubscribed}) => 
       return (
         <>
           <div
-            className="UserSectionButton"
+            className="SubscribeVideoSectionButton"
             onClick={() => history.push('/login')}
           >
             Sign in to subscribe

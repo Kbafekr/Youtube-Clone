@@ -27,11 +27,17 @@ export default function Channel({ sidePanel }) {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    (async () => {
-      await dispatch(getAllChannelsThunk());
+    dispatch(getAllChannelsThunk());
+      setLoaded(true);
+
+  }, [dispatch, user, subscribed]);
+
+  useEffect(() => {
+    (async() => {
+      await dispatch(authenticate());
       setLoaded(true);
     })();
-  }, [dispatch, user, subscribed]);
+  }, [dispatch, subscribed]);
 
   useEffect(() => {
     dispatch(getAllUsersThunk());
