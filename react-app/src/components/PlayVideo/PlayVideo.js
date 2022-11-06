@@ -15,6 +15,8 @@ import { updateVideoThunk } from "../../store/video";
 import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
 import DescriptionSection from "./DescriptionTags/DescriptionTags";
+import { getAllSubscribersThunk, getChannelSubscribersThunk } from "../../store/subscribers";
+import { SubscribeButton } from "./SubscribeButtonVideo";
 
 import { CommentsSection } from "./CommentsSection/Comments";
 import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
@@ -30,6 +32,8 @@ export function VideoPage({ sidePanel }) {
 
   const [loaded, setLoaded] = useState(false);
   const [updateViews, setUpdateViews] = useState(videoId);
+  const [subscribed, setSubscribed] = useState(false);
+
 
   // usestate to keep track of description height
   const [showMoreDescription, setShowMoreDescription] = useState(false);
@@ -38,18 +42,21 @@ export function VideoPage({ sidePanel }) {
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, user]);
+  }, [dispatch, user, subscribed]);
 
   useEffect(() => {
     (async () => {
       await dispatch(getAllVideosThunk());
       setLoaded(true);
     })();
-  }, [dispatch, user, updateViews, filteredVideo]);
+  }, [dispatch, user, updateViews, filteredVideo, subscribed]);
   useEffect(() => {
     dispatch(getVideoTagsThunk(videoId));
   }, [dispatch, user, videoId, updateViews]);
 
+  useEffect(() => {
+    dispatch(getChannelSubscribersThunk())
+  }, [dispatch, user, subscribed]);
   // update video views on load and only once
   useEffect(() => {
     if (filteredVideo != null && filteredVideo[0] != null) {
@@ -150,18 +157,16 @@ export function VideoPage({ sidePanel }) {
                                   className="flexRow"
                                   id="homeArrayChannelViews"
                                 >
-                                  <div>0 subscribers</div>
+                                  <div>{channel.subscribers.length} subscribers</div>
                                   <div className="CircleDiv" />
                                   <div>{channel.created_at.slice(0, 16)}</div>
                                 </div>
                               </div>
                             </div>
                             <div className="SubscribeAndBellSection">
-                              {/* <div className="subscribeButtonContainer">
-                                <div className="SubscribeButton">
-                                  Subscribed
-                                </div>
-                              </div> */}
+                              <div className="subscribeButtonContainer">
+                                  <SubscribeButton currentChannel={channel} subscribed={subscribed} setSubscribed={setSubscribed} />
+                              </div>
 
                               <div className="notificationBellVideoPlay">
                                 {/* <i class="fa-solid fa-bell"></i> */}

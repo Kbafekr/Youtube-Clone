@@ -1,0 +1,54 @@
+.SubscribeVideoSectionButton {
+    display: flex;
+    font-size: 20px;
+    border-radius: 50px;
+    background-color: blue;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+
+.SubscribedCSS {
+    display: flex;
+    gap: 10px;
+    color: black;
+    align-items: center;
+    flex-direction: row;
+}
+.UnsubscribedCSS {
+    display: flex;
+    gap: 10px;
+    color: black;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ChannelVideoSubscribeSectionButton {
+    display: flex;
+    font-size: 20px;
+    border-radius: 50px;
+    padding: 15px;
+    background-color: rgba(235, 235, 235, 0.597);
+    text-align: center;
+    cursor: pointer;
+  }
+.ChannelVideoUnSubscribeSectionButton {
+    display: flex;
+    font-size: 20px;
+    border-radius: 50px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.871);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #subscribedCheckMark {
+    color: green;
+    font-size: 16px;
+    margin-top: 2px;
+    height: fit-content;
+    padding: 0px 1px;
+    border-radius: 50px;
+
+}
