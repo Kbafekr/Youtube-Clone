@@ -8,8 +8,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { amountViews } from "../../Utils/Utils";
+import { amountViewsDetails } from "../../Utils/Utils";
 import { Redirect } from "react-router-dom";
 import logo from "../../icons/you2oobLogo.png";
+import { updateVideoThunk } from "../../store/video";
 import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
 import DescriptionSection from "./DescriptionTags/DescriptionTags";
@@ -27,25 +29,41 @@ export function VideoPage({ sidePanel }) {
   const videos = useSelector((state) => state.video);
 
   const [loaded, setLoaded] = useState(false);
+  const [updateViews, setUpdateViews] = useState(videoId)
+
 
   // usestate to keep track of description height
   const [showMoreDescription, setShowMoreDescription] = useState(false);
+  let filteredVideo;
+  let notVideoArray;
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, user]);
-
-  useEffect(() => {
-    dispatch(getVideoTagsThunk(videoId));
-  }, [dispatch, user, videoId]);
+  }, [dispatch, user, updateViews]);
 
   useEffect(() => {
     (async () => {
       await dispatch(getAllVideosThunk());
       setLoaded(true);
     })();
-  }, [dispatch, user]);
+  }, [dispatch, user, updateViews, filteredVideo]);
+  useEffect(() => {
+    dispatch(getVideoTagsThunk(videoId));
+  }, [dispatch, user, videoId, updateViews]);
 
+
+
+    // update video views on load and only once
+    useEffect(() => {
+      if (filteredVideo != null) {
+          let viewsString = parseInt(filteredVideo[0].video_views)
+          let viewUpdate = viewsString += 1
+          let video_views = viewUpdate.toString()
+          dispatch(updateVideoThunk(filteredVideo[0].channel_id, filteredVideo[0].title, filteredVideo[0].description, filteredVideo[0].video_url, video_views, videoId))
+          .then(() => {dispatch(getAllVideosThunk())});
+          setUpdateViews(videoId)
+       }
+   }, [dispatch, videoId, filteredVideo]);
   if (!loaded) {
     return null;
   }
@@ -53,9 +71,6 @@ export function VideoPage({ sidePanel }) {
   let channelsArray;
   videosArray = Object.values(videos);
   channelsArray = Object.values(channels);
-
-  let filteredVideo;
-  let notVideoArray;
 
   if (videosArray && videoId) {
     filteredVideo = videosArray.filter((videos) => videos.id == videoId);
@@ -119,7 +134,7 @@ export function VideoPage({ sidePanel }) {
                                   className="flexRow"
                                   id="homeArrayChannelViews"
                                 >
-                                  <div>{amountViews()}</div>
+                                  <div>0 subscribers</div>
                                   <div className="CircleDiv" />
                                   <div>{channel.created_at.slice(0, 16)}</div>
                                 </div>
@@ -136,8 +151,9 @@ export function VideoPage({ sidePanel }) {
                                 {/* <i class="fa-solid fa-bell"></i> */}
                               </div>
                             </div>
-
+                            {updateViews == videoId ?
                             <LikesDislikes />
+                            : ""}
                           </div>
                         ) : (
                           ""
@@ -147,6 +163,7 @@ export function VideoPage({ sidePanel }) {
                   })}
                 <DescriptionSection filteredVideo={filteredVideo} />
               </div>
+              {updateViews == videoId ? <>
               {user != null ? (
                 <div className="VideoDetailsCommentsSection">
                   <CommentsSection />
@@ -164,6 +181,8 @@ export function VideoPage({ sidePanel }) {
                   </Link>
                 </div>
               )}
+              </>
+              : "" }
             </div>
 
             <div className="RightSideVideoDetailsSection">
@@ -239,7 +258,7 @@ export function VideoPage({ sidePanel }) {
                                               className="flexRow"
                                               id="homeArrayChannelViews"
                                             >
-                                              <div>{amountViews()}</div>
+                                              <div>{amountViews(video.video_views)} views</div>
                                               <div className="CircleDiv" />
                                               <div>
                                                 {video.created_at.slice(0, 16)}

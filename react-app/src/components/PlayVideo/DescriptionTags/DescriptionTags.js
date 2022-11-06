@@ -2,6 +2,9 @@ import { amountViews } from "../../../Utils/Utils";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateVideoThunk } from "../../../store/video";
+import { amountViewsDetails } from "../../../Utils/Utils";
 
 export default function DescriptionSection({ filteredVideo }) {
   const history = useHistory()
@@ -11,17 +14,6 @@ export default function DescriptionSection({ filteredVideo }) {
   const tags = useSelector((state) => state.tags);
   const tagsArray = Object.values(tags);
 
-  const viewAmount = Math.floor(Math.random() * (100000 - 1) + 1);
-  const viewString = viewAmount.toString();
-  let returnString;
-  if (viewString.length > 3 && viewString.length < 6) {
-    returnString = viewString.slice(0, -3) + "K";
-  }
-  if (viewString.length > 6) {
-    returnString =
-      viewString.slice(0, -6) + "." + viewString.slice(1, -5) + "M";
-  }
-  const [viewsVideo, setViewsVideo] = useState(returnString);
   return (
     <>
       {/* description, show tags on click for show more */}
@@ -36,7 +28,7 @@ export default function DescriptionSection({ filteredVideo }) {
         <div className="videoDetailsDescriptionTop">
           <div className="videoDetailsShowMoreContainer">
             <div className="videoDetailsDescriptionTop">
-              <div>{viewsVideo} views</div>
+              <div>{amountViewsDetails(filteredVideo[0].video_views)} views</div>
               <div>{filteredVideo[0].created_at.slice(0, 16)}</div>
             </div>
             {showMoreDescription == true ? (

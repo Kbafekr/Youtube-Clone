@@ -381,7 +381,7 @@ export function HomePage({ sidePanel }) {
                                                         id="homeArrayChannelViews"
                                                       >
                                                         <div>
-                                                          {amountViews()}
+                                                          {amountViews(video.video_views)} views
                                                         </div>
                                                         <div className="CircleDiv" />
                                                         <div>
@@ -482,7 +482,7 @@ export function HomePage({ sidePanel }) {
                                               className="flexRow"
                                               id="homeArrayChannelViews"
                                             >
-                                              <div>{amountViews()}</div>
+                                              <div>{amountViews(video.video_views)} views</div>
                                               <div className="CircleDiv" />
                                               <div>
                                                 {video.created_at.slice(0, 16)}

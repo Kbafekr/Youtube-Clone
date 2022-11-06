@@ -9,6 +9,8 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { amountViews } from "../../../Utils/Utils";
 import { getAllChannelsThunk } from "../../../store/channel";
+
+
 import {
   getVideoLikesThunk,
   createLikesThunk,
@@ -45,14 +47,9 @@ export default function LikesDislikes() {
 
   useEffect(() => {
     dispatch(getVideoLikesThunk(videoId));
+    setLoaded(true);
   }, [dispatch, user, videoId, liked, disliked]);
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(getAllVideosThunk());
-      setLoaded(true);
-    })();
-  }, [dispatch, user]);
 
   let likedByUser;
   let dislikedByUser;
