@@ -187,6 +187,7 @@ align-items: flex-start;
     padding: 10px 10px;
     width: fit-content;
     border-radius: 15px;
+    cursor:default;
 }
 .NewtagHomePageActive {
     color: white;
@@ -196,6 +197,7 @@ align-items: flex-start;
     min-width: 86px;
     font-weight: bold;
     border-radius: 15px;
+    cursor:default;
 }
 .tagHomePage {
     color: white;
@@ -206,6 +208,7 @@ align-items: flex-start;
     padding: 10px 10px;
     width: fit-content;
     border-radius: 15px;
+    cursor: pointer;
 }
 .newToYouTag {
     color: white;
@@ -216,4 +219,5 @@ align-items: flex-start;
     padding: 10px 10px;
     min-width: 81px;
     border-radius: 15px;
+    cursor: pointer;
 }
