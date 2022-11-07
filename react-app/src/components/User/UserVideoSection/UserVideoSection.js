@@ -109,14 +109,9 @@ function UserVideoSection() {
                       </div>
                       <div
                         className="EditChannelFavicon"
-                        id={
-                          currentUser.channels.length <= 1
-                            ? "NoDeleteChannelsArray"
-                            : ""
-                        }
                       >
                         {showModalDeleteVideo &&
-                          currentUser.channels.length > 1 && (
+                           (
                             <Modal
                               onClose={() => setShowModalDeleteVideo(false)}
                             >
