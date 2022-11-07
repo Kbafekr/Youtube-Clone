@@ -1,12 +1,13 @@
 from datetime import datetime
-from .db import db
-
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Video(db.Model):
     __tablename__ = 'videos'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("channels.id")), nullable=False)
     title = db.Column(db.VARCHAR(200), nullable=False)
     description = db.Column(db.VARCHAR(1000))
     video_url = db.Column(db.String, nullable=False)

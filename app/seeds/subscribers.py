@@ -1,4 +1,5 @@
 from app.models import db, Subscriber
+from app.models.db import environment, SCHEMA
 
 
 def seed_subscribers():

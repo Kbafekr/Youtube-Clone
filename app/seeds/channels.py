@@ -1,5 +1,7 @@
 from app.models import db, Channel
 
+from app.models.db import environment, SCHEMA
+
 
 # Adds a demo user, you can add other users here if you want
 def seed_channels():
