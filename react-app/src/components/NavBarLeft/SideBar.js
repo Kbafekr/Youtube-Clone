@@ -1,8 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import LogoutButton from "../auth/LogoutButton";
 import { Link } from "react-router-dom";
 import reloadPage from "../../Utils/Utils";
 import { reloadSearchPage } from "../../Utils/Utils";
