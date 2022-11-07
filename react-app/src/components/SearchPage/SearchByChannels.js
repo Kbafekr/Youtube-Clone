@@ -20,9 +20,6 @@ export function SearchPageChannels({ searchTerm, activeSort }) {
   const videos = useSelector((state) => state.video);
   const tags = useSelector((state) => state.tags);
   const channels = useSelector((state) => state.channel);
-  const [newChannelMade, setNewChannelMade] = useState(false);
-  const [tagClicked, setTagClicked] = useState("all");
-  const [tagsFilter, setTagsFilter] = useState("");
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
