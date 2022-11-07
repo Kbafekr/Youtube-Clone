@@ -16,6 +16,9 @@ function DeleteChannelForm({ setShowModal, channel }) {
   const email =
     "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
   const password = "password";
+
+  const otherChannels = user.channels.filter((otherchannel) => otherchannel.id != channel.id)
+  console.log(otherChannels)
   const handleSubmit = async (e) => {
     if (user.active_channel == channel.id) {
       dispatch(
@@ -24,7 +27,7 @@ function DeleteChannelForm({ setShowModal, channel }) {
           firstName,
           lastName,
           email,
-          user.channels[0].id,
+          otherChannels[0].id,
           password
         )
       );
