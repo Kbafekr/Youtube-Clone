@@ -75,11 +75,11 @@ export function SearchPageTags({ searchTerm, activeSort }) {
     sortedVideosByNewest = videoArrayCopy.sort((a, b) => b.id - a.id);
   }
 
-  if (activeSort == "Newest") {
+  if (activeSort == "Newest"  && sortTagsbyNewest != null) {
     tagResults = [...sortTagsbyNewest];
     videoResults = [...sortedVideosByNewest];
   }
-  if (activeSort != "Newest") {
+  else {
     tagResults = [...tagsFiltered];
     videoResults = [...videosArray];
   }

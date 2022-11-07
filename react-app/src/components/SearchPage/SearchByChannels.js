@@ -67,16 +67,18 @@ export function SearchPageChannels({ searchTerm, activeSort }) {
     sortChannelsbyNewest = channelArrayCopy.sort((a, b) => b.id - a.id);
   }
 
-  if (activeSort == "Newest") {
+  if (activeSort == "Newest" && sortChannelsbyNewest != null) {
     channelResults = [...sortChannelsbyNewest];
   }
-  if (activeSort != "Newest") {
+  else {
     channelResults = [...FilteredChannels];
   }
 
 
   // create new variable to filter through tags based on keyword
   return (
+    <>
+    {channelResults.length > 0 ? (
     <div>
       {channelResults && channelResults.map((channel) => {
         return (
@@ -111,5 +113,9 @@ export function SearchPageChannels({ searchTerm, activeSort }) {
         );
       })}
     </div>
+    ) : (
+      <div className="ErrorSearchResultsText"> No results found</div>
+    )}
+    </>
   );
 }
