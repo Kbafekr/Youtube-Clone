@@ -22,7 +22,7 @@ function EditChannelForm({ channel, setShowModal }) {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (!channelName || channelName.length < 1 || channelName.length > 30)
+    if (!channelName || channelName.length < 1 || channelName.length > 30 || channelName.trim().length < 1)
       formValidationErrors.push(
         "Channel Name must exist and be between 1 and 30 characters"
       );

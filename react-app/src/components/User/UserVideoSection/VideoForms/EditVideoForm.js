@@ -26,7 +26,7 @@ function EditVideoForm({ video, setShowModal }) {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (!title || title.length < 1)
+    if (!title || title.length < 1 || title.trim().length < 1)
       formValidationErrors.push(
         "Video title must exist and must be more than 1 character"
       );

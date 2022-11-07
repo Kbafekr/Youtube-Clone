@@ -20,7 +20,7 @@ function CreateTagForm({video, setShowModal}) {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (!body || body.length > 100) {
+    if (!body || body.length > 100 || body.trim().length < 1) {
 
       formValidationErrors.push(
         "Tag must exist and be between 1 and 100 characters"

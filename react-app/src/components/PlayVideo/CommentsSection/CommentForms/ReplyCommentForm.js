@@ -26,7 +26,7 @@ function CreateReplyForm({comment, setCommentReplies, setReply}) {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (body.length > 500) {
+    if (body.length > 500 || (body && body.trim().length < 1)) {
 
       formValidationErrors.push(
         "Comment Body must exist and be between 1 and 500 characters"

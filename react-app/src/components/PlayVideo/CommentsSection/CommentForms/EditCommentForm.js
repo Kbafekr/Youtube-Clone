@@ -26,7 +26,7 @@ function EditCommentForm({ comment, setShowModal }) {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (body.length > 500) {
+    if (body.length > 500 || body.trim().length < 1) {
       formValidationErrors.push(
         "Channel Name must exist and be between 1 and 500 characters"
       );

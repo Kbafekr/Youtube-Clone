@@ -20,11 +20,11 @@ function EditUserForm({ user, setShowModal }) {
   useEffect(() => {
     const formValidationErrors = [];
 
-    if (!firstName || firstName.length < 1)
+    if (!firstName || firstName.length < 1 || firstName.trim().length < 1)
       formValidationErrors.push(
         "First Name must exist and be longer than 1 character"
       );
-    if (!lastName || lastName.length < 1)
+    if (!lastName || lastName.length < 1 || lastName.trim().length < 1)
       formValidationErrors.push(
         "Last Name must exist and be longer than 1 character"
       );
