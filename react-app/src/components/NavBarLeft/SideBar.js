@@ -142,7 +142,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
           >
             <div className="SideNavRowContainer">
               <div>Subscriptions</div>
-              {showMoreSubscriptions == true ?
+              {showMoreSubscriptions == true && user ?
               <div className="OpenSubscriptionsButton" onClick={() => setOpenSubscriptions(!openSubscriptions)}>
                 {openSubscriptions == false ? <div>Show All</div> : <div>Show Less</div>}</div>
               : ""}
