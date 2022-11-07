@@ -15,6 +15,7 @@ import { getAllLikesThunk } from "../../store/likes";
 import { getAllDisLikesThunk } from "../../store/dislikes";
 import { SearchPageVideos } from "./SearchByVideos";
 import { SearchPageTags } from "./SearchByTags";
+import { SearchPageChannels } from "./SearchByChannels";
 
 export function SearchPage({ sidePanel }) {
   const dispatch = useDispatch();
@@ -119,6 +120,18 @@ export function SearchPage({ sidePanel }) {
                 >
                   Tags
                 </div>
+                {/* search by Channels */}
+                <div
+                  onClick={() => setFilterMethod("Channels")}
+                  className={
+                    filterMethod == "Channels"
+                      ? "FilterCategoryTextActive"
+                      : "FilterCategoryText"
+                  }
+                >
+                  Channels
+                </div>
+                {/* search by Channels */}
               </div>
               <div className="FilterCategorySearch">
                 <div>Sort By</div>
@@ -161,6 +174,11 @@ export function SearchPage({ sidePanel }) {
           )}
           {filterMethod == "Tags" ? (
             <SearchPageTags searchTerm={searchTerm} activeSort={activeSort} />
+          ) : (
+            ""
+          )}
+          {filterMethod == "Channels" ? (
+            <SearchPageChannels searchTerm={searchTerm} activeSort={activeSort} />
           ) : (
             ""
           )}
