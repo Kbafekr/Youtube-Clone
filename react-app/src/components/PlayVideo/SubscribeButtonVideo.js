@@ -2,7 +2,6 @@ import './SubscribeButtonVideo.css'
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authenticate } from "../../store/session";
-import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
