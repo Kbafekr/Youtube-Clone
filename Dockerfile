@@ -1,6 +1,6 @@
 FROM python:3.9
 
-ENV REACT_APP_BASE_URL=https://you2oob.herokuapp.com/
+ENV REACT_APP_BASE_URL=https://hootube.herokuapp.com/
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
