@@ -9,13 +9,25 @@ import { useParams } from "react-router-dom";
 //  Be sure to import the modal contents
 function DeleteCommentForm({ comment, setShowModal }) {
   const user = useSelector((state) => state.session.user);
+  const comments = useSelector((state) => state.comment);
+  const commentArray = Object.values(comments)
+
   const { videoId } = useParams();
 
+// filter through child comments and delete
+const filteredReplies = commentArray.filter((comments) => comments.commentReply_id === comment.id)
+console.log(filteredReplies)
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(deleteCommentThunk(videoId, comment.id))
-    getVideoCommentsThunk(videoId)
+    if (filteredReplies.length > 0) {
+      filteredReplies.forEach((reply) => {
+        dispatch(deleteCommentThunk(videoId, reply.id))
+      })
+      dispatch(getVideoCommentsThunk(videoId))
+    }
+    dispatch(getVideoCommentsThunk(videoId))
     setShowModal(false);
   };
   const handleSubmit2 = async (e) => {

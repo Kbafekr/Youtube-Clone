@@ -35,7 +35,7 @@ const SignUpForm = () => {
   }, [first_name, last_name, password, repeatPassword, email])
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    if (errors.length <= 0) {
       const data = await dispatch(
         signUp(first_name, last_name, email, password)
       );
