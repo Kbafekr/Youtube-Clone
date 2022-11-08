@@ -8,9 +8,6 @@ Create Date: 2022-11-06 14:26:44.691764
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = 'b13a4b84a189'
@@ -132,8 +129,6 @@ def upgrade():
     )
 
     # ### end Alembic commands ###
-    if environment == "production":
-        op.execute(f"ALTER TABLE tags SET SCHEMA {SCHEMA};")
 
 
 def downgrade():

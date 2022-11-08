@@ -1,5 +1,4 @@
 from app.models import db, Like
-from app.models.db import environment, SCHEMA
 
 def seed_likes():
     like_1 = Like(user_id=1, video_id=1)

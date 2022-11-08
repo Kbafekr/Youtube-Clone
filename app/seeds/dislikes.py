@@ -1,5 +1,4 @@
 from app.models import db, Dislike
-from app.models.db import environment, SCHEMA
 
 def seed_dislikes():
     dislike_1 = Dislike(user_id=4, video_id=4)
