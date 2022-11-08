@@ -90,6 +90,20 @@ export function VideoPage({ sidePanel }) {
     notVideoArray = videosArray.filter((videos) => videos.id != videoId);
   }
 
+  // if video is ended write functionality that immediately starts next video.
+  let currentVideoIndex;
+  let nextVideo;
+
+  if (filteredVideo[0] != null) {
+    currentVideoIndex = videosArray.findIndex((video) => video.id == filteredVideo[0].id)
+  }
+
+  if (currentVideoIndex != null && videosArray) {
+    if (videosArray[currentVideoIndex + 1] != null) {
+      nextVideo = videosArray[currentVideoIndex + 1]
+    }
+    else nextVideo = videosArray[0]
+  }
   if (filteredVideo[0] && loaded) {
     return (
       <>
@@ -107,6 +121,7 @@ export function VideoPage({ sidePanel }) {
                   url={filteredVideo[0].video_url}
                   playing={true}
                   controls={true}
+                  onEnded={() => history.push(`/videos/${nextVideo.id}`)}
                 />
               </div>
               <div className="VideoDetailsTitleCard">
