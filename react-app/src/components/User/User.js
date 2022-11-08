@@ -50,7 +50,6 @@ function User({ sidePanel }) {
 
   // videos
   const [currentVideo, setCurrentVideo] = useState(false);
-  const [showModalVideo, , setShowModalVideo] = useState(false);
   const [showModalCreateVideo, setShowModalCreateVideo] = useState(false);
   const [showModalEditVideo, setShowModalEditVideo] = useState(false);
   const [showModalDeleteVideo, setShowModalDeleteVideo] = useState(false);
