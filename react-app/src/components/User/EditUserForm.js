@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateUserThunk } from "../../store/session";
-import { authenticate } from "../../store/session";
 import "./EditUserForm.css";
 
 // pass in userId and imageId into createComment form so we aren't relying
