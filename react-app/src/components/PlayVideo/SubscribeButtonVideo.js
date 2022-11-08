@@ -18,7 +18,7 @@ export const SubscribeButton = ({currentChannel, subscribed, setSubscribed}) => 
     const user = useSelector((state) => state.session.user);
 
     useEffect(() => {
-        dispatch(getChannelSubscribersThunk())
+        dispatch(getChannelSubscribersThunk(currentChannel.id))
       }, [dispatch, user, subscribed]);
     useEffect(() => {
         dispatch(getAllVideosThunk())

@@ -272,7 +272,7 @@ if (userId != currentUser.id) {
                       {activeChannel[0].channel_name}
                     </div>
                     <div className="ChannelSubscriberCountNavBar">
-                      0 subscribers
+                      {activeChannel[0].subscribers.length} subscribers
                     </div>
                   </div>
                 </div>

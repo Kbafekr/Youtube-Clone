@@ -54,9 +54,6 @@ export function VideoPage({ sidePanel }) {
     dispatch(getVideoTagsThunk(videoId));
   }, [dispatch, user, videoId, updateViews]);
 
-  useEffect(() => {
-    dispatch(getChannelSubscribersThunk())
-  }, [dispatch, user, subscribed]);
   // update video views on load and only once
   useEffect(() => {
     if (filteredVideo != null && filteredVideo[0] != null) {

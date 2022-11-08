@@ -78,7 +78,7 @@ def create_data():
 
 
 @video_routes.route("/<int:id>/edit", methods=["PUT"])
-@login_required
+# @login_required
 def edit_Video(id):
     form = VideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
