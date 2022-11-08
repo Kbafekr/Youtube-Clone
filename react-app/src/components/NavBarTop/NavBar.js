@@ -19,7 +19,6 @@ import { authenticate } from "../../store/session";
 const NavBar = ({ sidePanel, setSidePanel }) => {
   const location = useLocation();
   const dispatch = useDispatch()
-  // console.log(location.state)
   const user = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
 

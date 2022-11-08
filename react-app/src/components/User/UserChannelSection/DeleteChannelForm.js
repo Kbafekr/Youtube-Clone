@@ -18,7 +18,6 @@ function DeleteChannelForm({ setShowModal, channel }) {
   const password = "password";
 
   const otherChannels = user.channels.filter((otherchannel) => otherchannel.id != channel.id)
-  console.log(otherChannels)
   const handleSubmit = async (e) => {
     if (user.active_channel == channel.id) {
       dispatch(

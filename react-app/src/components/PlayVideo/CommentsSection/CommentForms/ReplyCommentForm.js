@@ -44,7 +44,6 @@ function CreateReplyForm({comment, setCommentReplies, setReply}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length <= 0) {
-  console.log(body)
       return dispatch(
         newCommentThunk(userId, videoId, body, is_reply, commentReply_id)
       )

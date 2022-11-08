@@ -12,7 +12,6 @@ function EditChannelForm({ channel, setShowModal }) {
   const dispatch = useDispatch();
   const userId = user.id;
   const id = channel.id
-  console.log(id)
 
   const [channelName, setChannelName] = useState(channel.channel_name);
   const [profilePicture, setProfilePicture] = useState(channel.profile_picture);

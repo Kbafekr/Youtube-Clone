@@ -25,9 +25,7 @@
 // */
 // let likesArray = Object.values(likes)
 // let filteredLikes;
-// //   console.log(likesArray)
 
-//   // console.log('this is songs' + Object.values(songs))
 
 //  useEffect(() => {
 //     dispatch(getImageLikesThunk(imageId))
@@ -35,7 +33,6 @@
 
 //  filteredLikes = likesArray.filter((filteredLikes, index) => filteredLikes.userId === user.id)
 // const userLikeId = filteredLikes[0]
-// // console.log(userLikeId)
 // // toggle likes on and off (post and delete)
 // const toggleLikes = (e) => {
 //     e.preventDefault();
