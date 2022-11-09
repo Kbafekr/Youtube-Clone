@@ -14,6 +14,7 @@ from .api.comment_routes import comment_routes
 from .api.tags_routes import Tags_routes
 from .api.likes_routes import Likes_routes
 from .api.subscribers_routes import subscriber_routes
+from .api.notification_routes import notification_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -42,6 +43,7 @@ app.register_blueprint(comment_routes, url_prefix='/api/comments')
 app.register_blueprint(Tags_routes, url_prefix='/api/tags')
 app.register_blueprint(Likes_routes, url_prefix='/api/likes')
 app.register_blueprint(subscriber_routes, url_prefix='/api/subscribers')
+app.register_blueprint(notification_routes, url_prefix='/api/notifications')
 db.init_app(app)
 Migrate(app, db)
 

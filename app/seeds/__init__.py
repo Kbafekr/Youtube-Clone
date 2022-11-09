@@ -7,6 +7,7 @@ from .tags import seed_tags, undo_tags
 from .likes import seed_likes, undo_likes
 from .dislikes import seed_dislikes, undo_dislikes
 from .subscribers import seed_subscribers, undo_subscribers
+from .notifications import seed_notifications, undo_notifications
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
