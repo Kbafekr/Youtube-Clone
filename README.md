@@ -6,7 +6,6 @@ Welcome to hootube!
 hootube is a Youtube clone that allows users to share videos and interact with other channels. Users can upload videos, follow other users, comment on, and like videos.
 
 Link to test out website: https://hootube.herokuapp.com/
-Link to test out on render https://hootube.onrender.com
 
 ## Tech Stack
  Frontend:
