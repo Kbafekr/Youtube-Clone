@@ -5,7 +5,7 @@ from app.models import Notification, db
 from app.forms.notification_form import NotificationForm
 
 
-notification_routes = Blueprint('channels', __name__)
+notification_routes = Blueprint('notifications', __name__)
 
 # Get All notification
 @notification_routes.route('/all')

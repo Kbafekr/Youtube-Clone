@@ -25,6 +25,7 @@ def seed():
     seed_likes()
     seed_dislikes()
     seed_subscribers()
+    seed_notifications()
     # Add other seed functions here
 
 
@@ -39,4 +40,5 @@ def undo():
     undo_likes()
     undo_dislikes()
     undo_subscribers()
+    undo_notifications()
     # Add other undo functions here
