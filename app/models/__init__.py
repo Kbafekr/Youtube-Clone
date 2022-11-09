@@ -7,3 +7,4 @@ from .tag import Tag
 from .like import Like
 from .dislike import Dislike
 from .subscriber import Subscriber
+from .notification import Notification

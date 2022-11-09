@@ -18,6 +18,7 @@ class Channel(db.Model):
     videos = db.relationship("Video", backref='channel', cascade="all, delete-orphan")
     tags = db.relationship("Tag", backref='channel', cascade="all, delete-orphan")
     subscribers = db.relationship("Subscriber", backref='channel', cascade="all, delete-orphan")
+    notifications = db.relationship("Notification", backref='channel', cascade="all, delete-orphan")
 
 
 

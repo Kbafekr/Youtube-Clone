@@ -20,6 +20,8 @@ class User(db.Model, UserMixin):
     likes = db.relationship("Like", backref='user', cascade="all, delete-orphan")
     dislikes = db.relationship("Dislike", backref='user', cascade="all, delete-orphan")
     subscribers = db.relationship("Subscriber", backref='user', cascade="all, delete-orphan")
+    notifications = db.relationship("Notification", backref='user', cascade="all, delete-orphan")
+
 
     @property
     def password(self):

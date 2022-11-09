@@ -17,6 +17,8 @@ class Video(db.Model):
     tags = db.relationship("Tag", backref='video', cascade="all, delete-orphan")
     likes = db.relationship("Like", backref='video', cascade="all, delete-orphan")
     dislikes = db.relationship("Dislike", backref='video', cascade="all, delete-orphan")
+    notifications = db.relationship("Notification", backref='video', cascade="all, delete-orphan")
+
 
     # timestamps
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
