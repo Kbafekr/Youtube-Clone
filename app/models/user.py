@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     dislikes = db.relationship("Dislike", backref='user', cascade="all, delete-orphan")
     subscribers = db.relationship("Subscriber", backref='user', cascade="all, delete-orphan")
     notifications = db.relationship("Notification", backref='user', cascade="all, delete-orphan")
+    history = db.relationship("History", backref='users', cascade="all, delete-orphan")
 
 
     @property
@@ -45,6 +46,8 @@ class User(db.Model, UserMixin):
             # channels
             'channels': [channel.to_dict() for channel in self.channels],
             'subscriptions': [subscription.to_dict() for subscription in self.subscribers],
+            'history': [watchHistory.to_dict() for watchHistory in self.history],
+
             # videos
             # comments
             # likes

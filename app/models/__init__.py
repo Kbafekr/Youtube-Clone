@@ -8,3 +8,4 @@ from .like import Like
 from .dislike import Dislike
 from .subscriber import Subscriber
 from .notification import Notification
+from .history import History

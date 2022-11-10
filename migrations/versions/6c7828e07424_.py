@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8db5106d8798
+Revision ID: 6c7828e07424
 Revises: 
-Create Date: 2022-11-09 11:51:26.677707
+Create Date: 2022-11-10 12:07:58.000649
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8db5106d8798'
+revision = '6c7828e07424'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -81,6 +81,16 @@ def upgrade():
     sa.ForeignKeyConstraint(['video_id'], ['videos.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('history',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('video_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['video_id'], ['videos.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('likes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -119,6 +129,7 @@ def downgrade():
     op.drop_table('tags')
     op.drop_table('notifications')
     op.drop_table('likes')
+    op.drop_table('history')
     op.drop_table('dislikes')
     op.drop_table('comments')
     op.drop_table('videos')
