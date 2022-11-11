@@ -9,3 +9,6 @@ from .dislike import Dislike
 from .subscriber import Subscriber
 from .notification import Notification
 from .history import History
+from .watchlater import WatchLater
+from .playlist import Playlist
+from .playlistvideos import PlaylistVideos

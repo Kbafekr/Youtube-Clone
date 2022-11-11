@@ -16,12 +16,15 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # relationships backref
+    comments = db.relationship("Comment", backref='user', cascade="all, delete-orphan")
     channels = db.relationship("Channel", backref='user', cascade="all, delete-orphan")
     likes = db.relationship("Like", backref='user', cascade="all, delete-orphan")
     dislikes = db.relationship("Dislike", backref='user', cascade="all, delete-orphan")
     subscribers = db.relationship("Subscriber", backref='user', cascade="all, delete-orphan")
     notifications = db.relationship("Notification", backref='user', cascade="all, delete-orphan")
     history = db.relationship("History", backref='users', cascade="all, delete-orphan")
+    watchlater = db.relationship("WatchLater", backref='users', cascade="all, delete-orphan")
+    playlist = db.relationship("Playlist", backref='users', cascade="all, delete-orphan")
 
 
     @property
@@ -43,15 +46,19 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'active_channel': self.active_channel,
             'created_at': self.created_at,
+            # comments
+            'comments': [comment.to_dict() for comment in self.comments],
             # channels
             'channels': [channel.to_dict() for channel in self.channels],
-            'subscriptions': [subscription.to_dict() for subscription in self.subscribers],
-            'history': [watchHistory.to_dict() for watchHistory in self.history],
-
-            # videos
-            # comments
             # likes
-            # tags
+            'likes': [like.to_dict() for like in self.likes],
             # subscribers
+            'subscriptions': [subscription.to_dict() for subscription in self.subscribers],
+            # watch later
+            'watchlater': [later.to_dict() for later in self.watchlater],
+            # history
+            'history': [watchHistory.to_dict() for watchHistory in self.history],
             # playlists
+            'playlist': [pl.to_dict() for pl in self.playlist],
+
         }
