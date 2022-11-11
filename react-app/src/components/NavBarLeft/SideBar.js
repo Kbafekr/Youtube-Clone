@@ -31,18 +31,18 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Home
               </Link>
             </div>
-            {/* <div className="SideNavRowContainer">
+            <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
-            </div> */}
-            {/* <div className="SideNavRowContainer">
+            </div>
+            <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-users"></i>
               </div>
               <div>Subscriptions</div>
-            </div> */}
+            </div>
             <div className="SideNavRowContainer">
               <Link
                 to={user != null ? `/users/${user_id}` : `/login`}
@@ -59,30 +59,30 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Profile Page
               </Link>
             </div>
-            {/* <div className="SideNavRowContainer">
+            <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-record-vinyl"></i>
+                <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
-            </div> */}
-            {/* </div> */}
-            {/* middle row */}
-            {/* <div className="SideNavBorderDivContainer">
+            </div>
+          </div>
+          {/* middle row */}
+          <div className="SideNavBorderDivContainer">
             <div className="SideNavBorderDiv"></div>
-          </div> */}
-            {/* <div className="InternalSideBarSection"> */}
-            {/* <div className="SideNavRowContainer">
+          </div>
+          <div className="InternalSideBarSection">
+            <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-book"></i>
+                <i class="fa-solid fa-book"></i>
               </div>
               <div>Library</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
+                <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
               </div>
               <div>History</div>
-            </div> */}
+            </div>
             <div className="SideNavRowContainer">
               <Link
                 onClick={reloadPage}
@@ -113,18 +113,24 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Your Videos
               </Link>
             </div>
-            {/* <div className="SideNavRowContainer">
+            <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-clock"></i>
+                <i class="fa-solid fa-clock"></i>
               </div>
               <div>Watch Later</div>
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-list"></i>
+              <i class="fa-solid fa-heart"></i>
+              </div>
+              <div>Liked Videos</div>
+            </div>
+            <div className="SideNavRowContainer">
+              <div>
+                <i class="fa-solid fa-list"></i>
               </div>
               <div>Playlists</div>
-            </div> */}
+            </div>
           </div>
 
           {/* Subscriptions row */}
@@ -140,10 +146,20 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
           >
             <div className="SideNavRowContainer">
               <div>Subscriptions</div>
-              {showMoreSubscriptions == true && user ?
-              <div className="OpenSubscriptionsButton" onClick={() => setOpenSubscriptions(!openSubscriptions)}>
-                {openSubscriptions == false ? <div>Show All</div> : <div>Show Less</div>}</div>
-              : ""}
+              {showMoreSubscriptions == true && user ? (
+                <div
+                  className="OpenSubscriptionsButton"
+                  onClick={() => setOpenSubscriptions(!openSubscriptions)}
+                >
+                  {openSubscriptions == false ? (
+                    <div>Show All</div>
+                  ) : (
+                    <div>Show Less</div>
+                  )}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <AllSubscriptionsSideBar
               setOpenSubscriptions={setOpenSubscriptions}
@@ -342,18 +358,18 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Home
               </Link>
             </div>
-            {/* <div className="SideNavRowContainerClosed">
+            <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
-            </div> */}
-            {/* <div className="SideNavRowContainerClosed">
+            </div>
+            <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-users"></i>
               </div>
               <div>Subscriptions</div>
-            </div> */}
+            </div>
             <div className="SideNavRowContainerClosed">
               <Link
                 to={`/users/${user_id}`}
@@ -370,24 +386,24 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Profile Page
               </Link>
             </div>
-            {/* <div className="SideNavRowContainerClosed">
+            <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
-            </div> */}
-            {/* <div className="SideNavRowContainerClosed">
+            </div>
+            <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-book"></i>
               </div>
               <div>Library</div>
-            </div> */}
-            {/* <div className="SideNavRowContainerClosed">
+            </div>
+            <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
               </div>
               <div>History</div>
-            </div> */}
+            </div>
             <div className="SideNavRowContainerClosed">
               <Link
                 onClick={reloadPage}

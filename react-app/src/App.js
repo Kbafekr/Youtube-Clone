@@ -63,8 +63,41 @@ function App() {
         <Route path='/channels/:channelId' exact={true} >
           <Channel sidePanel={sidePanel}/>
         </Route>
-        <Route path='/testing' exact={true} >
-          <TestingVideos sidePanel={sidePanel}/>
+        {/* library */}
+        <Route path='/library' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* watch history */}
+        <Route path='/watchhistory' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* watch later */}
+        <Route path='/watchlater' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* liked videos */}
+        <Route path='/watchlater' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* playlists */}
+        <Route path='/channels/:channelId' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* playlists videos watch */}
+        <Route path='/channels/:channelId' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* subscriptions */}
+        <Route path='/channels/:channelId' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* shorts */}
+        <Route path='/channels/:channelId' exact={true} >
+          <Channel sidePanel={sidePanel}/>
+        </Route>
+        {/* youtube music */}
+        <Route path='/channels/:channelId' exact={true} >
+          <Channel sidePanel={sidePanel}/>
         </Route>
         {/* user settings, create new channel, delete channel, switch channel */}
         <ProtectedRoute path='/users/:userId' exact={true} >
