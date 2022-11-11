@@ -9,6 +9,7 @@ from .dislikes import seed_dislikes, undo_dislikes
 from .subscribers import seed_subscribers, undo_subscribers
 from .notifications import seed_notifications, undo_notifications
 from .history import seed_history, undo_history
+from .watchlater import seed_watch_later, undo_watch_later
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -28,6 +29,7 @@ def seed():
     seed_subscribers()
     seed_notifications()
     seed_history()
+    seed_watch_later()
     # Add other seed functions here
 
 
@@ -44,4 +46,5 @@ def undo():
     undo_subscribers()
     undo_notifications()
     undo_history()
+    undo_watch_later()
     # Add other undo functions here

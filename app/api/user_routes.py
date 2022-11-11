@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.api.auth_routes import validation_errors_to_error_messages
-from app.models import User, db, History
+from app.models import User, db, History, WatchLater
 from app.forms import SignUpForm
 
 user_routes = Blueprint('users', __name__)
@@ -57,7 +57,7 @@ def history(id):
     history = History.query.filter_by(user_id=id).all()
     if history == None:
         return {
-            "Message": "Users have watched no videos",
+            "Message": "User has watched no videos",
             "statusCode": "200"
         }
     return {videoHistory.id: videoHistory.to_dict() for videoHistory in history}
@@ -103,5 +103,58 @@ def delete_history(id, video_id):
     db.session.commit()
     return {
         "Message": "Successfully removed video from history",
+        "statusCode": "200"
+    }
+
+
+
+# user watch later all
+
+@user_routes.route('/<int:id>/watchlater')
+@login_required
+def watchLater(id):
+    watchLater = WatchLater.query.filter_by(user_id=id).all()
+    if watchLater == None:
+        return {
+            "Message": "User has no videos in watch later playlist",
+            "statusCode": "200"
+        }
+    return {watchlater.id: watchlater.to_dict() for watchlater in watchLater}
+
+# make new video in watch history, if video exists, delete and make again (rather than find and update).
+
+@user_routes.route('/<int:id>/watchlater/<int:video_id>/new', methods=["POST"])
+@login_required
+def videoHistory(id, video_id):
+
+    watchlater = WatchLater.query.filter_by(
+        user_id=id, video_id=video_id).first()
+    if watchlater:
+        db.session.delete(watchlater)
+        db.session.commit()
+        return watchlater.to_dict()
+    else:
+        new_watchlater = WatchLater(
+            user_id=id,
+            video_id=video_id
+        )
+    db.session.add(new_watchlater)
+    db.session.commit()
+    return new_watchlater.to_dict()
+
+
+# delete video from history
+
+@user_routes.route('/<int:id>/watchlater/<int:video_id>/delete', methods=['DELETE'])
+@login_required
+def delete_history(id, video_id):
+
+    watchlater = WatchLater.query.filter_by(
+        user_id=id, video_id=video_id).first()
+
+    db.session.delete(watchlater)
+    db.session.commit()
+    return {
+        "Message": "Successfully removed video from watch later playlist",
         "statusCode": "200"
     }
