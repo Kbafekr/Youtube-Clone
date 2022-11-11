@@ -63,6 +63,9 @@ function App() {
         <Route path='/channels/:channelId' exact={true} >
           <Channel sidePanel={sidePanel}/>
         </Route>
+        <Route path='/testing' exact={true} >
+          <TestingVideos sidePanel={sidePanel}/>
+        </Route>
         {/* user settings, create new channel, delete channel, switch channel */}
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User  sidePanel={sidePanel} />

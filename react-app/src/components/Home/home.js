@@ -17,6 +17,8 @@ import { getAllTagsThunk } from "../../store/tags";
 import { getAllLikesThunk } from "../../store/likes";
 import { getAllDisLikesThunk } from "../../store/dislikes";
 
+import { getWatchHistoryThunk } from "../../store/watchhistory";
+
 export function HomePage({ sidePanel }) {
   const dispatch = useDispatch();
   const history = useHistory();

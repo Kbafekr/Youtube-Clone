@@ -9,6 +9,9 @@ import likes from './likes'
 import dislikes from './dislikes'
 import tags from './tags'
 import subscribers from './subscribers'
+import watchhistory from './watchhistory'
+import watchlater from './watchlater'
+import playlist from './playlist'
 
 const rootReducer = combineReducers({
   session,
@@ -19,7 +22,10 @@ const rootReducer = combineReducers({
   likes,
   dislikes,
   tags,
-  subscribers
+  subscribers,
+  watchhistory,
+  watchlater,
+  playlist
 });
 
 

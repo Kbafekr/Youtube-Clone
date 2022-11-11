@@ -6,6 +6,9 @@ import { Modal } from "../../context/Modal";
 
 import { getAllVideosThunk, getOneVideoThunk, newVideoThunk, updateVideoThunk, deleteVideoThunk } from "../../store/video";
 
+import { getWatchHistoryThunk } from "../../store/watchhistory";
+import { getWatchLaterThunk } from "../../store/watchlater";
+import { getAllPlaylistsThunk } from "../../store/playlist";
 export default function TestingVideos() {
   const { videoId } = useParams();
   const dispatch = useDispatch();
@@ -15,11 +18,19 @@ export default function TestingVideos() {
 
   let allVideosArray;
   const [videoState, setVideoState] = useState({});
+  const user = useSelector(state => state.session.user)
 
 
   useEffect(() => {
     dispatch(getAllVideosThunk());
   }, [dispatch, videoState, showModal, showModalEdit, allVideosArray]);
+
+  useEffect(() => {
+    dispatch(getWatchLaterThunk(user.id));
+  }, [dispatch, user]);
+  useEffect(() => {
+    dispatch(getAllPlaylistsThunk());
+  }, [dispatch, user]);
 
   // useEffect(() => {
   //   dispatch(getOneVideoThunk(videoId));
@@ -29,7 +40,7 @@ export default function TestingVideos() {
   allVideosArray = Object.values(videos)
 
   var styles1 = {
-    color: "Black",
+    color: "white",
     backgroundColor: "pink",
     fontWeight: "bold",
     height: "100px",
@@ -37,7 +48,7 @@ export default function TestingVideos() {
   };
 
   var styles3 = {
-    color: "Black",
+    color: "white",
     backgroundColor: "lavender",
     fontWeight: "bold",
     height: "100px",
@@ -49,7 +60,8 @@ export default function TestingVideos() {
    height: "100%",
    display: "flex",
    flexDirection: "column",
-   justifyContent: "center"
+   justifyContent: "center",
+   color: "white"
   }
 
   return (
