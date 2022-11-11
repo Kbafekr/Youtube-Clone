@@ -15,6 +15,9 @@ from .api.tags_routes import Tags_routes
 from .api.likes_routes import Likes_routes
 from .api.subscribers_routes import subscriber_routes
 from .api.notification_routes import notification_routes
+from .api.playlist_routes import playlist_routes
+from .api.watch_history import watch_history_routes
+from .api.watch_later import watch_later_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -44,6 +47,10 @@ app.register_blueprint(Tags_routes, url_prefix='/api/tags')
 app.register_blueprint(Likes_routes, url_prefix='/api/likes')
 app.register_blueprint(subscriber_routes, url_prefix='/api/subscribers')
 app.register_blueprint(notification_routes, url_prefix='/api/notifications')
+app.register_blueprint(playlist_routes, url_prefix='/api/playlists')
+app.register_blueprint(watch_history_routes, url_prefix='/api/watchhistory')
+app.register_blueprint(watch_later_routes, url_prefix='/api/watchlater')
+
 db.init_app(app)
 Migrate(app, db)
 

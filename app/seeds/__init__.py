@@ -10,6 +10,8 @@ from .subscribers import seed_subscribers, undo_subscribers
 from .notifications import seed_notifications, undo_notifications
 from .history import seed_history, undo_history
 from .watchlater import seed_watch_later, undo_watch_later
+from .playlists import seed_playlist, undo_playlist
+from .playlistvideos import seed_playlistvideo, undo_playlistvideo
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -30,6 +32,8 @@ def seed():
     seed_notifications()
     seed_history()
     seed_watch_later()
+    seed_playlist()
+    seed_playlistvideo()
     # Add other seed functions here
 
 
@@ -47,4 +51,6 @@ def undo():
     undo_notifications()
     undo_history()
     undo_watch_later()
+    undo_playlist()
+    undo_playlistvideo()
     # Add other undo functions here

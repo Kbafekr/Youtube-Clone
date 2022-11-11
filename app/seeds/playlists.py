@@ -1,61 +1,56 @@
-from app.models import db, History
+from app.models import db, Playlist
 
-def seed_history():
-    history_1 = History(user_id=1, video_id=1)
-    history_2 = History(user_id=1, video_id=6)
-    history_3 = History(user_id=1, video_id=3)
-    history_4 = History(user_id=1, video_id=14)
-    history_5 = History(user_id=1, video_id=12)
-    history_6 = History(user_id=1, video_id=19)
-    history_7 = History(user_id=1, video_id=4)
-    history_8 = History(user_id=1, video_id=5)
-    history_9 = History(user_id=1, video_id=9)
-    history_10 = History(user_id=1, video_id=7)
-    # history_11 = History(user_id=3, video_id=8)
-    # history_12 = History(user_id=3, video_id=9)
-    # history_13 = History(user_id=3, video_id=10)
-    # history_14 = History(user_id=3, video_id=11)
-    # history_15 = History(user_id=3, video_id=12)
-    # history_16 = History(user_id=3, video_id=13)
-    # history_17 = History(user_id=3, video_id=14)
-    # history_18 = History(user_id=3, video_id=15)
-    # history_19 = History(user_id=3, video_id=16)
-    # history_20 = History(user_id=3, video_id=17)
-    # history_21 = History(user_id=3, video_id=18)
-    # history_22 = History(user_id=3, video_id=19)
-    # history_23 = History(user_id=3, video_id=20)
-    # history_24 = History(user_id=2, video_id=4)
-    # history_25 = History(user_id=2, video_id=5)
-    # history_26 = History(user_id=2, video_id=6)
-    # history_27 = History(user_id=2, video_id=7)
-    # history_28 = History(user_id=2, video_id=8)
-    # history_29 = History(user_id=2, video_id=9)
-    # history_30 = History(user_id=2, video_id=10)
-    # history_31 = History(user_id=2, video_id=11)
-    # history_32 = History(user_id=2, video_id=12)
-    # history_33 = History(user_id=2, video_id=13)
-    # history_34 = History(user_id=2, video_id=14)
-    # history_35 = History(user_id=2, video_id=15)
-    # history_36 = History(user_id=2, video_id=16)
-    # history_37 = History(user_id=2, video_id=17)
-    # history_38 = History(user_id=2, video_id=18)
-    # history_39 = History(user_id=2, video_id=19)
-    # history_40 = History(user_id=2, video_id=20)
+def seed_playlist():
+    playlist_1 = Playlist(user_id=1, title="Z")
+    playlist_2 = Playlist(user_id=1, title="Cool Videos")
+    playlist_3 = Playlist(user_id=1, title="Coding Projects")
+    playlist_4 = Playlist(user_id=1, title="A2")
+    # playlist_11 = Playlist(user_id=3, video_id=8)
+    # playlist_12 = Playlist(user_id=3, video_id=9)
+    # playlist_13 = Playlist(user_id=3, video_id=10)
+    # playlist_14 = Playlist(user_id=3, video_id=11)
+    # playlist_15 = Playlist(user_id=3, video_id=12)
+    # playlist_16 = Playlist(user_id=3, video_id=13)
+    # playlist_17 = Playlist(user_id=3, video_id=14)
+    # playlist_18 = Playlist(user_id=3, video_id=15)
+    # playlist_19 = Playlist(user_id=3, video_id=16)
+    # playlist_20 = Playlist(user_id=3, video_id=17)
+    # playlist_21 = Playlist(user_id=3, video_id=18)
+    # playlist_22 = Playlist(user_id=3, video_id=19)
+    # playlist_23 = Playlist(user_id=3, video_id=20)
+    # playlist_24 = Playlist(user_id=2, video_id=4)
+    # playlist_25 = Playlist(user_id=2, video_id=5)
+    # playlist_26 = Playlist(user_id=2, video_id=6)
+    # playlist_27 = Playlist(user_id=2, video_id=7)
+    # playlist_28 = Playlist(user_id=2, video_id=8)
+    # playlist_29 = Playlist(user_id=2, video_id=9)
+    # playlist_30 = Playlist(user_id=2, video_id=10)
+    # playlist_31 = Playlist(user_id=2, video_id=11)
+    # playlist_32 = Playlist(user_id=2, video_id=12)
+    # playlist_33 = Playlist(user_id=2, video_id=13)
+    # playlist_34 = Playlist(user_id=2, video_id=14)
+    # playlist_35 = Playlist(user_id=2, video_id=15)
+    # playlist_36 = Playlist(user_id=2, video_id=16)
+    # playlist_37 = Playlist(user_id=2, video_id=17)
+    # playlist_38 = Playlist(user_id=2, video_id=18)
+    # playlist_39 = Playlist(user_id=2, video_id=19)
+    # playlist_40 = Playlist(user_id=2, video_id=20)
 
 
 
 
-    WatchHistory = [history_1, history_2, history_3, history_4,history_5,history_6,history_7,history_8,history_9 ,history_10,
-    # history_11, history_12, history_13, history_14,history_15,history_16,history_17,history_18,history_19 ,history_20,
-    # history_21, history_22, history_23, history_24,history_25,history_26,history_27,history_28,history_29 ,history_30,
-    # history_31, history_32, history_33, history_34,history_35,history_36,history_37,history_38,history_39 ,history_40,
+    Playlists = [playlist_1, playlist_2, playlist_3, playlist_4,
+    # playlist_5,playlist_6,playlist_7,playlist_8,playlist_9 ,playlist_10,
+    # playlist_11, playlist_12, playlist_13, playlist_14,playlist_15,playlist_16,playlist_17,playlist_18,playlist_19 ,playlist_20,
+    # playlist_21, playlist_22, playlist_23, playlist_24,playlist_25,playlist_26,playlist_27,playlist_28,playlist_29 ,playlist_30,
+    # playlist_31, playlist_32, playlist_33, playlist_34,playlist_35,playlist_36,playlist_37,playlist_38,playlist_39 ,playlist_40,
     ]
 
-    for history in WatchHistory:
-        db.session.add(history)
+    for playlist in Playlists:
+        db.session.add(playlist)
         db.session.commit()
 
 
-def undo_history():
-    db.session.execute('TRUNCATE historys RESTART IDENTITY CASCADE;')
+def undo_playlist():
+    db.session.execute('TRUNCATE playlists RESTART IDENTITY CASCADE;')
     db.session.commit()
