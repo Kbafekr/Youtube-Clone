@@ -37,12 +37,25 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               </div>
               <div>Shorts</div>
             </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-users"></i>
+            {user != null ? (
+              <div className="SideNavRowContainer">
+                <Link
+                  to={`/subscriptions`}
+                  className="SideBarIcon"
+                >
+                  <i class="fa-solid fa-users"></i>
+                </Link>
+                <Link
+                  to={`/subscriptions`}
+                  className="SideBarText"
+                >
+                  Subscriptions
+                </Link>
               </div>
-              <div>Subscriptions</div>
-            </div>
+            ) : (
+              ""
+            )}
+             {user != null ? (
             <div className="SideNavRowContainer">
               <Link
                 to={user != null ? `/users/${user_id}` : `/login`}
@@ -59,6 +72,9 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Profile Page
               </Link>
             </div>
+             ) : (
+              ""
+            )}
             <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-record-vinyl"></i>
@@ -121,7 +137,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             </div>
             <div className="SideNavRowContainer">
               <div>
-              <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart"></i>
               </div>
               <div>Liked Videos</div>
             </div>

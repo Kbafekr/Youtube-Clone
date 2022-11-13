@@ -1,0 +1,14 @@
+.FilterContainerSubscriptionshPage {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 30px;
+}
+
+.FilterCategorySubscriptions {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

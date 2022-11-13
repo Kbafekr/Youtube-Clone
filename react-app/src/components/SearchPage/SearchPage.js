@@ -178,7 +178,10 @@ export function SearchPage({ sidePanel }) {
             ""
           )}
           {filterMethod == "Channels" ? (
-            <SearchPageChannels searchTerm={searchTerm} activeSort={activeSort} />
+            <SearchPageChannels
+              searchTerm={searchTerm}
+              activeSort={activeSort}
+            />
           ) : (
             ""
           )}

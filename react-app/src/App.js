@@ -20,6 +20,7 @@ import { SearchBar } from './components/NavBarTop/SearchBar/SearchBar';
 import { SearchPage } from './components/SearchPage/SearchPage';
 import { PageNotFound } from "./components/UnknownPage/PageNotFound";
 import Channel from './components/Channel/Channel';
+import { SubscriptionsPage } from './components/Subscriptions/Subscriptions';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,6 +68,10 @@ function App() {
 
 
 
+        {/* subscriptions */}
+        <Route path='/subscriptions' exact={true} >
+          <SubscriptionsPage sidePanel={sidePanel}/>
+        </Route>
 
         {/* library */}
         <Route path='/library' exact={true} >
@@ -90,10 +95,6 @@ function App() {
         </Route>
         {/* playlists videos watch */}
         <Route path='/channels/:playlistId/:videoId' exact={true} >
-          <Channel sidePanel={sidePanel}/>
-        </Route>
-        {/* subscriptions */}
-        <Route path='/subscriptions' exact={true} >
           <Channel sidePanel={sidePanel}/>
         </Route>
         {/* shorts */}
