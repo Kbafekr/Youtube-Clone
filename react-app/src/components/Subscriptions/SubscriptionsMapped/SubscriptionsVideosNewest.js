@@ -10,9 +10,7 @@ import { useState, useEffect } from "react";
 import { getAllVideosThunk } from "../../../store/video";
 import { getAllChannelsThunk } from "../../../store/channel";
 import { useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import { updateUserThunk } from "../../../store/session";
-import { newChannelThunk } from "../../../store/channel";
+import { useHistory } from "react-router-dom";
 import { authenticate } from "../../../store/session";
 import { amountViews } from "../../../Utils/Utils";
 import { Link } from "react-router-dom";
@@ -21,18 +19,13 @@ import { getAllTagsThunk } from "../../../store/tags";
 import { getAllLikesThunk } from "../../../store/likes";
 import { getAllDisLikesThunk } from "../../../store/dislikes";
 
-import { getWatchHistoryThunk } from "../../../store/watchhistory";
-
-export function SubscriptionsVideosNewestPage({ sidePanel }) {
+export function SubscriptionsVideosNewestPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
   const tags = useSelector((state) => state.tags);
   const channels = useSelector((state) => state.channel);
-  const [newChannelMade, setNewChannelMade] = useState(false);
-  const [tagClicked, setTagClicked] = useState("All");
-  const [tagsFilter, setTagsFilter] = useState("");
   const [loaded, setLoaded] = useState(false);
 
   if (user == null) {
@@ -42,14 +35,16 @@ export function SubscriptionsVideosNewestPage({ sidePanel }) {
   let videosArray;
   let channelsArray;
   let tagsArray;
+  let userSubscriptionsArray;
 
   videosArray = Object.values(videos);
   channelsArray = Object.values(channels);
   tagsArray = Object.values(tags);
+  userSubscriptionsArray = Object.values(user.subscriptions);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, newChannelMade, user]);
+  }, [dispatch, user]);
 
   useEffect(() => {
     dispatch(getAllVideosThunk());
@@ -67,18 +62,12 @@ export function SubscriptionsVideosNewestPage({ sidePanel }) {
   let arrayResult;
   let videoArrayCopy;
   let sortedVideosByNewest;
-  let filteredTags;
 
   if (videosArray) {
     videoArrayCopy = [...videosArray];
   }
   if (videoArrayCopy && videoArrayCopy.length > 0) {
     sortedVideosByNewest = videoArrayCopy.sort((a, b) => b.id - a.id);
-  }
-  if (tagsArray && tagsFilter) {
-    filteredTags = tagsArray.filter((tag) =>
-      tag.body.toLowerCase().includes(tagsFilter.toLowerCase())
-    );
   }
 
   // redefine starting array
@@ -104,6 +93,10 @@ export function SubscriptionsVideosNewestPage({ sidePanel }) {
                   arrayResult.map((video) => {
                     return (
                       <>
+                      {userSubscriptionsArray && userSubscriptionsArray.map((subscriptions) => {
+                        return (
+                            <>
+                        {video.channel_id == subscriptions.channel_id ?
                         <div className="VideoCardHome">
                           <div
                             className="VideoPreviewHome"
@@ -182,13 +175,19 @@ export function SubscriptionsVideosNewestPage({ sidePanel }) {
                                         </div>
                                       </div>
                                     </div>
+
                                   ) : (
                                     ""
                                   )}
+
                                 </>
                               );
                             })}
                         </div>
+                        :""}
+                        </>
+                        )
+                      })}
                       </>
                     );
                   })}

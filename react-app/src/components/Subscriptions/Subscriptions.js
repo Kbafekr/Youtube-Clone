@@ -12,14 +12,16 @@ import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
 import { SubscriptionsVideosNewestPage } from "./SubscriptionsMapped/SubscriptionsVideosNewest";
+import { SubscriptionsVideosRow } from "./SubscriptionsMapped/SubscriptionsVideosRow";
+import { ListAllSubscriptions } from "./SubscriptionsMapped/ListAllSubscriptions";
 
 export function SubscriptionsPage({ sidePanel }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
 
-    // keeps track of filter type
-    const [filterMethod, setFilterMethod] = useState("Grid");
+  // keeps track of filter type
+  const [filterMethod, setFilterMethod] = useState("Grid");
 
   if (user == null) {
     history.push("/");
@@ -32,74 +34,54 @@ export function SubscriptionsPage({ sidePanel }) {
     dispatch(getAllVideosThunk());
   }, [dispatch, user]);
 
-
-
   // create new variable to filter through tags based on keyword
   return (
-      <>
-        <div
+    <>
+      <div
         className={sidePanel == true ? "homeContainer" : "homeContainerClosed"}
       >
         <div className="SearchPageContainerInner">
-            <div className="FilterContainerSubscriptionsPage">
-              <div className="FilterCategorySubscriptions">
-                <div
-                  onClick={() => setFilterMethod("Grid")}
-                  className={
-                    filterMethod == "Grid"
-                      ? "FilterCategoryTextActive"
-                      : "FilterCategoryText"
-                  }
-                >
-                  Grid
-                </div>
-                <div
-                  onClick={() => setFilterMethod("Row")}
-                  className={
-                    filterMethod == "Row"
-                      ? "FilterCategoryTextActive"
-                      : "FilterCategoryText"
-                  }
-                >
-                  List-1
-                </div>
-                {/* search by Channels */}
-                <div
-                  onClick={() => setFilterMethod("List")}
-                  className={
-                    filterMethod == "List"
-                      ? "FilterCategoryTextActive"
-                      : "FilterCategoryText"
-                  }
-                >
-                  List-2
-                </div>
-                {/* search by Channels */}
+          <div className="FilterContainerSubscriptionsPage">
+            <div className="FilterCategorySubscriptions">
+              <div
+                onClick={() => setFilterMethod("Grid")}
+                className={
+                  filterMethod == "Grid"
+                    ? "FilterCategoryTextActive"
+                    : "FilterCategoryText"
+                }
+              >
+                New Videos
               </div>
+              {/* <div
+                onClick={() => setFilterMethod("Row")}
+                className={
+                  filterMethod == "Row"
+                    ? "FilterCategoryTextActive"
+                    : "FilterCategoryText"
+                }
+              >
+                List-1
+              </div> */}
+              {/* search by Channels */}
+              {/* <div
+                onClick={() => setFilterMethod("List")}
+                className={
+                  filterMethod == "List"
+                    ? "FilterCategoryTextActive"
+                    : "FilterCategoryText"
+                }
+              >
+                List-2
+              </div> */}
+              {/* search by Channels */}
             </div>
-          {filterMethod == "Grid" ? (
-            <SubscriptionsVideosNewestPage />
-          ) : (
-            ""
-          )}
-          {filterMethod == "Row" ? (
-            // <SearchPageTags searchTerm={searchTerm} activeSort={activeSort} />
-            <div>2</div>
-          ) : (
-            ""
-          )}
-          {filterMethod == "List" ? (
-            // <SearchPageChannels
-            //   searchTerm={searchTerm}
-            //   activeSort={activeSort}
-            // />
-            <div>3</div>
-
-          ) : (
-            ""
-          )}
+          </div>
+          {filterMethod == "Grid" ? <SubscriptionsVideosNewestPage /> : ""}
+          {/* {filterMethod == "Row" ? <SubscriptionsVideosRow /> : ""}
+          {filterMethod == "List" ? <ListAllSubscriptions /> : ""} */}
         </div>
       </div>
-      </>
-    )
+    </>
+  );
 }

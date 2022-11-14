@@ -381,10 +381,16 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <div>Shorts</div>
             </div>
             <div className="SideNavRowContainerClosed">
-              <div>
+              <Link
+                  to={`/subscriptions`}
+                  className="SideBarIcon"
+                >
                 <i class="fa-solid fa-users"></i>
-              </div>
-              <div>Subscriptions</div>
+              </Link>
+              <Link
+                  to={`/subscriptions`}
+                  className="SideBarText"
+                >Subscriptions</Link>
             </div>
             <div className="SideNavRowContainerClosed">
               <Link
