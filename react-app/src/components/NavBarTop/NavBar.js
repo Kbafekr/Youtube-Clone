@@ -16,6 +16,8 @@ import { getAllChannelsThunk } from "../../store/channel";
 import { updateUserThunk } from "../../store/session";
 import { authenticate } from "../../store/session";
 
+import NotificationsBell from "./Notifications/Notiifications";
+
 const NavBar = ({ sidePanel, setSidePanel }) => {
   const location = useLocation();
   const dispatch = useDispatch()
@@ -73,9 +75,7 @@ const NavBar = ({ sidePanel, setSidePanel }) => {
             >
               <i class="fa-sharp fa-solid fa-video"></i>
             </Link>
-            <div className="NotificationBellNavBar">
-              <i class="fa-solid fa-bell"></i>
-            </div>
+            <NotificationsBell />
             <ProfileButton />
           </div>
         </div>

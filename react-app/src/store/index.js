@@ -12,6 +12,7 @@ import subscribers from './subscribers'
 import watchhistory from './watchhistory'
 import watchlater from './watchlater'
 import playlist from './playlist'
+import notifications from './notifications'
 
 const rootReducer = combineReducers({
   session,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   subscribers,
   watchhistory,
   watchlater,
-  playlist
+  playlist,
+  notifications
 });
 
 

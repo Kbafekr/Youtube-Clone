@@ -39,40 +39,34 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             </div>
             {user != null ? (
               <div className="SideNavRowContainer">
-                <Link
-                  to={`/subscriptions`}
-                  className="SideBarIcon"
-                >
+                <Link to={`/subscriptions`} className="SideBarIcon">
                   <i class="fa-solid fa-users"></i>
                 </Link>
-                <Link
-                  to={`/subscriptions`}
-                  className="SideBarText"
-                >
+                <Link to={`/subscriptions`} className="SideBarText">
                   Subscriptions
                 </Link>
               </div>
             ) : (
               ""
             )}
-             {user != null ? (
-            <div className="SideNavRowContainer">
-              <Link
-                to={user != null ? `/users/${user_id}` : `/login`}
-                className="SideBarIcon"
-                onClick={reloadPage}
-              >
-                <i class="fa-solid fa-user"></i>
-              </Link>
-              <Link
-                to={user != null ? `/users/${user_id}` : `/login`}
-                className="SideBarText"
-                onClick={reloadPage}
-              >
-                Profile Page
-              </Link>
-            </div>
-             ) : (
+            {user != null ? (
+              <div className="SideNavRowContainer">
+                <Link
+                  to={user != null ? `/users/${user_id}` : `/login`}
+                  className="SideBarIcon"
+                  onClick={reloadPage}
+                >
+                  <i class="fa-solid fa-user"></i>
+                </Link>
+                <Link
+                  to={user != null ? `/users/${user_id}` : `/login`}
+                  className="SideBarText"
+                  onClick={reloadPage}
+                >
+                  Profile Page
+                </Link>
+              </div>
+            ) : (
               ""
             )}
             <div className="SideNavRowContainer">
@@ -83,71 +77,110 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             </div>
           </div>
           {/* middle row */}
-          <div className="SideNavBorderDivContainer">
-            <div className="SideNavBorderDiv"></div>
-          </div>
-          <div className="InternalSideBarSection">
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-book"></i>
-              </div>
-              <div>Library</div>
+          {user != null ? (
+            <div className="SideNavBorderDivContainer">
+              <div className="SideNavBorderDiv"></div>
             </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
-              </div>
-              <div>History</div>
+          ) : (
+            ""
+          )}
+          {user != null ? (
+            <div className="InternalSideBarSection">
+              {user != null ? (
+                <div className="SideNavRowContainer">
+                  <div>
+                    <i class="fa-solid fa-book"></i>
+                  </div>
+                  <div>Library</div>
+                </div>
+              ) : (
+                ""
+              )}
+
+              {user != null ? (
+                <div className="SideNavRowContainer">
+                  <div>
+                    <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
+                  </div>
+                  <div>History</div>
+                </div>
+              ) : (
+                ""
+              )}
+              {user != null ? (
+                <div className="SideNavRowContainer">
+                  <Link
+                    onClick={reloadPage}
+                    to={
+                      user != null
+                        ? {
+                            pathname: `/users/${user.id}`,
+                            state: {
+                              directedCategory: 2,
+                              uploadModalState: false,
+                            },
+                          }
+                        : `/login`
+                    }
+                    className="SideBarIcon"
+                  >
+                    <i class="fa-solid fa-play"></i>
+                  </Link>
+                  <Link
+                    onClick={reloadPage}
+                    to={
+                      user != null
+                        ? {
+                            pathname: `/users/${user.id}`,
+                            state: {
+                              directedCategory: 2,
+                              uploadModalState: false,
+                            },
+                          }
+                        : `/login`
+                    }
+                    className="SideBarText"
+                  >
+                    Your Videos
+                  </Link>
+                </div>
+              ) : (
+                ""
+              )}
+              {user != null ? (
+                <div className="SideNavRowContainer">
+                  <div>
+                    <i class="fa-solid fa-clock"></i>
+                  </div>
+                  <div>Watch Later</div>
+                </div>
+              ) : (
+                ""
+              )}
+              {user != null ? (
+                <div className="SideNavRowContainer">
+                  <div>
+                    <i class="fa-solid fa-heart"></i>
+                  </div>
+                  <div>Liked Videos</div>
+                </div>
+              ) : (
+                ""
+              )}
+              {user != null ? (
+                <div className="SideNavRowContainer">
+                  <div>
+                    <i class="fa-solid fa-list"></i>
+                  </div>
+                  <div>Playlists</div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="SideNavRowContainer">
-              <Link
-                onClick={reloadPage}
-                to={
-                  user != null
-                    ? {
-                        pathname: `/users/${user.id}`,
-                        state: { directedCategory: 2, uploadModalState: false },
-                      }
-                    : `/login`
-                }
-                className="SideBarIcon"
-              >
-                <i class="fa-solid fa-play"></i>
-              </Link>
-              <Link
-                onClick={reloadPage}
-                to={
-                  user != null
-                    ? {
-                        pathname: `/users/${user.id}`,
-                        state: { directedCategory: 2, uploadModalState: false },
-                      }
-                    : `/login`
-                }
-                className="SideBarText"
-              >
-                Your Videos
-              </Link>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div>Watch Later</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div>Liked Videos</div>
-            </div>
-            <div className="SideNavRowContainer">
-              <div>
-                <i class="fa-solid fa-list"></i>
-              </div>
-              <div>Playlists</div>
-            </div>
-          </div>
+          ) : (
+            ""
+          )}
 
           {/* Subscriptions row */}
           <div className="SideNavBorderDivContainer">
@@ -380,82 +413,106 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               </div>
               <div>Shorts</div>
             </div>
-            <div className="SideNavRowContainerClosed">
-              <Link
-                  to={`/subscriptions`}
+            {user != null ? (
+              <div className="SideNavRowContainerClosed">
+                <Link to={`/subscriptions`} className="SideBarIcon">
+                  <i class="fa-solid fa-users"></i>
+                </Link>
+                <Link to={`/subscriptions`} className="SideBarText">
+                  Subscriptions
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
+            {user != null ? (
+              <div className="SideNavRowContainerClosed">
+                <Link
+                  to={`/users/${user_id}`}
                   className="SideBarIcon"
+                  onClick={reloadPage}
                 >
-                <i class="fa-solid fa-users"></i>
-              </Link>
-              <Link
-                  to={`/subscriptions`}
+                  <i class="fa-solid fa-user"></i>
+                </Link>
+                <Link
+                  to={`/users/${user_id}`}
                   className="SideBarText"
-                >Subscriptions</Link>
-            </div>
-            <div className="SideNavRowContainerClosed">
-              <Link
-                to={`/users/${user_id}`}
-                className="SideBarIcon"
-                onClick={reloadPage}
-              >
-                <i class="fa-solid fa-user"></i>
-              </Link>
-              <Link
-                to={`/users/${user_id}`}
-                className="SideBarText"
-                onClick={reloadPage}
-              >
-                Profile Page
-              </Link>
-            </div>
+                  onClick={reloadPage}
+                >
+                  Profile Page
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
+
             <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
             </div>
-            <div className="SideNavRowContainerClosed">
-              <div>
-                <i class="fa-solid fa-book"></i>
+
+            {user != null ? (
+              <div className="SideNavRowContainerClosed">
+                <div>
+                  <i class="fa-solid fa-book"></i>
+                </div>
+                <div>Library</div>
               </div>
-              <div>Library</div>
-            </div>
-            <div className="SideNavRowContainerClosed">
-              <div>
-                <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
+            ) : (
+              ""
+            )}
+            {user != null ? (
+              <div className="SideNavRowContainerClosed">
+                <div>
+                  <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
+                </div>
+                <div>History</div>
               </div>
-              <div>History</div>
-            </div>
-            <div className="SideNavRowContainerClosed">
-              <Link
-                onClick={reloadPage}
-                to={
-                  user != null
-                    ? {
-                        pathname: `/users/${user.id}`,
-                        state: { directedCategory: 2, uploadModalState: false },
-                      }
-                    : `/login`
-                }
-                className="SideBarIcon"
-              >
-                <i class="fa-solid fa-play"></i>
-              </Link>
-              <Link
-                onClick={reloadPage}
-                to={
-                  user != null
-                    ? {
-                        pathname: `/users/${user.id}`,
-                        state: { directedCategory: 2, uploadModalState: false },
-                      }
-                    : `/login`
-                }
-                className="SideBarText"
-              >
-                Your Videos
-              </Link>
-            </div>
+            ) : (
+              ""
+            )}
+            {user != null ? (
+              <div className="SideNavRowContainerClosed">
+                <Link
+                  onClick={reloadPage}
+                  to={
+                    user != null
+                      ? {
+                          pathname: `/users/${user.id}`,
+                          state: {
+                            directedCategory: 2,
+                            uploadModalState: false,
+                          },
+                        }
+                      : `/login`
+                  }
+                  className="SideBarIcon"
+                >
+                  <i class="fa-solid fa-play"></i>
+                </Link>
+                <Link
+                  onClick={reloadPage}
+                  to={
+                    user != null
+                      ? {
+                          pathname: `/users/${user.id}`,
+                          state: {
+                            directedCategory: 2,
+                            uploadModalState: false,
+                          },
+                        }
+                      : `/login`
+                  }
+                  className="SideBarText"
+                >
+                  Your Videos
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </nav>

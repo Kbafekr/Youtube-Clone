@@ -40,7 +40,9 @@ export function SubscriptionsVideosNewestPage() {
   videosArray = Object.values(videos);
   channelsArray = Object.values(channels);
   tagsArray = Object.values(tags);
-  userSubscriptionsArray = Object.values(user.subscriptions);
+  if (user) {
+    userSubscriptionsArray = Object.values(user.subscriptions);
+  }
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
