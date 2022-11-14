@@ -3,3 +3,63 @@
     font-size: 20px;
     padding-left: 10px;
 }
+
+.NotificationMenuChannelPic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.notificationRowMenu {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: rgba(232, 232, 232, 0.876);
+    font-size: 14px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.notificationRowMenu:hover {
+    background-color: rgba(94, 94, 94, 0.248);
+    color: white;
+}
+
+.NotificationDropDownNav {
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    position: absolute;
+    width: 400px;
+    height: fit-content;
+    top: 70px;
+    right: 20px;
+    background-color: rgb(74, 74, 74);
+    border-radius: 15px;
+    max-height: 700px;
+    overflow-y: scroll;
+}
+
+.NotificationDropDownNav::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none
+  }
+
+
+.BlueCircleNotification {
+    height: 8px;
+    width: 8px;
+    background-color: rgb(0, 166, 255);
+    border-radius: 50px;
+  }
+.IsReadNotification {
+    height: 8px;
+    width: 8px;
+    border-radius: 50px;
+  }
+
+  .videoTitleNotificationMenu {
+    max-width: 300px;
+    max-height: 46px;
+    overflow: hidden;
+  }

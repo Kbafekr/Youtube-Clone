@@ -7,6 +7,7 @@ import { logout } from "../../../store/session";
 import "./ProfileButton.css";
 import reloadPage from "../../../Utils/Utils";
 import { getAllNotificationsThunk } from "../../../store/notifications";
+import { updateNotificationThunk } from "../../../store/notifications";
 
 export default function NotificationsBell() {
   const dispatch = useDispatch();
@@ -16,20 +17,21 @@ export default function NotificationsBell() {
   const channels = useSelector((state) => state.channel);
   const videos = useSelector((state) => state.video);
 
-
-  const NotificationsAll = Object.values(notifications)
-  const channelsAll = Object.values(channels)
-  const VideosAll = Object.values(videos)
+  const NotificationsAll = Object.values(notifications);
+  const channelsAll = Object.values(channels);
+  const VideosAll = Object.values(videos);
 
   let userNotifications;
 
   if (NotificationsAll.length > 0) {
-    userNotifications = NotificationsAll.filter((notification) => notification.user_id === user.id)
+    userNotifications = NotificationsAll.filter(
+      (notification) => notification.user_id === user.id
+    );
   }
 
   useEffect(() => {
-    dispatch(getAllNotificationsThunk())
-}, [])
+    dispatch(getAllNotificationsThunk());
+  }, []);
   let activeChannel;
   // define active channel
   if (user.channels) {
@@ -47,8 +49,6 @@ export default function NotificationsBell() {
     setShowMenu(true);
   };
 
-
-
   useEffect(() => {
     if (!showMenu) return;
 
@@ -64,30 +64,59 @@ export default function NotificationsBell() {
   return (
     <>
       <div>
-      <div className="NotificationBellNavBar" onClick={openMenu}>
-              <i class="fa-solid fa-bell"></i>
-            </div>
+        <div className="NotificationBellNavBar" onClick={openMenu}>
+          <i class="fa-solid fa-bell"></i>
+        </div>
 
         {showMenu && (
-          <div className="ProfileDropDownNav">
+          <div className="NotificationDropDownNav">
             <div className="ProfileDDUserOuter">
-              <div className="NotificationsMenuText">
-                Notifications
-              </div>
+              <div className="NotificationsMenuText">Notifications</div>
             </div>
+            {/* map throughout each video, channel */}
             <div className="ProfileDDUserSection">
-              {userNotifications && userNotifications.map((notification) => {
-                return (
+              {userNotifications &&
+                userNotifications.map((notification) => {
+                  return (
                     <>
-                    <div>
-                        {}
-                        <div>
-                            {notification.channel_id}
-                        </div>
-                    </div>
+                      {channelsAll &&
+                        channelsAll.map((channel) => {
+                          return (
+                            <>
+                              {VideosAll &&
+                                VideosAll.map((video) => {
+                                  return (
+                                    <>
+                                      {video.id == notification.video_id &&
+                                      channel.id == notification.channel_id ? (
+                                        <>
+                                          <Link className="notificationRowMenu" to={`/videos/${video.id}`} onClick={() => dispatch(updateNotificationThunk(notification.id, notification.channel_id, notification.video_id, notification.user_id, true))}>
+                                            {notification.is_read == false ? (
+                                              <div className="BlueCircleNotification"></div>
+                                            ) : (
+                                              <div className="IsReadNotification"></div>
+                                            )}
+                                            <img
+                                              className="NotificationMenuChannelPic"
+                                              src={channel.profile_picture}
+                                            ></img>
+                                            <div className="videoTitleNotificationMenu">
+                                              {video.title}
+                                            </div>
+                                          </Link>
+                                        </>
+                                      ) : (
+                                        ""
+                                      )}
+                                    </>
+                                  );
+                                })}
+                            </>
+                          );
+                        })}
                     </>
-                )
-              })}
+                  );
+                })}
             </div>
           </div>
         )}

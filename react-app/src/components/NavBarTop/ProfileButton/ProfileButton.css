@@ -20,7 +20,14 @@
     right: 20px;
     background-color: rgb(74, 74, 74);
     border-radius: 15px;
+    max-height: 500px;
+    overflow-y: scroll;
 }
+
+.SideNavBarContainer::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none
+  }
 
 .ProfileDDUserOuter {
     display: flex;
