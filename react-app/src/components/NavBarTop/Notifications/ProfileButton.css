@@ -65,10 +65,16 @@
   }
 
   .NumberofNotifications{
-    color: red;
     position: absolute;
     font-weight: bold;
-    right: 80px;
-    top: 5px;
+    right: 75px;
+    top: 10px;
     font-size: 24px;
+  }
+
+  .BlueCircleNotificationButton {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(0, 166, 255);
+    border-radius: 50px;
   }

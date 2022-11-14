@@ -22,18 +22,20 @@ export default function NotificationsBell() {
   const VideosAll = Object.values(videos);
   let unsortedNotifications;
   let userNotifications;
-  let numberNotifications
+  let numberNotifications;
 
   if (NotificationsAll.length > 0) {
     unsortedNotifications = NotificationsAll.filter(
       (notification) => notification.user_id === user.id
     );
     numberNotifications = NotificationsAll.filter(
-        (notification) => notification.user_id === user.id && notification.is_read == false)
+      (notification) =>
+        notification.user_id === user.id && notification.is_read == false
+    );
   }
 
   if (NotificationsAll.length > 0) {
-    userNotifications = unsortedNotifications.sort((a, b) => b.id - a.id)
+    userNotifications = unsortedNotifications.sort((a, b) => b.id - a.id);
   }
 
   useEffect(() => {
@@ -71,6 +73,18 @@ export default function NotificationsBell() {
   return (
     <>
       <div>
+      {numberNotifications != null ? (
+
+          <div className="NumberofNotifications">
+        {numberNotifications.length != 0 ? (
+            <div className="BlueCircleNotificationButton"></div>
+            ) : (
+              ""
+              )}
+              </div>
+               ) : (
+                ""
+                )}
         <div className="NotificationBellNavBar" onClick={openMenu}>
           <i class="fa-solid fa-bell"></i>
         </div>
@@ -97,7 +111,21 @@ export default function NotificationsBell() {
                                       {video.id == notification.video_id &&
                                       channel.id == notification.channel_id ? (
                                         <>
-                                          <Link className="notificationRowMenu" to={`/videos/${video.id}`} onClick={() => dispatch(updateNotificationThunk(notification.id, notification.channel_id, notification.video_id, notification.user_id, true))}>
+                                          <Link
+                                            className="notificationRowMenu"
+                                            to={`/videos/${video.id}`}
+                                            onClick={() =>
+                                              dispatch(
+                                                updateNotificationThunk(
+                                                  notification.id,
+                                                  notification.channel_id,
+                                                  notification.video_id,
+                                                  notification.user_id,
+                                                  true
+                                                )
+                                              )
+                                            }
+                                          >
                                             {notification.is_read == false ? (
                                               <div className="BlueCircleNotification"></div>
                                             ) : (
