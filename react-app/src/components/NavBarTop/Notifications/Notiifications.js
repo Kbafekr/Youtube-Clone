@@ -22,11 +22,14 @@ export default function NotificationsBell() {
   const VideosAll = Object.values(videos);
 
   let userNotifications;
+  let numberNotifications
 
   if (NotificationsAll.length > 0) {
     userNotifications = NotificationsAll.filter(
       (notification) => notification.user_id === user.id
     );
+    numberNotifications = NotificationsAll.filter(
+        (notification) => notification.user_id === user.id && notification.is_read == false)
   }
 
   useEffect(() => {

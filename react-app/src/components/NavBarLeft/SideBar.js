@@ -5,8 +5,12 @@ import { Link } from "react-router-dom";
 import reloadPage from "../../Utils/Utils";
 import { reloadSearchPage } from "../../Utils/Utils";
 import { AllSubscriptionsSideBar } from "./AllSubscriptionSideBar";
+import { getAllNotificationsThunk } from "../../store/notifications";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import "./SideBar.css";
 const SideBarNav = ({ sidePanel, setSidePanel }) => {
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
   const [openSubscriptions, setOpenSubscriptions] = useState(false);
   const [showMoreSubscriptions, setshowMoreSubscriptions] = useState(false);
@@ -17,6 +21,11 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
     user_id = user.id;
   }
   // useselector channelid, if none take to signup
+
+  useEffect(() => {
+    dispatch(getAllNotificationsThunk());
+  }, [dispatch, user]);
+
 
   if (sidePanel == true)
     return (

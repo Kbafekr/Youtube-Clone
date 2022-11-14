@@ -63,3 +63,12 @@
     max-height: 46px;
     overflow: hidden;
   }
+
+  .NumberofNotifications{
+    color: red;
+    position: absolute;
+    font-weight: bold;
+    right: 80px;
+    top: 5px;
+    font-size: 24px;
+  }

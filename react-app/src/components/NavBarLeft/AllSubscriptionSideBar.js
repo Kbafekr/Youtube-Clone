@@ -14,11 +14,27 @@ export function AllSubscriptionsSideBar({ setshowMoreSubscriptions }) {
 
   const NotificationsAll = Object.values(notifications);
 
+  const channelsArray = Object.values(channels);
+  useEffect(() => {
+    dispatch(getAllChannelsThunk());
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    dispatch(getAllNotificationsThunk());
+  }, [dispatch, user]);
+
+  if (user) {
+    if (user.subscriptions.length > 6) {
+      setshowMoreSubscriptions(true);
+    }
+  }
+
+
   let counterObject = {};
   let filteredNotifications = [];
   let userNotifications;
 
-  if (NotificationsAll.length > 0) {
+  if (NotificationsAll.length > 0 && user != null) {
     userNotifications = NotificationsAll.filter(
       (notification) => notification.user_id === user.id
     );
@@ -26,7 +42,7 @@ export function AllSubscriptionsSideBar({ setshowMoreSubscriptions }) {
 
   //   loop through filtered array and remove duplicates
   // access the channel_id key in each filtered notification
-  if (NotificationsAll.length > 0) {
+  if (NotificationsAll.length > 0 && userNotifications != null) {
     for (let i = 0; i < userNotifications.length; i++) {
       let notification = userNotifications[i];
       // if none, set to true to prevent duplicates
@@ -37,16 +53,6 @@ export function AllSubscriptionsSideBar({ setshowMoreSubscriptions }) {
     }
   }
 
-  const channelsArray = Object.values(channels);
-  useEffect(() => {
-    dispatch(getAllChannelsThunk());
-  }, [dispatch, user]);
-
-  if (user) {
-    if (user.subscriptions.length > 6) {
-      setshowMoreSubscriptions(true);
-    }
-  }
 
   if (!user)
     return (

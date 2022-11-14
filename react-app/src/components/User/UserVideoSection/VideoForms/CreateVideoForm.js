@@ -88,7 +88,7 @@ function CreateVideoForm({ setShowModal }) {
 
   const notifyUsers = () => {
     if (currentChannel) {
-      currentChannel.subscribers.forEach((subscriber) => {
+      currentChannel[0].subscribers.forEach((subscriber) => {
         dispatch(newNotificationThunk(channel_id, subscriber.user_id, false))
       })
     }
