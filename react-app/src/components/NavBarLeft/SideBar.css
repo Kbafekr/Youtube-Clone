@@ -180,3 +180,27 @@ width: 90%;
     font-size: 16px;
     cursor: pointer;
 }
+
+
+/* notifications */
+
+.SideNavRowContainerSubscriptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+.SideNavRowContainerSubscriptionsinner {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.NotificationsSideBarSubscriptions {
+    width: fit-content;
+}
