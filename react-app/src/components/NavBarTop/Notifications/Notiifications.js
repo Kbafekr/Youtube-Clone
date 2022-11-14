@@ -20,16 +20,20 @@ export default function NotificationsBell() {
   const NotificationsAll = Object.values(notifications);
   const channelsAll = Object.values(channels);
   const VideosAll = Object.values(videos);
-
+  let unsortedNotifications;
   let userNotifications;
   let numberNotifications
 
   if (NotificationsAll.length > 0) {
-    userNotifications = NotificationsAll.filter(
+    unsortedNotifications = NotificationsAll.filter(
       (notification) => notification.user_id === user.id
     );
     numberNotifications = NotificationsAll.filter(
         (notification) => notification.user_id === user.id && notification.is_read == false)
+  }
+
+  if (NotificationsAll.length > 0) {
+    userNotifications = unsortedNotifications.sort((a, b) => b.id - a.id)
   }
 
   useEffect(() => {
