@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.api.auth_routes import validation_errors_to_error_messages
-from app.models import Notification, db
+from app.models import Notification, db, Video
 from app.forms.notification_form import NotificationForm
 
 
@@ -46,13 +46,15 @@ def userNotifications(user_id):
 @notification_routes.route("/new", methods=["POST"])
 @login_required
 def create_notification():
+    descending_order = Video.query.order_by(Video.id.desc())
+    latest_video = descending_order.first()
     form = NotificationForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
         new_notification = Notification(
             channel_id=data['channel_id'],
-            video_id=data["video_id"],
+            video_id=latest_video.id,
             user_id=data["user_id"],
             is_read=data["is_read"]
         )

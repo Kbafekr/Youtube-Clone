@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getAllVideosThunk } from "../../../../store/video";
 import { getAllChannelsThunk } from "../../../../store/channel";
+import { newNotificationThunk } from "../../../../store/notifications";
 import { newVideoThunk } from "../../../../store/video";
 import "./EditUserForm.css";
 
@@ -10,6 +11,9 @@ import "./EditUserForm.css";
 // on useParams for imageId (will help when building a comment section for each photo in explore page)
 function CreateVideoForm({ setShowModal }) {
   const user = useSelector((state) => state.session.user);
+  const channels = useSelector((state) => state.channel);
+  const videos = useSelector((state) => state.video);
+
   const dispatch = useDispatch();
   const channel_id = user.active_channel;
 
@@ -20,6 +24,14 @@ function CreateVideoForm({ setShowModal }) {
   const [video_Views, setVideo_Views] = useState("0")
 
   const allowedFileTypes = ["video/mp4", "video/mov"];
+
+  const allChannels = Object.values(channels)
+  const allVideos = Object.values(videos)
+  let currentChannel;
+
+  if (allChannels && channel_id){
+    currentChannel = allChannels.filter((channel) => channel.id == channel_id)
+  }
 
   useEffect(() => {
     const formValidationErrors = [];
@@ -65,7 +77,7 @@ function CreateVideoForm({ setShowModal }) {
         newVideoThunk(formData)
       )
         .then(() => setShowModal(false))
-        .then(() => dispatch(getAllVideosThunk())).then(() => dispatch(getAllChannelsThunk()))
+        .then(() => dispatch(getAllVideosThunk())).then(() => dispatch(getAllChannelsThunk())).then(() => notifyUsers())
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -74,6 +86,13 @@ function CreateVideoForm({ setShowModal }) {
     return errors;
   };
 
+  const notifyUsers = () => {
+    if (currentChannel) {
+      currentChannel.subscribers.forEach((subscriber) => {
+        dispatch(newNotificationThunk(channel_id, subscriber.user_id, false))
+      })
+    }
+  };
   const handleSubmit2 = async (e) => {
     e.preventDefault();
     setShowModal(false);

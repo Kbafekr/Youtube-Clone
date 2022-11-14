@@ -83,11 +83,11 @@ export const getUserNotificationThunk = (User_id) => async (dispatch) => {
 };
 
 export const newNotificationThunk =
-  (Notification) => async (dispatch) => {
+  (channel_id, user_id, is_read) => async (dispatch) => {
     const response = await fetch("/api/notifications/new", {
       method: "POST",
       // do not set content type, allow browser to do this automatically to prevent missing information
-      body: Notification,
+      body: JSON.stringify({channel_id, user_id, is_read}),
     });
     if (response.ok) {
       const createNotification = await response.json();

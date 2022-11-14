@@ -56,13 +56,6 @@ export function VideoPage({ sidePanel }) {
   }, [dispatch, videoId])
 
 
-  // if (userNotifications.length > 0) {
-  //   notificationsFilteredByVideo = NotificationsAll.filter(
-  //     (notification) => notification.video_id === videoId
-  //   );
-  // }
-
-
   // usestate to keep track of description height
   const [showMoreDescription, setShowMoreDescription] = useState(false);
   let filteredVideo;
