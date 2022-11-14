@@ -21,12 +21,17 @@ import { SubscribeButton } from "./SubscribeButtonVideo";
 import { CommentsSection } from "./CommentsSection/Comments";
 import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
 
+import { getAllNotificationsThunk } from "../../store/notifications";
+import { updateNotificationThunk } from "../../store/notifications";
+
+
 export function VideoPage({ sidePanel }) {
   const { videoId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
+  const notifications = useSelector((state) => state.notifications);
 
   const videos = useSelector((state) => state.video);
 
@@ -34,11 +39,38 @@ export function VideoPage({ sidePanel }) {
   const [updateViews, setUpdateViews] = useState(videoId);
   const [subscribed, setSubscribed] = useState(false);
 
+  const NotificationsAll = Object.values(notifications);
+
+  let userNotifications;
+  let notificationsFilteredByVideo;
+  if (NotificationsAll.length > 0) {
+    userNotifications = NotificationsAll.filter(
+      (notification) => notification.user_id === user.id && notification.video_id == videoId
+    );
+  }
+
+  useEffect(() => {
+    if (userNotifications != null && userNotifications[0] != null) {
+      dispatch(updateNotificationThunk(userNotifications[0].id, userNotifications[0].channel_id, userNotifications[0].video_id, userNotifications[0].user_id, true))
+    }
+  }, [dispatch, videoId])
+
+
+  // if (userNotifications.length > 0) {
+  //   notificationsFilteredByVideo = NotificationsAll.filter(
+  //     (notification) => notification.video_id === videoId
+  //   );
+  // }
+
 
   // usestate to keep track of description height
   const [showMoreDescription, setShowMoreDescription] = useState(false);
   let filteredVideo;
   let notVideoArray;
+
+  useEffect(() => {
+    dispatch(getAllNotificationsThunk());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
