@@ -108,7 +108,7 @@ def add_video_to_playlist(id, video_id):
 
 @playlist_routes.route('/<int:id>/<int:playlistvideo_id>/delete', methods=['DELETE'])
 @login_required
-def delete_video_from_playlist(playlistvideo_id):
+def delete_video_from_playlist(id, playlistvideo_id):
     playlistvideo = PlaylistVideos.query.get(playlistvideo_id)
     db.session.delete(playlistvideo)
     db.session.commit()

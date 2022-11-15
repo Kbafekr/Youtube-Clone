@@ -7,9 +7,8 @@ import { getAllVideosThunk } from "../../store/video";
 import { getAllChannelsThunk } from "../../store/channel";
 import { getAllPlaylistsThunk } from "../../store/playlist";
 import { updatePlaylistThunk } from "../../store/playlist";
+import DeletePlaylistVideoForm from "./RemoveVideoFromPlaylist";
 import { Modal } from "../../context/Modal";
-import { deleteVideoFromPlaylistThunk } from "../../store/playlist";
-import EditVideoForm from "../User/UserVideoSection/VideoForms/EditVideoForm";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../Utils/Utils";
@@ -23,8 +22,8 @@ export function PlaylistPage({ sidePanel }) {
   const channels = useSelector((state) => state.channel);
   const playlist = useSelector((state) => state.playlist);
 
-  const [currentVideo, setCurrentVideo] = useState(false);
-  const [showModalEditVideo, setShowModalEditVideo] = useState(false);
+  const [currentPlaylist, setCurrentPlaylist] = useState(false);
+  const [showModalRemoveVideo, setShowModalRemoveVideo] = useState(false);
 
 
   const channelsArray = Object.values(channels);
@@ -118,23 +117,23 @@ export function PlaylistPage({ sidePanel }) {
                                 // onClick={() => history.push(`/videos/${video.id}`)}
                               >
                                 <div className="EditChannelFavicon">
-                                  {showModalEditVideo && (
+                                  {showModalRemoveVideo && (
                                     <Modal
                                       onClose={() =>
-                                        setShowModalEditVideo(false)
+                                        setShowModalRemoveVideo(false)
                                       }
                                     >
-                                      <EditVideoForm
-                                        video={currentVideo}
-                                        setShowModal={setShowModalEditVideo}
+                                      <DeletePlaylistVideoForm
+                                        playlistVideo={currentPlaylist}
+                                        setShowModal={setShowModalRemoveVideo}
                                       />
                                     </Modal>
                                   )}
 
                                   <i
                                     onClick={() => {
-                                      setShowModalEditVideo(true);
-                                      setCurrentVideo(video);
+                                      setShowModalRemoveVideo(true);
+                                      setCurrentPlaylist(playlistVideos);
                                     }}
                                     class="fa-sharp fa-solid fa-trash"
                                   ></i>

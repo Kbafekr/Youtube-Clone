@@ -51,10 +51,11 @@ const addVideoToPlaylist = (updated) => {
   };
 };
 
-const deleteVideoFromPlaylist = (playlistId) => {
+const deleteVideoFromPlaylist = (playlistId, playlistvideo_id) => {
   return {
     type: DELETE_VIDEO_PLAYLIST,
     playlistId,
+    playlistvideo_id
   };
 };
 
