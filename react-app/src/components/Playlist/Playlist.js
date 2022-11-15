@@ -7,7 +7,9 @@ import { getAllVideosThunk } from "../../store/video";
 import { getAllChannelsThunk } from "../../store/channel";
 import { getAllPlaylistsThunk } from "../../store/playlist";
 import { updatePlaylistThunk } from "../../store/playlist";
+import { Modal } from "../../context/Modal";
 import { deleteVideoFromPlaylistThunk } from "../../store/playlist";
+import EditVideoForm from "../User/UserVideoSection/VideoForms/EditVideoForm";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../Utils/Utils";
@@ -20,6 +22,10 @@ export function PlaylistPage({ sidePanel }) {
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);
   const playlist = useSelector((state) => state.playlist);
+
+  const [currentVideo, setCurrentVideo] = useState(false);
+  const [showModalEditVideo, setShowModalEditVideo] = useState(false);
+
 
   const channelsArray = Object.values(channels);
   const videosArray = Object.values(videos);
@@ -111,7 +117,28 @@ export function PlaylistPage({ sidePanel }) {
                                 className="VideoCardPlaylist"
                                 // onClick={() => history.push(`/videos/${video.id}`)}
                               >
-                                <div>edit</div>
+                                <div className="EditChannelFavicon">
+                                  {showModalEditVideo && (
+                                    <Modal
+                                      onClose={() =>
+                                        setShowModalEditVideo(false)
+                                      }
+                                    >
+                                      <EditVideoForm
+                                        video={currentVideo}
+                                        setShowModal={setShowModalEditVideo}
+                                      />
+                                    </Modal>
+                                  )}
+
+                                  <i
+                                    onClick={() => {
+                                      setShowModalEditVideo(true);
+                                      setCurrentVideo(video);
+                                    }}
+                                    class="fa-sharp fa-solid fa-trash"
+                                  ></i>
+                                </div>
 
                                 {/* used to cover video preview to prevent load */}
                                 <div
@@ -172,7 +199,7 @@ export function PlaylistPage({ sidePanel }) {
                                                     id="ChannelNameHomeArray"
                                                   >
                                                     <Link
-                                                      className="PlayVideoChannelName"
+                                                      className="PlayVideoplaylistChannelName"
                                                       to={`/channels/${channel.id}`}
                                                     >
                                                       {channel.channel_name}

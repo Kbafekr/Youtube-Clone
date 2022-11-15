@@ -45,7 +45,7 @@ export function VideoPage({ sidePanel }) {
 
   let userNotifications;
   let notificationsFilteredByVideo;
-  if (NotificationsAll.length > 0) {
+  if (NotificationsAll.length > 0 && user != null) {
     userNotifications = NotificationsAll.filter(
       (notification) =>
         notification.user_id === user.id && notification.video_id == videoId
