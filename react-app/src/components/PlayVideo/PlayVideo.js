@@ -15,7 +15,10 @@ import { updateVideoThunk } from "../../store/video";
 import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
 import DescriptionSection from "./DescriptionTags/DescriptionTags";
-import { getAllSubscribersThunk, getChannelSubscribersThunk } from "../../store/subscribers";
+import {
+  getAllSubscribersThunk,
+  getChannelSubscribersThunk,
+} from "../../store/subscribers";
 import { SubscribeButton } from "./SubscribeButtonVideo";
 
 import { CommentsSection } from "./CommentsSection/Comments";
@@ -23,7 +26,6 @@ import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
 
 import { getAllNotificationsThunk } from "../../store/notifications";
 import { updateNotificationThunk } from "../../store/notifications";
-
 
 export function VideoPage({ sidePanel }) {
   const { videoId } = useParams();
@@ -45,16 +47,24 @@ export function VideoPage({ sidePanel }) {
   let notificationsFilteredByVideo;
   if (NotificationsAll.length > 0) {
     userNotifications = NotificationsAll.filter(
-      (notification) => notification.user_id === user.id && notification.video_id == videoId
+      (notification) =>
+        notification.user_id === user.id && notification.video_id == videoId
     );
   }
 
   useEffect(() => {
     if (userNotifications != null && userNotifications[0] != null) {
-      dispatch(updateNotificationThunk(userNotifications[0].id, userNotifications[0].channel_id, userNotifications[0].video_id, userNotifications[0].user_id, true))
+      dispatch(
+        updateNotificationThunk(
+          userNotifications[0].id,
+          userNotifications[0].channel_id,
+          userNotifications[0].video_id,
+          userNotifications[0].user_id,
+          true
+        )
+      );
     }
-  }, [dispatch, videoId])
-
+  }, [dispatch, videoId]);
 
   // usestate to keep track of description height
   const [showMoreDescription, setShowMoreDescription] = useState(false);
@@ -120,14 +130,15 @@ export function VideoPage({ sidePanel }) {
   let nextVideo;
 
   if (filteredVideo[0] != null) {
-    currentVideoIndex = videosArray.findIndex((video) => video.id == filteredVideo[0].id)
+    currentVideoIndex = videosArray.findIndex(
+      (video) => video.id == filteredVideo[0].id
+    );
   }
 
   if (currentVideoIndex != null && videosArray) {
     if (videosArray[currentVideoIndex + 1] != null) {
-      nextVideo = videosArray[currentVideoIndex + 1]
-    }
-    else nextVideo = videosArray[0]
+      nextVideo = videosArray[currentVideoIndex + 1];
+    } else nextVideo = videosArray[0];
   }
   if (filteredVideo[0] && loaded) {
     return (
@@ -194,7 +205,9 @@ export function VideoPage({ sidePanel }) {
                                   className="flexRow"
                                   id="homeArrayChannelViews"
                                 >
-                                  <div>{channel.subscribers.length} subscribers</div>
+                                  <div>
+                                    {channel.subscribers.length} subscribers
+                                  </div>
                                   <div className="CircleDiv" />
                                   <div>{channel.created_at.slice(0, 16)}</div>
                                 </div>
@@ -202,7 +215,11 @@ export function VideoPage({ sidePanel }) {
                             </div>
                             <div className="SubscribeAndBellSection">
                               <div className="subscribeButtonContainer">
-                                  <SubscribeButton currentChannel={channel} subscribed={subscribed} setSubscribed={setSubscribed} />
+                                <SubscribeButton
+                                  currentChannel={channel}
+                                  subscribed={subscribed}
+                                  setSubscribed={setSubscribed}
+                                />
                               </div>
 
                               <div className="notificationBellVideoPlay">

@@ -109,14 +109,12 @@ align-items: flex-start;
     height: fit-content;
     padding: 0px 1px;
     border-radius: 50px;
-
 }
 
 #homeArrayChannelDetails {
     display: flex;
     gap: 5px;
     color: rgb(214, 213, 213);
-
 }
 
 #homeArrayChannelViews {
