@@ -1,0 +1,44 @@
+.PlaylistCardContainerPage {
+    min-width: 400px;
+    border: 1px solid red;
+    border-radius: 15px;
+}
+.PlaylistVideosContainerPage {
+    padding-left: 30px;
+    border: 1px solid rgb(0, 17, 255);
+    width: 100%;
+
+}
+
+/* background color array */
+#FirstPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(89,64,65,0.800) 0%, rgba(89,64,65,0.298) 33%, rgba(15,15,15,1.000) 100%)
+}
+#SecondPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(88,56,114,0.800) 0%, rgba(88,56,114,0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#ThirdPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(50, 98, 38, 0.8) 0%, rgba(112, 165, 144, 0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#FourthPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(114,42,36,0.800) 0%, rgba(114,42,36,0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#FifthPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(44,86,101,0.800) 0%, rgba(44,86,101,0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#SixthPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(105, 91, 47, 0.8) 0%, rgba(183, 199, 90, 0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#SeventhPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(101,66,33,0.800) 0%, rgba(101,66,33,0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#EigthPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(114,81,43,0.800) 0%, rgba(114,81,43,0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#NinthPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(114,34,29,0.800) 0%, rgba(114,34,29,0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+#TenthPlaylistBackground {
+    background: linear-gradient(to bottom, rgba(19,69,114,0.800) 0%, rgba(19,69,114,0.298) 33%, rgba(15,15,15,1.000) 100%);
+}
+

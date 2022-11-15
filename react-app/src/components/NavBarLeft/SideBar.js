@@ -41,7 +41,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
     );
   }
 
-  console.log(userPlaylists)
+
   if (sidePanel == true)
     return (
       <nav className="SideNavBarContainer">
@@ -199,9 +199,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                         userPlaylists.map((playlist) => {
                           return (
                             <div className="SideNavRowContainer">
-                              <div>
+                              <Link
+                                to={`/playlists/${playlist.id}`}
+                                className="SideBarIcon"
+                              >
                                 <i class="fa-solid fa-list"></i>
-                              </div>
+                              </Link>
                               <Link
                                 to={`/playlists/${playlist.id}`}
                                 className="SideBarText"
@@ -215,9 +218,23 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                   ) : (
                     <>
                     <div className="SideNavRowContainer">
-                      <div>
+                    <Link
+                    onClick={reloadPage}
+                    to={
+                      user != null
+                        ? {
+                            pathname: `/users/${user.id}`,
+                            state: {
+                              directedCategory: 3,
+                              uploadModalState: false,
+                            },
+                          }
+                        : `/login`
+                    }
+                    className="SideBarText"
+                  >
                         <i class="fa-solid fa-list"></i>
-                      </div>
+                      </Link>
                       <Link
                     onClick={reloadPage}
                     to={

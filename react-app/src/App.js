@@ -21,6 +21,7 @@ import { SearchPage } from './components/SearchPage/SearchPage';
 import { PageNotFound } from "./components/UnknownPage/PageNotFound";
 import Channel from './components/Channel/Channel';
 import { SubscriptionsPage } from './components/Subscriptions/Subscriptions';
+import { PlaylistPage } from './components/Playlist/Playlist';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,6 +71,10 @@ function App() {
         </Route>
 
 
+        {/* playlists */}
+        <Route path='/playlists/:playlistId' exact={true} >
+          <PlaylistPage sidePanel={sidePanel}/>
+        </Route>
 
         {/* library */}
         <Route path='/library' exact={true} >
@@ -86,10 +91,6 @@ function App() {
         {/* liked videos */}
         <Route path='/likedvideos' exact={true} >
           <Channel sidePanel={sidePanel}/>
-        </Route>
-        {/* playlists */}
-        <Route path='/playlists/:playlistId' exact={true} >
-          <SubscriptionsPage sidePanel={sidePanel}/>
         </Route>
         {/* playlists videos watch */}
         <Route path='/playlists/:playlistId/:videoId' exact={true} >

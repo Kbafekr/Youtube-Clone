@@ -80,7 +80,4 @@ export const amountViewsDetails = (views) => {
 
 
 
-
-
-
-  export default reloadPage
+export default reloadPage
