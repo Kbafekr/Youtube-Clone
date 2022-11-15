@@ -6,13 +6,16 @@ import reloadPage from "../../Utils/Utils";
 import { reloadSearchPage } from "../../Utils/Utils";
 import { AllSubscriptionsSideBar } from "./AllSubscriptionSideBar";
 import { getAllNotificationsThunk } from "../../store/notifications";
+import { getAllPlaylistsThunk } from "../../store/playlist";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import "./SideBar.css";
 const SideBarNav = ({ sidePanel, setSidePanel }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const playlists = useSelector((state) => state.playlist);
   const [openSubscriptions, setOpenSubscriptions] = useState(false);
+
   const [showMoreSubscriptions, setshowMoreSubscriptions] = useState(false);
   // const channel = useSelector((state) => state.active.channel);
   let channel_id;
@@ -26,7 +29,19 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
     dispatch(getAllNotificationsThunk());
   }, [dispatch, user]);
 
+  useEffect(() => {
+    dispatch(getAllPlaylistsThunk());
+  }, [dispatch, user]);
 
+  let userPlaylists;
+  const playlistArray = Object.values(playlists);
+  if (user && playlistArray != null) {
+    userPlaylists = playlistArray.filter(
+      (playlist) => playlist.user_id == user.id
+    );
+  }
+
+  console.log(userPlaylists)
   if (sidePanel == true)
     return (
       <nav className="SideNavBarContainer">
@@ -82,7 +97,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <div>
                 <i class="fa-solid fa-record-vinyl"></i>
               </div>
-              <div>You2oob Music</div>
+              <div>Hootube Music</div>
             </div>
           </div>
           {/* middle row */}
@@ -177,12 +192,51 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 ""
               )}
               {user != null ? (
-                <div className="SideNavRowContainer">
-                  <div>
-                    <i class="fa-solid fa-list"></i>
-                  </div>
-                  <div>Playlists</div>
-                </div>
+                <>
+                  {userPlaylists[0] != null ? (
+                    <>
+                      {userPlaylists &&
+                        userPlaylists.map((playlist) => {
+                          return (
+                            <div className="SideNavRowContainer">
+                              <div>
+                                <i class="fa-solid fa-list"></i>
+                              </div>
+                              <Link
+                                to={`/playlists/${playlist.id}`}
+                                className="SideBarText"
+                              >
+                                {playlist.title}
+                              </Link>
+                            </div>
+                          );
+                        })}
+                    </>
+                  ) : (
+                    <>
+                    <div className="SideNavRowContainer">
+                      <div>
+                        <i class="fa-solid fa-list"></i>
+                      </div>
+                      <Link
+                    onClick={reloadPage}
+                    to={
+                      user != null
+                        ? {
+                            pathname: `/users/${user.id}`,
+                            state: {
+                              directedCategory: 3,
+                              uploadModalState: false,
+                            },
+                          }
+                        : `/login`
+                    }
+                    className="SideBarText"
+                  >Playlists</Link>
+                    </div>
+                    </>
+                  )}
+                </>
               ) : (
                 ""
               )}

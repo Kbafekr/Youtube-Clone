@@ -162,6 +162,13 @@ if (userId != currentUser.id) {
           </div>
         </>
       );
+      if (category == 3)
+      return (
+        <>
+          {/* button that changes depending on the category selected in bottom nav*/}
+          <div className="UserSectionButton">Create Playlist</div>
+        </>
+      );
     if (category == 4)
       return (
         <>
@@ -205,6 +212,12 @@ if (userId != currentUser.id) {
       return (
         <>
           <UserVideoSection />
+        </>
+      );
+      if (category == 3)
+      return (
+        <>
+          <div>All Your Playlists</div>
         </>
       );
     if (category == 4)
@@ -299,7 +312,16 @@ if (userId != currentUser.id) {
                 >
                   Videos
                 </div>
-
+                <div
+                  onClick={() => setCategory(3)}
+                  className={
+                    category == 3
+                      ? "ActiveCategoryUserNav"
+                      : "InactiveCategoryUserNav"
+                  }
+                >
+                  Playlists
+                </div>
                 <div
                   onClick={() => setCategory(4)}
                   className={

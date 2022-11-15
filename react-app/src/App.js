@@ -64,14 +64,12 @@ function App() {
         <Route path='/channels/:channelId' exact={true} >
           <Channel sidePanel={sidePanel}/>
         </Route>
-
-
-
-
         {/* subscriptions */}
         <Route path='/subscriptions' exact={true} >
           <SubscriptionsPage sidePanel={sidePanel}/>
         </Route>
+
+
 
         {/* library */}
         <Route path='/library' exact={true} >
@@ -91,12 +89,14 @@ function App() {
         </Route>
         {/* playlists */}
         <Route path='/playlists/:playlistId' exact={true} >
-          <Channel sidePanel={sidePanel}/>
+          <SubscriptionsPage sidePanel={sidePanel}/>
         </Route>
         {/* playlists videos watch */}
-        <Route path='/channels/:playlistId/:videoId' exact={true} >
+        <Route path='/playlists/:playlistId/:videoId' exact={true} >
           <Channel sidePanel={sidePanel}/>
         </Route>
+
+
         {/* shorts */}
         <Route path='/shorts' exact={true} >
           <Channel sidePanel={sidePanel}/>
