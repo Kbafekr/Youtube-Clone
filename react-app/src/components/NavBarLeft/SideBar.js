@@ -55,12 +55,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Home
               </Link>
             </div>
-            <div className="SideNavRowContainer">
+            {/* <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
-            </div>
+            </div> */}
             {user != null ? (
               <div className="SideNavRowContainer">
                 <Link to={`/subscriptions`} className="SideBarIcon">
@@ -93,12 +93,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             ) : (
               ""
             )}
-            <div className="SideNavRowContainer">
+            {/* <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>Hootube Music</div>
-            </div>
+            </div> */}
           </div>
           {/* middle row */}
           {user != null ? (
@@ -110,7 +110,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
           )}
           {user != null ? (
             <div className="InternalSideBarSection">
-              {user != null ? (
+              {/* {user != null ? (
                 <div className="SideNavRowContainer">
                   <div>
                     <i class="fa-solid fa-book"></i>
@@ -119,7 +119,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 </div>
               ) : (
                 ""
-              )}
+              )} */}
 
               {user != null ? (
                 <div className="SideNavRowContainer">
@@ -487,12 +487,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 Home
               </Link>
             </div>
-            <div className="SideNavRowContainerClosed">
+            {/* <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-film"></i>
               </div>
               <div>Shorts</div>
-            </div>
+            </div> */}
             {user != null ? (
               <div className="SideNavRowContainerClosed">
                 <Link to={`/subscriptions`} className="SideBarIcon">
@@ -526,14 +526,14 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               ""
             )}
 
-            <div className="SideNavRowContainerClosed">
+            {/* <div className="SideNavRowContainerClosed">
               <div>
                 <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>You2oob Music</div>
-            </div>
+            </div> */}
 
-            {user != null ? (
+            {/* {user != null ? (
               <div className="SideNavRowContainerClosed">
                 <div>
                   <i class="fa-solid fa-book"></i>
@@ -542,7 +542,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               </div>
             ) : (
               ""
-            )}
+            )} */}
             {user != null ? (
               <div className="SideNavRowContainerClosed">
                 <Link to={`/watchhistory`} className="SideBarIcon">
