@@ -84,7 +84,6 @@ def delete_image(id):
         "statusCode": "200"
     }
 
-
 # add video to playlist
 
 @playlist_routes.route('/<int:id>/<int:video_id>/new', methods=['GET', "POST"])
@@ -93,7 +92,10 @@ def add_video_to_playlist(id, video_id):
     form = PlaylistVideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        data = form.data
         new_playlistVideo = PlaylistVideos(
+            # playlist_id=data["playlist_id"],
+            # video_id=data["video_id"],
             playlist_id=id,
             video_id=video_id,
         )

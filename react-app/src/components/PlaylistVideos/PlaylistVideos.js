@@ -321,7 +321,7 @@ export function PlaylistVideos({ sidePanel }) {
                                     className="VideoCardRecommended"
                                     // onClick={() => history.push(`/videos/${video.id}`)}
                                   >
-                                    <div className="PlaylistVideoIndex">{userPlaylists[0].playlist_videos.findIndex((video) => video.video_id == playlistVideos.video_id) + 1}</div>
+                                    <div className="PlaylistVideoIndex">{userPlaylists[0].playlist_videos.findIndex((video) => video.id == playlistVideos.id) + 1}</div>
                                     {/* used to cover video preview to prevent load */}
                                     <div
                                       className="OverlayVideoPreviewDetails"

@@ -19,7 +19,9 @@ import {
   getAllSubscribersThunk,
   getChannelSubscribersThunk,
 } from "../../store/subscribers";
-import { SubscribeButton } from "./SubscribeButtonVideo";
+
+import { SubscribeButton } from "./SubscribeButtonVideo.js";
+import { AddToPlaylistButton } from "./PlaylistSection/AddVideotoPlaylistButton";
 
 import { CommentsSection } from "./CommentsSection/Comments";
 import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
@@ -221,12 +223,9 @@ export function VideoPage({ sidePanel }) {
                                   setSubscribed={setSubscribed}
                                 />
                               </div>
-
-                              <div className="notificationBellVideoPlay">
-                                {/* <i class="fa-solid fa-bell"></i> */}
-                              </div>
                             </div>
                             {updateViews == videoId ? <LikesDislikes /> : ""}
+                            <AddToPlaylistButton />
                           </div>
                         ) : (
                           ""

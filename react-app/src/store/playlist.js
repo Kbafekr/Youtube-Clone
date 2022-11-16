@@ -121,13 +121,13 @@ export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
   }
 };
 export const addVideoToPlaylistThunk =
-  (playlistId, video_id) => async (dispatch) => {
-    const response = await fetch(`/api/playlists/${playlistId}/${video_id}/new`, {
-      method: "PUT",
+  (playlist_id, video_id) => async (dispatch) => {
+    const response = await fetch(`/api/playlists/${playlist_id}/${video_id}/new`, {
+      method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ playlistId, video_id }),
+      body: JSON.stringify({ playlist_id, video_id }),
     });
     if (response.ok) {
       const editPlaylist = await response.json();
@@ -179,7 +179,7 @@ export default function reducer(state = initialState, action) {
     }
     case ADD_VIDEO_PLAYLIST: {
         const newState = { ...state };
-        newState[action.playlist.id] = action.playlist;
+        newState[action.updated.id] = action.updated;
         return newState;
       }
     case DELETE_VIDEO_PLAYLIST: {
