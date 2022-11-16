@@ -84,8 +84,6 @@ function App() {
         <Route path='/likedvideos' exact={true} >
           <LikedVideosPage sidePanel={sidePanel}/>
         </Route>
-
-
        {/* watch later */}
         <Route path='/watchlater' exact={true} >
           <WatchLaterPage sidePanel={sidePanel}/>

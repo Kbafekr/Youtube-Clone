@@ -16,6 +16,8 @@ import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
 import { getAllUsersThunk } from "../../store/allusers";
 import DescriptionSection from "../PlayVideo/DescriptionTags/DescriptionTags";
+import { createWatchHistoryThunk } from "../../store/watchhistory";
+import WatchLaterSection from "../PlayVideo/WatchLaterSection/WatchLaterSection";
 import {
   getAllSubscribersThunk,
   getChannelSubscribersThunk,
@@ -72,6 +74,17 @@ export function PlaylistVideos({ sidePanel }) {
       history.push(`/videos/${videoId}`);
     }
   }
+
+  useEffect(() => {
+    if (user != null) {
+      dispatch(
+        createWatchHistoryThunk(
+         user.id,
+         videoId
+        )
+      );
+    }
+  }, [dispatch, videoId]);
 
   useEffect(() => {
     if (userNotifications != null && userNotifications[0] != null) {
@@ -258,6 +271,9 @@ export function PlaylistVideos({ sidePanel }) {
                               </div>
                             </div>
                             {updateViews == videoId ? <LikesDislikes /> : ""}
+                            {user != null ?
+                            <WatchLaterSection />
+                            :""}
                           </div>
                         ) : (
                           ""

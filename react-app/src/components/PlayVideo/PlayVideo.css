@@ -75,6 +75,7 @@ font-weight: bold;
     display: flex;
     gap: 15px;
     margin-top: 10px;
+    min-width: 1800px;
 }
 
 /* subscription section to likes section */
@@ -333,4 +334,16 @@ overflow: hidden;
 .PlayVideoChannelName{
     text-decoration: none;
     z-index: 4;
+}
+
+
+/* watch later */
+
+.WatchLaterButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    padding-right: 10px;
 }

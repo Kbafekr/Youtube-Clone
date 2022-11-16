@@ -5,11 +5,7 @@ import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { getAllVideosThunk } from "../../store/video";
 import { getAllChannelsThunk } from "../../store/channel";
-import { getAllPlaylistsThunk } from "../../store/playlist";
-import { updatePlaylistThunk } from "../../store/playlist";
-import { getAllLikesThunk } from "../../store/likes";
-
-import { Modal } from "../../context/Modal";
+import { getWatchHistoryThunk } from "../../store/watchhistory";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../Utils/Utils";
@@ -22,10 +18,11 @@ export function WatchHistoryPage({ sidePanel }) {
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);
   const likes = useSelector((state) => state.likes);
+  const watchhistory = useSelector((state) => state.watchhistory);
 
   const channelsArray = Object.values(channels);
   const videosArray = Object.values(videos);
-  const likesArray = Object.values(likes);
+  const watchhistoryArray = Object.values(watchhistory);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
@@ -34,15 +31,18 @@ export function WatchHistoryPage({ sidePanel }) {
     dispatch(getAllVideosThunk());
   }, [dispatch, user]);
   useEffect(() => {
-    dispatch(getAllLikesThunk());
+    dispatch(getWatchHistoryThunk(user.id));
   }, [dispatch, user]);
 
-  let userLikes;
+  let userwatchhistoryUnsorted
+  let userwatchhistory
 
-  if (likesArray != null && user != null) {
-    userLikes = likesArray.filter((likes) => likes.user_id == user.id);
+  if (watchhistoryArray != null && user != null) {
+    userwatchhistoryUnsorted = watchhistoryArray.filter((likes) => likes.user_id == user.id);
   }
-
+  if (user != null && userwatchhistoryUnsorted != null) {
+    userwatchhistory = userwatchhistoryUnsorted.sort((a, b) => b.id - a.id)
+  }
   //   randomly assign playlist background color
   const [backgroundNumber, setBackgroundNumber] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("");
@@ -89,21 +89,21 @@ export function WatchHistoryPage({ sidePanel }) {
         {/* playlist Card */}
         <div className="PlaylistCardContainerPage" id={`${backgroundColor}`}>
           <div className="CenterImagePlaylistCard">
-            {userLikes[0] != null ? (
+            {userwatchhistory[0] != null ? (
               <div
                 className="PlaylistPreviewImage"
                 onClick={() =>
-                  history.push(`/videos/${userLikes[0].video_id}`)
+                  history.push(`/videos/${userwatchhistory[0].video_id}`)
                 }
                 // onClick={() =>
-                //   history.push(`/likedvideos/${userLikes[0].video_id}`)
+                //   history.push(`/likedvideos/${userwatchhistory[0].video_id}`)
                 // }
               >
                 {videosArray &&
                   videosArray.map((video) => {
                     return (
                       <>
-                        {video.id == userLikes[0].video_id ? (
+                        {video.id == userwatchhistory[0].video_id ? (
                           <div className="PlaylistPreviewImage">
                             {video.video_url.includes("s3") ? (
                               <ReactPlayer
@@ -157,21 +157,21 @@ export function WatchHistoryPage({ sidePanel }) {
                   id="noCursor"
                 />
                 <div className="NoVideosInPlaylistUserSection" id="noCursor">
-                  No videos liked{" "}
+                  Nothing Watched{" "}
                 </div>
               </div>
             )}
           </div>
           <div className="CenterImagePlaylistCardDetails">
             <div className="PlaylistTitlePageContainer">
-              <div className="PlaylistTitleOnCard">Liked Videos</div>
+              <div className="PlaylistTitleOnCard">Watch History</div>
             </div>
             {/* <div className="PlaylistCardButtonContainer">
-              {userLikes[0] != null && userLikes[0].video_id != null ? (
+              {userwatchhistory[0] != null && userwatchhistory[0].video_id != null ? (
                 <div
                   className="PlaylistPlayAllButton"
                   onClick={() =>
-                    history.push(`/likedvideos/${userLikes[0].video_id}`)
+                    history.push(`/likedvideos/${userwatchhistory[0].video_id}`)
                   }
                 >
                   {" "}
@@ -186,8 +186,8 @@ export function WatchHistoryPage({ sidePanel }) {
         </div>
         {/* playlist videos */}
         <div className="PlaylistVideosContainerPage">
-          {userLikes &&
-            userLikes.map((likedvideos) => {
+          {userwatchhistory &&
+            userwatchhistory.map((likedvideos) => {
               return (
                 <>
                   <div className="PlaylistVideosArraySection">
