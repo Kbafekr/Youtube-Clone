@@ -23,7 +23,9 @@ import Channel from './components/Channel/Channel';
 import { SubscriptionsPage } from './components/Subscriptions/Subscriptions';
 import { PlaylistPage } from './components/Playlist/Playlist';
 import { PlaylistVideos } from './components/PlaylistVideos/PlaylistVideos';
-
+import { LikedVideosPage } from './components/LikedVideosPage/LikedVideosPage';
+import { WatchHistoryPage } from './components/WatchHistoryPage/WatchHistoryPage';
+import { WatchLaterPage } from './components/WatchLaterPage/WatchLaterPage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -70,34 +72,45 @@ function App() {
         <Route path='/subscriptions' exact={true} >
           <SubscriptionsPage sidePanel={sidePanel}/>
         </Route>
-
-
         {/* playlists */}
         <Route path='/playlists/:playlistId' exact={true} >
           <PlaylistPage sidePanel={sidePanel}/>
         </Route>
-
         {/* playlists videos watch */}
         <Route path='/playlists/:playlistId/:videoId' exact={true} >
           <PlaylistVideos sidePanel={sidePanel}/>
         </Route>
-        
+        {/* liked videos */}
+        <Route path='/likedvideos' exact={true} >
+          <LikedVideosPage sidePanel={sidePanel}/>
+        </Route>
+
+
+       {/* watch later */}
+        <Route path='/watchlater' exact={true} >
+          <WatchLaterPage sidePanel={sidePanel}/>
+        </Route>
+
+        {/* watch history */}
+        <Route path='/watchhistory' exact={true} >
+          <WatchHistoryPage sidePanel={sidePanel}/>
+        </Route>
+
         {/* library */}
         <Route path='/library' exact={true} >
           <Channel sidePanel={sidePanel}/>
         </Route>
-        {/* watch history */}
-        <Route path='/watchhistory' exact={true} >
-          <Channel sidePanel={sidePanel}/>
-        </Route>
-        {/* watch later */}
-        <Route path='/watchlater' exact={true} >
-          <Channel sidePanel={sidePanel}/>
-        </Route>
-        {/* liked videos */}
-        <Route path='/likedvideos' exact={true} >
-          <Channel sidePanel={sidePanel}/>
-        </Route>
+
+        {/* liked videos videos watch */}
+        {/* <Route path='/likedvideos/:videoId' exact={true} >
+          <PlaylistVideos sidePanel={sidePanel}/>
+        </Route> */}
+        {/* watch later videos watch */}
+        {/* <Route path='/watchlater/:videoId' exact={true} >
+          <PlaylistVideos sidePanel={sidePanel}/>
+        </Route> */}
+
+
 
 
         {/* shorts */}

@@ -123,10 +123,10 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
 
               {user != null ? (
                 <div className="SideNavRowContainer">
-                  <div>
+                  <Link to={`/watchhistory`} className="SideBarIcon">
                     <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
-                  </div>
-                  <div>History</div>
+                  </Link>
+                  <Link to={`/watchhistory`} className="SideBarText">History</Link>
                 </div>
               ) : (
                 ""
@@ -173,20 +173,20 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               )}
               {user != null ? (
                 <div className="SideNavRowContainer">
-                  <div>
+                  <Link to={`/watchlater`} className="SideBarIcon">
                     <i class="fa-solid fa-clock"></i>
-                  </div>
-                  <div>Watch Later</div>
+                  </Link>
+                  <Link to={`/watchlater`} className="SideBarText">Watch Later</Link>
                 </div>
               ) : (
                 ""
               )}
               {user != null ? (
                 <div className="SideNavRowContainer">
-                  <div>
+                  <Link to={`/likedvideos`} className="SideBarIcon">
                     <i class="fa-solid fa-heart"></i>
-                  </div>
-                  <div>Liked Videos</div>
+                  </Link>
+                  <Link to={`/likedvideos`} className="SideBarText">Liked Videos</Link>
                 </div>
               ) : (
                 ""
@@ -545,10 +545,10 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             )}
             {user != null ? (
               <div className="SideNavRowContainerClosed">
-                <div>
+                <Link to={`/watchhistory`} className="SideBarIcon">
                   <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
-                </div>
-                <div>History</div>
+                </Link>
+                <Link to={`/watchhistory`} className="SideBarText">History</Link>
               </div>
             ) : (
               ""

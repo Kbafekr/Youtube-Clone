@@ -24,7 +24,7 @@ export const AddToPlaylistButton = () => {
 
   let userPlaylists;
 
-  if (playlistArray != null) {
+  if (playlistArray != null && user != null) {
     userPlaylists = playlistArray.filter(
       (playlist) => playlist.user_id == user.id
     );

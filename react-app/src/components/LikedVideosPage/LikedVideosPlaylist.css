@@ -1,0 +1,36 @@
+.PlaylistVideoIndex {
+    display: flex;
+    height: 120px;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    color: rgba(212, 212, 212, 0.901);
+    margin-right: 5px;
+}
+
+.PlaylistTitleAndIndexSection {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 20px;
+}
+
+.PlaylistIndexCurrentVideo {
+    font-size: 18px;
+    color: rgba(235, 235, 235, 0.901);
+}
+
+.PlaylistTitlePlaylistDetails {
+    font-size: 24px;
+    display: flex;
+    width: 100%;
+    min-width: 300px;
+    flex-wrap: wrap;
+    max-height: 52px;
+    overflow: hidden;
+    font-weight: bold;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }

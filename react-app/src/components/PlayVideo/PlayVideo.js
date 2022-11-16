@@ -14,6 +14,7 @@ import logo from "../../icons/you2oobLogo.png";
 import { updateVideoThunk } from "../../store/video";
 import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
+import WatchLaterSection from "./WatchLaterSection/WatchLaterSection";
 import DescriptionSection from "./DescriptionTags/DescriptionTags";
 import {
   getAllSubscribersThunk,
@@ -226,6 +227,9 @@ export function VideoPage({ sidePanel }) {
                             </div>
                             {updateViews == videoId ? <LikesDislikes /> : ""}
                             <AddToPlaylistButton />
+                            {user != null ?
+                            <WatchLaterSection />
+                            :""}
                           </div>
                         ) : (
                           ""
