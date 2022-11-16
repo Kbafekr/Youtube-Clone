@@ -27,8 +27,8 @@ const {playlistId} = useParams()
       formValidationErrors.push(
         "Playlist title must exist and must be more than 1 character"
       );
-    if (title.length > 200)
-      formValidationErrors.push("Playlist title must less than 200 characters");
+    if (title.length > 50)
+      formValidationErrors.push("Playlist title must less than 50 characters");
     setErrors(formValidationErrors);
   }, [title]);
 

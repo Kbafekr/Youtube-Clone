@@ -98,24 +98,25 @@
 }
 
 .RecommendedVideoPlaylistPreview {
-  min-height: 200px;
-  min-width: 300px;
-  height: 200px;
-  width: 300px;
+  min-height: 180px;
+  min-width: 280px;
+  height: 180px;
+  width: 280px;
   border-radius: 15px;
 }
 .OverlayVideoPlaylistPreviewDetails {
   position: absolute;
   z-index: 2;
-  height: 200px;
-  width: 300px;
+  height: 180px;
+  width: 280px;
   border-radius: 15px;
-  left: 808px;
+  left: 854px;
+  /* background-color: red; */
   cursor: pointer;
 }
 
 .RecommendedVideoPlaylistDetailsSection {
-  height: 200px;
+  height: 180px;
   width: 100%;
 }
 
@@ -145,12 +146,12 @@
 }
 
 .VideoTitleCardPlaylistSection {
-  font-size: 24px;
+  font-size: 22px;
   display: flex;
   width: 100%;
   min-width: 300px;
   flex-wrap: wrap;
-  max-height: 58px;
+  max-height: 52px;
   overflow: hidden;
   font-weight: bold;
   cursor: pointer;
@@ -183,6 +184,7 @@
   text-decoration: none;
   z-index: 4;
   font-size: 22px;
+  color: rgb(199, 199, 199);
 }
 
 #PlaylistArrayVideoViews {
@@ -254,7 +256,7 @@
   font-size: 36px;
   font-weight: bold;
   width: 270px;
-  max-height: 110px;
+  max-height: 130px;
   overflow: hidden;
   overflow-wrap: break-word;
   word-wrap: break-word;

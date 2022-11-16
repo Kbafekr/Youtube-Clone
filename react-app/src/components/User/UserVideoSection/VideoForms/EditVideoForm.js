@@ -30,8 +30,8 @@ function EditVideoForm({ video, setShowModal }) {
       formValidationErrors.push(
         "Video title must exist and must be more than 1 character"
       );
-    if (title.length > 50)
-      formValidationErrors.push("Video title must less than 50 characters");
+    if (title.length > 200)
+      formValidationErrors.push("Video title must less than 200 characters");
     if (!description || title.description < 1)
       formValidationErrors.push(
         "Video description must exist and must be more than 1 character"
