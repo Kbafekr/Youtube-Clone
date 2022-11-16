@@ -1,8 +1,3 @@
-.PlaylistCardContainerPage {
-  min-width: 400px;
-  border-radius: 15px;
-  position: sticky;
-}
 .PlaylistVideosContainerPage {
   padding-left: 30px;
   width: 100%;
@@ -197,4 +192,123 @@
   font-size: 20px;
   display: flex;
   gap: 10px;
+}
+
+
+/* playlist card details */
+
+.PlaylistCardContainerPage {
+  min-width: 400px;
+  border-radius: 15px;
+  gap: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;
+  padding: 20px;
+}
+
+.CenterImagePlaylistCard {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.CenterImagePlaylistCardDetails {
+  display: flex;
+  width: 87%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.PlaylistPreviewImage {
+  min-height: 250px;
+  min-width: 350px;
+  height: 200px;
+  width: 300px;
+}
+.PlaylistPreviewImageBackground {
+  height: 500px;
+  width: 420px;
+}
+
+/* background image */
+.backgroundImagePlaylistCard {
+  position: relative;
+  top: -220px;
+  transform: translateX(-9%);
+  opacity: 0.4;
+  -webkit-filter: blur(30px);
+  filter: blur(30px);
+}
+
+.PlaylistTitlePageContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.PlaylistTitleOnCard {
+  font-size: 36px;
+  font-weight: bold;
+  width: 270px;
+  max-height: 110px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+  .PlaylistCardButtonContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .PlaylistPlayAllButton {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    color: rgb(62, 62, 62);
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    cursor: pointer;
+    text-shadow: 1px 1px  1px solid black;
+    text-decoration: none;
+}
+
+.PlaylistPlayAllButton:hover {
+  background-color: rgba(229, 229, 229, 0.879);
+}
+
+  .PlaylistSeeAllPlaylists {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    color: rgba(238, 238, 238, 0.826);
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    height: fit-content;
+    background-color: rgb(75, 75, 75);
+    text-align: center;
+    cursor: pointer;
+    text-shadow: 1px 1px  1px solid black;
+    text-decoration: none;
+}
+
+.PlaylistSeeAllPlaylists:hover {
+  background-color: rgb(138, 138, 138);
+
 }

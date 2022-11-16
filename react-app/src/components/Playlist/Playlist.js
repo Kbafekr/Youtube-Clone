@@ -8,6 +8,7 @@ import { getAllChannelsThunk } from "../../store/channel";
 import { getAllPlaylistsThunk } from "../../store/playlist";
 import { updatePlaylistThunk } from "../../store/playlist";
 import DeletePlaylistVideoForm from "./RemoveVideoFromPlaylist";
+import EditPlaylistForm from "./EditPlaylistForm";
 import { Modal } from "../../context/Modal";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -24,7 +25,7 @@ export function PlaylistPage({ sidePanel }) {
 
   const [currentPlaylist, setCurrentPlaylist] = useState(false);
   const [showModalRemoveVideo, setShowModalRemoveVideo] = useState(false);
-
+  const [showModalEditPlaylist, setShowModalEditPlaylist] = useState(false);
 
   const channelsArray = Object.values(channels);
   const videosArray = Object.values(videos);
@@ -96,10 +97,123 @@ export function PlaylistPage({ sidePanel }) {
         className={sidePanel == true ? "homeContainer" : "homeContainerClosed"}
       >
         {/* playlist Card */}
-        <div
-          className="PlaylistCardContainerPage"
-          id={`${backgroundColor}`}
-        ></div>
+        <div className="PlaylistCardContainerPage" id={`${backgroundColor}`}>
+          <div className="CenterImagePlaylistCard">
+            {userPlaylists[0].playlist_videos[0] != null ? (
+              <div
+                className="PlaylistPreviewImage"
+                onClick={() =>
+                  history.push(
+                    `/playlists/${playlistId}/${userPlaylists[0].playlist_videos[0].video_id}`
+                  )
+                }
+              >
+                {videosArray &&
+                  videosArray.map((video) => {
+                    return (
+                      <>
+                        {video.id ==
+                        userPlaylists[0].playlist_videos[0].video_id ? (
+                          <div className="PlaylistPreviewImage">
+                            {video.video_url.includes("s3") ? (
+                              <ReactPlayer
+                                width="100%"
+                                height="100%"
+                                url={video.video_url}
+                                playIcon={true}
+                              />
+                            ) : (
+                              <ReactPlayer
+                                width="100%"
+                                height="100%"
+                                url={video.video_url}
+                                light={true}
+                                playIcon={true}
+                                onClickPreview={false}
+                              />
+                            )}
+                            {/* <div className="backgroundImagePlaylistCard"> {video.video_url.includes("s3") ? (
+                              <ReactPlayer
+                                width="100%"
+                                height="100%"
+                                url={video.video_url}
+                                playIcon={true}
+                              />
+                            ) : (
+                              <div className="PlaylistPreviewImageBackground">
+                                <ReactPlayer
+                                  width="100%"
+                                  height="100%"
+                                  url={video.video_url}
+                                  light={true}
+                                  playIcon={true}
+                                  onClickPreview={false}
+                                />
+                              </div>
+                            )}</div> */}
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </>
+                    );
+                  })}
+              </div>
+            ) : (
+              <div>No videos in Playlist</div>
+            )}
+          </div>
+          <div className="CenterImagePlaylistCardDetails">
+            <div className="PlaylistTitlePageContainer">
+              <div className="PlaylistTitleOnCard">
+                {userPlaylists[0].title}
+              </div>
+              <div className="EditDeleteChannelSection">
+                <div className="EditChannelFavicon">
+                  {showModalEditPlaylist && (
+                    <Modal onClose={() => setShowModalEditPlaylist(false)}>
+                      <EditPlaylistForm
+                        setShowModal={setShowModalEditPlaylist}
+                      />
+                    </Modal>
+                  )}
+
+                  <i
+                    onClick={() => {
+                      setShowModalEditPlaylist(true);
+                    }}
+                    class="fa-solid fa-pen-to-square"
+                  ></i>
+                </div>
+              </div>
+            </div>
+            <div className="PlaylistCardButtonContainer">
+              <div
+                className="PlaylistPlayAllButton"
+                onClick={() =>
+                  history.push(
+                    `/playlists/${playlistId}/${userPlaylists[0].playlist_videos[0].video_id}`
+                  )
+                }
+              >
+                {" "}
+                <i class="fa-solid fa-play"></i>
+                Play all
+              </div>
+
+              <Link
+                className="PlaylistSeeAllPlaylists"
+                to={{
+                  pathname: `/users/${user.id}`,
+                  state: {
+                    directedCategory: 3,
+                    uploadModalState: false,
+                  },
+                }}
+               >See All Playlist</Link>
+            </div>
+          </div>
+        </div>
         {/* playlist videos */}
         <div className="PlaylistVideosContainerPage">
           {userPlaylists &&

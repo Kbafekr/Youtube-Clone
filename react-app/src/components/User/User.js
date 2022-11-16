@@ -66,6 +66,17 @@ function User({ sidePanel }) {
     }
   }
   if (
+    directedCategory == 3 &&
+    category != directedCategory &&
+    forceCategory == true
+  ) {
+    setCategory(directedCategory);
+    setForceCategory(false);
+    if (uploadModalState == true) {
+      setShowModalCreate(true);
+    }
+  }
+  if (
     directedCategory == 4 &&
     category != directedCategory &&
     forceCategory == true
