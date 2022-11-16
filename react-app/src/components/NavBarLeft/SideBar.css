@@ -26,6 +26,16 @@
     overflow-y: hidden;
 }
 
+.SideNavBarContainerClosed:hover {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .SideNavBarContainerClosed::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none
+  }
+
 .InternalSideBarContainer {
     display: flex;
     flex-direction: column;
@@ -122,6 +132,10 @@ width: 90%;
     overflow-x: hidden;
   }
 
+  .SideNavBarContainer::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none
+  }
 .showIconSideNavBar {
     color: white;
     font-size: 14px;
