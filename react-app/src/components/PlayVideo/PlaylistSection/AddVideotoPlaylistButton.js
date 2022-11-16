@@ -62,7 +62,8 @@ export const AddToPlaylistButton = () => {
                             </Modal>
                           )}
               <div className="PlaylistAddButtonText">
-                add to playlist
+              <i class="fa-solid fa-plus"></i>
+              <i class="fa-solid fa-list"></i>
               </div>
           </div>
           {/* drop down to add video to playlist */}

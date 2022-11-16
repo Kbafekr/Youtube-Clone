@@ -29,11 +29,11 @@ export const getWatchLaterThunk = (user_id) => async (dispatch) => {
 }
 
 
-export const createWatchLaterThunk = (user_id, video_id, payload) => async (dispatch) => {
+export const createWatchLaterThunk = (user_id, video_id) => async (dispatch) => {
     const response = await fetch(`/api/watchlater/${user_id}/watchlater/${video_id}/new`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({user_id, video_id})
     })
     if (response.ok) {
         const watchlater = await response.json()

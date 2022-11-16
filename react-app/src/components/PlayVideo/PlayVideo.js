@@ -16,6 +16,7 @@ import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
 import WatchLaterSection from "./WatchLaterSection/WatchLaterSection";
 import DescriptionSection from "./DescriptionTags/DescriptionTags";
+import { createWatchHistoryThunk } from "../../store/watchhistory";
 import {
   getAllSubscribersThunk,
   getChannelSubscribersThunk,
@@ -64,6 +65,16 @@ export function VideoPage({ sidePanel }) {
           userNotifications[0].video_id,
           userNotifications[0].user_id,
           true
+        )
+      );
+    }
+  }, [dispatch, videoId]);
+  useEffect(() => {
+    if (user != null) {
+      dispatch(
+        createWatchHistoryThunk(
+         user.id,
+         videoId
         )
       );
     }

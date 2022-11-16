@@ -23,10 +23,6 @@
     max-height: 500px;
 }
 
-.SideNavBarContainer::-webkit-scrollbar {
-    display: none;
-    -ms-overflow-style: none
-  }
 
 .ProfileDDUserOuter {
     display: flex;

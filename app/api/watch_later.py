@@ -18,7 +18,7 @@ def watchLater(user_id):
         }
     return {watchlater.id: watchlater.to_dict() for watchlater in watchLater}
 
-# make new video in watch history, if video exists, delete and make again (rather than find and update).
+# make new video in watch history, if video exists, delete.
 
 @watch_later_routes.route('/<int:user_id>/watchlater/<int:video_id>/new', methods=["POST"])
 @login_required

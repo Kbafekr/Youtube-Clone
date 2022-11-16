@@ -29,11 +29,11 @@ export const getWatchHistoryThunk = (user_id) => async (dispatch) => {
 }
 
 
-export const createWatchHistoryThunk = (user_id, video_id, payload) => async (dispatch) => {
+export const createWatchHistoryThunk = (user_id, video_id) => async (dispatch) => {
     const response = await fetch(`/api/watchhistory/${user_id}/history/${video_id}/new`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({user_id, video_id})
     })
     if (response.ok) {
         const watchhistory = await response.json()
