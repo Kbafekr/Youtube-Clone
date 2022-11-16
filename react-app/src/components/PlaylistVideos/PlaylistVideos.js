@@ -167,7 +167,6 @@ export function PlaylistVideos({ sidePanel }) {
     } else nextVideo = userPlaylists[0].playlist_videos[0];
   }
 
-  console.log(nextVideo);
   if (filteredVideo[0] && loaded) {
     return (
       <>

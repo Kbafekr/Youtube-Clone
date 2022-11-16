@@ -10,7 +10,6 @@ const playlistId = playlist.id
   const user = useSelector((state) => state.session.user);
 
 
-  console.log(playlist)
   const dispatch = useDispatch();
   const userId = user.id;
 

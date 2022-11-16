@@ -12,7 +12,6 @@ const {playlistId} = useParams()
   const playlistArray = Object.values(playlists)
   const playlist = playlistArray.filter((playlist) => playlist.id == playlistId)
 
-  console.log(playlist)
   const dispatch = useDispatch();
   const userId = user.id;
 

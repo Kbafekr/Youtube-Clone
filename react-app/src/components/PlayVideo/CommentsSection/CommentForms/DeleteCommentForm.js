@@ -16,7 +16,6 @@ function DeleteCommentForm({ comment, setShowModal }) {
 
 // filter through child comments and delete
 const filteredReplies = commentArray.filter((comments) => comments.commentReply_id === comment.id)
-console.log(filteredReplies)
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
