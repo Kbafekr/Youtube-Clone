@@ -15,6 +15,7 @@ import { getAllLikesThunk } from "../../store/likes";
 import { getAllDisLikesThunk } from "../../store/dislikes";
 import { SearchPageVideos } from "./SearchByVideos";
 import { SearchPageTags } from "./SearchByTags";
+import { SearchPagePlaylists } from "./SearchByPlaylists";
 import { SearchPageChannels } from "./SearchByChannels";
 
 export function SearchPage({ sidePanel }) {
@@ -132,6 +133,18 @@ export function SearchPage({ sidePanel }) {
                   Channels
                 </div>
                 {/* search by Channels */}
+                {/* search by Playlists */}
+                <div
+                  onClick={() => setFilterMethod("Playlists")}
+                  className={
+                    filterMethod == "Playlists"
+                      ? "FilterCategoryTextActive"
+                      : "FilterCategoryText"
+                  }
+                >
+                  Playlists
+                </div>
+                {/* search by Playlists */}
               </div>
               <div className="FilterCategorySearch">
                 <div>Sort By</div>
@@ -179,6 +192,14 @@ export function SearchPage({ sidePanel }) {
           )}
           {filterMethod == "Channels" ? (
             <SearchPageChannels
+              searchTerm={searchTerm}
+              activeSort={activeSort}
+            />
+          ) : (
+            ""
+          )}
+          {filterMethod == "Playlists" ? (
+            <SearchPagePlaylists
               searchTerm={searchTerm}
               activeSort={activeSort}
             />

@@ -77,3 +77,29 @@
     color: rgb(255, 118, 118);
     text-shadow: 1px 1px 1px black;
 }
+
+.UserChannelsDetailsSectionOuterSearch {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  .UserChannelsDetailsSectionSearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 120px;
+  }
+
+  .PlaylistUserSectionMappedSearch {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    row-gap: 50px;
+    column-gap: 50px;
+}

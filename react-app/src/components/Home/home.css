@@ -155,14 +155,9 @@ align-items: flex-start;
         width: 1800px
     }
 }
-@media screen and (min-width: 1380px) and (max-width: 1730px){
+@media screen and (max-width: 1730px){
     .homeTagsBarContainer {
         width: 950px;
-    }
-}
-@media screen  and (max-width: 1380px){
-    .homeTagsBarContainer {
-        width: 650px;
     }
 }
 .homeTagsBar {
