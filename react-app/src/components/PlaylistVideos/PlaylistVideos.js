@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import './playlistVideos.css'
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -13,6 +14,7 @@ import logo from "../../icons/you2oobLogo.png";
 import { updateVideoThunk } from "../../store/video";
 import { getVideoTagsThunk } from "../../store/tags";
 import { getAllChannelsThunk } from "../../store/channel";
+import { getAllUsersThunk } from "../../store/allusers";
 import DescriptionSection from "../PlayVideo/DescriptionTags/DescriptionTags";
 import {
   getAllSubscribersThunk,
@@ -32,6 +34,7 @@ export function PlaylistVideos({ sidePanel }) {
   const channels = useSelector((state) => state.channel);
   const notifications = useSelector((state) => state.notifications);
   const playlist = useSelector((state) => state.playlist);
+  const allusers = useSelector((state) => state.allusers);
 
   const videos = useSelector((state) => state.video);
 
@@ -41,6 +44,7 @@ export function PlaylistVideos({ sidePanel }) {
 
   const NotificationsAll = Object.values(notifications);
   const playlistArray = Object.values(playlist);
+  const allUsersArray = Object.values(allusers);
 
   let userNotifications;
   let notificationsFilteredByVideo;
@@ -90,6 +94,7 @@ export function PlaylistVideos({ sidePanel }) {
 
   useEffect(() => {
     dispatch(getAllNotificationsThunk());
+    dispatch(getAllUsersThunk())
   }, [dispatch]);
 
   useEffect(() => {
@@ -151,16 +156,18 @@ export function PlaylistVideos({ sidePanel }) {
   let nextVideo;
 
   if (filteredVideo[0] != null) {
-    currentVideoIndex = videosArray.findIndex(
-      (video) => video.id == filteredVideo[0].id
+    currentVideoIndex = userPlaylists[0].playlist_videos.findIndex(
+      (video) => video.video_id == videoId
     );
   }
 
-  if (currentVideoIndex != null && videosArray) {
-    if (videosArray[currentVideoIndex + 1] != null) {
-      nextVideo = videosArray[currentVideoIndex + 1];
-    } else nextVideo = videosArray[0];
+  if (currentVideoIndex != null && videosArray && userPlaylists[0] != null) {
+    if (userPlaylists[0].playlist_videos[currentVideoIndex + 1] != null) {
+      nextVideo = userPlaylists[0].playlist_videos[currentVideoIndex + 1];
+    } else nextVideo = userPlaylists[0].playlist_videos[0];
   }
+
+  console.log(nextVideo);
   if (filteredVideo[0] && loaded) {
     return (
       <>
@@ -178,7 +185,11 @@ export function PlaylistVideos({ sidePanel }) {
                   url={filteredVideo[0].video_url}
                   playing={true}
                   controls={true}
-                  onEnded={() => history.push(`/videos/${nextVideo.id}`)}
+                  onEnded={() =>
+                    history.push(
+                      `/playlists/${playlistId}/${nextVideo.video_id}`
+                    )
+                  }
                 />
               </div>
               <div className="VideoDetailsTitleCard">
@@ -283,103 +294,143 @@ export function PlaylistVideos({ sidePanel }) {
             </div>
 
             <div className="RightSideVideoDetailsSection">
+              <div className="PlaylistTitleAndIndexSection">
+                <div className="PlaylistTitlePlaylistDetails" onClick={() => history.push(`/playlists/${playlistId}`)}>{userPlaylists[0].title}</div>
+                {allUsersArray && allUsersArray.map((users) => {
+                  return (<>
+                  {users.id == userPlaylists[0].user_id ?
+                <div className="PlaylistIndexCurrentVideo">
+                  {users.first_name} - {currentVideoIndex + 1} /{" "}
+                  {userPlaylists[0].playlist_videos.length}
+                </div>
+                :""}
+                  </>)
+                })}
+              </div>
+
               <div className="RecommendedArraySection">
-                {notVideoArray &&
-                  notVideoArray.map((video) => {
+                {userPlaylists &&
+                  userPlaylists[0].playlist_videos.map((playlistVideos) => {
                     return (
                       <>
-                        <div
-                          className="VideoCardRecommended"
-                          // onClick={() => history.push(`/videos/${video.id}`)}
-                        >
-                          {/* used to cover video preview to prevent load */}
-                          <div
-                            className="OverlayVideoPreviewDetails"
-                            onClick={() => history.push(`/videos/${video.id}`)}
-                          ></div>
-                          {/* used to cover video preview to prevent load */}
-                          <div
-                            className="RecommendedVideoPreview"
-                            onClick={() => history.push(`/videos/${video.id}`)}
-                          >
-                            {video.video_url.includes("s3") ? (
-                              <ReactPlayer
-                                width="100%"
-                                height="100%"
-                                url={video.video_url}
-                                playIcon={true}
-                              />
-                            ) : (
-                              <ReactPlayer
-                                width="100%"
-                                height="100%"
-                                url={video.video_url}
-                                light={true}
-                                playIcon={true}
-                                onClickPreview={false}
-                              />
-                            )}
-                          </div>
-                          <div className="RecommendedVideoDetailsSection">
-                            {channelsArray &&
-                              channelsArray.map((channel) => {
-                                return (
-                                  <>
-                                    {channel.id == video.channel_id ? (
-                                      <div className="HomeVideoCardBottomSection">
-                                        <div className="HomeVideoArrayChannelDetails">
-                                          <div
-                                            className="VideoTitleCard"
-                                            onClick={() =>
-                                              history.push(
-                                                `/videos/${video.id}`
-                                              )
-                                            }
-                                          >
-                                            {video.title}
-                                          </div>
-                                          <div
-                                            className="flexColumn"
-                                            id="homeArrayChannelDetails"
-                                          >
-                                            <div
-                                              className="flexRow"
-                                              id="ChannelNameHomeArray"
-                                            >
-                                              <Link
-                                                className="PlayVideoChannelName"
-                                                to={`/channels/${channel.id}`}
-                                              >
-                                                {channel.channel_name}
-                                              </Link>
-                                              <div id="verifiedCheckMark">
-                                                <i class="fa-solid fa-check"></i>
-                                              </div>
-                                            </div>
-                                            <div
-                                              className="flexRow"
-                                              id="homeArrayChannelViews"
-                                            >
-                                              <div>
-                                                {amountViews(video.video_views)}{" "}
-                                                views
-                                              </div>
-                                              <div className="CircleDiv" />
-                                              <div>
-                                                {video.created_at.slice(0, 16)}
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    ) : (
-                                      ""
-                                    )}
-                                  </>
-                                );
-                              })}
-                          </div>
-                        </div>
+                        {notVideoArray &&
+                          notVideoArray.map((video) => {
+                            return (
+                              <>
+                                {playlistVideos.video_id == video.id ? (
+                                  <div
+                                    className="VideoCardRecommended"
+                                    // onClick={() => history.push(`/videos/${video.id}`)}
+                                  >
+                                    <div className="PlaylistVideoIndex">{userPlaylists[0].playlist_videos.findIndex((video) => video.video_id == playlistVideos.video_id) + 1}</div>
+                                    {/* used to cover video preview to prevent load */}
+                                    <div
+                                      className="OverlayVideoPreviewDetails"
+                                      onClick={() =>
+                                        history.push(
+                                          `/playlists/${playlistId}/${playlistVideos.video_id}`
+                                        )
+                                      }
+                                    ></div>
+                                    {/* used to cover video preview to prevent load */}
+                                    <div
+                                      className="RecommendedVideoPreview"
+                                      onClick={() =>
+                                        history.push(
+                                          `/playlists/${playlistId}/${video.id}`
+                                        )
+                                      }
+                                    >
+                                      {video.video_url.includes("s3") ? (
+                                        <ReactPlayer
+                                          width="100%"
+                                          height="100%"
+                                          url={video.video_url}
+                                          playIcon={true}
+                                        />
+                                      ) : (
+                                        <ReactPlayer
+                                          width="100%"
+                                          height="100%"
+                                          url={video.video_url}
+                                          light={true}
+                                          playIcon={true}
+                                          onClickPreview={false}
+                                        />
+                                      )}
+                                    </div>
+                                    <div className="RecommendedVideoDetailsSection">
+                                      {channelsArray &&
+                                        channelsArray.map((channel) => {
+                                          return (
+                                            <>
+                                              {channel.id ==
+                                              video.channel_id ? (
+                                                <div className="HomeVideoCardBottomSection">
+                                                  <div className="HomeVideoArrayChannelDetails">
+                                                    <div
+                                                      className="VideoTitleCard"
+                                                      onClick={() =>
+                                                        history.push(
+                                                          `/playlists/${playlistId}/${playlistVideos.video_id}`
+                                                        )
+                                                      }
+                                                    >
+                                                      {video.title}
+                                                    </div>
+                                                    <div
+                                                      className="flexColumn"
+                                                      id="homeArrayChannelDetails"
+                                                    >
+                                                      <div
+                                                        className="flexRow"
+                                                        id="ChannelNameHomeArray"
+                                                      >
+                                                        <Link
+                                                          className="PlayVideoChannelName"
+                                                          to={`/channels/${channel.id}`}
+                                                        >
+                                                          {channel.channel_name}
+                                                        </Link>
+                                                        <div id="verifiedCheckMark">
+                                                          <i class="fa-solid fa-check"></i>
+                                                        </div>
+                                                      </div>
+                                                      <div
+                                                        className="flexRow"
+                                                        id="homeArrayChannelViews"
+                                                      >
+                                                        <div>
+                                                          {amountViews(
+                                                            video.video_views
+                                                          )}{" "}
+                                                          views
+                                                        </div>
+                                                        <div className="CircleDiv" />
+                                                        <div>
+                                                          {video.created_at.slice(
+                                                            0,
+                                                            16
+                                                          )}
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              ) : (
+                                                ""
+                                              )}
+                                            </>
+                                          );
+                                        })}
+                                    </div>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </>
+                            );
+                          })}
                       </>
                     );
                   })}

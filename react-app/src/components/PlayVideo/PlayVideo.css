@@ -321,6 +321,9 @@ overflow: hidden;
 #NoCursor {
     cursor: not-allowed;
 }
+#noCursor {
+    cursor: default;
+}
 
 
 .PointerCursor {

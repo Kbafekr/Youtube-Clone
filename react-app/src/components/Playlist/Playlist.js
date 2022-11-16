@@ -31,10 +31,6 @@ export function PlaylistPage({ sidePanel }) {
   const videosArray = Object.values(videos);
   const playlistArray = Object.values(playlist);
 
-  if (user == null) {
-    history.push("/");
-  }
-
   useEffect(() => {
     dispatch(getAllChannelsThunk());
   }, [dispatch, user]);
@@ -99,7 +95,8 @@ export function PlaylistPage({ sidePanel }) {
         {/* playlist Card */}
         <div className="PlaylistCardContainerPage" id={`${backgroundColor}`}>
           <div className="CenterImagePlaylistCard">
-            {userPlaylists[0].playlist_videos[0] != null ? (
+            {userPlaylists[0] != null &&
+            userPlaylists[0].playlist_videos[0] != null ? (
               <div
                 className="PlaylistPreviewImage"
                 onClick={() =>
@@ -160,34 +157,56 @@ export function PlaylistPage({ sidePanel }) {
                   })}
               </div>
             ) : (
-              <div>No videos in Playlist</div>
+              <div className="PlaylistNoVideosPreview">
+                          <img
+                            className="PlaylistNoVideosPreview"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Black_Box.png/1280px-Black_Box.png"
+                            id="noCursor"
+                          />
+                          <div
+                            className="NoVideosInPlaylistUserSection"
+                            id="noCursor"
+
+                          >
+                            No videos in playlist{" "}
+                          </div>
+                        </div>
             )}
           </div>
           <div className="CenterImagePlaylistCardDetails">
             <div className="PlaylistTitlePageContainer">
-              <div className="PlaylistTitleOnCard">
-                {userPlaylists[0].title}
-              </div>
-              <div className="EditDeleteChannelSection">
-                <div className="EditChannelFavicon">
-                  {showModalEditPlaylist && (
-                    <Modal onClose={() => setShowModalEditPlaylist(false)}>
-                      <EditPlaylistForm
-                        setShowModal={setShowModalEditPlaylist}
-                      />
-                    </Modal>
-                  )}
-
-                  <i
-                    onClick={() => {
-                      setShowModalEditPlaylist(true);
-                    }}
-                    class="fa-solid fa-pen-to-square"
-                  ></i>
+              {userPlaylists[0] != null ? (
+                <div className="PlaylistTitleOnCard">
+                  {userPlaylists[0].title}
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
+              {user != null && userPlaylists[0] != null && userPlaylists[0].user_id == user.id ? (
+                <div className="EditDeleteChannelSection">
+                  <div className="EditChannelFavicon">
+                    {showModalEditPlaylist && (
+                      <Modal onClose={() => setShowModalEditPlaylist(false)}>
+                        <EditPlaylistForm
+                          setShowModal={setShowModalEditPlaylist}
+                        />
+                      </Modal>
+                    )}
+
+                    <i
+                      onClick={() => {
+                        setShowModalEditPlaylist(true);
+                      }}
+                      class="fa-solid fa-pen-to-square"
+                    ></i>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <div className="PlaylistCardButtonContainer">
+              {userPlaylists[0] != null && userPlaylists[0].playlist_videos[0] != null ?
               <div
                 className="PlaylistPlayAllButton"
                 onClick={() =>
@@ -200,23 +219,29 @@ export function PlaylistPage({ sidePanel }) {
                 <i class="fa-solid fa-play"></i>
                 Play all
               </div>
-
-              <Link
-                className="PlaylistSeeAllPlaylists"
-                to={{
-                  pathname: `/users/${user.id}`,
-                  state: {
-                    directedCategory: 3,
-                    uploadModalState: false,
-                  },
-                }}
-               >See All Playlist</Link>
+              : ""}
+              {user != null ? (
+                <Link
+                  className="PlaylistSeeAllPlaylists"
+                  to={{
+                    pathname: `/users/${user.id}`,
+                    state: {
+                      directedCategory: 3,
+                      uploadModalState: false,
+                    },
+                  }}
+                >
+                  See All Playlist
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
         {/* playlist videos */}
         <div className="PlaylistVideosContainerPage">
-          {userPlaylists &&
+          {userPlaylists[0] &&
             userPlaylists[0].playlist_videos.map((playlistVideos) => {
               return (
                 <>
@@ -230,29 +255,33 @@ export function PlaylistPage({ sidePanel }) {
                                 className="VideoCardPlaylist"
                                 // onClick={() => history.push(`/videos/${video.id}`)}
                               >
-                                <div className="EditChannelFavicon">
-                                  {showModalRemoveVideo && (
-                                    <Modal
-                                      onClose={() =>
-                                        setShowModalRemoveVideo(false)
-                                      }
-                                    >
-                                      <DeletePlaylistVideoForm
-                                        playlistVideo={currentPlaylist}
-                                        setShowModal={setShowModalRemoveVideo}
-                                      />
-                                    </Modal>
-                                  )}
+                                {user != null &&
+                                userPlaylists[0].user_id == user.id ? (
+                                  <div className="EditChannelFavicon">
+                                    {showModalRemoveVideo && (
+                                      <Modal
+                                        onClose={() =>
+                                          setShowModalRemoveVideo(false)
+                                        }
+                                      >
+                                        <DeletePlaylistVideoForm
+                                          playlistVideo={currentPlaylist}
+                                          setShowModal={setShowModalRemoveVideo}
+                                        />
+                                      </Modal>
+                                    )}
 
-                                  <i
-                                    onClick={() => {
-                                      setShowModalRemoveVideo(true);
-                                      setCurrentPlaylist(playlistVideos);
-                                    }}
-                                    class="fa-sharp fa-solid fa-trash"
-                                  ></i>
-                                </div>
-
+                                    <i
+                                      onClick={() => {
+                                        setShowModalRemoveVideo(true);
+                                        setCurrentPlaylist(playlistVideos);
+                                      }}
+                                      class="fa-sharp fa-solid fa-trash"
+                                    ></i>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
                                 {/* used to cover video preview to prevent load */}
                                 <div
                                   className="OverlayVideoPlaylistPreviewDetails"

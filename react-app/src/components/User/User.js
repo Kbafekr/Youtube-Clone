@@ -11,7 +11,9 @@ import EditUserForm from "./EditUserForm";
 import CreateChannelForm from "./UserChannelSection/CreateChannelForm";
 // videos
 import CreateVideoForm from "./UserVideoSection/VideoForms/CreateVideoForm";
-
+// playlists
+import UserPlaylistSection from "./UserPlaylistSection/UserPlaylistSection";
+import CreatePlaylistForm from "./UserPlaylistSection/CreatePlaylistForm";
 // import uuid from 'react-uuid'
 
 
@@ -53,6 +55,10 @@ function User({ sidePanel }) {
   const [showModalCreateVideo, setShowModalCreateVideo] = useState(false);
   const [showModalEditVideo, setShowModalEditVideo] = useState(false);
   const [showModalDeleteVideo, setShowModalDeleteVideo] = useState(false);
+  // playlists
+
+  const [showModalCreatePlaylist, setShowModalCreatePlaylist] = useState(false);
+
 
   if (
     directedCategory == 2 &&
@@ -177,7 +183,17 @@ if (userId != currentUser.id) {
       return (
         <>
           {/* button that changes depending on the category selected in bottom nav*/}
-          <div className="UserSectionButton">Create Playlist</div>
+          {showModalCreatePlaylist && (
+            <Modal onClose={() => setShowModalCreatePlaylist(false)}>
+              <CreatePlaylistForm setShowModal={setShowModalCreatePlaylist} />
+            </Modal>
+          )}
+          <div
+            className="UserSectionButton"
+            onClick={() => setShowModalCreatePlaylist(true)}
+          >
+            Create Playlist
+          </div>
         </>
       );
     if (category == 4)
@@ -228,7 +244,7 @@ if (userId != currentUser.id) {
       if (category == 3)
       return (
         <>
-          <div>All Your Playlists</div>
+          <UserPlaylistSection />
         </>
       );
     if (category == 4)

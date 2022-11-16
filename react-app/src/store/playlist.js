@@ -82,11 +82,11 @@ export const getOnePlaylistThunk = (playlistId) => async (dispatch) => {
 };
 
 export const newPlaylistThunk =
-  (playlist) => async (dispatch) => {
+  (user_id, title) => async (dispatch) => {
     const response = await fetch("/api/playlists/new", {
       method: "POST",
-      // do not set content type, allow browser to do this automatically to prevent missing information
-      body: playlist,
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ user_id, title }),
     });
     if (response.ok) {
       const createPlaylist = await response.json();

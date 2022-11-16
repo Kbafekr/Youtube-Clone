@@ -1,0 +1,81 @@
+.PlaylistCardContainerUserPage {
+    width: 400px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 430px;
+    padding: 20px;
+  }
+
+  .PlaylistDetailsUserContainerCard {
+    margin-top: 5px;
+    display: flex;
+    gap: 20px;
+    width: 87%;
+  }
+  .PlaylistDetailsUserSection {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .PlaylistDetailsUserTitle {
+    font-size: 36px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    text-align: center;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    text-shadow: 3px 4px 5px black;
+    text-decoration: none;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.PlaylistUserSectionMapped {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+.PlaylistNoVideosPreview {
+    min-height: 250px;
+    min-width: 350px;
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+
+  .NoVideosInPlaylistUserSection {
+    font-size: 36px;
+    font-weight: bold;
+    width: 90%;
+    height: 100%;
+
+    display: flex;
+    position: relative;
+    top: -200px;
+    left: 20px;
+    justify-content: center;
+    text-align: center;
+    height: fit-content;
+    flex-wrap: nowrap;
+    text-shadow: 3px 4px 5px black;
+    z-index: 2;
+    text-decoration: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    color: white;
+  }
