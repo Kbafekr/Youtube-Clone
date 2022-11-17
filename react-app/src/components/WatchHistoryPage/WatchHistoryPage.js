@@ -31,7 +31,9 @@ export function WatchHistoryPage({ sidePanel }) {
     dispatch(getAllVideosThunk());
   }, [dispatch, user]);
   useEffect(() => {
+    if (user) {
     dispatch(getWatchHistoryThunk(user.id));
+    }
   }, [dispatch, user]);
 
   let userwatchhistoryUnsorted

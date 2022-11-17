@@ -33,7 +33,9 @@ export default function LibraryPage({sidePanel}) {
       dispatch(getAllVideosThunk());
     }, [dispatch, user]);
     useEffect(() => {
+        if (user) {
       dispatch(getWatchLaterThunk(user.id));
+    }
     }, [dispatch, user]);
 
     let userWatchLater;

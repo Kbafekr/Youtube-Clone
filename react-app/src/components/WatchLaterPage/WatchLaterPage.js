@@ -35,7 +35,9 @@ export function WatchLaterPage({ sidePanel }) {
     dispatch(getAllVideosThunk());
   }, [dispatch, user]);
   useEffect(() => {
-    dispatch(getWatchLaterThunk(user.id));
+    if (user) {
+      dispatch(getWatchLaterThunk(user.id));
+    }
   }, [dispatch, user]);
 
   let userWatchLater;
@@ -74,7 +76,7 @@ export function WatchLaterPage({ sidePanel }) {
     }
   }, [dispatch, backgroundNumber, playlistId]);
 
-  if (!user) {
+  if (!user || !user[0]) {
     return (
       <>
         <div>{history.push("/")}</div>
