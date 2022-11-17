@@ -1,0 +1,95 @@
+.LibraryLeftSideOverall {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.libraryPageContainer {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.LibraryLeftSectionContainer {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+
+  }
+
+.LibrarySectionInnerContainer {
+    max-width: 2400px;
+    min-width: 1800px;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 50px;
+    border-bottom:  1px solid gray;
+    margin-top: 20px;
+}
+  /* section Links */
+  .LibrarySectionLinksContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+
+  }
+
+  .LibraryLinkIcon {
+    width: 20px;
+    font-size: 24px;
+    text-align: left;
+    text-decoration: none;
+    color: white;
+}
+.LibraryLinkText {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+
+}
+
+
+/* each container */
+.MappedVideosContainerOuter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 30px;
+    column-gap: 50px;
+}
+.MappedVideosContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    row-gap: 30px;
+    column-gap: 50px;
+}
+
+#mappedContainerLibrarySection {
+ max-height: 650px;
+ overflow: hidden;
+
+}
+
+.VideosMappedLibrary {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    row-gap: 30px;
+    column-gap: 50px;
+}
+
+.LibraryTextErrorResults {
+    font-size: 20px;
+    color: rgba(237, 237, 237, 0.871);
+    text-shadow: 1px 1px 1px black;
+}

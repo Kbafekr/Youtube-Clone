@@ -76,7 +76,7 @@ export function WatchLaterPage({ sidePanel }) {
     }
   }, [dispatch, backgroundNumber, playlistId]);
 
-  if (!user || !user[0]) {
+  if (!user) {
     return (
       <>
         <div>{history.push("/")}</div>
@@ -187,6 +187,20 @@ export function WatchLaterPage({ sidePanel }) {
             </div> */}
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         {/* playlist videos */}
         <div className="PlaylistVideosContainerPage">
           {userWatchLater &&
