@@ -4,18 +4,14 @@ import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { getAllVideosThunk } from "../../store/video";
 import { getAllChannelsThunk } from "../../store/channel";
-import { getAllPlaylistsThunk } from "../../store/playlist";
-import { updatePlaylistThunk } from "../../store/playlist";
-import { getAllLikesThunk } from "../../store/likes";
-import { getWatchHistoryThunk } from "../../store/watchhistory";
 import { getWatchLaterThunk } from "../../store/watchlater";
 import ReactPlayer from "react-player";
-import { amountViews } from "../../Utils/Utils";
 import { Link } from "react-router-dom";
 import "./LibraryPage.css";
 import LibraryHistorySection from "./HistorySectionLibrary/LibraryHistorySection";
 import LibraryWatchHistorySection from "./WatchLaterSectionLibrary/LibraryWatchLaterSection";
 import LibraryPlaylistsSection from "./PlaylistsSectionLibrary/LibraryPlaylistsSection";
+import LibraryLikedVideosSection from "./LikedVideosSectionLibrary/LibraryLikedVideosSection";
 
 export default function LibraryPage({ sidePanel }) {
   const dispatch = useDispatch();
@@ -49,36 +45,6 @@ export default function LibraryPage({ sidePanel }) {
       (likes) => likes.user_id == user.id
     );
   }
-
-  //   randomly assign playlist background color
-  const [backgroundNumber, setBackgroundNumber] = useState(0);
-  const [backgroundColor, setBackgroundColor] = useState("");
-  useEffect(() => {
-    setBackgroundNumber(Math.ceil(Math.random() * 10));
-    if (backgroundColor !== 0) {
-      if (backgroundNumber == 1) {
-        setBackgroundColor("FirstPlaylistBackground");
-      } else if (backgroundNumber == 2) {
-        setBackgroundColor("SecondPlaylistBackground");
-      } else if (backgroundNumber == 3) {
-        setBackgroundColor("ThirdPlaylistBackground");
-      } else if (backgroundNumber == 4) {
-        setBackgroundColor("FourthPlaylistBackground");
-      } else if (backgroundNumber == 5) {
-        setBackgroundColor("FifthPlaylistBackground");
-      } else if (backgroundNumber == 6) {
-        setBackgroundColor("SixthPlaylistBackground");
-      } else if (backgroundNumber == 7) {
-        setBackgroundColor("SeventhPlaylistBackground");
-      } else if (backgroundNumber == 8) {
-        setBackgroundColor("EigthPlaylistBackground");
-      } else if (backgroundNumber == 9) {
-        setBackgroundColor("NinthPlaylistBackground");
-      } else {
-        setBackgroundColor("TenthPlaylistBackground");
-      }
-    }
-  }, [dispatch, backgroundNumber]);
 
   if (!user) {
     return (
@@ -151,7 +117,6 @@ export default function LibraryPage({ sidePanel }) {
               </div>
               <LibraryPlaylistsSection />
             </div>
-
             {/* liked videos */}
             <div className="LibrarySectionInnerContainer">
               <div className="LibrarySectionLinksContainer">
@@ -162,105 +127,80 @@ export default function LibraryPage({ sidePanel }) {
                   Liked Videos
                 </Link>
               </div>
-              <LibraryPlaylistsSection />
+              <LibraryLikedVideosSection />
             </div>
           </div>
 
-          <div className="PlaylistCardContainerPage" id={`${backgroundColor}`}>
+          <div className="LibraryUserCardRightSide">
             <div className="CenterImagePlaylistCard">
-              {userWatchLater[0] != null ? (
-                <div
-                  className="PlaylistPreviewImage"
-                  onClick={() =>
-                    history.push(`/videos/${userWatchLater[0].video_id}`)
-                  }
-                  // onClick={() =>
-                  //   history.push(`/likedvideos/${userWatchLater[0].video_id}`)
-                  // }
-                >
-                  {videosArray &&
-                    videosArray.map((video) => {
-                      return (
-                        <>
-                          {video.id == userWatchLater[0].video_id ? (
-                            <div className="PlaylistPreviewImage">
-                              {video.video_url.includes("s3") ? (
-                                <ReactPlayer
-                                  width="100%"
-                                  height="100%"
-                                  url={video.video_url}
-                                  playIcon={true}
-                                />
-                              ) : (
-                                <ReactPlayer
-                                  width="100%"
-                                  height="100%"
-                                  url={video.video_url}
-                                  light={true}
-                                  playIcon={true}
-                                  onClickPreview={false}
-                                />
-                              )}
-                              {/* <div className="backgroundImagePlaylistCard"> {video.video_url.includes("s3") ? (
-                                <ReactPlayer
-                                  width="100%"
-                                  height="100%"
-                                  url={video.video_url}
-                                  playIcon={true}
-                                />
-                              ) : (
-                                <div className="PlaylistPreviewImageBackground">
-                                  <ReactPlayer
-                                    width="100%"
-                                    height="100%"
-                                    url={video.video_url}
-                                    light={true}
-                                    playIcon={true}
-                                    onClickPreview={false}
-                                  />
-                                </div>
-                              )}</div> */}
+              {channelsArray &&
+                channelsArray.map((channel) => {
+                  return (
+                    <>
+                      {channel.id == user.active_channel ? (
+                        <div className="ChannelDetailsNavBar">
+                          <img
+                            className="ChannelProfilePicNav"
+                            src={channel.profile_picture}
+                            onError={(e) => {
+                              e.currentTarget.src =
+                                "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png";
+                            }}
+                          />
+                          <div className="ChannelNameAndSubscriberSection">
+                            <div className="ChannelNameNavBar">
+                              {channel.channel_name}
                             </div>
-                          ) : (
-                            ""
-                          )}
-                        </>
-                      );
-                    })}
-                </div>
-              ) : (
-                <div className="PlaylistNoVideosPreview">
-                  <img
-                    className="PlaylistNoVideosPreview"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Black_Box.png/1280px-Black_Box.png"
-                    id="noCursor"
-                  />
-                  <div className="NoVideosInPlaylistUserSection" id="noCursor">
-                    Nothing to watch{" "}
-                  </div>
-                </div>
-              )}
+                            <div className="ChannelSubscriberCountNavBar">
+                              {channel.subscribers.length} subscribers
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  );
+                })}
             </div>
             <div className="CenterImagePlaylistCardDetails">
-              <div className="PlaylistTitlePageContainer">
-                <div className="PlaylistTitleOnCard">Library</div>
-              </div>
-              {/* <div className="PlaylistCardButtonContainer">
-                {userWatchLater[0] != null && userWatchLater[0].video_id != null ? (
-                  <div
-                    className="PlaylistPlayAllButton"
-                    onClick={() =>
-                      history.push(`/likedvideos/${userWatchLater[0].video_id}`)
-                    }
-                  >
-                    {" "}
-                    <i class="fa-solid fa-play"></i>
-                    Play all
+              <div className="PlaylistTitlePageLibraryContainer">
+                <div className="PlaylistTitleLibraryOnCard">Subscriptions</div>
+                {user.subscriptions != null ? (
+                  <div className="LibraryInfoOnCard">
+                    {user.subscriptions.length}
                   </div>
                 ) : (
-                  ""
+                  <div className="LibraryInfoOnCard">0</div>
                 )}
-              </div> */}
+              </div>
+            </div>
+            {/* comments */}
+            <div className="CenterImagePlaylistCardDetails">
+              <div className="PlaylistTitlePageLibraryContainer">
+                <div className="PlaylistTitleLibraryOnCard">Comments</div>
+                {user.comments != null ? (
+                  <div className="LibraryInfoOnCard">
+                    {user.comments.length}
+                  </div>
+                ) : (
+                  <div className="LibraryInfoOnCard">0</div>
+                )}
+              </div>
+            </div>
+            {/* likes */}
+            <div className="CenterImagePlaylistCardDetails">
+              <div className="PlaylistTitlePageLibraryContainer">
+                <div className="PlaylistTitleLibraryOnCard">Likes</div>
+                {user.likes != null ? (
+                  <div className="LibraryInfoOnCard">
+                    {user.likes.length}
+                  </div>
+                ) : (
+                  <div className="LibraryInfoOnCard">0</div>
+                )}
+              </div>
+              <div className="PlaylistTitlePageLibraryContainer"></div>
             </div>
           </div>
         </div>

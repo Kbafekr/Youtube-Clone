@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { getAllVideosThunk } from "../../../store/video";
 import { getAllChannelsThunk } from "../../../store/channel";
-import { getWatchLaterThunk } from "../../../store/watchlater";
+import { getAllPlaylistsThunk } from "../../../store/playlist";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../../Utils/Utils";
 import { Link } from "react-router-dom";
@@ -16,11 +16,11 @@ export default function LibraryPlaylistsSection() {
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);
-  const watchlater = useSelector((state) => state.watchlater);
-
+  const playlists = useSelector((state) => state.playlist);
 
   const channelsArray = Object.values(channels);
   const videosArray = Object.values(videos);
+  const playlistArray = Object.values(playlists);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
@@ -30,16 +30,15 @@ export default function LibraryPlaylistsSection() {
   }, [dispatch, user]);
 
   useEffect(() => {
-    dispatch(getWatchLaterThunk(user.id));
+    dispatch(getAllPlaylistsThunk());
   }, [dispatch, user]);
 
+  let userPlaylists;
 
-
-
-  let watchLaterUser
-  const watchlaterArray = Object.values(watchlater);
-  if (user != null) {
-    watchLaterUser = watchlaterArray.filter((watch) => watch.user_id === user.id);
+  if (playlistArray != null) {
+    userPlaylists = playlistArray.filter(
+      (playlist) => playlist.user_id == user.id
+    );
   }
 
   if (!user) {
@@ -52,121 +51,102 @@ export default function LibraryPlaylistsSection() {
 
   return (
     <>
-      {watchLaterUser.length > 0 ? (
-        <div className="VideosMapped" id="mappedContainerLibrarySection">
-          {watchLaterUser &&
-            watchLaterUser.map((watchhistory) => {
+    {userPlaylists.length > 0 ? (
+      <div className="UserChannelsDetailsSection">
+        <div className="VideosMapped " id="mappedContainerLibrarySection">
+          {userPlaylists &&
+            userPlaylists.map((playlist) => {
               return (
-                <>
-                    {videosArray &&
-                      videosArray.map((video) => {
-                        return (
-                          <>
-                          {watchhistory.video_id == video.id ?
-                            <div className="VideoCardHome">
-                              <div
-                                className="VideoPreviewHome"
-                                onClick={() =>
-                                  history.push(`/videos/${video.id}`)
-                                }
-                              >
-                                {video.video_url.includes("s3") ? (
-                                  <ReactPlayer
-                                    width="100%"
-                                    height="100%"
-                                    url={video.video_url}
-                                    playIcon={true}
-                                  />
-                                ) : (
-                                  <ReactPlayer
-                                    width="100%"
-                                    height="100%"
-                                    url={video.video_url}
-                                    light={true}
-                                    playIcon={true}
-                                  />
-                                )}
-                              </div>
-                              {channelsArray &&
-                                channelsArray.map((channel) => {
-                                  return (
-                                    <>
-                                      {channel.id == video.channel_id ? (
-                                        <div className="HomeVideoCardBottomSection">
-                                          <div className="profileImageHomeVideoArray">
-                                            <img
-                                              className="channelPictureHomeArray"
-                                              alt="channel"
-                                              src={channel.profile_picture}
-                                            />
-                                          </div>
-                                          <div className="HomeVideoArrayChannelDetails">
-                                            <div
-                                              className="VideoTitleCard"
-                                              onClick={() =>
-                                                history.push(
-                                                  `/videos/${video.id}`
-                                                )
-                                              }
-                                            >
-                                              {video.title}
-                                            </div>
-                                            <div
-                                              className="flexColumn"
-                                              id="homeArrayChannelDetails"
-                                            >
-                                              <div
-                                                className="flexRow"
-                                                id="ChannelNameHomeArray"
-                                              >
-                                                <Link
-                                                  className="PlayVideoChannelName"
-                                                  to={`/channels/${channel.id}`}
-                                                >
-                                                  {channel.channel_name}
-                                                </Link>
-                                                <div id="verifiedCheckMark">
-                                                  <i class="fa-solid fa-check"></i>
-                                                </div>
-                                              </div>
-                                              <div
-                                                className="flexRow"
-                                                id="homeArrayChannelViews"
-                                              >
-                                                <div>
-                                                  {amountViews(
-                                                    video.video_views
-                                                  )}{" "}
-                                                  views
-                                                </div>
-                                                <div className="CircleDiv" />
-                                                <div>
-                                                  {video.created_at.slice(
-                                                    0,
-                                                    16
-                                                  )}
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      ) : (
-                                        ""
-                                      )}
-                                    </>
-                                  );
-                                })}
-                            </div>
-                            :""}
-                          </>
-                        );
-                      })}
-                </>
+                <div className="PlaylistCardContainerLibraryPage">
+                  {playlist != null && playlist.playlist_videos[0] != null ? (
+                    <div
+                      className="PlaylistCardContainerLibraryPage"
+                      onClick={() =>
+                        history.push(
+                          `/playlists/${playlist.id}/${playlist.playlist_videos[0].video_id}`
+                        )
+                      }
+
+                      //   onClick={() =>
+                      //     history.push(
+                      //       `/playlists/${playlist.id}/${playlist.playlist_videos[0].video_id}`
+                      //     )
+                      //   }
+                    >
+                      {videosArray &&
+                        videosArray.map((video) => {
+                          return (
+                            <>
+                              {video.id ==
+                              playlist.playlist_videos[0].video_id ? (
+                                <div className="PlaylistPreviewImageLibrary">
+                                  {video.video_url.includes("s3") ? (
+                                    <ReactPlayer
+                                      width="100%"
+                                      height="100%"
+                                      url={video.video_url}
+                                      playIcon={true}
+                                    />
+                                  ) : (
+                                    <ReactPlayer
+                                      width="100%"
+                                      height="100%"
+                                      url={video.video_url}
+                                      light={true}
+                                      playIcon={true}
+                                      onClickPreview={false}
+                                    />
+                                  )}
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </>
+                          );
+                        })}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="PlaylistNoVideosPreviewLibrary">
+                        <img
+                          className="PlaylistNoVideosPreviewLibrary"
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Black_Box.png/1280px-Black_Box.png"
+                          onClick={() =>
+                            history.push(`/playlists/${playlist.id}`)
+                          }
+                        />
+                        <div
+                          className="NoVideosInPlaylistLibrarySection"
+                          onClick={() =>
+                            history.push(`/playlists/${playlist.id}`)
+                          }
+                        >
+                          No videos in playlist{" "}
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  <div className="PlaylistDetailsUserContainerCard">
+                    <div
+                      className="PlaylistDetailsUserSection"
+                      key={playlist.id}
+                    >
+                      <Link
+                        className="PlaylistDetailsLibraryTitle"
+                        to={`/playlists/${playlist.id}`}
+                      >
+                        {playlist.title}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               );
             })}
         </div>
+      </div>
       ) : (
-        <div className="LibraryTextErrorResults"> Save videos to watch later. Your list shows up right here.</div>
+        <div className="LibraryTextErrorResults"> Save videos to playlists. Your playlists show up right here.</div>
       )}
     </>
   );

@@ -93,3 +93,124 @@
     color: rgba(237, 237, 237, 0.871);
     text-shadow: 1px 1px 1px black;
 }
+
+.PlaylistCardContainerLibraryPage {
+    width: 300px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+  }
+
+
+  .PlaylistPreviewImageLibrary {
+    height: 180px;
+    width: 300px;
+  }
+
+  .PlaylistNoVideosPreviewLibrary {
+    height: 180px;
+    width: 300px;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+
+  .NoVideosInPlaylistLibrarySection {
+    font-size: 36px;
+    font-weight: bold;
+    width: 90%;
+    height: 100%;
+
+    display: flex;
+    position: relative;
+    top: -140px;
+    left: 20px;
+    justify-content: center;
+    text-align: center;
+    height: fit-content;
+    flex-wrap: nowrap;
+    text-shadow: 3px 4px 5px black;
+    z-index: 2;
+    text-decoration: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    color: white;
+  }
+
+  .PlaylistDetailsLibraryTitle {
+    font-size: 36px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    text-align: left;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    text-shadow: 3px 4px 5px black;
+    text-decoration: none;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+
+/* user details right side card */
+
+.LibraryUserCardRightSide {
+  min-width: 400px;
+  margin-top: 90px;
+  position: sticky;
+  border-radius: 15px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;
+  padding: 20px;
+}
+
+.CenterImagePlaylistCardDetails {
+  display: flex;
+  width: 87%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.PlaylistTitlePageLibraryContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid gray;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.PlaylistTitleLibraryOnCard {
+  font-size: 20px;
+  font-weight: bold;
+  width: 270px;
+  max-height: 130px;
+  overflow: hidden;
+  color: rgba(224, 224, 224, 0.833);
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.LibraryInfoOnCard {
+  font-size: 20px;
+  font-weight: bold;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  color: rgba(224, 224, 224, 0.833);
+  word-wrap: break-word;
+  word-break: break-word;
+}
