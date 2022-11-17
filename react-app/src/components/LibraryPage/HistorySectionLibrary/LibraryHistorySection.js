@@ -10,14 +10,14 @@ import { amountViews } from "../../../Utils/Utils";
 import { Link } from "react-router-dom";
 import "../LibraryPage.css";
 
-export default function LibraryHistorySection() {
+export default function LibraryHistorySection(setNavBarType) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);
   const watchhistory = useSelector((state) => state.watchhistory);
-
+  setNavBarType(false)
   const channelsArray = Object.values(channels);
   const videosArray = Object.values(videos);
   const watchhistoryArray = Object.values(watchhistory);

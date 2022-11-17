@@ -13,10 +13,11 @@ import { getAllUsersThunk } from "../../store/allusers";
 import { createSubscriberThunk } from "../../store/subscribers";
 import "./Channel.css";
 
-export default function Channel({ sidePanel }) {
+export default function Channel({ sidePanel, setNavBarType}) {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  setNavBarType(false)
 
   const { channelId } = useParams();
   const [category, setCategory] = useState(1);

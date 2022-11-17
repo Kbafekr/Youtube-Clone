@@ -23,7 +23,7 @@ import { useLocation } from "react-router-dom";
 
 import UserVideoSection from "./UserVideoSection/UserVideoSection";
 import UserChannelSection from "./UserChannelSection/UserChannelSection";
-function User({ sidePanel }) {
+function User({ sidePanel,  setNavBarType }) {
   const history = useHistory()
   const location = useLocation();
   // use location hook to open create video modal only once
@@ -35,7 +35,7 @@ function User({ sidePanel }) {
     uploadModalState = location.state.uploadModalState;
   }
   const [forceCategory, setForceCategory] = useState(true);
-
+  setNavBarType(false)
   const dispatch = useDispatch();
   const { userId } = useParams();
   const currentUser = useSelector((state) => state.session.user);

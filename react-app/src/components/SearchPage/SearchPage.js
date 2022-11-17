@@ -18,13 +18,13 @@ import { SearchPageTags } from "./SearchByTags";
 import { SearchPagePlaylists } from "./SearchByPlaylists";
 import { SearchPageChannels } from "./SearchByChannels";
 
-export function SearchPage({ sidePanel }) {
+export function SearchPage({ sidePanel, setNavBarType }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
 
   const { searchTerm } = useParams();
-
+  setNavBarType(false)
   let filterState;
   let forceState;
   if (location.state != null) {

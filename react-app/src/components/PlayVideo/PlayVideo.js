@@ -31,19 +31,19 @@ import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
 import { getAllNotificationsThunk } from "../../store/notifications";
 import { updateNotificationThunk } from "../../store/notifications";
 
-export function VideoPage({ sidePanel }) {
+export function VideoPage({ sidePanel,  setNavBarType }) {
   const { videoId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
   const notifications = useSelector((state) => state.notifications);
-
   const videos = useSelector((state) => state.video);
 
   const [loaded, setLoaded] = useState(false);
   const [updateViews, setUpdateViews] = useState(videoId);
   const [subscribed, setSubscribed] = useState(false);
+  setNavBarType(false)
 
   const NotificationsAll = Object.values(notifications);
 

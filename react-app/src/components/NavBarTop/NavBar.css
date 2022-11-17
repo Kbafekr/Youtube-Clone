@@ -116,3 +116,37 @@ cursor: pointer;
     border-radius: 50px;
     text-shadow: 1px 1px  1px solid black;
 }
+
+
+
+/* music nav bar */
+
+.LogoImageMusicNavBar {
+    width: 250px;
+    height: 30px;
+}
+
+
+/* button music */
+
+
+  .homeButton {
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    border-top: none;
+    border-bottom: none;
+    border: none;
+    background-color: transparent;
+    color: rgb(194, 194, 194);
+  }
+
+ .homeButton:hover {
+    color: white;
+    cursor: pointer;
+  }
+
+/* buttons */
+.homeButton {
+  padding: 0em 1.5em;
+ }

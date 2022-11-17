@@ -27,6 +27,7 @@ import { LikedVideosPage } from "./components/LikedVideosPage/LikedVideosPage";
 import { WatchHistoryPage } from "./components/WatchHistoryPage/WatchHistoryPage";
 import { WatchLaterPage } from "./components/WatchLaterPage/WatchLaterPage";
 import LibraryPage from "./components/LibraryPage/LibraryPage";
+import { HootubeMusic } from "./components/HootubeMusic/HootubeMusic";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -47,84 +48,84 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar sidePanel={sidePanel} setSidePanel={setSidePanel} />
+      <NavBar sidePanel={sidePanel} setSidePanel={setSidePanel} navBarType={navBarType} setNavBarType={setNavBarType}/>
       <SideBarNav sidePanel={sidePanel} setSidePanel={setSidePanel} />
       <Switch>
         <Route path="/" exact={true}>
-          <HomePage sidePanel={sidePanel} />
+          <HomePage sidePanel={sidePanel} setNavBarType={setNavBarType} />
         </Route>
         <Route path="/search/:searchTerm" exact={true}>
-          <SearchPage sidePanel={sidePanel} />
+          <SearchPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         <Route path="/login" exact={true}>
-          <LoginForm sidePanel={sidePanel} />
+          <LoginForm sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm sidePanel={sidePanel} />
+          <SignUpForm sidePanel={sidePanel} setNavBarType={setNavBarType} />
         </Route>
         {/* single Video */}
         <Route path="/videos/:videoId" exact={true}>
-          <VideoPage sidePanel={sidePanel} />
+          <VideoPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* single Channel */}
         <Route path="/channels/:channelId" exact={true}>
-          <Channel sidePanel={sidePanel} />
+          <Channel sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* subscriptions */}
         <Route path="/subscriptions" exact={true}>
-          <SubscriptionsPage sidePanel={sidePanel} />
+          <SubscriptionsPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* playlists */}
         <Route path="/playlists/:playlistId" exact={true}>
-          <PlaylistPage sidePanel={sidePanel} />
+          <PlaylistPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* playlists videos watch */}
         <Route path="/playlists/:playlistId/:videoId" exact={true}>
-          <PlaylistVideos sidePanel={sidePanel} />
+          <PlaylistVideos sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* liked videos */}
         <Route path="/likedvideos" exact={true}>
-          <LikedVideosPage sidePanel={sidePanel} />
+          <LikedVideosPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* watch later */}
         <Route path="/watchlater" exact={true}>
-          <WatchLaterPage sidePanel={sidePanel} />
+          <WatchLaterPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* watch history */}
         <Route path="/watchhistory" exact={true}>
-          <WatchHistoryPage sidePanel={sidePanel} />
+          <WatchHistoryPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
         {/* library */}
         <Route path="/library" exact={true}>
-          <LibraryPage sidePanel={sidePanel} />
+          <LibraryPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
 
         {/* youtube music */}
-        <Route path="/youtubemusic" exact={true}>
-          <Channel sidePanel={sidePanel} />
+        <Route path="/hootubemusic" exact={true}>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
 
-        
+
         {/* shorts */}
         <Route path="/shorts" exact={true}>
           <Channel sidePanel={sidePanel} />
         </Route>
 
-        {/* liked videos videos watch */}
-        {/* <Route path='/likedvideos/:videoId' exact={true} >
-          <PlaylistVideos sidePanel={sidePanel}/>
-        </Route> */}
-        {/* watch later videos watch */}
-        {/* <Route path='/watchlater/:videoId' exact={true} >
-          <PlaylistVideos sidePanel={sidePanel}/>
-        </Route> */}
-
         <ProtectedRoute path="/users/:userId" exact={true}>
-          <User sidePanel={sidePanel} />
+          <User sidePanel={sidePanel} setNavBarType={setNavBarType} />
         </ProtectedRoute>
         <Route>
           <PageNotFound sidePanel={sidePanel} />
         </Route>
+
+              {/* liked videos videos watch */}
+              {/* <Route path='/likedvideos/:videoId' exact={true} >
+                <PlaylistVideos sidePanel={sidePanel}/>
+              </Route> */}
+              {/* watch later videos watch */}
+              {/* <Route path='/watchlater/:videoId' exact={true} >
+                <PlaylistVideos sidePanel={sidePanel}/>
+              </Route> */}
       </Switch>
     </BrowserRouter>
   );

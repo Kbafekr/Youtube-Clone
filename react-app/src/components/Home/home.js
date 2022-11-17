@@ -19,7 +19,7 @@ import { getAllDisLikesThunk } from "../../store/dislikes";
 
 import { getWatchHistoryThunk } from "../../store/watchhistory";
 
-export function HomePage({ sidePanel }) {
+export function HomePage({ sidePanel, setNavBarType }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
@@ -30,7 +30,7 @@ export function HomePage({ sidePanel }) {
   const [tagClicked, setTagClicked] = useState("All");
   const [tagsFilter, setTagsFilter] = useState("");
   const [loaded, setLoaded] = useState(false);
-
+  setNavBarType(false)
   const email =
     "fsdaiufgh3w9832f23wkjqfhwejkfasdbff9843wqeyrwdjkafhsdf@gmail.com";
   const password = "password";

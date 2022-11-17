@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../Utils/Utils";
 import { Link } from "react-router-dom";
-export function LikedVideosPage({ sidePanel }) {
+export function LikedVideosPage({ sidePanel, setNavBarType }) {
   const { playlistId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,7 +22,7 @@ export function LikedVideosPage({ sidePanel }) {
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);
   const likes = useSelector((state) => state.likes);
-
+  setNavBarType(false)
   const channelsArray = Object.values(channels);
   const videosArray = Object.values(videos);
   const likesArray = Object.values(likes);

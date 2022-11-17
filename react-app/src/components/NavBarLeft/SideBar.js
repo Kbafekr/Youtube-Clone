@@ -94,10 +94,10 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               ""
             )}
             <div className="SideNavRowContainer">
-              <div>
+              <Link to={`/hootubemusic`} className="SideBarIcon">
                 <i class="fa-solid fa-record-vinyl"></i>
-              </div>
-              <div>Hootube Music</div>
+              </Link>
+              <Link to={`/hootubemusic`} className="SideBarText">Hootube Music</Link>
             </div>
           </div>
           {/* middle row */}
@@ -526,12 +526,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               ""
             )}
 
-            {/* <div className="SideNavRowContainerClosed">
-              <div>
+            <div className="SideNavRowContainerClosed">
+            <Link to={`/hootubemusic`} className="SideBarIcon">
                 <i class="fa-solid fa-record-vinyl"></i>
-              </div>
-              <div>You2oob Music</div>
-            </div> */}
+              </Link>
+              <Link to={`/hootubemusic`} className="SideBarText">Hootube Music</Link>
+            </div>
 
             {user != null ? (
               <div className="SideNavRowContainerClosed">

@@ -9,7 +9,7 @@ import { login } from "../../store/session";
 
 
 
-const SignUpForm = () => {
+const SignUpForm = ({setNavBarType}) => {
   const [errors, setErrors] = useState([]);
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
@@ -18,6 +18,8 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+
+  setNavBarType(false)
 
 
   useEffect(() => {

@@ -7,12 +7,13 @@ import "./LoginForm.css";
 
 import logo from "../../icons/you2oobLogo.png";
 
-const LoginForm = () => {
+const LoginForm = ({setNavBarType}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  setNavBarType(false)
 
   const onLogin = async (e) => {
     e.preventDefault();

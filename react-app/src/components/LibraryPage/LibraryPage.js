@@ -13,8 +13,9 @@ import LibraryWatchHistorySection from "./WatchLaterSectionLibrary/LibraryWatchL
 import LibraryPlaylistsSection from "./PlaylistsSectionLibrary/LibraryPlaylistsSection";
 import LibraryLikedVideosSection from "./LikedVideosSectionLibrary/LibraryLikedVideosSection";
 
-export default function LibraryPage({ sidePanel }) {
+export default function LibraryPage({ sidePanel, setNavBarType}) {
   const dispatch = useDispatch();
+  setNavBarType(false)
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);

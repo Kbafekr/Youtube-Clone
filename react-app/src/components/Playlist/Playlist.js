@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../Utils/Utils";
 import { Link } from "react-router-dom";
-export function PlaylistPage({ sidePanel }) {
+export function PlaylistPage({ sidePanel, setNavBarType }) {
   const { playlistId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,7 +22,7 @@ export function PlaylistPage({ sidePanel }) {
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);
   const playlist = useSelector((state) => state.playlist);
-
+  setNavBarType(false)
   const [currentPlaylist, setCurrentPlaylist] = useState(false);
   const [showModalRemoveVideo, setShowModalRemoveVideo] = useState(false);
   const [showModalEditPlaylist, setShowModalEditPlaylist] = useState(false);

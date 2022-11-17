@@ -15,14 +15,14 @@ import { SubscriptionsVideosNewestPage } from "./SubscriptionsMapped/Subscriptio
 import { SubscriptionsVideosRow } from "./SubscriptionsMapped/SubscriptionsVideosRow";
 import { ListAllSubscriptions } from "./SubscriptionsMapped/ListAllSubscriptions";
 
-export function SubscriptionsPage({ sidePanel }) {
+export function SubscriptionsPage({ sidePanel, setNavBarType }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
 
   // keeps track of filter type
   const [filterMethod, setFilterMethod] = useState("Grid");
-
+  setNavBarType(false)
   if (user == null) {
     history.push("/");
   }

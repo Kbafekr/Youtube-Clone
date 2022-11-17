@@ -6,7 +6,7 @@ import "./NavBar.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import logo from "../../icons/you2oobLogo.png";
+import logo from "../../icons/hootubemusic.png";
 import reloadPage from "../../Utils/Utils";
 // import searchbar
 import { SearchBar } from "./SearchBar/SearchBar";
@@ -20,7 +20,7 @@ import NotificationsBell from "./Notifications/Notiifications";
 
 const MusicNavBar = ({ sidePanel, setSidePanel }) => {
   const location = useLocation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
 
@@ -38,7 +38,7 @@ const MusicNavBar = ({ sidePanel, setSidePanel }) => {
               </div>
             </div>
             <NavLink
-              to="/"
+              to="/hootubemusic"
               className="NavBarLogoLink"
               exact={true}
               activeClassName="active"
@@ -46,7 +46,7 @@ const MusicNavBar = ({ sidePanel, setSidePanel }) => {
               <img
                 src={logo}
                 alt="logo"
-                className="LogoImageNavBar"
+                className="LogoImageMusicNavBar"
                 onError={(e) => {
                   e.currentTarget.src =
                     "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png";
@@ -56,6 +56,21 @@ const MusicNavBar = ({ sidePanel, setSidePanel }) => {
           </div>
 
           <div className="MiddleContainerTopNav">
+            <NavLink exact to="/hootubemusic">
+              <button className="homeButton" addEvent>
+                Home
+              </button>
+            </NavLink>
+            <NavLink exact to="/hootubemusic/explore">
+              <button className="homeButton" addEvent>
+                Explore
+              </button>
+            </NavLink>
+            <NavLink exact to="/hootubemusic/library">
+              <button className="homeButton" addEvent>
+                Library
+              </button>
+            </NavLink>
             <div className="MiddleContainerInternalTopNav">
               <SearchBar />
             </div>
@@ -65,24 +80,12 @@ const MusicNavBar = ({ sidePanel, setSidePanel }) => {
         Users
       </NavLink> */}
           <div className="RightContainerTopNav">
-            <Link
-              to={{
-                pathname: `/users/${user.id}`,
-                state: { directedCategory: 2, uploadModalState: true },
-              }}
-              className="UploadCameraNavBar"
-              onClick={reloadPage}
-            >
-              <i class="fa-sharp fa-solid fa-video"></i>
-            </Link>
-            <NotificationsBell />
             <ProfileButton />
           </div>
         </div>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <div className="TopNavBarOuter">
         <div className="TopNavBarContainer">
@@ -130,7 +133,7 @@ const MusicNavBar = ({ sidePanel, setSidePanel }) => {
               activeClassName="active"
             >
               <div className="SignInbuttonNav">
-              <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-user"></i>
                 Sign in
               </div>
             </NavLink>
@@ -141,4 +144,4 @@ const MusicNavBar = ({ sidePanel, setSidePanel }) => {
   }
 };
 
-export default NavBar;
+export default MusicNavBar;

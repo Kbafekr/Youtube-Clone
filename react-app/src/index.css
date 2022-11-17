@@ -64,6 +64,7 @@ footer {
     width: 100%;
     min-width: 1800px;
     color: white;
+    z-index: 5;
     }
 
     footer > * {

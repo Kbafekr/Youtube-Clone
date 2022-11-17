@@ -15,15 +15,22 @@ import { newChannelThunk } from "../../store/channel";
 import { getAllChannelsThunk } from "../../store/channel";
 import { updateUserThunk } from "../../store/session";
 import { authenticate } from "../../store/session";
+import MusicNavBar from "./MusicNavBar";
 
 import NotificationsBell from "./Notifications/Notiifications";
 
-const NavBar = ({ sidePanel, setSidePanel }) => {
+const NavBar = ({ sidePanel, setSidePanel, navBarType, setNavBarType }) => {
   const location = useLocation();
   const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
   const channels = useSelector((state) => state.channel);
-
+if (navBarType == "Music") {
+  return (
+    <>
+      <MusicNavBar sidePanel={sidePanel} setSidePanel={setSidePanel}/>
+    </>
+  )
+}
   if (user && user.active_channel != null) {
     return (
       <div className="TopNavBarOuter">
