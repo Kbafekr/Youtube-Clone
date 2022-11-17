@@ -138,7 +138,7 @@ export default function LibraryPage({ sidePanel }) {
                   return (
                     <>
                       {channel.id == user.active_channel ? (
-                        <div className="ChannelDetailsNavBar">
+                        <div className="LibraryChannelDetailsNavBar">
                           <img
                             className="ChannelProfilePicNav"
                             src={channel.profile_picture}
@@ -147,9 +147,9 @@ export default function LibraryPage({ sidePanel }) {
                                 "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png";
                             }}
                           />
-                          <div className="ChannelNameAndSubscriberSection">
-                            <div className="ChannelNameNavBar">
-                              {channel.channel_name}
+                          <div className="ChannelNameAndSubscriberLibrarySection">
+                            <div className="LibraryNameNavBar">
+                              {user.first_name}
                             </div>
                             <div className="ChannelSubscriberCountNavBar">
                               {channel.subscribers.length} subscribers
