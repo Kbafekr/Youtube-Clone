@@ -29,9 +29,24 @@
     flex-direction: column;
     justify-content: flex-start;
     padding-bottom: 50px;
-    border-bottom:  1px solid gray;
-    margin-top: 20px;
 }
+.BorderBottomLibrary {
+  border-bottom:  1px solid gray;
+  width: 100%;
+}
+/*
+@media screen and (min-width: 2080px )  and (max-width: 2578px) {
+  .BorderBottomLibrary {
+      width: 1350px;
+  }
+}
+
+@media screen and (max-width: 2080px){
+  .BorderBottomLibrary {
+      width: 1700px
+  }
+} */
+
   /* section Links */
   .LibrarySectionLinksContainer {
     display: flex;

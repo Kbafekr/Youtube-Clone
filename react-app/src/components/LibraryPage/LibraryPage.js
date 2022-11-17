@@ -74,6 +74,7 @@ export default function LibraryPage({ sidePanel }) {
                 </Link>
               </div>
               <LibraryHistorySection />
+              <div className="BorderBottomLibrary"/>
             </div>
             {/* watch Later */}
             <div className="LibrarySectionInnerContainer">
@@ -86,6 +87,8 @@ export default function LibraryPage({ sidePanel }) {
                 </Link>
               </div>
               <LibraryWatchHistorySection />
+              <div className="BorderBottomLibrary"/>
+
             </div>
             {/* playlists section */}
             <div className="LibrarySectionInnerContainer">
@@ -116,6 +119,7 @@ export default function LibraryPage({ sidePanel }) {
                 </Link>
               </div>
               <LibraryPlaylistsSection />
+              <div className="BorderBottomLibrary"/>
             </div>
             {/* liked videos */}
             <div className="LibrarySectionInnerContainer">
@@ -128,6 +132,8 @@ export default function LibraryPage({ sidePanel }) {
                 </Link>
               </div>
               <LibraryLikedVideosSection />
+              <div className="BorderBottomLibrary"/>
+
             </div>
           </div>
 
