@@ -13,9 +13,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 200px;
+  width: 90%;
+  height: 300px;
   overflow: hidden;
+
 }
 .UserPageChannelBanner {
   display: flex;

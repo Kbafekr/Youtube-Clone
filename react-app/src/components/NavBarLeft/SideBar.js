@@ -112,10 +112,10 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             <div className="InternalSideBarSection">
               {user != null ? (
                 <div className="SideNavRowContainer">
-                  <div>
+                  <Link to={`/library`} className="SideBarIcon">
                     <i class="fa-solid fa-book"></i>
-                  </div>
-                  <div>Library</div>
+                  </Link>
+                  <Link to={`/library`} className="SideBarText">Library</Link>
                 </div>
               ) : (
                 ""
@@ -535,10 +535,10 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
 
             {user != null ? (
               <div className="SideNavRowContainerClosed">
-                <div>
+                <Link to={`/library`} className="SideBarIcon">
                   <i class="fa-solid fa-book"></i>
-                </div>
-                <div>Library</div>
+                </Link>
+                <Link to={`/library`} className="SideBarText">Library</Link>
               </div>
             ) : (
               ""
