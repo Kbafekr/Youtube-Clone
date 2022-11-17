@@ -41,7 +41,6 @@ export default function WatchLaterSection() {
   if (user != null && watchLaterUser[0] != null)
   {
     videoInWatchLater = watchlaterArray.filter((watch) => watch.video_id == videoId && watch.user_id == user.id);
-
   }
 
   const toggleWatchLater = (e) => {
@@ -52,12 +51,11 @@ export default function WatchLaterSection() {
   return (
     loaded && (
       <>
-        <div className="AddtoPlaylistButtonVideosSection">
+        <div className="AddtoPlaylistButtonVideosSection" onClick={toggleWatchLater}>
           <div className="WatchLaterButtonContainer">
             <div
               className="notificationBellVideoPlay"
               id={videoInWatchLater != null && videoInWatchLater[0] != null ? "blueLike" : ""}
-              onClick={toggleWatchLater}
             >
               <i class="fa-solid fa-clock"></i>
             </div>

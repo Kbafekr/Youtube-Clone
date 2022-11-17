@@ -35,7 +35,9 @@ export function WatchLaterPage({ sidePanel }) {
     dispatch(getAllVideosThunk());
   }, [dispatch, user]);
   useEffect(() => {
-    dispatch(getWatchLaterThunk(user.id));
+    if (user) {
+      dispatch(getWatchLaterThunk(user.id));
+    }
   }, [dispatch, user]);
 
   let userWatchLater;
@@ -185,6 +187,20 @@ export function WatchLaterPage({ sidePanel }) {
             </div> */}
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         {/* playlist videos */}
         <div className="PlaylistVideosContainerPage">
           {userWatchLater &&
