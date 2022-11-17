@@ -23,7 +23,7 @@
 
 .LibrarySectionInnerContainer {
     max-width: 2400px;
-    min-width: 1800px;
+    min-width: 1000px;
     display: flex;
     gap: 40px;
     flex-direction: column;
