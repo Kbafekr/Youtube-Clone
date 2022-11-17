@@ -48,7 +48,10 @@ export default function ProfileButton() {
           <img
             src={activeChannel[0].profile_picture}
             className="ProfileButtonPictureNav"
-            onError={e => { e.currentTarget.src = "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png"; }}
+            onError={(e) => {
+              e.currentTarget.src =
+                "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/01/Smiley-Face.png";
+            }}
           />
         </div>
 
@@ -65,7 +68,8 @@ export default function ProfileButton() {
                 <div className="ProfileDDChannelName">
                   {activeChannel[0].channel_name}
                 </div>
-                <Link onClick={reloadPage}
+                <Link
+                  onClick={reloadPage}
                   to={{
                     pathname: `/users/${user.id}`,
                     state: { directedCategory: 5, uploadModalState: true },
@@ -77,7 +81,12 @@ export default function ProfileButton() {
               </div>
             </div>
             <div className="ProfileDDUserSection">
-              <Link onClick={reloadPage}
+            <Link to={`/library`} className="ProfileDDRow">
+                <i class="fa-solid fa-book"></i>
+                <div>Library</div>
+              </Link>
+              <Link
+                onClick={reloadPage}
                 to={{
                   pathname: `/users/${user.id}`,
                   state: { directedCategory: 4, uploadModalState: false },
@@ -85,9 +94,10 @@ export default function ProfileButton() {
                 className="ProfileDDRow"
               >
                 <i class="fa-solid fa-user"></i>
-                <div>Your Channel</div>
+                <div>My Channels</div>
               </Link>
-              <Link onClick={reloadPage}
+              <Link
+                onClick={reloadPage}
                 to={{
                   pathname: `/users/${user.id}`,
                   state: { directedCategory: 2, uploadModalState: false },
@@ -97,7 +107,7 @@ export default function ProfileButton() {
                 <i class="fa-sharp fa-solid fa-photo-film"></i>
                 <div>My Videos</div>
               </Link>
-              <div className="ProfileDDRow"  onClick={onLogout}>
+              <div className="ProfileDDRow" onClick={onLogout}>
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <LogoutButton />
               </div>
