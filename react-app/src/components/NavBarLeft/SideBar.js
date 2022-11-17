@@ -110,7 +110,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
           )}
           {user != null ? (
             <div className="InternalSideBarSection">
-              {/* {user != null ? (
+              {user != null ? (
                 <div className="SideNavRowContainer">
                   <Link to={`/library`} className="SideBarIcon">
                     <i class="fa-solid fa-book"></i>
@@ -119,7 +119,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 </div>
               ) : (
                 ""
-              )} */}
+              )}
 
               {user != null ? (
                 <div className="SideNavRowContainer">
@@ -533,7 +533,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               <div>You2oob Music</div>
             </div> */}
 
-            {/* {user != null ? (
+            {user != null ? (
               <div className="SideNavRowContainerClosed">
                 <Link to={`/library`} className="SideBarIcon">
                   <i class="fa-solid fa-book"></i>
@@ -542,7 +542,7 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               </div>
             ) : (
               ""
-            )} */}
+            )}
             {user != null ? (
               <div className="SideNavRowContainerClosed">
                 <Link to={`/watchhistory`} className="SideBarIcon">
