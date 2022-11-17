@@ -32,6 +32,7 @@ function App() {
   const dispatch = useDispatch();
 
   const [sidePanel, setSidePanel] = useState(true);
+  const [navBarType, setNavBarType] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -93,18 +94,19 @@ function App() {
         <Route path="/watchhistory" exact={true}>
           <WatchHistoryPage sidePanel={sidePanel} />
         </Route>
-
         {/* library */}
         <Route path="/library" exact={true}>
           <LibraryPage sidePanel={sidePanel} />
         </Route>
 
-        {/* shorts */}
-        <Route path="/shorts" exact={true}>
-          <Channel sidePanel={sidePanel} />
-        </Route>
         {/* youtube music */}
         <Route path="/youtubemusic" exact={true}>
+          <Channel sidePanel={sidePanel} />
+        </Route>
+
+        
+        {/* shorts */}
+        <Route path="/shorts" exact={true}>
           <Channel sidePanel={sidePanel} />
         </Route>
 

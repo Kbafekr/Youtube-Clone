@@ -93,12 +93,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             ) : (
               ""
             )}
-            {/* <div className="SideNavRowContainer">
+            <div className="SideNavRowContainer">
               <div>
                 <i class="fa-solid fa-record-vinyl"></i>
               </div>
               <div>Hootube Music</div>
-            </div> */}
+            </div>
           </div>
           {/* middle row */}
           {user != null ? (

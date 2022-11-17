@@ -238,9 +238,9 @@ export function VideoPage({ sidePanel }) {
                             </div>
                             {updateViews == videoId ? <LikesDislikes /> : ""}
                             <AddToPlaylistButton />
-                            {/* {user != null ?
+                            {user != null ?
                             <WatchLaterSection />
-                            :""} */}
+                            :""}
                           </div>
                         ) : (
                           ""
