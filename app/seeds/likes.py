@@ -42,6 +42,13 @@ def seed_likes():
     like_39 = Like(user_id=2, video_id=19)
     like_40 = Like(user_id=2, video_id=20)
 
+    like_41 = Like(user_id=2, video_id=21)
+    like_42 = Like(user_id=3, video_id=21)
+    like_43 = Like(user_id=4, video_id=21)
+    like_44 = Like(user_id=5, video_id=21)
+    like_45 = Like(user_id=6, video_id=21)
+    like_46 = Like(user_id=7, video_id=21)
+
 
 
 
@@ -49,6 +56,7 @@ def seed_likes():
     like_11, like_12, like_13, like_14,like_15,like_16,like_17,like_18,like_19 ,like_20,
     like_21, like_22, like_23, like_24,like_25,like_26,like_27,like_28,like_29 ,like_30,
     like_31, like_32, like_33, like_34,like_35,like_36,like_37,like_38,like_39 ,like_40,
+    like_41, like_42, like_43, like_44, like_45, like_46,
     ]
 
     for like in likes:

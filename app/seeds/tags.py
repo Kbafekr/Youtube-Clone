@@ -124,6 +124,12 @@ def seed_tags():
     tag_99 = Tag(channel_id=7, video_id=20, body="Gameplay")
     tag_100 = Tag(channel_id=7, video_id=20, body="Campaign")
 
+    tag_101 = Tag(channel_id=1, video_id=21, body="Scene")
+    tag_102 = Tag(channel_id=1, video_id=21, body="Drama")
+    tag_103 = Tag(channel_id=1, video_id=21, body="Movie")
+    tag_104 = Tag(channel_id=1, video_id=21, body="Entertainment")
+    tag_105 = Tag(channel_id=1, video_id=21, body="Monologue")
+
     tags = [tag_1, tag_2, tag_3, tag_4, tag_5, tag_6, tag_7, tag_8, tag_9, tag_10,
     tag_11, tag_12, tag_13, tag_14, tag_15, tag_16, tag_17, tag_18, tag_19, tag_20,
     tag_21, tag_22, tag_23, tag_24, tag_25, tag_26, tag_27, tag_28, tag_29, tag_30,
@@ -133,7 +139,8 @@ def seed_tags():
     tag_61, tag_62, tag_63, tag_64, tag_65, tag_66, tag_67, tag_68, tag_69, tag_70,
     tag_71, tag_72, tag_73, tag_74, tag_75, tag_76, tag_77, tag_78, tag_79, tag_80,
     tag_81, tag_82, tag_83, tag_84, tag_85, tag_86, tag_87, tag_88, tag_89, tag_90,
-    tag_91, tag_92, tag_93, tag_94, tag_95, tag_96, tag_97, tag_98, tag_99, tag_100
+    tag_91, tag_92, tag_93, tag_94, tag_95, tag_96, tag_97, tag_98, tag_99, tag_100,
+    tag_101, tag_102, tag_103, tag_104, tag_105,
     ]
 
     for tag in tags:

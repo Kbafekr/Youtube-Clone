@@ -149,9 +149,15 @@ def seed_videos():
     video_url="https://youtu.be/XV8vBqNu9nI",
     video_views="5005")
 
+    video_21 = Video(channel_id=1,
+    title="Always Be Closing (HD) Alec Baldwin",
+    description="Glengarry Glen Ross (1992)",
+    video_url="https://www.youtube.com/watch?v=GrhSLf0I-HM",
+    video_views="6062022")
 
 
-    videos = [video_1, video_2, video_3, video_4, video_5, video_6, video_7, video_8, video_9, video_10, video_11, video_12, video_13, video_14, video_15, video_16, video_17, video_18, video_19, video_20]
+
+    videos = [video_1, video_2, video_3, video_4, video_5, video_6, video_7, video_8, video_9, video_10, video_11, video_12, video_13, video_14, video_15, video_16, video_17, video_18, video_19, video_20, video_21]
 
     for video in videos:
         db.session.add(video)
