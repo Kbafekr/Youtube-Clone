@@ -42,7 +42,7 @@ export default function SongPlayer({ playingSongPlayer }) {
     return (
       <>
         <div className="AudioPlayerState">
-          <div className="RecommendedVideoPreview">
+          <div className="audioplayerVideoPreview">
             <ReactPlayer
               width="100%"
               height="100%"

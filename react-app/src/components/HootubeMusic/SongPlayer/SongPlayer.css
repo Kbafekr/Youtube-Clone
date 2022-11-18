@@ -7,6 +7,7 @@
     justify-content: center;
     flex-direction: column;
     background-color: #1c1c1cd9;
+    gap: 5px;
     /* background-color: red; */
     border-top: 0.1em dotted rgb(23, 23, 23);
     text-align: left;
@@ -20,7 +21,11 @@
    }
 
 
-
+   .audioplayerVideoPreview {
+    height: 160px;
+    width: 280px;
+    border-radius: 15px;
+}
 
    .ThumbnailContainerPlaying {
     display: flex;
@@ -30,6 +35,8 @@
     width: 100%;
     min-width: fit-content;
     min-height: 45px;
+    gap: 5px;
+
    }
 
    .songContainerPlayingNow {
@@ -45,8 +52,8 @@
    .SongTitleCardMusicPlayer {
     display: flex;
     width: 100%;
-    max-width: 200px;
-    font-size: 16px;
+    max-width: 280px;
+    font-size: 20px;
     flex-wrap: wrap;
     max-height: 45px;
     overflow: hidden;
