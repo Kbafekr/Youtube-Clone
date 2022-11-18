@@ -10,10 +10,11 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../Utils/Utils";
 import { Link } from "react-router-dom";
-export function WatchHistoryPage({ sidePanel }) {
+export function WatchHistoryPage({ sidePanel, setNavBarType}) {
   const { playlistId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+  setNavBarType(false)
   const user = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.video);
   const channels = useSelector((state) => state.channel);

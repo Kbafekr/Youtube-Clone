@@ -14,8 +14,9 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { amountViews } from "../../Utils/Utils";
 import { Link } from "react-router-dom";
-export function WatchLaterPage({ sidePanel }) {
+export function WatchLaterPage({ sidePanel, setNavBarType }) {
   const { playlistId } = useParams();
+  setNavBarType(false)
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
@@ -200,7 +201,7 @@ export function WatchLaterPage({ sidePanel }) {
 
 
 
-        
+
         {/* playlist videos */}
         <div className="PlaylistVideosContainerPage">
           {userWatchLater &&

@@ -104,6 +104,15 @@ function App() {
         <Route path="/hootubemusic" exact={true}>
           <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
         </Route>
+        <Route path="/hootubemusic/explore" exact={true}>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+        </Route>
+        <Route path="/hootubemusic/library" exact={true}>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+        </Route>
+        <Route path="/hootubemusic/:songId" exact={true}>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+        </Route>
 
 
         {/* shorts */}
