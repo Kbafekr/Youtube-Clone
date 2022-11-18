@@ -31,7 +31,7 @@ import LikesDislikes from "./Likes&Dislikes/LikesDislikes";
 import { getAllNotificationsThunk } from "../../store/notifications";
 import { updateNotificationThunk } from "../../store/notifications";
 
-export function VideoPage({ sidePanel,  setNavBarType }) {
+export function VideoPage({ sidePanel,  setNavBarType, setPlayingSongPlayer }) {
   const { videoId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,7 +44,7 @@ export function VideoPage({ sidePanel,  setNavBarType }) {
   const [updateViews, setUpdateViews] = useState(videoId);
   const [subscribed, setSubscribed] = useState(false);
   setNavBarType(false)
-
+  setPlayingSongPlayer(false)
   const NotificationsAll = Object.values(notifications);
 
   let userNotifications;

@@ -16,6 +16,7 @@ class Channel(db.Model):
 
     # relationships backref
     videos = db.relationship("Video", backref='channel', cascade="all, delete-orphan")
+    songs = db.relationship("Song", backref='channel', cascade="all, delete-orphan")
     tags = db.relationship("Tag", backref='channel', cascade="all, delete-orphan")
     subscribers = db.relationship("Subscriber", backref='channel', cascade="all, delete-orphan")
     notifications = db.relationship("Notification", backref='channel', cascade="all, delete-orphan")
@@ -32,6 +33,7 @@ class Channel(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'videos': [video.to_dict() for video in self.videos],
+            'songs': [song.to_dict() for song in self.songs],
             'tags': [tag.to_dict() for tag in self.tags],
             'subscribers': [subscriber.to_dict() for subscriber in self.subscribers],
 

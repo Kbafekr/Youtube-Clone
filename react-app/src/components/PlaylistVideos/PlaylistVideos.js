@@ -28,7 +28,7 @@ import LikesDislikes from "../PlayVideo/Likes&Dislikes/LikesDislikes";
 import { getAllNotificationsThunk } from "../../store/notifications";
 import { updateNotificationThunk } from "../../store/notifications";
 import { getAllPlaylistsThunk } from "../../store/playlist";
-export function PlaylistVideos({ sidePanel, setNavBarType }) {
+export function PlaylistVideos({ sidePanel, setNavBarType, setPlayingSongPlayer }) {
   const { playlistId, videoId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,6 +38,7 @@ export function PlaylistVideos({ sidePanel, setNavBarType }) {
   const playlist = useSelector((state) => state.playlist);
   const allusers = useSelector((state) => state.allusers);
   setNavBarType(false)
+  setPlayingSongPlayer(false)
   const videos = useSelector((state) => state.video);
 
   const [loaded, setLoaded] = useState(false);

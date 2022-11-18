@@ -18,6 +18,7 @@ export default function ChannelVideosSection({ currentChannel }) {
 
   return (
     <>
+    {currentChannel.videos[0] != null ?
       <div className="VideosMapped">
         {currentChannel &&
           currentChannel.videos.map((video) => {
@@ -81,6 +82,7 @@ export default function ChannelVideosSection({ currentChannel }) {
             );
           })}
       </div>
+      :""}
     </>
   );
 }

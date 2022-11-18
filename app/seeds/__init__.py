@@ -12,6 +12,7 @@ from .history import seed_history, undo_history
 from .watchlater import seed_watch_later, undo_watch_later
 from .playlists import seed_playlist, undo_playlist
 from .playlistvideos import seed_playlistvideo, undo_playlistvideo
+from .songs import seed_songs, undo_songs
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -34,6 +35,7 @@ def seed():
     seed_watch_later()
     seed_playlist()
     seed_playlistvideo()
+    seed_songs()
     # Add other seed functions here
 
 
@@ -53,4 +55,5 @@ def undo():
     undo_watch_later()
     undo_playlist()
     undo_playlistvideo()
+    undo_songs()
     # Add other undo functions here

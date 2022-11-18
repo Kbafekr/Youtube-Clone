@@ -67,7 +67,7 @@ def seed_videos():
     video_8 = Video(channel_id=1,
     title="Logan Roy Plays Boar On The Floor | Succession | HBO",
     description='''
-   Logan Roy turns this dinner party upside down as he demands answers from his staff. 
+   Logan Roy turns this dinner party upside down as he demands answers from his staff.
     ''',
     video_url="https://www.youtube.com/watch?v=dYqqW3c2mBU",
     video_views="34")

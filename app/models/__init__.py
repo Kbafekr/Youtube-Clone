@@ -12,3 +12,4 @@ from .history import History
 from .watchlater import WatchLater
 from .playlist import Playlist
 from .playlistvideos import PlaylistVideos
+from .song import Song

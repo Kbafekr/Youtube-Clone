@@ -27,13 +27,16 @@ import { LikedVideosPage } from "./components/LikedVideosPage/LikedVideosPage";
 import { WatchHistoryPage } from "./components/WatchHistoryPage/WatchHistoryPage";
 import { WatchLaterPage } from "./components/WatchLaterPage/WatchLaterPage";
 import LibraryPage from "./components/LibraryPage/LibraryPage";
+// hootubeMusic
 import { HootubeMusic } from "./components/HootubeMusic/HootubeMusic";
+import SongPlayer from "./components/HootubeMusic/SongPlayer/SongPlayer";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   const [sidePanel, setSidePanel] = useState(true);
   const [navBarType, setNavBarType] = useState(false)
+  const [playingSongPlayer, setPlayingSongPlayer] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -65,7 +68,7 @@ function App() {
         </Route>
         {/* single Video */}
         <Route path="/videos/:videoId" exact={true}>
-          <VideoPage sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+          <VideoPage sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
         </Route>
         {/* single Channel */}
         <Route path="/channels/:channelId" exact={true}>
@@ -81,7 +84,7 @@ function App() {
         </Route>
         {/* playlists videos watch */}
         <Route path="/playlists/:playlistId/:videoId" exact={true}>
-          <PlaylistVideos sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+          <PlaylistVideos sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
         </Route>
         {/* liked videos */}
         <Route path="/likedvideos" exact={true}>
@@ -102,16 +105,16 @@ function App() {
 
         {/* youtube music */}
         <Route path="/hootubemusic" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
         </Route>
         <Route path="/hootubemusic/explore" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
         </Route>
         <Route path="/hootubemusic/library" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
         </Route>
         <Route path="/hootubemusic/:songId" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType}/>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
         </Route>
 
 
@@ -136,6 +139,7 @@ function App() {
                 <PlaylistVideos sidePanel={sidePanel}/>
               </Route> */}
       </Switch>
+      <SongPlayer playingSongPlayer={playingSongPlayer}/>
     </BrowserRouter>
   );
 }

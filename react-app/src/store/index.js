@@ -13,6 +13,8 @@ import watchhistory from './watchhistory'
 import watchlater from './watchlater'
 import playlist from './playlist'
 import notifications from './notifications'
+import song from './song'
+import audioPlayer from './audioPlayer'
 
 const rootReducer = combineReducers({
   session,
@@ -27,7 +29,9 @@ const rootReducer = combineReducers({
   watchhistory,
   watchlater,
   playlist,
-  notifications
+  notifications,
+  song,
+  audioPlayer
 });
 
 

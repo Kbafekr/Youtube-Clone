@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5e0c2edb7adb
+Revision ID: d3ad6d5d2f82
 Revises: 
-Create Date: 2022-11-11 12:20:49.873021
+Create Date: 2022-11-18 09:31:32.154859
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5e0c2edb7adb'
+revision = 'd3ad6d5d2f82'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -47,6 +47,17 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('songs',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('channel_id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.VARCHAR(length=200), nullable=False),
+    sa.Column('artist', sa.VARCHAR(length=200), nullable=False),
+    sa.Column('song_url', sa.String(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), nullable=False),
+    sa.ForeignKeyConstraint(['channel_id'], ['channels.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('subscribers',
@@ -163,6 +174,7 @@ def downgrade():
     op.drop_table('comments')
     op.drop_table('videos')
     op.drop_table('subscribers')
+    op.drop_table('songs')
     op.drop_table('playlists')
     op.drop_table('channels')
     op.drop_table('users')

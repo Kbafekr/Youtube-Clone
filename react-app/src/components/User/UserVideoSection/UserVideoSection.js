@@ -135,7 +135,7 @@ function UserVideoSection() {
                         className="VideoCardProfileManagePreview"
                         onClick={() => history.push(`/videos/${video.id}`)}
                       >
-                        {video.video_url.includes("s3") ? (
+                        {video.video_url != null && video.video_url.includes("s3") ? (
                           <ReactPlayer
                             width="100%"
                             height="100%"

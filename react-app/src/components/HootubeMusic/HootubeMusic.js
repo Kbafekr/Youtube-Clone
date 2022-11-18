@@ -1,64 +1,47 @@
-
+import "./HootubeMusic.css";
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { getAllVideosThunk } from "../../store/video";
+import { getAllSongsThunk } from "../../store/song";
 import { getAllChannelsThunk } from "../../store/channel";
 import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-import { updateUserThunk } from "../../store/session";
-import { newChannelThunk } from "../../store/channel";
+import { actionSongPlaying } from "../../store/audioPlayer";
 import { authenticate } from "../../store/session";
 import { amountViews } from "../../Utils/Utils";
 import logo from "../../icons/you2oobLogo.png";
 import { Link } from "react-router-dom";
+import { getAllUsersThunk } from "../../store/allusers";
 
-import { getAllTagsThunk } from "../../store/tags";
-import { getAllLikesThunk } from "../../store/likes";
-import { getAllDisLikesThunk } from "../../store/dislikes";
-
-import { getWatchHistoryThunk } from "../../store/watchhistory";
-
-export function HootubeMusic({ sidePanel, setNavBarType }) {
+export function HootubeMusic({ sidePanel, setNavBarType, setPlayingSongPlayer }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
-  const videos = useSelector((state) => state.video);
-  const tags = useSelector((state) => state.tags);
+  const songs = useSelector((state) => state.song);
   const channels = useSelector((state) => state.channel);
-  const [newChannelMade, setNewChannelMade] = useState(false);
   const [loaded, setLoaded] = useState(false);
   setNavBarType("Music");
 
-  let videosArray;
+  let songsArray;
   let channelsArray;
-  let tagsArray;
 
-  videosArray = Object.values(videos);
+  songsArray = Object.values(songs);
   channelsArray = Object.values(channels);
-  tagsArray = Object.values(tags);
 
   useEffect(() => {
     dispatch(getAllChannelsThunk());
-  }, [dispatch, newChannelMade, user]);
-
-  useEffect(() => {
-    dispatch(getAllVideosThunk());
-  }, [dispatch, user]);
-  useEffect(() => {
-    dispatch(getAllLikesThunk());
-  }, [dispatch, user]);
-  useEffect(() => {
-    dispatch(getAllDisLikesThunk());
-  }, [dispatch, user]);
-  useEffect(() => {
-    dispatch(getAllTagsThunk());
   }, [dispatch, user]);
 
+  useEffect(() => {
+    dispatch(getAllSongsThunk());
+  }, [dispatch, user]);
+  useEffect(() => {
+    dispatch(getAllUsersThunk());
+  }, [dispatch, user]);
 
   let arrayResult;
 
-    arrayResult = [...videosArray];
+  arrayResult = [...songsArray];
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -77,100 +60,80 @@ export function HootubeMusic({ sidePanel, setNavBarType }) {
         >
           <div className="homeContainerInner">
             <div className="homeTagsBarContainer"></div>
-              <div className="VideosMapped">
-                {arrayResult &&
-                  arrayResult.map((video) => {
-                    return (
-                      <>
-                        <div className="VideoCardHome">
-                          <div
-                            className="VideoPreviewHome"
-                            onClick={() => history.push(`/videos/${video.id}`)}
-                          >
-                            {video.video_url.includes("s3") ? (
-                              <ReactPlayer
-                                width="100%"
-                                height="100%"
-                                url={video.video_url}
-                                playIcon={true}
-                              />
-                            ) : (
-                              <ReactPlayer
-                                width="100%"
-                                height="100%"
-                                url={video.video_url}
-                                light={true}
-                                playIcon={true}
-                              />
-                            )}
-                          </div>
-                          {channelsArray &&
-                            channelsArray.map((channel) => {
-                              return (
-                                <>
-                                  {channel.id == video.channel_id ? (
-                                    <div className="HomeVideoCardBottomSection">
-                                      <div className="profileImageHomeVideoArray">
-                                        <img
-                                          className="channelPictureHomeArray"
-                                          alt="channel"
-                                          src={channel.profile_picture}
-                                        />
+            <div className="VideosMapped">
+              {arrayResult &&
+                arrayResult.map((song) => {
+                  return (
+                    <>
+                      <div className="VideoCardHome">
+                        <div
+                          className="OverlaySongPreviewHome"
+                          onClick={() => {dispatch(actionSongPlaying(song)); setPlayingSongPlayer(true)}}
+                        ></div>
+                        <div
+                          className="SongPreviewHome"
+                        >
+                          {song.song_url.includes("s3") ? (
+                            <ReactPlayer
+                              width="100%"
+                              height="100%"
+                              url={song.song_url}
+                              playIcon={true}
+                            />
+                          ) : (
+                            <ReactPlayer
+                              width="100%"
+                              height="100%"
+                              url={song.song_url}
+                              light={true}
+                              playIcon={true}
+                            />
+                          )}
+                        </div>
+                        {channelsArray &&
+                          channelsArray.map((channel) => {
+                            return (
+                              <>
+                                {channel.id == song.channel_id ? (
+                                  <div className="HomeVideoCardBottomSection">
+                                    <div className="HootubeSongArrayHomeArtist">
+                                      <div
+                                        className="SongTitleCardHome"
+                                        onClick={() =>
+                                          history.push(`/songs/${song.id}`)
+                                        }
+                                      >
+                                        {song.title}
                                       </div>
-                                      <div className="HomeVideoArrayChannelDetails">
+                                      <div
+                                        className="flexColumn"
+                                        id="homeArrayChannelDetails"
+                                      >
                                         <div
-                                          className="VideoTitleCard"
-                                          onClick={() =>
-                                            history.push(`/videos/${video.id}`)
-                                          }
+                                          className="flexRow"
+                                          id="ChannelNameHomeArray"
                                         >
-                                          {video.title}
-                                        </div>
-                                        <div
-                                          className="flexColumn"
-                                          id="homeArrayChannelDetails"
-                                        >
-                                          <div
-                                            className="flexRow"
-                                            id="ChannelNameHomeArray"
+                                          <Link
+                                            className="PlayVideoChannelName"
+                                            to={`/songs/${song.id}`}
                                           >
-                                            <Link
-                                              className="PlayVideoChannelName"
-                                              to={`/channels/${channel.id}`}
-                                            >
-                                              {channel.channel_name}
-                                            </Link>
-                                            <div id="verifiedCheckMark">
-                                              <i class="fa-solid fa-check"></i>
-                                            </div>
-                                          </div>
-                                          <div
-                                            className="flexRow"
-                                            id="homeArrayChannelViews"
-                                          >
-                                            <div>
-                                              {amountViews(video.video_views)}{" "}
-                                              views
-                                            </div>
-                                            <div className="CircleDiv" />
-                                            <div>
-                                              {video.created_at.slice(0, 16)}
-                                            </div>
-                                          </div>
+                                            {song.artist}
+                                          </Link>
                                         </div>
                                       </div>
                                     </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                </>
-                              );
-                            })}
-                        </div>
-                      </>
-                    );
-                  })}
-              </div>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </>
+                            );
+                          })}
+                      </div>
+                    </>
+                  );
+                })}
+            </div>
           </div>
         </div>
       </>
