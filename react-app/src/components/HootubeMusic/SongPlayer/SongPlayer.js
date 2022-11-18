@@ -2,12 +2,14 @@
 import ReactPlayer from "react-player";
 //css to import for audio player
 import "./SongPlayer.css";
+import { useHistory } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-export default function SongPlayer({playingSongPlayer}) {
+export default function SongPlayer({ playingSongPlayer }) {
+  const history = useHistory();
   const [songSource, setSongSource] = useState("");
   const [showThumbnail, setShowThumbnail] = useState(true);
   const currentSong = useSelector((state) => state.audioPlayer);
@@ -33,12 +35,9 @@ export default function SongPlayer({playingSongPlayer}) {
       return <button onClick={toggleThumbnail}>Open</button>;
     }
   }
-if (playingSongPlayer != true) {
-    return (
-        <>
-        </>
-    )
-}
+  if (playingSongPlayer != true) {
+    return <></>;
+  }
   if (currentSong.song_url) {
     return (
       <>
@@ -49,37 +48,24 @@ if (playingSongPlayer != true) {
               height="100%"
               url={songSource}
               playing={true}
-                  controls={true}
+              controls={false}
               onClickPreview={false}
             />
           </div>
 
-          <div
-            className="currentSongThumbnail"
-            // className={
-            //   currentSong.url ? "currentSongThumbnail" : "NoThumbnail"
-            // }
-            // id={showThumbnail == true ? "closeThumbnail" : "openThumbnail"}
-          >
-            <div className="ThumbnailContainerPlaying">
-              <div className="currentSongImageContainer"></div>
-              {/* <div className="SongInformationContainerPlaying"> */}
+          <div className="ThumbnailContainerPlaying">
+            <div className="songContainerPlayingNow">
+                <div
+                  className="nowPlayingMusicPlayer"
 
-              <div className="songContainerPlayingNow">
-                <div className="NowPlayingContainer">
-                  <div className="nowPlaying">Now Playing...</div>
-                  {/* {displayThumbnail()} */}
+                >
+                  Now playing...
                 </div>
-
-                <div className="linkContainerModal">
-                  <NavLink
-                    className="CurrentSongThumbNailLinkHome"
-                    to={`/hootubemusic/${currentSong.id}`}
-                  >
-                    {currentSong.title}
-                  </NavLink>
-                </div>
-                {/* </div> */}
+              <div
+                className="SongTitleCardMusicPlayer"
+                onClick={() => history.push(`/hootubemusic/${currentSong.id}`)}
+                >
+                {currentSong.title}
               </div>
             </div>
           </div>
@@ -89,46 +75,6 @@ if (playingSongPlayer != true) {
   } else {
     return (
       <>
-        <div className="AudioPlayerState">
-          <div className="AudioMusicPlayer">
-            <ReactPlayer
-              src={songSource}
-              // muted={true}
-              onPlay={(e) => console.log("onPlay")}
-            />
-          </div>
-          <div
-            className="currentSongThumbnail"
-            // className={
-            //   currentSong.url ? "currentSongThumbnail" : "NoThumbnail"
-            // }
-            // id={showThumbnail == true ? "closeThumbnail" : "openThumbnail"}
-          >
-            <div className="ThumbnailContainerPlaying">
-              {/* <div className="currentSongImageContainer">
-                <img className="currentSongThumbnailImage" src={LibraryGif} />
-              </div> */}
-              {/* <div className="SongInformationContainerPlaying"> */}
-
-              <div className="songContainerPlayingNow">
-                <div className="NowPlayingContainer">
-                  <div className="nowPlaying">Click on a song to play! </div>
-                  {/* {displayThumbnail()} */}
-                </div>
-
-                <div className="linkContainerModal">
-                  <NavLink
-                    className="CurrentSongThumbNailLinkHome"
-                    to={`/hootubemusic/${currentSong.id}`}
-                  >
-                    {currentSong.title}
-                  </NavLink>
-                </div>
-                {/* </div> */}
-              </div>
-            </div>
-          </div>
-        </div>
       </>
     );
   }
