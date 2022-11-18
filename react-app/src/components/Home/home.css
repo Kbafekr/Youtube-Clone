@@ -150,9 +150,14 @@ align-items: flex-start;
     }
 }
 
-@media screen and (max-width: 2080px){
+@media screen and (max-width: 2080px) and (min-width: 1734px ){
     .homeTagsBarContainer {
         width: 1800px
+    }
+}
+@media screen and (max-width: 1734px) and (min-width: 1200px ){
+    .homeTagsBarContainer {
+        width: 950px
     }
 }
 
