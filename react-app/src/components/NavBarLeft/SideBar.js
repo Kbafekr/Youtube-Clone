@@ -41,7 +41,6 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
     );
   }
 
-
   if (sidePanel == true)
     return (
       <nav className="SideNavBarContainer">
@@ -93,12 +92,12 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
             ) : (
               ""
             )}
-            <div className="SideNavRowContainer">
+            {/* <div className="SideNavRowContainer">
               <Link to={`/hootubemusic`} className="SideBarIcon">
                 <i class="fa-solid fa-record-vinyl"></i>
               </Link>
               <Link to={`/hootubemusic`} className="SideBarText">Hootube Music</Link>
-            </div>
+            </div> */}
           </div>
           {/* middle row */}
           {user != null ? (
@@ -115,7 +114,9 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                   <Link to={`/library`} className="SideBarIcon">
                     <i class="fa-solid fa-book"></i>
                   </Link>
-                  <Link to={`/library`} className="SideBarText">Library</Link>
+                  <Link to={`/library`} className="SideBarText">
+                    Library
+                  </Link>
                 </div>
               ) : (
                 ""
@@ -126,7 +127,9 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                   <Link to={`/watchhistory`} className="SideBarIcon">
                     <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
                   </Link>
-                  <Link to={`/watchhistory`} className="SideBarText">History</Link>
+                  <Link to={`/watchhistory`} className="SideBarText">
+                    History
+                  </Link>
                 </div>
               ) : (
                 ""
@@ -176,7 +179,9 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                   <Link to={`/watchlater`} className="SideBarIcon">
                     <i class="fa-solid fa-clock"></i>
                   </Link>
-                  <Link to={`/watchlater`} className="SideBarText">Watch Later</Link>
+                  <Link to={`/watchlater`} className="SideBarText">
+                    Watch Later
+                  </Link>
                 </div>
               ) : (
                 ""
@@ -186,7 +191,9 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                   <Link to={`/likedvideos`} className="SideBarIcon">
                     <i class="fa-solid fa-heart"></i>
                   </Link>
-                  <Link to={`/likedvideos`} className="SideBarText">Liked Videos</Link>
+                  <Link to={`/likedvideos`} className="SideBarText">
+                    Liked Videos
+                  </Link>
                 </div>
               ) : (
                 ""
@@ -217,40 +224,42 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                     </>
                   ) : (
                     <>
-                    <div className="SideNavRowContainer">
-                    <Link
-                    onClick={reloadPage}
-                    to={
-                      user != null
-                        ? {
-                            pathname: `/users/${user.id}`,
-                            state: {
-                              directedCategory: 3,
-                              uploadModalState: false,
-                            },
+                      <div className="SideNavRowContainer">
+                        <Link
+                          onClick={reloadPage}
+                          to={
+                            user != null
+                              ? {
+                                  pathname: `/users/${user.id}`,
+                                  state: {
+                                    directedCategory: 3,
+                                    uploadModalState: false,
+                                  },
+                                }
+                              : `/login`
                           }
-                        : `/login`
-                    }
-                    className="SideBarText"
-                  >
-                        <i class="fa-solid fa-list"></i>
-                      </Link>
-                      <Link
-                    onClick={reloadPage}
-                    to={
-                      user != null
-                        ? {
-                            pathname: `/users/${user.id}`,
-                            state: {
-                              directedCategory: 3,
-                              uploadModalState: false,
-                            },
+                          className="SideBarText"
+                        >
+                          <i class="fa-solid fa-list"></i>
+                        </Link>
+                        <Link
+                          onClick={reloadPage}
+                          to={
+                            user != null
+                              ? {
+                                  pathname: `/users/${user.id}`,
+                                  state: {
+                                    directedCategory: 3,
+                                    uploadModalState: false,
+                                  },
+                                }
+                              : `/login`
                           }
-                        : `/login`
-                    }
-                    className="SideBarText"
-                  >Playlists</Link>
-                    </div>
+                          className="SideBarText"
+                        >
+                          Playlists
+                        </Link>
+                      </div>
                     </>
                   )}
                 </>
@@ -526,19 +535,23 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
               ""
             )}
 
-            <div className="SideNavRowContainerClosed">
-            <Link to={`/hootubemusic`} className="SideBarIcon">
+            {/* <div className="SideNavRowContainerClosed">
+              <Link to={`/hootubemusic`} className="SideBarIcon">
                 <i class="fa-solid fa-record-vinyl"></i>
               </Link>
-              <Link to={`/hootubemusic`} className="SideBarText">Hootube Music</Link>
-            </div>
+              <Link to={`/hootubemusic`} className="SideBarText">
+                Hootube Music
+              </Link>
+            </div> */}
 
             {user != null ? (
               <div className="SideNavRowContainerClosed">
                 <Link to={`/library`} className="SideBarIcon">
                   <i class="fa-solid fa-book"></i>
                 </Link>
-                <Link to={`/library`} className="SideBarText">Library</Link>
+                <Link to={`/library`} className="SideBarText">
+                  Library
+                </Link>
               </div>
             ) : (
               ""
@@ -548,7 +561,9 @@ const SideBarNav = ({ sidePanel, setSidePanel }) => {
                 <Link to={`/watchhistory`} className="SideBarIcon">
                   <i class="fa-sharp fa-solid fa-arrow-rotate-left"></i>
                 </Link>
-                <Link to={`/watchhistory`} className="SideBarText">History</Link>
+                <Link to={`/watchhistory`} className="SideBarText">
+                  History
+                </Link>
               </div>
             ) : (
               ""
