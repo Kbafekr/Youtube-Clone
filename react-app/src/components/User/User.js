@@ -17,7 +17,7 @@ import CreatePlaylistForm from "./UserPlaylistSection/CreatePlaylistForm";
 // import uuid from 'react-uuid'
 
 
-import { updateUserThunk } from "../../store/session";
+import { updateUserThunk } from "../../store/session"; 
 import { getAllChannelsThunk } from "../../store/channel";
 import { useLocation } from "react-router-dom";
 
@@ -71,6 +71,7 @@ function User({ sidePanel,  setNavBarType }) {
       setShowModalCreateVideo(true);
     }
   }
+
   if (
     directedCategory == 3 &&
     category != directedCategory &&

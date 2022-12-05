@@ -75,7 +75,7 @@ font-weight: bold;
     display: flex;
     gap: 15px;
     margin-top: 10px;
-    min-width: 1800px;
+    overflow: auto;
 }
 
 /* subscription section to likes section */
@@ -120,6 +120,7 @@ font-weight: bold;
     padding: 10px 20px;
     font-weight: bold;
     border-radius: 50px;
+    min-width: 130px;
 }
 
 .LikeVideoSection {

@@ -51,7 +51,7 @@ export default function WatchLaterSection() {
   return (
     loaded && (
       <>
-        <div className="AddtoPlaylistButtonVideosSection" onClick={toggleWatchLater}>
+        <div className="AddtoPlaylistButtonVideosWCSection" onClick={toggleWatchLater}>
           <div className="WatchLaterButtonContainer">
             <div
               className="notificationBellVideoPlay"

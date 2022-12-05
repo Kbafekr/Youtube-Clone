@@ -74,6 +74,7 @@ align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    min-width: 210px;
 }
 .VideoTitleCard {
     display: flex;
