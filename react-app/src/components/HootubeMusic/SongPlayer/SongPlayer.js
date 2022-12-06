@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-export default function SongPlayer({ playingSongPlayer }) {
+export default function SongPlayer({ playingSongPlayer, playStateReactPlayer }) {
   const history = useHistory();
   const [songSource, setSongSource] = useState("");
   const [showThumbnail, setShowThumbnail] = useState(true);
@@ -47,7 +47,7 @@ export default function SongPlayer({ playingSongPlayer }) {
               width="100%"
               height="100%"
               url={songSource}
-              playing={true}
+              playing={playStateReactPlayer}
               controls={false}
               onClickPreview={false}
             />

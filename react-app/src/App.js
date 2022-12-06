@@ -37,6 +37,7 @@ function App() {
   const [sidePanel, setSidePanel] = useState(true);
   const [navBarType, setNavBarType] = useState(false)
   const [playingSongPlayer, setPlayingSongPlayer] = useState(false)
+  const [playStateReactPlayer, setPlayStateReactPlayer] = useState(true)
 
   useEffect(() => {
     (async () => {
@@ -105,7 +106,7 @@ function App() {
 
         {/* youtube music */}
         <Route path="/hootubemusic" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
+          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer} setPlayStateReactPlayer={setPlayStateReactPlayer} playStateReactPlayer={playStateReactPlayer}/>
         </Route>
         <Route path="/hootubemusic/explore" exact={true}>
           <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
@@ -139,7 +140,7 @@ function App() {
                 <PlaylistVideos sidePanel={sidePanel}/>
               </Route> */}
       </Switch>
-      <SongPlayer playingSongPlayer={playingSongPlayer}/>
+      <SongPlayer playingSongPlayer={playingSongPlayer} playStateReactPlayer={playStateReactPlayer}/>
     </BrowserRouter>
   );
 }

@@ -13,15 +13,23 @@ import logo from "../../icons/you2oobLogo.png";
 import { Link } from "react-router-dom";
 import { getAllUsersThunk } from "../../store/allusers";
 
-export function HootubeMusic({ sidePanel, setNavBarType, setPlayingSongPlayer }) {
+export function HootubeMusic({
+  sidePanel,
+  setNavBarType,
+  setPlayingSongPlayer,
+  setPlayStateReactPlayer,
+  playStateReactPlayer,
+}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.song);
   const channels = useSelector((state) => state.channel);
   const [loaded, setLoaded] = useState(false);
+  const [currentPlayingSong, setCurrentPlayingSong] = useState(false);
   setNavBarType("Music");
 
+  console.log(playStateReactPlayer);
   let songsArray;
   let channelsArray;
 
@@ -66,13 +74,119 @@ export function HootubeMusic({ sidePanel, setNavBarType, setPlayingSongPlayer })
                   return (
                     <>
                       <div className="VideoCardHome">
+
+                        {/*  if song is not being */}
                         <div
                           className="OverlaySongPreviewHome"
-                          onClick={() => {dispatch(actionSongPlaying(song)); setPlayingSongPlayer(true)}}
-                        ></div>
-                        <div
-                          className="SongPreviewHome"
+                          onClick={() => {
+                            dispatch(actionSongPlaying(song));
+                            setPlayingSongPlayer(true);
+                            setCurrentPlayingSong(song);
+                            setPlayStateReactPlayer(true);
+                            // setPlayStateReactPlayer(!playStateReactPlayer);
+                          }}
                         >
+                          {song.id === currentPlayingSong.id &&
+                          playStateReactPlayer === true ? (
+                            <div className="SongPauseButton">
+                              <div
+                                className="CircleContainerPlaySongHover"
+                                id="CircleBackgroundHover"
+                              >
+                                <i class="fa-solid fa-circle"></i>
+                              </div>
+
+                              <div
+                                className="backgroundCircleSongPlay"
+                                id="playSongButtonHover"
+                              >
+                                <i class="fa-solid fa-pause"></i>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="SongPlayButtonHover">
+                              <div
+                                className="CircleContainerPlaySongHover"
+                                id="CircleBackgroundHover"
+                              >
+                                <i class="fa-solid fa-circle"></i>
+                              </div>
+
+                              <div
+                                className="backgroundCircleSongPlay"
+                                id="playSongButtonHover"
+                              >
+                                <i class="fa-solid fa-play"></i>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+
+
+                        {/*  if song is not being */}
+                        {song.id === currentPlayingSong.id && playStateReactPlayer === true ?
+                        <div
+                          className="OverlaySongPreviewHome"
+                          onClick={() => {
+                            dispatch(actionSongPlaying(song));
+                            setPlayingSongPlayer(true);
+                            setCurrentPlayingSong(song);
+                            setPlayStateReactPlayer(false);
+                            // setPlayStateReactPlayer(!playStateReactPlayer);
+                          }}
+                        >
+                            <div className="SongPauseButton">
+                              <div
+                                className="CircleContainerPlaySongHover"
+                                id="CircleBackgroundHover"
+                              >
+                                <i class="fa-solid fa-circle"></i>
+                              </div>
+
+                              <div
+                                className="backgroundCircleSongPlay"
+                                id="playSongButtonHover"
+                              >
+                                <i class="fa-solid fa-pause"></i>
+                              </div>
+                            </div>
+                        </div> : "" }
+
+
+                        {/*  if song is not being played */}
+
+                        {song.id === currentPlayingSong.id && playStateReactPlayer === false ?
+                        <div
+                          className="OverlaySongPreviewHome"
+                          onClick={() => {
+                            dispatch(actionSongPlaying(song));
+                            setPlayingSongPlayer(true);
+                            setCurrentPlayingSong(song);
+                            setPlayStateReactPlayer(true);
+
+                          }}
+                        >
+                            <div className="SongPauseButton">
+                              <div
+                                className="CircleContainerPlaySongHover"
+                                id="CircleBackgroundHover"
+                              >
+                                <i class="fa-solid fa-circle"></i>
+                              </div>
+
+                              <div
+                                className="backgroundCircleSongPlay"
+                                id="playSongButtonHover"
+                              >
+                              <i class="fa-solid fa-play"></i>
+
+                              </div>
+                            </div>
+                        </div> : "" }
+
+                        {/* end of logic */}
+                        <div className="SongPreviewHome">
                           {song.song_url.includes("s3") ? (
                             <ReactPlayer
                               width="100%"
