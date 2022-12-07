@@ -109,13 +109,13 @@ function App() {
           <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer} setPlayStateReactPlayer={setPlayStateReactPlayer} playStateReactPlayer={playStateReactPlayer}/>
         </Route>
         <Route path="/hootubemusic/explore" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
+        <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer} setPlayStateReactPlayer={setPlayStateReactPlayer} playStateReactPlayer={playStateReactPlayer}/>
         </Route>
         <Route path="/hootubemusic/library" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
+        <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer} setPlayStateReactPlayer={setPlayStateReactPlayer} playStateReactPlayer={playStateReactPlayer}/>
         </Route>
         <Route path="/hootubemusic/:songId" exact={true}>
-          <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer}/>
+        <HootubeMusic sidePanel={sidePanel} setNavBarType={setNavBarType} setPlayingSongPlayer={setPlayingSongPlayer} setPlayStateReactPlayer={setPlayStateReactPlayer} playStateReactPlayer={playStateReactPlayer}/>
         </Route>
 
 
