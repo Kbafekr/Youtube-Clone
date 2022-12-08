@@ -38,9 +38,8 @@ const MusicNavBar = ({ sidePanel, setSidePanel }) => {
               </div>
             </div>
             <NavLink
-              to="/hootubemusic"
+              exact to="/hootubemusic"
               className="NavBarLogoLink"
-              exact={true}
               activeClassName="active"
             >
               <img
