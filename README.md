@@ -16,17 +16,17 @@ Link to test out website: https://hootube.herokuapp.com/
 * CSS
 
 DB:
-* SQLAlchemy  
+* SQLAlchemy
 
 
 
 hootube
 * Clone/download the repo https://github.com/Kbafekr/Youtube-Clone
 
-* cd into hootube folder and ``` run pipenv install ```
+* cd into app folder and ``` run pipenv install ```
 
-* Open two terminal paths for both hootube and react-app.
-* Under hootube ``` run pipenv shell  then flask run, for react-app run npm install```
+* Open two terminal paths for both app and react-app.
+* Under app ``` run pipenv shell  then flask run, for react-app run npm install```
 * Create a .env file under the root of the backend folder with the following contents:
 
   ``` REACT_APP_BASE_URL=http://localhost:5000 ```
@@ -47,11 +47,11 @@ Create a .env file based on the example with proper settings for your developmen
 ```
 DATABASE_URL=sqlite:///dev.db
 FLASK_DEBUG=True
-SECRET_KEY=«generate_strong_secret_here» 
+SECRET_KEY=«generate_strong_secret_here»
 ```
 
-``` 
-Inside react-app create another .env and add     REACT_APP_BASE_URL=http://localhost:5000 
+```
+Inside react-app create another .env and add     REACT_APP_BASE_URL=http://localhost:5000
 
 ```
 ## Home Page
