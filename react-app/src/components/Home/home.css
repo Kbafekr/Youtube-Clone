@@ -1,15 +1,15 @@
 .homeContainer {
     flex: 1;
-    padding: 30px;
-    margin-left: 302px;
+    padding: 1.875rem;
+    margin-left: 17.875rem;
     min-height: 100%;
     display: flex;
     color: white;
 }
 .homeContainerClosed {
     flex: 1;
-    padding: 30px;
-    margin-left: 152px;
+    padding: 1.875rem;
+    margin-left: 9.5rem;
     min-height: 100%;
     display: flex;
     color: white;
@@ -31,39 +31,39 @@ align-items: flex-start;
     flex-wrap: wrap;
     height: 100%;
     width: 100%;
-    row-gap: 30px;
-    column-gap: 50px;
+    row-gap: 1.875rem;
+    column-gap: 3.125rem;
 }
 .VideoCardHome {
-    height: 300px;
+    height: 18.75rem;
 }
 
 .VideoPreviewHome {
-    height: 190px;
-    width: 300px;
-    border-radius: 50px;
+    height: 11.875rem;
+    width: 18.75rem;
+    border-radius: 3.125rem;
     cursor: pointer;
 }
 
 .HomeVideoCardBottomSection {
-    width: 300px;
-    height: 100px;
+    width: 18.75rem;
+    height: 6.25rem;
     display: flex;
-    gap: 15px;
-    margin-top: 10px;
+    gap: 0.9375rem;
+    margin-top: 0.625rem;
 }
 
 .profileImageHomeVideoArray {
     height: 100%;
-    width: 50px;
+    width: 3.125rem;
     display: flex;
     justify-content: center;
 }
 
 .channelPictureHomeArray {
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 3.125rem;
   object-fit: cover;
 }
 
@@ -74,14 +74,15 @@ align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    min-width: 210px;
+    min-width: 13.125rem;
 }
 .VideoTitleCard {
     display: flex;
     width: 100%;
-    max-width: 300px;
+    max-width: 18.75rem;
     flex-wrap: wrap;
-    height: 38px;
+    height: 2.215rem;
+    padding-bottom: 0.125rem;
     overflow: hidden;
     font-weight: bold;
     cursor: pointer;
@@ -98,17 +99,17 @@ align-items: flex-start;
 
 
 #ChannelNameHomeArray {
- gap: 10px;
+ gap: 0.625rem;
 }
 
 #verifiedCheckMark {
     color: green;
     background-color: white;
-    font-size: 12px;
-    margin-top: 2px;
+    font-size: 0.75rem;
+    margin-top: 0.125rem;
     height: fit-content;
-    padding: 0px 1px;
-    border-radius: 50px;
+    padding: 0rem 0.0625rem;
+    border-radius: 3.125rem;
 }
 
 #homeArrayChannelDetails {
@@ -121,16 +122,16 @@ align-items: flex-start;
     width: 100%;
     justify-content: flex-start;
     align-items: center;
-    font-size: 14px;
+    font-size: 0.875rem;
     display: flex;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .CircleDiv {
-    height: 3px;
-    width: 3px;
-    border-radius: 50px;
-    background-color: rgb(214, 213, 213);
+    height: 0.1875rem;
+    width: 0.1875rem;
+    border-radius: 3.125rem;
+    background-color: rgb(70, 62, 62);
 }
 
 
@@ -139,7 +140,7 @@ align-items: flex-start;
     position: relative;
     display: flex;
     justify-content: flex-start;
-    bottom: 15px;
+    bottom: 0.9375rem;
     height: 100%;
 }
 
@@ -152,22 +153,22 @@ align-items: flex-start;
 
 @media screen and (max-width: 2080px) and (min-width: 1734px ){
     .homeTagsBarContainer {
-        width: 1800px
+        width: 112.5rem
     }
 }
 @media screen and (max-width: 1734px) and (min-width: 1200px ){
     .homeTagsBarContainer {
-        width: 950px
+        width: 59.375rem
     }
 }
 
 .homeTagsBar {
     display: flex;
-    gap: 20px;
+    gap: 1.25rem;
     flex-direction: row;
     width: 100%;
     overflow-y: hidden;
-    height: 35px
+    height: 2.1875rem
 }
 .homeTagsBar::-webkit-scrollbar {
     display: none;
@@ -178,19 +179,19 @@ align-items: flex-start;
 .tagHomePageActive {
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
-    padding: 10px 10px;
+    padding: 0.625rem 0.625rem;
     width: fit-content;
-    border-radius: 15px;
+    border-radius: 0.9375rem;
     cursor:default;
 }
 .NewtagHomePageActive {
     color: white;
     background: linear-gradient(45deg, rgba(2, 255, 183, 0.619) 15%, rgba(2, 78, 255, 0.603), rgba(229, 31, 255, 0.635) 45%,rgba(246, 60, 14, 0.561));
-    padding: 10px 10px;
+    padding: 0.625rem 0.625rem;
     width: fit-content;
-    min-width: 86px;
+    min-width: 5.375rem;
     font-weight: bold;
-    border-radius: 15px;
+    border-radius: 0.9375rem;
     cursor:default;
 }
 .tagHomePage {
@@ -199,9 +200,9 @@ align-items: flex-start;
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: rgba(85, 85, 85, 0.596);
-    padding: 10px 10px;
+    padding: 0.625rem 0.625rem;
     width: fit-content;
-    border-radius: 15px;
+    border-radius: 0.9375rem;
     cursor: pointer;
 }
 .newToYouTag {
@@ -210,8 +211,8 @@ align-items: flex-start;
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: rgba(85, 85, 85, 0.596);
-    padding: 10px 10px;
-    min-width: 81px;
-    border-radius: 15px;
+    padding: 0.625rem 0.625rem;
+    min-width: 5.0625rem;
+    border-radius: 0.9375rem;
     cursor: pointer;
 }

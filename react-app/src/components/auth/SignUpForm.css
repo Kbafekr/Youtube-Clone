@@ -1,7 +1,7 @@
 .loginFormContainer {
   flex: 1;
   padding: 10px;
-  margin-left: 272px;
+  margin-left: 5%; /* Adjusted to percentage */
   min-height: 100%;
   display: flex;
   color: white;
@@ -14,19 +14,20 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-  padding: 48px 40px 36px;
+  padding: 3em; /* Changed to em */
 }
 
 .innerSignupForm {
   display: flex;
   flex-direction: row;
-  width: 500px;
-  height: 680px;
+  max-width: 90%; /* Adjusted to max-width */
+  min-width: 300px; /* Minimum width for form structure */
+  height: auto; /* Height set to auto for flexibility */
   justify-content: center;
   align-items: flex-start;
-  padding: 48px 40px 36px;
+  padding: 3em; /* Changed to em */
   border: 1px solid gray;
-  border-radius: 50px;
+  border-radius: 3em; /* Adjusted for proportionality */
 }
 
 .LoginFormDiv {
@@ -35,20 +36,19 @@
   height: 100%;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 1.5em; /* Changed to em */
   align-items: center;
 }
-/* logo */
 
 .ErrorLoginSection {
   height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.5em; /* Adjusted to em */
   text-align: center;
   width: 100%;
   color: red;
-  font-size: 18px;
+  font-size: 1.125rem; /* Changed to rem */
   margin: 0;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -58,15 +58,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 10px;
+  row-gap: 0.5em; /* Adjusted to em */
 }
 
 #signupInput {
-  font-size: 16px;
+  font-size: 1rem; /* Changed to rem */
   width: 100%;
-  padding: 5px 15px;
-  height: 20px;
-  border-radius: 5px;
+  padding: 0.5em; /* Adjusted to em */
+  height: 2em; /* Adjusted to em */
+  border-radius: 0.5em; /* Adjusted to em */
   color: #202124;
 }
 
@@ -76,11 +76,11 @@
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  font-size: 16px;
+  font-size: 1rem; /* Changed to rem */
 }
 
 .CreateAccountRedirect {
   color: #1a73e8;
-  font-size: 18px;
+  font-size: 1.125rem; /* Changed to rem */
   text-decoration: none;
 }

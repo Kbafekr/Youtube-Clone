@@ -1,36 +1,35 @@
 .loginFormContainer {
     flex: 1;
     padding: 10px;
-    margin-left: 272px;
+    margin-left: 5%; /* Adjust percentage based on layout needs */
     min-height: 100%;
     display: flex;
     color: white;
 }
 
-
 .outerLoginForm {
     position: relative;
-    right: 80px;
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
-    padding: 48px 40px 36px;
+    padding: 3.5em; /* Using em for padding */
 }
 
 .innerLoginForm {
     display: flex;
     flex-direction: row;
-    width: 400px;
-    height: 450px;
+    max-width: 90%; /* Use max-width for better control */
+    min-width: 300px; /* Minimum width to maintain form structure */
+    height: auto; /* Auto height for content flexibility */
     overflow-y: auto;
     justify-content: center;
     align-items: flex-start;
-    padding: 48px 40px 36px;
+    padding: 3.5em; /* Using em for padding */
     border: 1px solid gray;
-    border-radius: 50px;
+    border-radius: 3em; /* Adjusted for proportionality */
 }
 
 .LoginFormDiv {
@@ -39,30 +38,31 @@
     height: 100%;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 1em; /* Using em for consistent spacing */
     align-items: center;
 }
+
 /* logo */
 .loginLogo {
-    width: 125px;
-    height: 75px;
+    width: 10vw; /* Adjusted to viewport width */
+    height: 5vw; /* Adjusted to viewport width */
+    max-width: 125px; /* Max width to prevent over-scaling */
+    max-height: 75px; /* Max height to prevent over-scaling */
 }
 
 .SignupInputs {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 18px;
-    row-gap: 10px;
+    font-size: 1.125rem; /* Using rem for font sizes */
+    row-gap: 1em;
 }
 
 #loginInput {
-    font-size: 18px;
-
+    font-size: 1.125rem;
     width: 100%;
-    padding: 13px 15px;
-    height: 20px;
-    border-radius: 5px;
+    padding: 1em;
+    border-radius: 0.5em;
     color: #202124;
 }
 
@@ -77,10 +77,8 @@
 .CreateAccountRedirect {
     color: #1a73e8;
     text-decoration: none;
-    font-size: 16px;
-
+    font-size: 1rem;
 }
-
 
 .DemoLoginButton {
     display: flex;
@@ -90,11 +88,10 @@
 .SubmitDemoLoginButton {
     background: none;
     width: fit-content;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: white;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 3em;
     border: 1px solid rgba(233, 233, 233, 0.566);
-    padding: 5px 10px;
-
+    padding: 0.5em 1em;
 }

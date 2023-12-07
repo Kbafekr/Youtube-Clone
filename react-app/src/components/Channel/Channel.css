@@ -1,53 +1,36 @@
 .testingBackgroundColor {
     background-color: red;
-    width: 200px;
-    height: 200px;
+    width: 50vw; /* Adjusted to viewport width */
+    height: 50vh; /* Adjusted to viewport height */
+    max-width: 200px; /* Max width for larger screens */
+    max-height: 200px; /* Max height for larger screens */
 }
 
-.SubscribedCSS {
+.SubscribedCSS, .UnsubscribedCSS {
     display: flex;
-    gap: 10px;
-    color: black;
-    align-items: center;
-    flex-direction: row;
-}
-.UnsubscribedCSS {
-    display: flex;
-    gap: 10px;
+    gap: 1em; /* Adjusted to em */
     color: black;
     align-items: center;
     flex-direction: row;
 }
 
-.ChannelSubscribeSectionButton {
+.ChannelSubscribeSectionButton, .ChannelunSubscribeSectionButton {
     display: flex;
     position: relative;
-    top: 60px;
-    font-size: 20px;
-    border-radius: 50px;
-    padding: 15px;
+    top: 3em; /* Adjusted to em */
+    font-size: 1.25em; /* Adjusted to em */
+    border-radius: 3em; /* Adjusted for consistency */
+    padding: 1em; /* Adjusted to em */
     background-color: rgba(235, 235, 235, 0.597);
     text-align: center;
     cursor: pointer;
-  }
-.ChannelunSubscribeSectionButton {
-    display: flex;
-    position: relative;
-    top: 60px;
-    font-size: 20px;
-    border-radius: 50px;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.871);
-    text-align: center;
-    cursor: pointer;
-  }
+}
 
-  #subscribedCheckMark {
+#subscribedCheckMark {
     color: green;
-    font-size: 16px;
-    margin-top: 2px;
+    font-size: 1em; /* Adjusted to em */
+    margin-top: 0.2em; /* Adjusted to em */
     height: fit-content;
-    padding: 0px 1px;
-    border-radius: 50px;
-
+    padding: 0 0.1em; /* Adjusted to em */
+    border-radius: 3em; /* Adjusted for consistency */
 }
