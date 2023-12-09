@@ -4,21 +4,21 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 0.3125rem;
 }
 
 .SongPreviewHome {
-    height: 190px;
-    width: 300px;
-    border-radius: 50px;
+    height: 11.875rem;
+    width: 18.75rem;
+    border-radius: 3.125rem;
 }
 
 .SongTitleCardHome {
     display: flex;
     width: 100%;
-    max-width: 300px;
+    max-width: 18.75rem;
     flex-wrap: wrap;
-    max-height: 38px;
+    max-height: 2.375rem;
     overflow: hidden;
     font-weight: bold;
     cursor: pointer;
@@ -30,9 +30,9 @@
 .OverlaySongPreviewHome {
     position: absolute;
     z-index: 2;
-    height: 192px;
-    width: 302px;
-    border-radius: 15px;
+    height: 12rem;
+    width: 18.875rem;
+    border-radius: 0.9375rem;
     /* background-color: red; */
     cursor: pointer;
 }
@@ -44,7 +44,7 @@
 }
 
 .OverlaySongPreviewHome:hover .SongPlayButtonHover {
-    font-size: 72px;
+    font-size: 4.5rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -54,23 +54,23 @@
 }
 
 .SongPlayButtonHover .backgroundCircleSongPlay {
-    font-size: 36px;
+    font-size: 2.25rem;
     color: white;
     position: absolute;
     z-index: 2;
 }
 
 #CircleBackgroundHover .backgroundCircleSongPlay:hover {
-    font-size: 84px;
+    font-size: 5.25rem;
     color: rgba(0, 0, 0, 0.794);
 }
 .CircleContainerPlaySongHover:hover .backgroundCircleSongPlay{
-    font-size: 84px;
+    font-size: 5.25rem;
     color: rgba(0, 0, 0, 0.794);
 }
 
 .CircleContainerPlaySongHover:hover #playSongButtonHover {
-    font-size: 48px;
+    font-size: 3rem;
     color: white;
 }
 
@@ -78,7 +78,7 @@
 /* pauseButton */
 
 .SongPauseButton {
-    font-size: 72px;
+    font-size: 4.5rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -88,22 +88,22 @@
 }
 
 .SongPauseButton .backgroundCircleSongPlay {
-    font-size: 36px;
+    font-size: 2.25rem;
     color: white;
     position: absolute;
     z-index: 2;
 }
 
 #CircleBackgroundHover .backgroundCircleSongPlay:hover {
-    font-size: 84px;
+    font-size: 5.25rem;
     color: rgba(0, 0, 0, 0.794);
 }
 .CircleContainerPlaySongHover:hover .backgroundCircleSongPlay{
-    font-size: 84px;
+    font-size: 5.25rem;
     color: rgba(0, 0, 0, 0.794);
 }
 
 .CircleContainerPlaySongHover:hover #playSongButtonHover {
-    font-size: 48px;
+    font-size: 3rem;
     color: white;
 }

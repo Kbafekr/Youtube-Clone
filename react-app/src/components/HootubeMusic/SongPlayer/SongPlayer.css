@@ -7,24 +7,24 @@
     justify-content: center;
     flex-direction: column;
     background-color: #1c1c1cd9;
-    gap: 5px;
+    gap: 0.3125em;
     /* background-color: red; */
-    border-top: 0.1em dotted rgb(23, 23, 23);
+    border-top: 0.1rem dotted rgb(23, 23, 23);
     text-align: left;
-    padding: 5px;
-    padding-right: 0px;
+    padding: 0.3125rem;
+    padding-right: 0rem;
     color: white;
-    min-width: 200px;
-    margin-bottom: 3px;
-    border-radius: 15px;
+    min-width: 12.5rem;
+    margin-bottom: 0.1875rem;
+    border-radius: 0.9375rem;
     z-index: 6;
    }
 
 
    .audioplayerVideoPreview {
-    height: 160px;
-    width: 280px;
-    border-radius: 15px;
+    height: 10rem;
+    width: 17.5rem;
+    border-radius: 0.9375rem;
 }
 
    .ThumbnailContainerPlaying {
@@ -34,8 +34,8 @@
     height: 100%;
     width: 100%;
     min-width: fit-content;
-    min-height: 45px;
-    gap: 5px;
+    min-height: 2.8125rem;
+    gap: 0.1875rem;
 
    }
 
@@ -52,10 +52,10 @@
    .SongTitleCardMusicPlayer {
     display: flex;
     width: 100%;
-    max-width: 280px;
-    font-size: 20px;
+    max-width: 17.5rem;
+    font-size: 1.25rem;
     flex-wrap: wrap;
-    max-height: 45px;
+    max-height: 2.8125rem;
     overflow: hidden;
     font-weight: bold;
     cursor: pointer;
@@ -66,9 +66,9 @@
    .nowPlayingMusicPlayer {
     display: flex;
     color: rgba(204, 204, 204, 0.655);
-    font-size: 12px;
+    font-size: 0.75rem;
     width: 100%;
-    max-width: 200px;
+    max-width: 12.5rem;
     flex-wrap: wrap;
     overflow: hidden;
     font-weight: bold;

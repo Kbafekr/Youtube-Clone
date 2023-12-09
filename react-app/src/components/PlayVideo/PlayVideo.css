@@ -73,7 +73,7 @@ font-weight: bold;
 .VideoDetailsContainerSection {
     width: 100%;
     display: flex;
-    gap: 15px;
+    gap: 0.9375rem;
     margin-top: 10px;
     overflow: auto;
 }
@@ -84,8 +84,8 @@ font-weight: bold;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
-    margin-left: 40px;
+    gap: 1.25rem;
+    margin-left: 0.5rem;
 }
 
 .subscribeButtonContainer {
@@ -98,15 +98,15 @@ font-weight: bold;
     font-weight: bold;
     color: white;
     background-color: rgba(82, 82, 82, 0.878);
-    border-radius: 50px;
-    font-size: 16px;
-    padding: 10px 20px;
+    border-radius: 3.125rem;
+    font-size: 1rem;
+    padding: 0.75rem;
     cursor: pointer;
     text-align: center;
 }
 
 .notificationBellVideoPlay {
-    font-size: 24px;
+    font-size: 1.25rem;
     cursor: pointer;
 }
 
@@ -114,13 +114,13 @@ font-weight: bold;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
-    margin-left: 40px;
+    gap: 0.625rem;
+    margin-left: 0.5rem;
     background-color: rgba(82, 82, 82, 0.878);
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     font-weight: bold;
-    border-radius: 50px;
-    min-width: 130px;
+    border-radius: 3.125rem;
+    min-width: fit-content;
 }
 
 .LikeVideoSection {

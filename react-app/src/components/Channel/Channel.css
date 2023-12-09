@@ -8,7 +8,7 @@
 
 .SubscribedCSS, .UnsubscribedCSS {
     display: flex;
-    gap: 1em; /* Adjusted to em */
+    gap: 0.5em; /* Adjusted to em */
     color: black;
     align-items: center;
     flex-direction: row;
